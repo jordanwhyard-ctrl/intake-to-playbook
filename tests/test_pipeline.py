@@ -165,6 +165,22 @@ class TestSamples(unittest.TestCase):
                 if e[f"{side}_marketplace"] == "listed":
                     self.assertTrue(e.get(f"{side}_listing", "").startswith("https://"), e["product"])
 
+    def test_web_intake_import_runs_through_pipeline(self):
+        import shutil, subprocess, sys
+        with tempfile.TemporaryDirectory() as tmp:
+            proj = Path(tmp) / "proj"
+            shutil.copytree(ROOT / "samples/01-isv-inventory", proj)
+            r = subprocess.run([sys.executable, str(ROOT / "tools/import_intake.py"), str(ROOT / "tests/fixtures/intake_example.json"),
+                                "--project", str(proj)], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            res = run(proj, Path(tmp) / "out", quiet=True)
+            mine = [x for x in res["records"] if x.get("customer") == "Example Analytics Ltd. (fictional)"]
+            self.assertEqual(len(mine), 6)
+            okta = next(x for x in mine if x["product"] == "Okta Workforce Identity")
+            self.assertEqual(okta["marketplace_route"], "AWS Marketplace")   # commitment came from the intake
+            notion = next(x for x in mine if x["product"] == "Notion")
+            self.assertEqual(notion["annual_spend"], 81000)                   # 15/user/month x 450 x 12
+
     def test_isv_rollups_and_calendar(self):
         out = self.results["01-isv-inventory"]["out_dir"]
         self.assertEqual(len(list((out / "customers").glob("*.md"))), 5)

@@ -71,6 +71,11 @@ sources:
       Owner Rating: satisfaction
       Notes: notes
       Evaluating: considering
+  # Intakes from the web form (web/intake.html), converted by tools/import_intake.py.
+  # Their columns already use the schema's field names, so no map is needed.
+  - path: data/intake_*.csv
+    format: csv
+    label: Web intake
   - path: data/license_usage_export.csv
     format: csv
     label: Admin-console usage export
@@ -104,6 +109,7 @@ schema:
   notes: str
   department: str
   purchased_via: str
+  edition: str
 
 dedupe_on: [[customer, product]]
 required: [customer, product, renewal_date]

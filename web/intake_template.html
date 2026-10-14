@@ -1,0 +1,884 @@
+<title>Opportunity Intake</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: intake console. Sticky section rail with completion state on the left, one long form on the right,
+   software lines as editable cards that check themselves against the ISV catalog as you type. */
+:root{
+  --bg:#f3f5f4; --surface:#fff; --sunk:#e8ecea; --line:#d4dbd8; --fg:#15211e; --muted:#5a6a65;
+  --accent:#0d6b5c; --accent-soft:#d5ebe5; --flag:#a85d00; --flag-soft:#fbe9d0; --bad:#b4372f; --bad-soft:#f7dcd9; --good:#1f7a43;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1514; --surface:#161e1c; --sunk:#1d2826; --line:#2a3734; --fg:#e3ebe8; --muted:#93a39e;
+  --accent:#5cc4ae; --accent-soft:#163a33; --flag:#f0a94b; --flag-soft:#3a2a12; --bad:#ef7a70; --bad-soft:#3d1c19; --good:#6ccf93; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1514; --surface:#161e1c; --sunk:#1d2826; --line:#2a3734; --fg:#e3ebe8; --muted:#93a39e;
+  --accent:#5cc4ae; --accent-soft:#163a33; --flag:#f0a94b; --flag-soft:#3a2a12; --bad:#ef7a70; --bad-soft:#3d1c19; --good:#6ccf93; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--body)}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+h1{font:800 clamp(24px,3.6vw,32px)/1.1 var(--display);margin:0;text-wrap:balance}
+header.top p{margin:6px 0 0;color:var(--muted);max-width:68ch}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:8px 14px;font-weight:500}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.small{padding:5px 10px;font-size:13px}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--bad)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.banner{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:8px;background:var(--flag-soft);color:var(--fg);margin-bottom:16px;font-size:14px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:grid;gap:14px}
+@media(max-width:900px){nav.rail{position:static}}
+.steps{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.steps a{display:flex;align-items:center;gap:10px;padding:10px 12px;text-decoration:none;color:var(--fg);border-bottom:1px solid var(--line);font-size:14px}
+.steps li:last-child a{border-bottom:0}
+.steps a:hover{background:var(--sunk)}
+.dot{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;font:600 11px/1 var(--mono);border:1.5px solid var(--line);color:var(--muted)}
+.dot.done{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.dot.part{border-color:var(--flag);color:var(--flag)}
+@media(max-width:900px){.steps{display:flex;overflow-x:auto}.steps a{border-bottom:0;border-right:1px solid var(--line);white-space:nowrap}}
+.saved{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.saved h3{margin:0 0 6px;font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.saved ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;max-height:280px;overflow:auto}
+.saved button{all:unset;cursor:pointer;display:grid;gap:1px;padding:6px 6px;border-radius:6px;width:calc(100% - 12px)}
+.saved button:hover,.saved button[aria-current="true"]{background:var(--sunk)}
+.saved b{font-weight:600}
+.saved span{color:var(--muted);font-size:12.5px}
+.saved .empty{color:var(--muted)}
+main{display:grid;gap:20px;min-width:0}
+section.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;scroll-margin-top:16px;min-width:0}
+section.card>h2{font:800 19px/1.2 var(--display);margin:0 0 4px;display:flex;gap:10px;align-items:baseline}
+section.card>h2 small{font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.06em}
+section.card>p.lead{margin:0 0 16px;color:var(--muted);font-size:14px;max-width:72ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px 16px;align-items:start}
+.grid .wide{grid-column:1/-1}
+.field{display:grid;gap:5px;min-width:0;align-content:start}
+.field label,.field .lbl{font-size:13px;font-weight:600}
+.req{color:var(--bad);margin-left:2px}
+.help{font-size:12.5px;color:var(--muted);line-height:1.4}
+input[type=text],input[type=email],input[type=number],input[type=date],input[type=search],select,textarea{
+  width:100%;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface)}
+textarea{min-height:76px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.invalid input,.invalid select,.invalid textarea{border-color:var(--bad);background:var(--bad-soft)}
+.err{font-size:12.5px;color:var(--bad)}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.check{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;cursor:pointer;user-select:none}
+.check input{accent-color:var(--accent)}
+.check:has(input:checked){background:var(--accent-soft);border-color:var(--accent)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg label{padding:7px 12px;font-size:13.5px;cursor:pointer;border-right:1px solid var(--line)}
+.seg label:last-child{border-right:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--accent);color:var(--surface)}
+.seg label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:-2px}
+.cloud{border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:12px}
+.cloud h3{margin:0;font:600 15px/1.2 var(--body)}
+.clouds{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.toolbar .spacer{flex:1}
+.lines{display:grid;gap:10px}
+details.line{border:1px solid var(--line);border-radius:10px;background:var(--surface);min-width:0}
+details.line[open]{border-color:var(--accent)}
+details.line>summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center}
+details.line>summary::-webkit-details-marker{display:none}
+.lt{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;min-width:0}
+.lt b{font-weight:600}
+.lt .sub{color:var(--muted);font-size:13px}
+.lm{display:flex;flex-wrap:wrap;gap:6px 14px;font:13px/1.3 var(--mono);color:var(--muted);justify-content:flex-end;font-variant-numeric:tabular-nums}
+.badges{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.b{display:inline-flex;align-items:center;gap:4px;font:500 11.5px/1 var(--mono);padding:4px 7px;border-radius:4px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.b.ok{background:var(--accent-soft);color:var(--accent)}
+.b.warn{background:var(--flag-soft);color:var(--flag)}
+.b.bad{background:var(--bad-soft);color:var(--bad)}
+.linebody{padding:4px 14px 16px;border-top:1px solid var(--line);display:grid;gap:14px}
+.linebody .grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.analysis{background:var(--sunk);border-radius:8px;padding:10px 12px;font-size:13.5px;display:grid;gap:4px}
+.analysis ul{margin:0;padding-left:18px}
+.combo{position:relative}
+.sugg{position:absolute;z-index:5;left:0;right:0;top:100%;margin-top:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgb(0 0 0 / .12);max-height:240px;overflow:auto}
+.sugg button{all:unset;display:block;cursor:pointer;padding:7px 10px;font-size:13.5px;width:calc(100% - 20px)}
+.sugg button:hover,.sugg button.active{background:var(--accent-soft)}
+.sugg span{color:var(--muted);font-size:12px}
+.empty-lines{border:1.5px dashed var(--line);border-radius:10px;padding:24px;text-align:center;color:var(--muted)}
+dialog{border:1px solid var(--line);border-radius:12px;padding:0;background:var(--surface);color:var(--fg);width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+dialog::backdrop{background:rgb(0 0 0 / .35)}
+.dlg{padding:18px 20px;display:grid;gap:14px}
+.dlg h3{margin:0;font:800 18px/1.2 var(--display)}
+.drop{border:1.5px dashed var(--line);border-radius:10px;padding:18px;text-align:center;color:var(--muted)}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.scroll{overflow:auto;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font:500 11px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.maprow select{min-width:170px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:14px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:12px}
+.stat b{display:block;font:800 22px/1.15 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--muted)}
+.issues{display:grid;gap:4px;font-size:14px}
+.issues li{color:var(--bad)}
+.issues li.warnli{color:var(--flag)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:14px;z-index:20;max-width:calc(100vw - 32px)}
+.status-pill{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.status-pill.submitted{background:var(--accent-soft);color:var(--accent)}
+pre.code{background:var(--sunk);border-radius:8px;padding:12px;font:12px/1.5 var(--mono);white-space:pre-wrap;word-break:break-word;max-height:240px;overflow:auto;margin:0}
+@media (prefers-reduced-motion:no-preference){details.line{transition:border-color .15s}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">intake-to-playbook · new opportunity</div>
+      <h1>Opportunity Intake</h1>
+      <p>Capture a customer's software estate and buying context in one place. Every product line is checked against the 157-product ISV catalog as you type: category, alternatives, AWS and Microsoft marketplace status, notice deadlines and overlaps. Saved intakes feed the renewal and sales-play pipeline.</p>
+    </div>
+    <div class="actions">
+      <span id="status" class="status-pill">Draft</span>
+      <button class="btn" id="newBtn" type="button">New intake</button>
+      <button class="btn" id="saveBtn" type="button">Save draft</button>
+      <button class="btn primary" id="submitBtn" type="button">Submit</button>
+    </div>
+  </header>
+
+  <div id="exampleBanner" class="banner" hidden>
+    <span><b>Example data.</b> This intake is filled with a fictional customer so you can see how it works.</span>
+    <button class="btn small" id="clearExample" type="button">Clear and start a new intake</button>
+  </div>
+
+  <div class="layout">
+    <nav class="rail" aria-label="Sections">
+      <ol class="steps" id="steps"></ol>
+      <div class="saved" id="savedBox">
+        <h3>Saved intakes</h3>
+        <ul id="savedList"><li class="empty">Loading…</li></ul>
+      </div>
+    </nav>
+
+    <main id="form">
+      <section class="card" id="s-opportunity">
+        <h2>Opportunity <small>1 / 6</small></h2>
+        <p class="lead">What this engagement is and who owns it on your side.</p>
+        <div class="grid" data-group="opportunity"></div>
+      </section>
+
+      <section class="card" id="s-customer">
+        <h2>Customer <small>2 / 6</small></h2>
+        <p class="lead">Who the customer is and how they buy. Aliases help match the customer across spreadsheets and exports (“Brightwater CU”, “BWCU”).</p>
+        <div class="grid" data-group="customer"></div>
+      </section>
+
+      <section class="card" id="s-cloud">
+        <h2>Cloud commitments <small>3 / 6</small></h2>
+        <p class="lead">Committed spend with AWS (EDP or private pricing) or Microsoft (MACC). When a renewal is listed on that cloud's marketplace, buying it there may count toward the commitment, subject to the customer's agreement.</p>
+        <div class="clouds" id="clouds"></div>
+      </section>
+
+      <section class="card" id="s-lines">
+        <h2>Software estate <small>4 / 6</small></h2>
+        <p class="lead">One line per product the customer pays for. Start typing a product to pick it from the catalog. Upload a spreadsheet or paste rows to add many at once.</p>
+        <div class="toolbar">
+          <button class="btn" id="addLine" type="button">Add product line</button>
+          <button class="btn" id="importBtn" type="button">Upload or paste spreadsheet</button>
+          <span class="spacer"></span>
+          <button class="btn ghost small" id="expandAll" type="button">Expand all</button>
+          <button class="btn ghost small" id="collapseAll" type="button">Collapse all</button>
+        </div>
+        <div class="lines" id="lines"></div>
+      </section>
+
+      <section class="card" id="s-goals">
+        <h2>Goals and buying process <small>5 / 6</small></h2>
+        <p class="lead">Why the customer is talking to you now and how a decision gets made.</p>
+        <div class="grid" data-group="goals"></div>
+      </section>
+
+      <section class="card" id="s-review">
+        <h2>Review and submit <small>6 / 6</small></h2>
+        <p class="lead">A first read of the estate. Fix anything marked required, then submit. Submitted intakes are picked up for the full pipeline run.</p>
+        <div class="summary" id="summary"></div>
+        <div id="issuesBox"></div>
+        <div class="toolbar" style="margin-top:14px">
+          <button class="btn" id="dlCsv" type="button">Download lines (CSV)</button>
+          <button class="btn" id="dlJson" type="button">Download full intake (JSON)</button>
+          <span class="spacer"></span>
+          <button class="btn primary" id="submitBtn2" type="button">Submit intake</button>
+        </div>
+        <div id="exportFallback" hidden>
+          <p class="help">Downloads aren't available in this view. Copy the intake below instead.</p>
+          <pre class="code" id="exportText"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog id="importDlg" aria-labelledby="importTitle">
+  <div class="dlg">
+    <h3 id="importTitle">Add lines from a spreadsheet</h3>
+    <div class="drop" id="drop">
+      <p style="margin:0 0 8px">Drop a <b>.csv</b>, <b>.tsv</b> or <b>.xlsx</b> file here, or</p>
+      <input type="file" id="fileIn" accept=".csv,.tsv,.txt,.xlsx,.xls" aria-label="Choose spreadsheet file">
+    </div>
+    <div class="field">
+      <label for="pasteIn">…or paste rows copied from Excel or Google Sheets (first row = headers)</label>
+      <textarea id="pasteIn" placeholder="Product	Annual spend	Renewal date	Licenses"></textarea>
+      <div><button class="btn small" id="parsePaste" type="button">Read pasted rows</button></div>
+    </div>
+    <div id="mapping" hidden>
+      <p class="help" id="mapInfo"></p>
+      <div class="field" id="custPick"></div>
+      <div class="scroll"><table><thead><tr><th>Column in your file</th><th>Maps to</th><th>First values</th></tr></thead><tbody id="mapBody"></tbody></table></div>
+    </div>
+    <div class="toolbar" style="margin:0">
+      <span class="spacer"></span>
+      <button class="btn" id="cancelImport" type="button">Cancel</button>
+      <button class="btn primary" id="doImport" type="button" disabled>Add lines</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const CATALOG = __CATALOG__;
+const TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = v => v == null || isNaN(v) ? "—" : "$" + Math.round(v).toLocaleString("en-US");
+const short = v => v == null ? "—" : Math.abs(v) >= 1e6 ? "$" + (v / 1e6).toFixed(2) + "M" : Math.abs(v) >= 1e3 ? "$" + Math.round(v / 1e3) + "K" : "$" + Math.round(v);
+const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+
+/* ---------------------------------------------------------------- field definitions
+   One definition drives the form, validation, the review checklist and the export. */
+const INDUSTRIES = ["Financial services", "Healthcare", "Legal", "Logistics", "Manufacturing", "Retail", "Software", "Education", "Public sector", "Energy", "Media", "Professional services", "Other"];
+const FIELDS = {
+  opportunity: [
+    {k: "name", label: "Opportunity name", type: "text", req: true, ph: "e.g. FY27 software estate review"},
+    {k: "accountLead", label: "Account lead (your side)", type: "text", req: true},
+    {k: "source", label: "How this was captured", type: "select", req: true, opts: ["Discovery workshop", "Procurement export", "SaaS-management export", "Stakeholder interviews", "Partner referral", "Inbound request", "Other"]},
+    {k: "engagement", label: "Engagement type", type: "checks", req: true, opts: ["Resale", "Advisory", "Migration / implementation", "Managed services"], help: "Pick every way you can help. This decides which plays apply."},
+    {k: "decisionDate", label: "Target decision date", type: "date"},
+    {k: "estValue", label: "Rough deal value you expect ($)", type: "money", help: "Optional. The pipeline estimates its own."},
+    {k: "notes", label: "Opportunity notes", type: "textarea", wide: true},
+  ],
+  customer: [
+    {k: "name", label: "Customer legal name", type: "text", req: true, ph: "e.g. Ridgeline Software Co."},
+    {k: "aliases", label: "Other names used for them", type: "text", ph: "comma-separated: Ridgeline, RSC", help: "Short names and abbreviations seen in their files."},
+    {k: "industry", label: "Industry", type: "select", req: true, opts: INDUSTRIES},
+    {k: "employees", label: "Employees", type: "number", req: true, min: 1},
+    {k: "country", label: "HQ country", type: "text", ph: "e.g. United States"},
+    {k: "website", label: "Website", type: "text", ph: "example.com"},
+    {k: "fyEnd", label: "Fiscal year ends", type: "select", opts: ["January","February","March","April","May","June","July","August","September","October","November","December"]},
+    {k: "sponsorName", label: "Executive sponsor", type: "text", req: true},
+    {k: "sponsorTitle", label: "Sponsor title", type: "text", ph: "e.g. CFO"},
+    {k: "contactName", label: "Day-to-day contact", type: "text"},
+    {k: "contactEmail", label: "Contact email", type: "email"},
+    {k: "contactTitle", label: "Contact title", type: "text"},
+    {k: "procurementContact", label: "Procurement contact", type: "text"},
+    {k: "buyingChannels", label: "How they buy software today", type: "checks", opts: ["Direct from vendor", "Through a reseller", "AWS Marketplace", "Microsoft Marketplace", "Google Cloud Marketplace"]},
+    {k: "privateMarketplace", label: "Private marketplace enabled?", type: "seg", opts: ["Yes", "No", "Unknown"], help: "A curated catalog that limits what employees can buy on the cloud marketplace."},
+    {k: "securityReview", label: "New vendors need a security review?", type: "seg", opts: ["Yes", "No", "Unknown"]},
+    {k: "procurementDays", label: "Typical procurement lead time (days)", type: "number", min: 0},
+  ],
+  goals: [
+    {k: "drivers", label: "What's driving this", type: "checks", req: true, wide: true, opts: ["Cut software spend", "Consolidate vendors", "Upcoming renewals", "Use up cloud commitment", "Security or compliance", "Audit or exam finding", "M&A or reorganization", "Replace a tool users dislike", "Budget planning"]},
+    {k: "budgetCycle", label: "Budget is set", type: "select", opts: ["Annually", "Quarterly", "Project by project", "Unknown"]},
+    {k: "budgetStatus", label: "Budget for changes", type: "select", opts: ["Approved", "Expanding", "Flat", "Under review", "Frozen", "Unknown"]},
+    {k: "decisionMakers", label: "Who signs off", type: "text", ph: "e.g. CFO and VP Engineering"},
+    {k: "decisionProcess", label: "How decisions get made", type: "textarea", wide: true, ph: "Steps, committees, security and legal review, procurement…"},
+    {k: "constraints", label: "Constraints and must-haves", type: "textarea", wide: true, ph: "Data residency, SSO, contract terms, preferred vendors…"},
+  ],
+};
+const LINE_FIELDS = [
+  {k: "product", label: "Product", type: "product", req: true, wide2: true},
+  {k: "edition", label: "Edition / SKU", type: "text", ph: "e.g. Enterprise"},
+  {k: "vendor", label: "Vendor", type: "text", help: "Filled from the catalog when matched."},
+  {k: "annualCost", label: "Annual cost ($)", type: "money", reqIf: "noUnit", help: "Or give price per user per month + licenses."},
+  {k: "unitMonthly", label: "Price / user / month ($)", type: "money"},
+  {k: "licenses", label: "Licenses / seats", type: "number", min: 0},
+  {k: "activeUsers", label: "Active users (last 30–90 days)", type: "number", min: 0},
+  {k: "renewalDate", label: "Renewal / contract end", type: "date", req: true},
+  {k: "termMonths", label: "Contract term (months)", type: "number", min: 1},
+  {k: "autoRenew", label: "Auto-renews?", type: "seg", opts: ["Yes", "No", "Unknown"]},
+  {k: "noticeDays", label: "Notice period (days)", type: "number", min: 0, help: "Days before renewal to give notice."},
+  {k: "purchasedVia", label: "Purchased via", type: "select", opts: ["Direct", "Reseller", "AWS Marketplace", "Microsoft Marketplace", "Google Cloud Marketplace", "Unknown"]},
+  {k: "owner", label: "Business owner", type: "text", ph: "Team or person"},
+  {k: "satisfaction", label: "Satisfaction (1–5)", type: "select", opts: ["", "1", "2", "3", "4", "5"]},
+  {k: "evaluating", label: "Evaluating alternatives", type: "text", ph: "Products they're looking at"},
+  {k: "notes", label: "Notes", type: "textarea", wide: true},
+];
+
+/* ---------------------------------------------------------------- state */
+const blank = () => ({id: uid(), status: "draft", example: false, createdAt: null, updatedAt: null,
+  opportunity: {engagement: []}, customer: {buyingChannels: []},
+  commitments: {aws: {has: "No"}, azure: {has: "No"}}, lines: [], goals: {drivers: []}});
+let S = blank();
+let dirty = false;
+
+function example() {
+  const d = (n) => { const x = new Date(TODAY); x.setDate(x.getDate() + n); return x.toISOString().slice(0, 10); };
+  return {id: uid(), status: "draft", example: true, createdAt: null, updatedAt: null,
+    opportunity: {name: "FY27 software estate review (example)", accountLead: "Marcus Lee", source: "SaaS-management export",
+      engagement: ["Resale", "Advisory"], decisionDate: d(45), notes: "CFO wants a renewal plan for the next two quarters."},
+    customer: {name: "Example Analytics Ltd. (fictional)", aliases: "Example Analytics, EAL", industry: "Software", employees: 450, country: "United States",
+      fyEnd: "December", sponsorName: "Jamie Rivera", sponsorTitle: "CFO", contactName: "Sam Patel", contactTitle: "IT Director",
+      buyingChannels: ["Direct from vendor", "AWS Marketplace"], privateMarketplace: "No", securityReview: "Yes", procurementDays: 30},
+    commitments: {aws: {has: "Yes", annual: 1500000, remaining: 620000, end: d(120), counts: "Yes"}, azure: {has: "No"}},
+    lines: [
+      {id: uid(), product: "Datadog", edition: "Enterprise", annualCost: 240000, renewalDate: d(70), autoRenew: "No", purchasedVia: "Direct", owner: "Engineering", satisfaction: "4"},
+      {id: uid(), product: "Okta Workforce Identity", annualCost: 41000, licenses: 480, activeUsers: 455, renewalDate: d(38), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
+      {id: uid(), product: "Notion", unitMonthly: 15, licenses: 450, activeUsers: 160, renewalDate: d(95), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "Product", satisfaction: "3", notes: "Most docs live in Confluence."},
+      {id: uid(), product: "Atlassian Confluence", annualCost: 54000, licenses: 450, activeUsers: 430, renewalDate: d(160), purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
+      {id: uid(), product: "Snyk", annualCost: 62000, renewalDate: d(130), purchasedVia: "Direct", owner: "Platform", satisfaction: "2", evaluating: "Checkmarx One"},
+      {id: uid(), product: "Snowflake", annualCost: 380000, renewalDate: d(200), purchasedVia: "AWS Marketplace", owner: "Data", satisfaction: "4"},
+    ],
+    goals: {drivers: ["Upcoming renewals", "Use up cloud commitment", "Cut software spend"], budgetCycle: "Annually", budgetStatus: "Under review",
+      decisionMakers: "CFO and VP Engineering", decisionProcess: "IT shortlists, CFO approves anything over $50K, security review for new vendors."}};
+}
+
+/* ---------------------------------------------------------------- catalog matching (same rules as the pipeline) */
+const norm = s => " " + String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() + " ";
+const NAMES = [];
+CATALOG.forEach(e => [e.n, ...e.al].forEach(n => NAMES.push([norm(n), e])));
+NAMES.sort((a, b) => b[0].length - a[0].length);
+function match(v) {
+  const x = norm(v); if (!x.trim()) return null;
+  for (const [n, e] of NAMES) if (n === x) return e;
+  for (const [n, e] of NAMES) if (x.includes(n)) return e;
+  return null;
+}
+function suggestions(q) {
+  const x = q.trim().toLowerCase(); if (!x) return [];
+  const starts = [], has = [];
+  for (const e of CATALOG) {
+    const hay = [e.n, e.v, ...e.al].join(" ").toLowerCase();
+    if (e.n.toLowerCase().startsWith(x) || e.al.some(a => a.startsWith(x))) starts.push(e); else if (hay.includes(x)) has.push(e);
+  }
+  return [...starts, ...has].slice(0, 8);
+}
+
+/* ---------------------------------------------------------------- parsing helpers (mirror playbook/intake.py) */
+function toNumber(v) {
+  if (v == null) return null; if (typeof v === "number") return v;
+  let s = String(v).trim().toLowerCase().replace(/,/g, "").replace(/\$|usd/g, "").trim();
+  if (!s || ["n/a", "na", "none", "null", "-", "?", "tbd"].includes(s)) return null;
+  const r = s.match(/^(\d+(?:\.\d+)?)\s*(?:-|to)\s*(\d+(?:\.\d+)?)\s*([kmb]?)\+?$/);
+  const mult = {"": 1, k: 1e3, m: 1e6, mm: 1e6, b: 1e9, thousand: 1e3, million: 1e6, billion: 1e9};
+  if (r) return (parseFloat(r[1]) + parseFloat(r[2])) / 2 * mult[r[3]];
+  const m = s.match(/^(\d+(?:\.\d+)?)\s*(k|m|mm|b|thousand|million|billion)?\+?$/);
+  return m ? parseFloat(m[1]) * (mult[m[2] || ""]) : null;
+}
+function toDate(v) {
+  if (v == null || v === "") return null;
+  if (typeof v === "number" && v > 20000 && v < 80000) { const d = new Date(Date.UTC(1899, 11, 30) + v * 864e5); return d.toISOString().slice(0, 10); }
+  const s = String(v).trim(); let m;
+  if ((m = s.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/))) return `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`;
+  if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/))) { const y = m[3].length === 2 ? "20" + m[3] : m[3]; return `${y}-${m[1].padStart(2, "0")}-${m[2].padStart(2, "0")}`; }
+  const t = Date.parse(s); return isNaN(t) ? null : new Date(t).toISOString().slice(0, 10);
+}
+const toYesNo = v => { const s = String(v ?? "").trim().toLowerCase(); if (!s) return ""; return ["y", "yes", "true", "1", "x", "on"].includes(s) ? "Yes" : ["n", "no", "false", "0", "off"].includes(s) ? "No" : "Unknown"; };
+const days = iso => iso ? Math.round((new Date(iso + "T00:00:00") - TODAY) / 864e5) : null;
+const addDays = (iso, n) => { const d = new Date(iso + "T00:00:00"); d.setDate(d.getDate() - n); return d.toISOString().slice(0, 10); };
+const fmtDate = iso => iso ? new Date(iso + "T00:00:00").toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}) : "—";
+
+/* ---------------------------------------------------------------- per-line analysis */
+function annual(l) {
+  if (l.annualCost != null && l.annualCost !== "") return +l.annualCost;
+  if (l.unitMonthly && l.licenses) return l.unitMonthly * 12 * l.licenses;
+  return null;
+}
+function analyze(l) {
+  const e = match(l.product);
+  const a = {e, spend: annual(l), dRenew: days(l.renewalDate), notice: null, dNotice: null, util: null, flags: [], notes: [], route: null};
+  if (l.renewalDate && l.noticeDays !== "" && l.noticeDays != null) { a.notice = addDays(l.renewalDate, +l.noticeDays); a.dNotice = days(a.notice); }
+  if (l.licenses && l.activeUsers != null && l.activeUsers !== "") a.util = l.activeUsers / l.licenses;
+  if (a.dRenew != null && a.dRenew < 0) a.flags.push(["bad", "Renewal date has passed"]);
+  if (l.autoRenew === "Yes" && a.dNotice != null) {
+    if (a.dNotice < 0) a.flags.push(["bad", "Notice deadline passed " + fmtDate(a.notice)]);
+    else if (a.dNotice <= 45) a.flags.push(["warn", `Notice due in ${a.dNotice} days`]);
+  }
+  if (l.autoRenew === "Yes" && (l.noticeDays === "" || l.noticeDays == null)) a.notes.push("Auto-renews but no notice period given. Check the contract.");
+  if (a.util != null && a.util < .75 && l.licenses - l.activeUsers >= 10) a.flags.push(["warn", `${l.licenses - l.activeUsers} unused licenses`]);
+  if (+l.satisfaction && +l.satisfaction <= 2) a.flags.push(["warn", `Satisfaction ${l.satisfaction}/5`]);
+  if (e) {
+    const owned = S.lines.map(x => match(x.product)?.n).filter(Boolean);
+    if (e.cs?.length && e.cs.some(s => owned.includes(s))) a.flags.push(["warn", `Covered by ${e.cb} in a suite they own`]);
+    const peers = S.lines.filter(x => x !== l && match(x.product)?.c === e.c).map(x => match(x.product).n);
+    if (peers.length) a.flags.push(["warn", `Overlaps with ${peers.join(", ")}`]);
+    const viaMkt = /marketplace/i.test(l.purchasedVia || "");
+    const aws = S.commitments.aws, az = S.commitments.azure;
+    const awsOk = e.a === "listed" && aws.has === "Yes" && +aws.remaining > 0;
+    const azOk = e.m === "listed" && az.has === "Yes" && +az.remaining > 0;
+    if (!viaMkt && (awsOk || azOk) && a.dRenew != null && a.dRenew >= -30 && a.dRenew <= 365) {
+      a.route = awsOk && (!azOk || +aws.remaining >= +az.remaining) ? "AWS Marketplace" : "Microsoft Marketplace";
+      a.flags.push(["ok", "Can route via " + a.route]);
+    }
+    if (viaMkt) a.notes.push("Already bought through a marketplace.");
+    if (e.m === "app" && az.has === "Yes") a.notes.push("On Microsoft Marketplace only as an add-in, so it won't count toward MACC.");
+    if (e.a === "unverified" || e.m === "unverified") a.notes.push("Marketplace status for this product hasn't been verified yet.");
+  }
+  return a;
+}
+const mpBadge = (label, s) => {
+  const t = {listed: ["ok", "listed"], app: ["warn", "add-in only"], not_found: ["", "not found"], n_a: ["", "n/a"], first_party: ["", "Microsoft"], unverified: ["", "unverified"]}[s] || ["", s];
+  return `<span class="b ${t[0]}">${label}: ${t[1]}</span>`;
+};
+
+/* ---------------------------------------------------------------- rendering: generic fields */
+function fieldHTML(f, val, path, invalid) {
+  const id = path.replace(/[^a-z0-9]/gi, "_");
+  const req = f.req ? '<span class="req" aria-hidden="true">*</span>' : "";
+  const help = f.help ? `<div class="help" id="${id}_h">${esc(f.help)}</div>` : "";
+  const desc = f.help ? ` aria-describedby="${id}_h"` : "";
+  const wide = f.wide ? " wide" : "";
+  const inv = invalid ? " invalid" : "";
+  let ctl;
+  if (f.type === "select") {
+    ctl = `<select id="${id}" data-path="${path}"${desc}${f.req ? " required" : ""}><option value="">Choose…</option>${f.opts.filter(o => o).map(o => `<option${o === val ? " selected" : ""}>${esc(o)}</option>`).join("")}</select>`;
+  } else if (f.type === "textarea") {
+    ctl = `<textarea id="${id}" data-path="${path}"${desc} placeholder="${esc(f.ph || "")}">${esc(val || "")}</textarea>`;
+  } else if (f.type === "checks") {
+    const arr = Array.isArray(val) ? val : [];
+    return `<div class="field${wide}${inv}" role="group" aria-labelledby="${id}_l"><span class="lbl" id="${id}_l">${esc(f.label)}${req}</span>
+      <div class="checks">${f.opts.map((o, i) => `<label class="check"><input type="checkbox" data-path="${path}" data-multi="${esc(o)}"${arr.includes(o) ? " checked" : ""} id="${id}_${i}">${esc(o)}</label>`).join("")}</div>${help}</div>`;
+  } else if (f.type === "seg") {
+    return `<div class="field${wide}${inv}" role="radiogroup" aria-labelledby="${id}_l"><span class="lbl" id="${id}_l">${esc(f.label)}${req}</span>
+      <div class="seg">${f.opts.map((o, i) => `<label><input type="radio" name="${id}" id="${id}_${i}" data-path="${path}" value="${esc(o)}"${val === o ? " checked" : ""}>${esc(o)}</label>`).join("")}</div>${help}</div>`;
+  } else {
+    const t = f.type === "money" ? "text" : f.type;
+    const im = f.type === "money" || f.type === "number" ? ' inputmode="decimal"' : "";
+    const shown = f.type === "money" && val != null && val !== "" ? Number(val).toLocaleString("en-US") : (val ?? "");
+    ctl = `<input type="${t}" id="${id}" data-path="${path}" data-kind="${f.type}"${im}${desc} value="${esc(shown)}" placeholder="${esc(f.ph || "")}"${f.min != null ? ` min="${f.min}"` : ""}${f.req ? " required" : ""}>`;
+  }
+  return `<div class="field${wide}${inv}"><label for="${id}">${esc(f.label)}${req}</label>${ctl}${help}${invalid ? `<div class="err">${esc(invalid)}</div>` : ""}</div>`;
+}
+const getPath = p => p.split(".").reduce((o, k) => o == null ? o : o[k], S);
+function setPath(p, v) {
+  const ks = p.split("."); let o = S;
+  ks.slice(0, -1).forEach(k => { if (k.startsWith("#")) { o = S.lines.find(l => l.id === k.slice(1)); } else { o[k] ??= {}; o = o[k]; } });
+  o[ks.at(-1)] = v;
+}
+let showErrors = false;
+function renderGroups() {
+  const errs = showErrors ? validate().byPath : {};
+  document.querySelectorAll("[data-group]").forEach(g => {
+    const grp = g.dataset.group;
+    g.innerHTML = FIELDS[grp].map(f => fieldHTML(f, S[grp][f.k], `${grp}.${f.k}`, errs[`${grp}.${f.k}`])).join("");
+  });
+}
+function renderClouds() {
+  const errs = showErrors ? validate().byPath : {};
+  const box = (key, title, note) => {
+    const c = S.commitments[key];
+    const on = c.has === "Yes";
+    const fs = [
+      {k: "has", label: `Has a ${title} commitment?`, type: "seg", opts: ["Yes", "No", "Unknown"]},
+      ...(on ? [
+        {k: "annual", label: "Annual commitment ($)", type: "money"},
+        {k: "remaining", label: "Remaining this period ($)", type: "money", req: true},
+        {k: "end", label: "Commitment period ends", type: "date", req: true},
+        {k: "counts", label: "Marketplace purchases count toward it?", type: "seg", opts: ["Yes", "Partly", "No", "Unknown"]},
+      ] : [])];
+    return `<div class="cloud"><h3>${title}</h3><div class="help">${note}</div><div class="grid">${fs.map(f => fieldHTML(f, c[f.k], `commitments.${key}.${f.k}`, errs[`commitments.${key}.${f.k}`])).join("")}</div></div>`;
+  };
+  $("#clouds").innerHTML = box("aws", "AWS", "Enterprise Discount Program or private pricing agreement.") + box("azure", "Microsoft", "Microsoft Azure Consumption Commitment (MACC).");
+}
+
+/* ---------------------------------------------------------------- rendering: lines */
+let openLines = new Set();
+function lineSummary(l, a) {
+  const e = a.e;
+  const name = l.product ? esc(l.product) : '<span class="sub">New product line</span>';
+  const matched = l.product ? (e ? `<span class="sub">${e.n !== l.product ? "→ " + esc(e.n) + " · " : ""}${esc(e.c)}</span>` : '<span class="b bad">Not in catalog</span>') : "";
+  const meta = [a.spend != null ? money(a.spend) + "/yr" : null, l.renewalDate ? "renews " + fmtDate(l.renewalDate) : null, a.dRenew != null ? `${a.dRenew}d` : null].filter(Boolean).join(" · ");
+  const badges = [e ? mpBadge("AWS", e.a) + mpBadge("Microsoft", e.m) : "", ...a.flags.map(([k, t]) => `<span class="b ${k}">${esc(t)}</span>`)].join("");
+  return `<div class="lt"><b>${name}</b>${matched}</div><div class="lm">${meta || "&nbsp;"}</div>${badges ? `<div class="badges">${badges}</div>` : ""}`;
+}
+function lineBody(l, a, idx, errs) {
+  const fields = LINE_FIELDS.map(f => {
+    const path = `lines.#${l.id}.${f.k}`;
+    const err = errs[path];
+    if (f.type === "product") {
+      const id = "p_" + l.id;
+      return `<div class="field${err ? " invalid" : ""}" style="grid-column:span 2"><label for="${id}">Product<span class="req" aria-hidden="true">*</span></label>
+        <div class="combo"><input type="text" id="${id}" data-path="${path}" data-combo="1" value="${esc(l.product || "")}" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}_s" placeholder="Start typing: Okta, Datadog, Slack…" required><div class="sugg" id="${id}_s" role="listbox" hidden></div></div>
+        ${err ? `<div class="err">${esc(err)}</div>` : ""}</div>`;
+    }
+    return fieldHTML(f, l[f.k], path, err);
+  }).join("");
+  const e = a.e;
+  const facts = [];
+  if (e) {
+    facts.push(`<b>${esc(e.n)}</b> · ${esc(e.v)} · ${esc(e.c)}`);
+    if (e.alt.length) facts.push(`Alternatives: ${esc(e.alt.join(", "))}${e.pa.length ? ` (you resell or implement: ${esc(e.pa.join(", "))})` : ""}`);
+  } else if (l.product) facts.push(`“${esc(l.product)}” isn't in the catalog yet. It will be flagged for review, and you can still submit it.`);
+  if (a.notice) facts.push(`Notice deadline: <b>${fmtDate(a.notice)}</b>${a.dNotice != null ? ` (${a.dNotice} days)` : ""}`);
+  if (a.util != null) facts.push(`Utilization: <b>${Math.round(a.util * 100)}%</b> (${l.activeUsers} of ${l.licenses})`);
+  if (a.route) { const c = S.commitments[a.route.startsWith("AWS") ? "aws" : "azure"]; facts.push(`Route via <b>${a.route}</b>: ${money(c.remaining)} commitment left, ends ${fmtDate(c.end)}`); }
+  a.notes.forEach(n => facts.push(esc(n)));
+  return `<div class="linebody">
+    <div class="grid">${fields}</div>
+    ${facts.length ? `<div class="analysis" aria-live="polite">${facts.map(f => `<div>${f}</div>`).join("")}</div>` : ""}
+    <div class="toolbar" style="margin:0"><button class="btn small" type="button" data-dup="${l.id}">Duplicate</button><button class="btn small danger" type="button" data-del="${l.id}">Remove line</button></div>
+  </div>`;
+}
+function renderLines() {
+  const errs = showErrors ? validate().byPath : {};
+  if (!S.lines.length) {
+    $("#lines").innerHTML = `<div class="empty-lines">No product lines yet. Add one, or upload the customer's spreadsheet, SaaS-management export or procurement report.</div>`;
+    return;
+  }
+  $("#lines").innerHTML = S.lines.map((l, i) => {
+    const a = analyze(l);
+    return `<details class="line" data-line="${l.id}"${openLines.has(l.id) ? " open" : ""}><summary>${lineSummary(l, a)}</summary>${lineBody(l, a, i, errs)}</details>`;
+  }).join("");
+}
+function refreshLine(id) {
+  const l = S.lines.find(x => x.id === id); const d = document.querySelector(`details[data-line="${id}"]`);
+  if (!l || !d) return;
+  const a = analyze(l);
+  d.querySelector("summary").innerHTML = lineSummary(l, a);
+  const an = d.querySelector(".analysis");
+  const tmp = document.createElement("div"); tmp.innerHTML = lineBody(l, a, 0, {});
+  const fresh = tmp.querySelector(".analysis");
+  if (an && fresh) an.replaceWith(fresh); else if (an) an.remove(); else if (fresh) d.querySelector(".linebody .grid").after(fresh);
+}
+
+/* ---------------------------------------------------------------- validation */
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function validate() {
+  const byPath = {}, list = [], warn = [];
+  const need = (path, msg, label) => { byPath[path] = msg; list.push([label, path]); };
+  for (const grp of ["opportunity", "customer", "goals"]) for (const f of FIELDS[grp]) {
+    const v = S[grp][f.k];
+    if (f.req && (v == null || v === "" || (Array.isArray(v) && !v.length))) need(`${grp}.${f.k}`, "Required", `${f.label}`);
+  }
+  if (S.customer.contactEmail && !EMAIL.test(S.customer.contactEmail)) need("customer.contactEmail", "Enter a valid email address", "Contact email");
+  if (S.customer.employees != null && S.customer.employees !== "" && +S.customer.employees < 1) need("customer.employees", "Must be at least 1", "Employees");
+  for (const key of ["aws", "azure"]) {
+    const c = S.commitments[key];
+    if (c.has === "Yes") {
+      if (c.remaining == null || c.remaining === "") need(`commitments.${key}.remaining`, "Required when there's a commitment", `${key === "aws" ? "AWS" : "Microsoft"} commitment remaining`);
+      if (!c.end) need(`commitments.${key}.end`, "Required when there's a commitment", `${key === "aws" ? "AWS" : "Microsoft"} commitment end date`);
+      if (c.annual && c.remaining && +c.remaining > +c.annual) need(`commitments.${key}.remaining`, "Can't be more than the annual commitment", `${key === "aws" ? "AWS" : "Microsoft"} commitment remaining`);
+    }
+  }
+  if (!S.lines.length) list.push(["At least one product line", "lines"]);
+  S.lines.forEach((l, i) => {
+    const n = `Line ${i + 1}${l.product ? ` (${l.product})` : ""}`;
+    if (!l.product) need(`lines.#${l.id}.product`, "Required", `${n}: product`);
+    if (annual(l) == null) need(`lines.#${l.id}.annualCost`, "Give annual cost, or price per user per month and licenses", `${n}: annual cost`);
+    if (!l.renewalDate) need(`lines.#${l.id}.renewalDate`, "Required", `${n}: renewal date`);
+    if (l.licenses && l.activeUsers && +l.activeUsers > +l.licenses * 1.5) warn.push(`${n}: more active users than licenses. Check the numbers.`);
+    if (l.product && !match(l.product)) warn.push(`${n}: not in the catalog. It will be flagged for review.`);
+    if (l.autoRenew === "Yes" && (l.noticeDays == null || l.noticeDays === "")) warn.push(`${n}: auto-renews with no notice period.`);
+  });
+  return {byPath, list, warn};
+}
+
+/* ---------------------------------------------------------------- progress rail + review */
+const SECTIONS = [["s-opportunity", "Opportunity", "opportunity"], ["s-customer", "Customer", "customer"], ["s-cloud", "Cloud commitments", "commitments"], ["s-lines", "Software estate", "lines"], ["s-goals", "Goals and process", "goals"], ["s-review", "Review and submit", null]];
+function renderRail() {
+  const v = validate();
+  $("#steps").innerHTML = SECTIONS.map(([id, label, key], i) => {
+    let st = "";
+    if (key) {
+      const missing = v.list.filter(([, p]) => p.startsWith(key)).length;
+      const touched = key === "lines" ? S.lines.length : key === "commitments" ? 1 : Object.values(S[key]).some(x => x && (!Array.isArray(x) || x.length));
+      st = !missing && touched ? "done" : touched ? "part" : "";
+    } else st = v.list.length ? "" : "done";
+    return `<li><a href="#${id}"><span class="dot ${st}" aria-hidden="true">${st === "done" ? "✓" : i + 1}</span>${label}<span class="visually-hidden" style="position:absolute;left:-9999px">${st === "done" ? " complete" : st === "part" ? " in progress" : ""}</span></a></li>`;
+  }).join("");
+}
+function renderReview() {
+  const as = S.lines.map(l => [l, analyze(l)]);
+  const spend = as.reduce((t, [, a]) => t + (a.spend || 0), 0);
+  const in90 = as.filter(([, a]) => a.dRenew != null && a.dRenew >= 0 && a.dRenew <= 90);
+  const in180 = as.filter(([, a]) => a.dRenew != null && a.dRenew >= 0 && a.dRenew <= 180);
+  const routed = as.filter(([, a]) => a.route);
+  const routedSpend = routed.reduce((t, [, a]) => t + (a.spend || 0), 0);
+  const commit = ["aws", "azure"].reduce((t, k) => t + (S.commitments[k].has === "Yes" ? +S.commitments[k].remaining || 0 : 0), 0);
+  const flagged = as.filter(([, a]) => a.flags.some(([k]) => k !== "ok")).length;
+  const matched = as.filter(([, a]) => a.e).length;
+  $("#summary").innerHTML = [
+    [short(spend), `annual spend across ${S.lines.length} lines`],
+    [in90.length + " / " + in180.length, "renewing within 90 / 180 days"],
+    [short(routedSpend), `can route via marketplaces${commit ? ` (vs ${short(commit)} commitment left)` : ""}`],
+    [String(flagged), "lines with something to act on"],
+    [`${matched}/${S.lines.length}`, "matched to the catalog"],
+  ].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+  const v = validate();
+  let h = "";
+  if (v.list.length) h += `<p style="margin:0 0 6px"><b>${v.list.length} required item${v.list.length > 1 ? "s" : ""} missing</b></p><ul class="issues">${v.list.map(([t, p]) => `<li><a href="#" data-goto="${esc(p)}">${esc(t)}</a></li>`).join("")}</ul>`;
+  else h += `<p style="margin:0;color:var(--good)"><b>Everything required is filled in.</b></p>`;
+  if (v.warn.length) h += `<p style="margin:12px 0 6px"><b>Worth checking</b></p><ul class="issues">${v.warn.map(w => `<li class="warnli">${esc(w)}</li>`).join("")}</ul>`;
+  $("#issuesBox").innerHTML = h;
+  const st = $("#status"); st.textContent = S.status === "submitted" ? "Submitted" : dirty ? "Unsaved changes" : S.updatedAt ? "Draft saved" : "Draft";
+  st.className = "status-pill" + (S.status === "submitted" ? " submitted" : "");
+  $("#exampleBanner").hidden = !S.example;
+}
+function renderAll() { renderGroups(); renderClouds(); renderLines(); renderRail(); renderReview(); }
+let lightTimer;
+function refreshLight() { clearTimeout(lightTimer); lightTimer = setTimeout(() => { renderRail(); renderReview(); }, 120); }
+
+/* ---------------------------------------------------------------- input wiring (event delegation) */
+const form = $("#form");
+function readControl(t) {
+  const path = t.dataset.path; if (!path) return;
+  let v;
+  if (t.dataset.multi) {
+    const cur = new Set(getPath(path.replace(/#([^.]+)/, (m, id) => id)) || []);
+    const arr = path.startsWith("lines") ? [] : (path.split(".").reduce((o, k) => o?.[k], S) || []);
+    const set = new Set(arr); t.checked ? set.add(t.dataset.multi) : set.delete(t.dataset.multi);
+    v = [...set];
+  } else if (t.type === "radio") v = t.value;
+  else if (t.dataset.kind === "money") v = toNumber(t.value);
+  else if (t.type === "number") v = t.value === "" ? null : Number(t.value);
+  else v = t.value;
+  setPath(path, v);
+  dirty = true; S.example = S.example && true;
+  const m = path.match(/^lines\.#([^.]+)\.(\w+)/);
+  if (m) {
+    if (m[2] === "product") { const e = match(v); const l = S.lines.find(x => x.id === m[1]); if (e && l && !l.vendor) { l.vendor = e.v; const vin = document.getElementById(`lines__${m[1]}_vendor`); if (vin) vin.value = e.v; } }
+    if (m[2] === "product" || m[2] === "purchasedVia") S.lines.forEach(l => refreshLine(l.id)); else refreshLine(m[1]);
+  }
+  if (path.startsWith("commitments.") && path.endsWith(".has")) renderClouds();
+  if (path.startsWith("commitments.")) S.lines.forEach(l => refreshLine(l.id));
+  refreshLight(); backup();
+}
+form.addEventListener("input", e => { const t = e.target; if (t.dataset.kind === "money") return; if (t.dataset.combo) showSugg(t); readControl(t); });
+form.addEventListener("change", e => { const t = e.target; if (t.dataset.kind === "money") { readControl(t); const n = toNumber(t.value); if (n != null) t.value = n.toLocaleString("en-US"); } else if (t.type === "checkbox" || t.type === "radio" || t.tagName === "SELECT") readControl(t); });
+form.addEventListener("toggle", e => { const d = e.target; if (d.matches?.("details.line")) d.open ? openLines.add(d.dataset.line) : openLines.delete(d.dataset.line); }, true);
+form.addEventListener("click", e => {
+  const del = e.target.closest("[data-del]"), dup = e.target.closest("[data-dup]"), go = e.target.closest("[data-goto]");
+  if (del) { const i = S.lines.findIndex(l => l.id === del.dataset.del); const [removed] = S.lines.splice(i, 1); dirty = true; renderLines(); refreshLight(); toast(`Removed ${removed.product || "line"}.`, "Undo", () => { S.lines.splice(i, 0, removed); renderLines(); refreshLight(); }); }
+  if (dup) { const src = S.lines.find(l => l.id === dup.dataset.dup); const c = {...structuredClone(src), id: uid()}; S.lines.splice(S.lines.indexOf(src) + 1, 0, c); openLines.add(c.id); dirty = true; renderLines(); refreshLight(); }
+  if (go) { e.preventDefault(); goTo(go.dataset.goto); }
+});
+function goTo(path) {
+  const m = path.match(/^lines\.#([^.]+)/);
+  if (m) { openLines.add(m[1]); renderLines(); }
+  const id = path.replace(/[^a-z0-9]/gi, "_");
+  const el = document.getElementById(id) || document.getElementById(id + "_0") || document.getElementById("s-" + path.split(".")[0]) || $("#s-lines");
+  el?.scrollIntoView({behavior: "smooth", block: "center"}); setTimeout(() => el?.focus?.(), 300);
+}
+
+/* product combobox */
+let suggIdx = -1;
+function showSugg(input) {
+  const box = document.getElementById(input.id + "_s"); const list = suggestions(input.value);
+  suggIdx = -1;
+  if (!list.length || document.activeElement !== input) { box.hidden = true; input.setAttribute("aria-expanded", "false"); return; }
+  box.innerHTML = list.map((e, i) => `<button type="button" role="option" data-pick="${esc(e.n)}" id="${input.id}_o${i}">${esc(e.n)} <span>· ${esc(e.v)} · ${esc(e.c)}</span></button>`).join("");
+  box.hidden = false; input.setAttribute("aria-expanded", "true");
+}
+form.addEventListener("keydown", e => {
+  const t = e.target; if (!t.dataset.combo) return;
+  const box = document.getElementById(t.id + "_s"); if (box.hidden) return;
+  const opts = [...box.querySelectorAll("button")];
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); suggIdx = (suggIdx + (e.key === "ArrowDown" ? 1 : -1) + opts.length) % opts.length; opts.forEach((o, i) => o.classList.toggle("active", i === suggIdx)); t.setAttribute("aria-activedescendant", opts[suggIdx].id); }
+  else if (e.key === "Enter" && suggIdx >= 0) { e.preventDefault(); pick(t, opts[suggIdx].dataset.pick); }
+  else if (e.key === "Escape") { box.hidden = true; }
+});
+form.addEventListener("mousedown", e => { const b = e.target.closest("[data-pick]"); if (b) { e.preventDefault(); const input = b.closest(".combo").querySelector("input"); pick(input, b.dataset.pick); } });
+form.addEventListener("focusout", e => { if (e.target.dataset?.combo) setTimeout(() => { const b = document.getElementById(e.target.id + "_s"); if (b) b.hidden = true; }, 120); });
+function pick(input, name) { input.value = name; readControl(input); document.getElementById(input.id + "_s").hidden = true; input.setAttribute("aria-expanded", "false"); }
+
+$("#addLine").onclick = () => { const l = {id: uid()}; S.lines.push(l); openLines.add(l.id); dirty = true; renderLines(); refreshLight(); setTimeout(() => document.getElementById("p_" + l.id)?.focus(), 30); };
+$("#expandAll").onclick = () => { S.lines.forEach(l => openLines.add(l.id)); renderLines(); };
+$("#collapseAll").onclick = () => { openLines.clear(); renderLines(); };
+
+/* ---------------------------------------------------------------- spreadsheet import */
+const TARGETS = [["", "Don't import"], ["customer", "Customer"], ["product", "Product"], ["edition", "Edition / SKU"], ["vendor", "Vendor"], ["annualCost", "Annual cost"], ["unitMonthly", "Price / user / month"], ["licenses", "Licenses"], ["activeUsers", "Active users"], ["renewalDate", "Renewal date"], ["termMonths", "Term (months)"], ["autoRenew", "Auto-renews"], ["noticeDays", "Notice period (days)"], ["purchasedVia", "Purchased via"], ["owner", "Business owner"], ["satisfaction", "Satisfaction"], ["evaluating", "Evaluating"], ["notes", "Notes"]];
+const SYN = {
+  customer: ["customer", "client", "account", "tenant", "buyer", "company", "organization"],
+  product: ["product", "application", "app", "software", "software / service", "service", "item description", "tool", "subscription"],
+  edition: ["edition", "sku", "plan", "tier"],
+  vendor: ["vendor", "supplier", "publisher", "manufacturer"],
+  annualCost: ["annual cost", "annual spend", "annual", "acv", "arr", "cost", "spend", "po amount", "amount", "annual cost ($)", "yearly cost", "total cost"],
+  unitMonthly: ["cost per user / mo", "price per user", "unit price", "per user per month", "cost per user", "monthly price"],
+  licenses: ["licenses", "# licenses", "seats", "quantity", "qty", "users", "assigned licenses", "licensed seats"],
+  activeUsers: ["active users", "active users (90d)", "active users 30d", "active_users_30d", "active", "mau", "used licenses"],
+  renewalDate: ["renewal date", "renewal", "contract end", "end date", "period end", "expiry", "expiration", "term end"],
+  termMonths: ["term", "term (months)", "contract term", "term months"],
+  autoRenew: ["auto renew", "auto-renew", "auto-renew?", "autorenew", "evergreen"],
+  noticeDays: ["notice", "notice period", "notice period (days)", "notice (days)", "notice days"],
+  purchasedVia: ["purchased via", "channel", "bought via", "procurement channel", "reseller"],
+  owner: ["owner", "business owner", "app owner", "department", "team"],
+  satisfaction: ["satisfaction", "rating", "owner rating", "satisfaction (1-5)", "csat"],
+  evaluating: ["evaluating", "considering", "alternatives", "competitor"],
+  notes: ["notes", "comments", "remarks"],
+};
+let grid = null, mapCols = [];
+function guess(h) { const x = h.trim().toLowerCase(); for (const [k, list] of Object.entries(SYN)) if (list.includes(x)) return k; for (const [k, list] of Object.entries(SYN)) if (list.some(s => s.length > 3 && x.includes(s))) return k; return ""; }
+function parseDelimited(text) {
+  const delim = (text.split("\n")[0].match(/\t/g) || []).length > 0 ? "\t" : ",";
+  const rows = []; let row = [], cur = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"' && text[i + 1] === '"') { cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
+    else if (c === '"') q = true; else if (c === delim) { row.push(cur); cur = ""; } else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(cur); rows.push(row); row = []; cur = ""; } else cur += c;
+  }
+  if (cur || row.length) { row.push(cur); rows.push(row); }
+  return rows.filter(r => r.some(c => String(c).trim()));
+}
+function loadGrid(rows, label) {
+  if (!rows || rows.length < 2) { toast("Couldn't find a header row and at least one data row."); return; }
+  grid = rows; const heads = rows[0].map(h => String(h ?? "").trim());
+  mapCols = heads.map(h => guess(h));
+  $("#mapInfo").textContent = `${label}: ${rows.length - 1} rows, ${heads.length} columns. Check how each column maps, then add the lines.`;
+  $("#mapBody").innerHTML = heads.map((h, i) => `<tr class="maprow"><td><b>${esc(h || "(blank)")}</b></td><td><select data-col="${i}" aria-label="Map ${esc(h)}">${TARGETS.map(([v, t]) => `<option value="${v}"${mapCols[i] === v ? " selected" : ""}>${t}</option>`).join("")}</select></td><td>${esc(rows.slice(1, 4).map(r => r[i]).filter(x => x !== undefined && x !== "").join(" · ").slice(0, 80))}</td></tr>`).join("");
+  $("#mapping").hidden = false; updateImportBtn();
+}
+function updateImportBtn() {
+  const hasProduct = mapCols.includes("product");
+  const custCol = mapCols.includes("customer");
+  $("#custPick").innerHTML = custCol ? `<div class="help">Rows whose customer doesn't match <b>${esc(S.customer.name || "this intake's customer")}</b> or its aliases will be skipped.</div>` : "";
+  $("#doImport").disabled = !hasProduct;
+  $("#doImport").textContent = hasProduct ? `Add ${grid.length - 1} lines` : "Map a Product column first";
+}
+$("#mapBody").addEventListener("change", e => { const s = e.target.closest("select[data-col]"); if (s) { mapCols[+s.dataset.col] = s.value; updateImportBtn(); } });
+$("#importBtn").onclick = () => { grid = null; $("#mapping").hidden = true; $("#pasteIn").value = ""; $("#fileIn").value = ""; $("#doImport").disabled = true; $("#doImport").textContent = "Add lines"; $("#importDlg").showModal(); };
+$("#cancelImport").onclick = () => $("#importDlg").close();
+$("#parsePaste").onclick = () => loadGrid(parseDelimited($("#pasteIn").value), "Pasted rows");
+async function readFile(f) {
+  if (!f) return;
+  try {
+    if (/\.xlsx?$/i.test(f.name)) {
+      if (!window.XLSX) { toast("Excel reading didn't load. Save the sheet as CSV and upload that."); return; }
+      const wb = XLSX.read(await f.arrayBuffer(), {type: "array", cellDates: false});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      loadGrid(XLSX.utils.sheet_to_json(ws, {header: 1, raw: true, defval: ""}), `${f.name} (sheet “${wb.SheetNames[0]}”)`);
+    } else loadGrid(parseDelimited(await f.text()), f.name);
+  } catch (err) { toast("Couldn't read that file. Try saving it as CSV."); }
+}
+$("#fileIn").onchange = e => readFile(e.target.files[0]);
+const drop = $("#drop");
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); readFile(e.dataTransfer.files[0]); });
+$("#doImport").onclick = () => {
+  const custNames = [S.customer.name, ...(S.customer.aliases || "").split(",")].map(norm).filter(n => n.trim());
+  let added = 0, skipped = 0;
+  for (const r of grid.slice(1)) {
+    const l = {id: uid()};
+    mapCols.forEach((k, i) => {
+      if (!k) return; const v = r[i]; if (v === undefined || v === "") return;
+      if (k === "customer") { l._cust = v; return; }
+      if (["annualCost", "unitMonthly"].includes(k)) l[k] = toNumber(v);
+      else if (["licenses", "activeUsers", "termMonths", "noticeDays"].includes(k)) l[k] = toNumber(v);
+      else if (k === "renewalDate") l[k] = toDate(v);
+      else if (k === "autoRenew") l[k] = toYesNo(v);
+      else if (k === "satisfaction") { const n = Math.round(toNumber(v)); l[k] = n >= 1 && n <= 5 ? String(n) : ""; }
+      else if (k === "purchasedVia") { const s = String(v).toLowerCase(); l[k] = s.includes("aws") ? "AWS Marketplace" : s.includes("microsoft") || s.includes("azure") ? "Microsoft Marketplace" : s.includes("google") ? "Google Cloud Marketplace" : s.includes("resell") ? "Reseller" : s.includes("direct") ? "Direct" : "Unknown"; }
+      else l[k] = String(v).trim();
+    });
+    if (l._cust && custNames.length && !custNames.some(n => norm(l._cust).includes(n) || n.includes(norm(l._cust)))) { skipped++; continue; }
+    delete l._cust;
+    if (!l.product) { skipped++; continue; }
+    const e = match(l.product); if (e && !l.vendor) l.vendor = e.v;
+    S.lines.push(l); added++;
+  }
+  dirty = true; $("#importDlg").close(); renderLines(); refreshLight(); backup();
+  toast(`Added ${added} line${added === 1 ? "" : "s"}${skipped ? `, skipped ${skipped} (other customers or no product)` : ""}.`);
+  $("#s-lines").scrollIntoView({behavior: "smooth"});
+};
+
+/* ---------------------------------------------------------------- export (pipeline-ready) */
+function csvCell(v) { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }
+function toCSV() {
+  const cols = [["customer", () => S.customer.name], ["product", l => l.product], ["edition", l => l.edition], ["vendor", l => l.vendor], ["licenses", l => l.licenses], ["active_users", l => l.activeUsers],
+    ["unit_cost_monthly", l => l.unitMonthly], ["annual_cost", l => annual(l)], ["renewal_date", l => l.renewalDate], ["term_months", l => l.termMonths], ["auto_renew", l => l.autoRenew],
+    ["notice_days", l => l.noticeDays], ["purchased_via", l => l.purchasedVia], ["business_owner", l => l.owner], ["satisfaction", l => l.satisfaction], ["considering", l => l.evaluating], ["notes", l => l.notes]];
+  return [cols.map(c => c[0]).join(","), ...S.lines.map(l => cols.map(([, f]) => csvCell(f(l))).join(","))].join("\n") + "\n";
+}
+const fileBase = () => (S.customer.name || "intake").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "intake";
+async function offer(filename, data) {
+  const dl = await claude?.use?.("downloads").catch(() => null);
+  if (!dl) { $("#exportFallback").hidden = false; $("#exportText").textContent = data; return; }
+  try { await dl.save({filename, data}); toast(`Saved ${filename}.`); }
+  catch (e) { if (e?.code === "declined") return; if (e?.code === "rate_limited") toast("A save prompt is already open."); else { $("#exportFallback").hidden = false; $("#exportText").textContent = data; } }
+}
+$("#dlCsv").onclick = () => offer(`intake_${fileBase()}.csv`, toCSV());
+$("#dlJson").onclick = () => offer(`intake_${fileBase()}.json`, JSON.stringify(payload(), null, 2));
+
+/* ---------------------------------------------------------------- persistence */
+let db = null, me = null, unsubscribe = null, saved = [];
+function payload() { const p = structuredClone(S); delete p.example; p.updatedAt = new Date().toISOString(); p.createdAt ||= p.updatedAt; p.lineCount = p.lines.length; p.customerName = S.customer.name || ""; p.totalSpend = S.lines.reduce((t, l) => t + (annual(l) || 0), 0); if (me) p.createdBy ||= me; return p; }
+function backup() { try { localStorage.setItem("intake-draft", JSON.stringify(S)); } catch (e) {} }
+async function save(status) {
+  if (status === "submitted") {
+    const v = validate();
+    if (v.list.length) { showErrors = true; renderAll(); goTo(v.list[0][1]); toast(`${v.list.length} required item${v.list.length > 1 ? "s" : ""} missing.`); return; }
+  }
+  if (S.example && status === "submitted") { toast("This is example data. Clear it and enter a real customer before submitting."); return; }
+  S.status = status;
+  const p = payload();
+  if (!db) { dirty = false; S.updatedAt = p.updatedAt; backup(); renderReview(); toast(status === "submitted" ? "Saving isn't available in this view. Download the JSON to hand it off." : "Saved in this browser only. Sign in to claude.ai to save it for the team."); return; }
+  try {
+    await db.collection("intakes").doc(S.id).set(p);
+    S.updatedAt = p.updatedAt; S.createdAt = p.createdAt; dirty = false; backup(); renderReview();
+    toast(status === "submitted" ? "Submitted. It's ready for the pipeline run." : "Draft saved.");
+  } catch (e) {
+    if (e?.code === "invalid_argument") toast("You don't have permission to save here. Ask the owner for Contributor access, or download the JSON.");
+    else if (e?.code === "quota_exceeded") toast("Storage is full. Delete old intakes, or download this one.");
+    else toast("Couldn't save just now. Try again in a moment.");
+  }
+}
+$("#saveBtn").onclick = () => save(S.status === "submitted" ? "submitted" : "draft");
+$("#submitBtn").onclick = $("#submitBtn2").onclick = () => save("submitted");
+function startNew() { S = blank(); openLines = new Set(); showErrors = false; dirty = false; renderAll(); renderSaved(); scrollTo({top: 0, behavior: "smooth"}); }
+$("#newBtn").onclick = () => { if (dirty && S.lines.length && !S.example) { toast("You have unsaved changes.", "Discard and start new", startNew); return; } startNew(); };
+$("#clearExample").onclick = startNew;
+function renderSaved() {
+  const ul = $("#savedList");
+  if (!db) { ul.innerHTML = `<li class="empty">Sign in to claude.ai to save intakes for your team. You can still download them.</li>`; return; }
+  if (!saved.length) { ul.innerHTML = `<li class="empty">No saved intakes yet. Fill one in and press Save draft.</li>`; return; }
+  ul.innerHTML = saved.map(d => `<li><button type="button" data-open="${esc(d.id)}" aria-current="${d.id === S.id}"><b>${esc(d.customerName || "Untitled intake")}</b><span>${d.status === "submitted" ? "Submitted" : "Draft"} · ${d.lineCount || 0} lines · ${short(d.totalSpend || 0)} · ${d.updatedAt ? new Date(d.updatedAt).toLocaleDateString("en-US", {month: "short", day: "numeric"}) : ""}</span></button></li>`).join("");
+}
+$("#savedList").addEventListener("click", e => {
+  const b = e.target.closest("[data-open]"); if (!b) return;
+  const d = saved.find(x => x.id === b.dataset.open); if (!d) return;
+  const open = () => { S = {...blank(), ...structuredClone(d), example: false}; openLines = new Set(); showErrors = false; dirty = false; renderAll(); renderSaved(); scrollTo({top: 0, behavior: "smooth"}); };
+  if (dirty && !S.example) toast("You have unsaved changes.", "Discard and open", open); else open();
+});
+
+/* ---------------------------------------------------------------- toast */
+let toastTimer;
+function toast(msg, actionLabel, action) {
+  document.querySelector(".toast")?.remove();
+  const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status");
+  t.textContent = msg + " ";
+  if (actionLabel) { const b = document.createElement("button"); b.className = "btn small"; b.style.marginLeft = "8px"; b.textContent = actionLabel; b.onclick = () => { t.remove(); action(); }; t.append(b); }
+  document.body.append(t); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.remove(), actionLabel ? 8000 : 4000);
+}
+
+/* ---------------------------------------------------------------- boot */
+(function boot() {
+  let restored = null;
+  try { restored = JSON.parse(localStorage.getItem("intake-draft") || "null"); } catch (e) {}
+  S = restored && restored.lines ? {...blank(), ...restored} : example();
+  renderAll(); renderSaved();
+  (async () => {
+    const [d, u] = await Promise.all([window.claude?.use?.("db").catch(() => null), window.claude?.use?.("user").catch(() => null)]);
+    if (u) { try { me = await u.id(); } catch (e) {} }
+    db = d;
+    if (!db) { renderSaved(); return; }
+    unsubscribe = db.collection("intakes").orderBy("updatedAt", "desc").limit(100).onSnapshot(snap => {
+      saved = snap.docs.map(x => x.data()).filter(Boolean); renderSaved();
+    }, () => { renderSaved(); });
+  })();
+})();
+</script>

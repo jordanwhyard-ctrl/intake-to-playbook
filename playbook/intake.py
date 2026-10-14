@@ -266,7 +266,16 @@ def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
 
     lookups = [Lookup(project_dir, spec) for spec in cfg.get("lookups", [])]
 
+    expanded = []
     for src in cfg["sources"]:
+        if any(ch in src["path"] for ch in "*?["):  # a glob: one source per matching file, none is fine
+            for p in sorted(project_dir.glob(src["path"])):
+                rel = str(p.relative_to(project_dir))
+                expanded.append({**src, "path": rel, "label": f"{src.get('label', 'Intake')}: {p.stem}"})
+        else:
+            expanded.append(src)
+
+    for src in expanded:
         path = project_dir / src["path"]
         rows = LOADERS[src["format"]](path)
         aliases = {k.lower().strip(): v for k, v in (src.get("map") or {}).items()}

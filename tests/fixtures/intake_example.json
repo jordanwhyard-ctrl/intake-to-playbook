@@ -1,0 +1,132 @@
+{
+  "id": "xfjn5ga5fxxm",
+  "status": "draft",
+  "createdAt": "2026-10-14T17:16:11.261Z",
+  "updatedAt": "2026-10-14T17:16:11.261Z",
+  "opportunity": {
+    "name": "FY27 software estate review (example)",
+    "accountLead": "Marcus Lee",
+    "source": "SaaS-management export",
+    "engagement": [
+      "Resale",
+      "Advisory"
+    ],
+    "decisionDate": "2026-11-28",
+    "notes": "CFO wants a renewal plan for the next two quarters."
+  },
+  "customer": {
+    "name": "Example Analytics Ltd. (fictional)",
+    "aliases": "Example Analytics, EAL",
+    "industry": "Software",
+    "employees": 450,
+    "country": "United States",
+    "fyEnd": "December",
+    "sponsorName": "Jamie Rivera",
+    "sponsorTitle": "CFO",
+    "contactName": "Sam Patel",
+    "contactTitle": "IT Director",
+    "buyingChannels": [
+      "Direct from vendor",
+      "AWS Marketplace"
+    ],
+    "privateMarketplace": "No",
+    "securityReview": "Yes",
+    "procurementDays": 30
+  },
+  "commitments": {
+    "aws": {
+      "has": "Yes",
+      "annual": 1500000,
+      "remaining": 620000,
+      "end": "2027-02-11",
+      "counts": "Yes"
+    },
+    "azure": {
+      "has": "No"
+    }
+  },
+  "lines": [
+    {
+      "id": "c2h9jfgpfxxn",
+      "product": "Datadog",
+      "edition": "Enterprise",
+      "annualCost": 240000,
+      "renewalDate": "2026-12-23",
+      "autoRenew": "No",
+      "purchasedVia": "Direct",
+      "owner": "Engineering",
+      "satisfaction": "4"
+    },
+    {
+      "id": "q6ms2p4afxxn",
+      "product": "Okta Workforce Identity",
+      "annualCost": 41000,
+      "licenses": 480,
+      "activeUsers": 455,
+      "renewalDate": "2026-11-21",
+      "autoRenew": "Yes",
+      "noticeDays": 30,
+      "purchasedVia": "Direct",
+      "owner": "IT",
+      "satisfaction": "4"
+    },
+    {
+      "id": "dpwdnow2fxxn",
+      "product": "Notion",
+      "unitMonthly": 15,
+      "licenses": 450,
+      "activeUsers": 160,
+      "renewalDate": "2027-01-17",
+      "autoRenew": "Yes",
+      "noticeDays": 30,
+      "purchasedVia": "Direct",
+      "owner": "Product",
+      "satisfaction": "3",
+      "notes": "Most docs live in Confluence."
+    },
+    {
+      "id": "73h67xzhfxxn",
+      "product": "Atlassian Confluence",
+      "annualCost": 54000,
+      "licenses": 450,
+      "activeUsers": 430,
+      "renewalDate": "2027-03-23",
+      "purchasedVia": "Direct",
+      "owner": "IT",
+      "satisfaction": "4"
+    },
+    {
+      "id": "1kogx3yyfxxn",
+      "product": "Snyk",
+      "annualCost": 62000,
+      "renewalDate": "2027-02-21",
+      "purchasedVia": "Direct",
+      "owner": "Platform",
+      "satisfaction": "2",
+      "evaluating": "Checkmarx One"
+    },
+    {
+      "id": "0y1j0e02fxxn",
+      "product": "Snowflake",
+      "annualCost": 380000,
+      "renewalDate": "2027-05-02",
+      "purchasedVia": "AWS Marketplace",
+      "owner": "Data",
+      "satisfaction": "4"
+    }
+  ],
+  "goals": {
+    "drivers": [
+      "Upcoming renewals",
+      "Use up cloud commitment",
+      "Cut software spend"
+    ],
+    "budgetCycle": "Annually",
+    "budgetStatus": "Under review",
+    "decisionMakers": "CFO and VP Engineering",
+    "decisionProcess": "IT shortlists, CFO approves anything over $50K, security review for new vendors."
+  },
+  "lineCount": 6,
+  "customerName": "Example Analytics Ltd. (fictional)",
+  "totalSpend": 858000
+}
