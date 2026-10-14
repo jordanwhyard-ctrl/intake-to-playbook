@@ -1,0 +1,160 @@
+scores: [fit, urgency]
+
+computed:
+  days_to_start: {days_until: start_date}
+  framework_count: {count: compliance}
+
+score_bands:
+  total:
+    - {min: 75, label: "A — propose this week"}
+    - {min: 50, label: "B — qualify"}
+    - {min: 25, label: "C — slow lane"}
+    - {min: -999, label: "D — refer out"}
+
+stages:
+  - name: Qualify
+    rules:
+      - id: q-too-small
+        when: {any: [{field: endpoints, lt: 15}, {all: [{field: budget_monthly, lt: 1000}, {field: endpoints, lt: 40}]}]}
+        then: {tag: below-minimum, score: {fit: -30}}
+        reason: "{endpoints} devices / ${budget_monthly} budget is below the managed-services minimum"
+      - id: q-sweet-spot
+        when: {field: endpoints, between: [15, 500]}
+        then: {score: {fit: 20}}
+        reason: "{endpoints} devices is inside the 15–500 sweet spot"
+      - id: q-regulated
+        when: {field: industry, in: [healthcare, legal, financial services, defense contractor]}
+        then: {score: {fit: 20}, tag: regulated}
+        reason: "{industry} is a regulated vertical where we have references"
+      - id: q-multisite
+        when: {field: locations, gte: 2}
+        then: {score: {fit: 5}, tag: multi-site}
+        reason: "{locations} locations"
+      - id: q-referral
+        when: {field: referral_partner, exists: true}
+        then: {score: {fit: 15}, tag: partner-sourced}
+        reason: "Referred by {referral_partner}"
+      - id: q-competitor-msp
+        when: {field: current_provider, matches: "msp|partners|managed"}
+        then: {tag: msp-displacement}
+        reason: "Replacing an incumbent MSP ({current_provider})"
+
+  - name: Urgency
+    rules:
+      - id: u-start-30
+        when: {field: days_to_start, lte: 30}
+        then: {score: {urgency: 30}, tag: rush-onboarding, flag: "Start date in {days_to_start} days — confirm onboarding capacity"}
+        reason: "Wants to start in {days_to_start} days"
+      - id: u-start-60
+        when: {field: days_to_start, between: [31, 60]}
+        then: {score: {urgency: 20}}
+        reason: "Wants to start in {days_to_start} days"
+      - id: u-start-90
+        when: {field: days_to_start, between: [61, 120]}
+        then: {score: {urgency: 10}}
+        reason: "Wants to start in {days_to_start} days"
+      - id: u-insurance
+        when: {field: notes, matches: "insur|premium"}
+        then: {score: {urgency: 25}, tag: insurance-driven}
+        reason: "Cyber-insurance requirements create a hard deadline"
+      - id: u-audit
+        when: {any: [{field: notes, matches: "audit finding"}, {field: pain_points, contains_any: [audit findings, audit, compliance deadline]}]}
+        then: {score: {urgency: 20}, tag: audit-driven}
+        reason: "Open audit findings or compliance deadline"
+      - id: u-contract-end
+        when: {field: notes, matches: "contract .* ends|renewal"}
+        then: {score: {urgency: 10}}
+        reason: "Incumbent contract ending"
+      - id: u-security-pain
+        when: {field: pain_points, contains_any: [security, phishing, ransomware worry, email phishing]}
+        then: {score: {urgency: 10}, tag: security-concern}
+        reason: "Named security as a problem"
+
+  - name: Tier
+    when: {not: {field: tags, contains: below-minimum}}
+    first_match: true
+    rules:
+      - id: tier-comanaged
+        when: {any: [{field: notes, matches: "co-managed"}, {all: [{field: current_provider, matches: "internal"}, {field: endpoints, gte: 250}]}]}
+        then: {package: co-managed}
+        reason: "Has an internal IT team → Co-Managed tier"
+      - id: tier-secure-plus
+        when: {any: [{field: compliance, contains_any: [cmmc, nist 800-171]},
+                     {all: [{field: compliance, contains: soc2}, {field: endpoints, gte: 100}]},
+                     {field: endpoints, gte: 150}]}
+        then: {package: secure-plus}
+        reason: "CMMC/NIST, SOC 2 at scale, or 150+ devices → Secure Plus"
+      - id: tier-professional
+        when: {any: [{field: endpoints, gte: 40}, {field: framework_count, gte: 1}, {field: tags, contains: security-concern}]}
+        then: {package: professional}
+        reason: "Size, compliance or security needs → Professional"
+      - id: tier-essentials
+        when: {field: endpoints, gte: 1}
+        then: {package: essentials}
+        reason: "Small, low-risk environment → Essentials"
+
+  - name: Add-ons
+    when: {field: package, exists: true}
+    rules:
+      - id: add-hipaa
+        when: {field: compliance, contains: hipaa}
+        then: {addons: [hipaa-pack]}
+        reason: "HIPAA → risk assessment, BAA, policy pack"
+      - id: add-pci
+        when: {field: compliance, contains: pci}
+        then: {addons: [pci-pack]}
+        reason: "PCI → network segmentation + quarterly scans"
+      - id: add-cmmc
+        when: {field: compliance, contains_any: [cmmc, nist 800-171]}
+        then: {addons: [cmmc-pack], flag: "CMMC scope: confirm CUI enclave vs. whole-company approach before pricing"}
+        reason: "CMMC / NIST 800-171 → compliance program and SSP"
+      - id: add-soc2
+        when: {all: [{field: compliance, contains: soc2}, {field: package, in: [professional, co-managed]}]}
+        then: {addons: [soc2-evidence]}
+        reason: "SOC 2 → evidence collection"
+      - id: add-servers
+        when: {field: servers, gte: 1}
+        then: {addons: [server-mgmt]}
+        reason: "{servers} server(s) to manage"
+      - id: add-sites
+        when: {field: locations, gte: 2}
+        then: {addons: [multi-site-network]}
+        reason: "{locations} sites → managed network per site"
+      - id: add-immutable-backup
+        when: {field: tags, contains: insurance-driven}
+        then: {addons: [immutable-backup]}
+        reason: "Insurer requires immutable backups"
+
+  - name: Route
+    first_match: true
+    rules:
+      - id: r-refer-out
+        when: {field: tags, contains: below-minimum}
+        then: {play: refer-out}
+        reason: "Below minimum → refer to a break/fix partner"
+      - id: r-comanaged
+        when: {field: package, eq: co-managed}
+        then: {play: co-managed}
+        reason: "Internal IT team → co-managed play"
+      - id: r-compliance
+        when: {any: [{field: compliance, contains_any: [cmmc, nist 800-171, soc2]}, {field: tags, contains: audit-driven}]}
+        then: {play: compliance-led}
+        reason: "Compliance-driven buyer → gap assessment first"
+      - id: r-rapid
+        when: {field: score.urgency, gte: 30}
+        then: {play: rapid-proposal}
+        reason: "Hard deadline → proposal within 48 hours"
+      - id: r-assessment
+        when: {any: [{field: tags, contains: security-concern}, {field: tags, contains: msp-displacement}]}
+        then: {play: security-assessment}
+        reason: "Lead with a free security assessment"
+    else:
+      then: {play: standard-proposal}
+      reason: "Standard discovery → proposal"
+
+  - name: Overlay
+    rules:
+      - id: o-partner
+        when: {field: referral_partner, exists: true}
+        then: {play: partner-co-sell}
+        reason: "Keep {referral_partner} in the loop"

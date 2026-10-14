@@ -1,0 +1,46 @@
+From: Andrea Novak <anovak@cascadiaclinics.org>
+Org: Cascadia Community Clinics
+Contact: Andrea Novak
+Industry: Medical
+Staff: 210
+Devices: 240
+Servers: 4
+Locations: 5
+Compliance: HIPAA; SOC 2
+Current IT: Vantage IT Partners
+Issues: slow response times; security; audit findings
+Budget: $22,000
+Start: 12/01/2026
+Platform: Microsoft 365
+
+We had two audit findings last quarter around access reviews and backup testing.
+Our contract with Vantage ends Nov 30 and we need a proposal by end of month.
+---
+From: Wes Thornton <wes@thorntonroofing.com>
+Org: Thornton Roofing
+Contact: Wes Thornton
+Staff: 28
+Devices: 15
+Locations: 1
+Issues: email phishing; backups
+Budget: $900
+Start: Q1
+
+Mostly trucks and phones. Just want someone to call when things break.
+---
+From: Fatima Zahra <fzahra@meridianlogisticsgroup.com>
+Org: Meridian Logistics Group
+Contact: Fatima Zahra
+Industry: Logistics
+Staff: 340
+Devices: 310
+Servers: 12
+Locations: 7
+Compliance: SOC 2; PCI
+Current IT: Internal IT
+Issues: after-hours coverage; security monitoring; scaling
+Budget: $30k
+Start: 01/15/2027
+Platform: M365
+
+We have a 4-person IT team. Looking for co-managed help with 24x7 security monitoring, not full outsourcing.

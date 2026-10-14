@@ -1,0 +1,42 @@
+[
+  {
+    "partner": "Summit Insurance Brokers (cyber insurance)",
+    "client": "Bayside Orthopedics",
+    "client_contact": "Dr. Kevin Liu",
+    "client_email": "kliu@baysideortho.com",
+    "sector": "Medical",
+    "headcount": 64,
+    "device_count": 70,
+    "server_count": 2,
+    "sites": 2,
+    "frameworks": ["HIPAA"],
+    "partner_notes": "Cyber insurance renewal requires MFA, EDR and immutable backups by Dec 31 or premium increases 40%.",
+    "target_start": "2026-11-01"
+  },
+  {
+    "partner": "Ledgerpoint Accounting (CPA firm)",
+    "client": "Copperline Brewing Co.",
+    "client_contact": "Jess Romero",
+    "client_email": "jess@copperlinebrewing.com",
+    "sector": "Food & beverage",
+    "headcount": 45,
+    "device_count": 32,
+    "server_count": 1,
+    "sites": 3,
+    "frameworks": ["PCI"],
+    "partner_notes": "Opening a third taproom. POS network keeps dropping.",
+    "target_start": "2027-02-01"
+  },
+  {
+    "partner": "Summit Insurance Brokers (cyber insurance)",
+    "client": "Lakeshore Family Dental",
+    "client_contact": "Dr. Renee Albright",
+    "client_email": "ralbright@lakeshoredental.com",
+    "sector": "Dental",
+    "headcount": 22,
+    "device_count": 26,
+    "frameworks": ["HIPAA"],
+    "partner_notes": "Insurer flagged no MFA on email. Renewal is Jan 15.",
+    "target_start": "2026-11-02"
+  }
+]

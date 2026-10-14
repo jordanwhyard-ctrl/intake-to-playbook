@@ -1,0 +1,127 @@
+name: "Inbound Lead Routing — Cobalt Ops"
+description: >-
+  Web-form leads, trade-show badge scans and inbound sales emails for a fictional
+  workflow-automation SaaS, scored for fit and intent and routed to a sales play
+  with a priced subscription package.
+as_of: 2026-10-14
+id_prefix: LEAD
+
+sources:
+  - path: data/web_form.csv
+    format: csv
+    label: Website demo form
+    map:
+      Full Name: contact_name
+      Work Email: email
+      Company Name: company
+      Job Title: title
+      Company Size: employees
+      Country: country
+      Industry: industry
+      What are you interested in?: interest
+      Request a demo?: demo_requested
+      Pricing page views: pricing_views
+      Seats needed: seats_requested
+      Submitted: submitted
+  - path: data/event_badge_scans.json
+    format: json
+    label: OpsSummit badge scans
+    map:
+      name: contact_name
+      badge_email: email
+      org: company
+      job: title
+      headcount: employees
+      region: country
+      vertical: industry
+      rep_notes: notes
+      tools: current_tool
+    defaults:
+      source_event: OpsSummit 2026
+  - path: data/inbound_emails.txt
+    format: text
+    label: sales@ inbox
+    map:
+      from: email
+      name: contact_name
+      company: company
+      role: title
+      team_size: employees
+      employees: employees
+      country: country
+      budget: budget
+      timeline: timeline
+      currently_using: current_tool
+      seats: seats_requested
+      industry: industry
+
+schema:
+  contact_name: str
+  email: email
+  company: str
+  title: str
+  employees: number
+  country: lower
+  industry: lower
+  interest: list
+  demo_requested: bool
+  pricing_views: number
+  seats_requested: number
+  budget: money
+  timeline: str
+  current_tool: lower
+  notes: str
+  submitted: date
+  source_event: str
+
+value_maps:
+  country:
+    usa: us
+    united states: us
+    u.s.: us
+    america: us
+    canada: ca
+    united kingdom: uk
+    england: uk
+    gb: uk
+    germany: de
+    deutschland: de
+    brazil: br
+    india: in
+  industry:
+    health care: healthcare
+    hospital: healthcare
+    finance: financial services
+    banking: financial services
+    fintech: financial services
+    mfg: manufacturing
+    logistics: logistics
+    3pl: logistics
+    edu: education
+    higher ed: education
+
+dedupe_on: [domain, company]
+required: [email, company]
+
+title_field: company
+brief_fields:
+  contact_name: Contact
+  title: Title
+  other_contacts: Other contacts
+  email: Email
+  employees: Employees
+  industry: Industry
+  country: Country
+  interest: Interested in
+  current_tool: Current tool
+  timeline: Timeline
+  budget: Stated budget
+  est_seats: Seats (est.)
+  source_event: Event
+
+crm_fields: [company, contact_name, title, email, employees, industry, country, segment]
+field_formats:
+  industry: title
+  country: upper
+  current_tool: title
+  budget: money

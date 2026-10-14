@@ -1,0 +1,143 @@
+name: "Quote Request Packaging — Brightline Managed IT"
+description: >-
+  Quote requests from a portal, an intake inbox and referral partners for a fictional
+  managed IT services provider, matched to a service tier with compliance add-ons,
+  priced, budget-checked and routed to a proposal play.
+as_of: 2026-10-14
+id_prefix: RFQ
+
+sources:
+  - path: data/quote_portal.csv
+    format: csv
+    label: Quote portal
+    map:
+      Organization: company
+      Contact: contact_name
+      Email: email
+      Phone: phone
+      Industry: industry
+      Staff: employees
+      Devices (laptops/desktops): endpoints
+      Servers: servers
+      Office locations: locations
+      Compliance requirements: compliance
+      Current IT: current_provider
+      Biggest problems: pain_points
+      Monthly budget: budget_monthly
+      Ideal start: start_date
+      Email platform: cloud
+  - path: data/intake_inbox.txt
+    format: text
+    label: Intake inbox
+    map:
+      from: email
+      org: company
+      contact: contact_name
+      industry: industry
+      staff: employees
+      devices: endpoints
+      servers: servers
+      locations: locations
+      compliance: compliance
+      current_it: current_provider
+      issues: pain_points
+      budget: budget_monthly
+      start: start_date
+      platform: cloud
+  - path: data/partner_referrals.json
+    format: json
+    label: Referral partners
+    map:
+      client: company
+      client_contact: contact_name
+      client_email: email
+      sector: industry
+      headcount: employees
+      device_count: endpoints
+      server_count: servers
+      sites: locations
+      frameworks: compliance
+      partner: referral_partner
+      partner_notes: notes
+      target_start: start_date
+
+schema:
+  company: str
+  contact_name: str
+  email: email
+  phone: str
+  industry: lower
+  employees: number
+  endpoints: number
+  servers: number
+  locations: number
+  compliance: list
+  current_provider: lower
+  pain_points: list
+  budget_monthly: money
+  start_date: date
+  cloud: lower
+  referral_partner: str
+  notes: str
+
+value_maps:
+  compliance:
+    hippa: hipaa
+    hipaa/hitech: hipaa
+    pci-dss: pci
+    pci dss: pci
+    soc 2: soc2
+    soc ii: soc2
+    cmmc l2: cmmc
+    cmmc level 2: cmmc
+    dfars: cmmc
+    none: ""
+  cloud:
+    office 365: m365
+    microsoft 365: m365
+    o365: m365
+    outlook: m365
+    gmail: google
+    google workspace: google
+    g suite: google
+  industry:
+    dental: healthcare
+    medical: healthcare
+    clinic: healthcare
+    law firm: legal
+    accounting: financial services
+    cpa: financial services
+    defense: defense contractor
+    aerospace: defense contractor
+
+dedupe_on: [domain, company]
+required: [company, email, endpoints]
+budget_check: {field: budget_monthly, tolerance: 0.10}
+
+title_field: company
+brief_fields:
+  contact_name: Contact
+  other_contacts: Other contacts
+  email: Email
+  industry: Industry
+  employees: Staff
+  endpoints: Devices
+  servers: Servers
+  locations: Locations
+  compliance: Compliance
+  cloud: Email platform
+  current_provider: Current IT
+  pain_points: Problems
+  budget_monthly: Monthly budget
+  start_date: Target start
+  days_to_start: Days to start
+  referral_partner: Referred by
+
+crm_fields: [company, contact_name, email, industry, endpoints, locations, compliance, budget_monthly, start_date, referral_partner]
+field_formats:
+  industry: title
+  compliance: upper
+  cloud: upper
+  current_provider: title
+  budget_monthly: money
+dashboard_column: {field: days_to_start, label: Days to start}

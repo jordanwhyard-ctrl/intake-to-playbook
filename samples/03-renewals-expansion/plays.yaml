@@ -1,0 +1,99 @@
+plays:
+  churn-rescue:
+    name: Churn rescue
+    objective: Stabilize an at-risk account by fixing what's broken, rebuilding executive support and proving value before the renewal conversation.
+    owner: CSM + Account Executive + Support Lead
+    sla: Rescue plan within 3 business days
+    success_metric: Risk band improves to Medium or Low before renewal; renewal signed
+    sequence:
+      - {day: 0, channel: Internal, action: "Risk review: CSM, AE and support lead align on root causes for {company}"}
+      - {day: 1, channel: Email, action: "Personal note from our VP Customer Success to {company} leadership acknowledging the issues"}
+      - {day: 3, channel: Meeting, action: "Value and issues review with {contact_name}: what's broken, what we're fixing, by when"}
+      - {day: 10, channel: Meeting, action: "Meet the new decision-maker; present usage outcomes and the fix plan"}
+      - {day: 20, channel: Meeting, action: "Renewal proposal right-sized to {quote_seats} seats, with service credits if warranted"}
+    talk_track:
+      - "We know the last quarter hasn't met the standard you signed up for. Here's what went wrong, what we've already fixed, and what's left with dates."
+      - "Before we talk about renewal, I want to make sure the people using this every day are getting value."
+    discovery_questions:
+      - "Who is the new owner of this tool, and what does success look like for them?"
+      - "If you could change one thing about the last 90 days, what would it be?"
+      - "What would {competitor_mention} need to show you to win this?"
+    objections:
+      - {objection: "We're evaluating alternatives.", response: "That's fair. Let's make sure the comparison includes migration cost and the {workflows} workflows already live. We'll also put the fix plan in writing."}
+      - {objection: "We need to cut cost.", response: "We can right-size to the seats you actually use and lock pricing for two years."}
+    assets: [Usage and outcomes report, Incident post-mortems, Fix plan with dates, Service credit policy]
+
+  expansion:
+    name: Expansion
+    objective: Turn proven usage and new asks into an upgrade or seat expansion at renewal.
+    owner: Account Executive + CSM
+    sla: Expansion proposal 60+ days before renewal
+    success_metric: Net revenue retention above 110% on this account
+    sequence:
+      - {day: 0, channel: Internal, action: "Build the expansion case: {active_users} active vs {seats} licensed, asks, plan limits"}
+      - {day: 2, channel: Meeting, action: "Success review with {contact_name}: wins so far and the next use case"}
+      - {day: 5, channel: Email, action: "Proposal: {quote_seats} seats with upgrade options, priced for multi-year"}
+      - {day: 10, channel: Meeting, action: "Exec sponsor review ({exec_sponsor}) of the business case"}
+    talk_track:
+      - "Your team is already past the plan you bought: {active_users} people active on {seats} licenses. Let's get the licensing to match how {company} actually works."
+      - "You asked for '{customer_ask}', and that's in the proposal."
+    discovery_questions:
+      - "Which teams are next in line to use this?"
+      - "What's the cost today of the limits you're running into?"
+      - "Would a multi-year term help with budget planning?"
+    objections:
+      - {objection: "Budget is set for the year.", response: "We can co-term the new seats to the renewal date so you only pay for the remaining months now."}
+    assets: [Usage report, Upgrade comparison, Multi-year pricing options]
+
+  right-size-renewal:
+    name: Right-size renewal
+    objective: Protect a renewal with low utilization by right-sizing before the customer asks, then re-grow through adoption.
+    owner: CSM
+    sla: Right-size offer 90+ days before renewal
+    success_metric: Renewal retained; utilization above 75% within 2 quarters
+    sequence:
+      - {day: 0, channel: Email, action: "Share adoption report with {contact_name}: {active_users} active of {seats} seats"}
+      - {day: 5, channel: Meeting, action: "Adoption workshop: 3 new workflows for under-using teams"}
+      - {day: 15, channel: Email, action: "Renewal quote at {quote_seats} seats with a growth clause"}
+    talk_track:
+      - "Let's renew on what you use today, and add seats back when the next team is ready. No penalty."
+    assets: [Adoption report, Workflow ideas library]
+
+  exec-renewal:
+    name: Executive renewal
+    objective: Secure a large, healthy renewal early with an executive business review and a multi-year option.
+    owner: Account Executive + CSM
+    sla: EBR scheduled 90+ days before renewal
+    success_metric: Signed 60+ days before renewal date
+    sequence:
+      - {day: 0, channel: Email, action: "Request a 45-minute EBR with {exec_sponsor} and {contact_name}"}
+      - {day: 10, channel: Meeting, action: "EBR: outcomes delivered, roadmap, next-year goals"}
+      - {day: 15, channel: Email, action: "Renewal proposal with 1- and 3-year options"}
+    talk_track:
+      - "This year {company} ran {workflows} workflows on the platform. Let's agree next year's goals and lock in pricing."
+    assets: [EBR deck template, ROI summary]
+
+  standard-renewal:
+    name: Standard renewal
+    objective: Renew a healthy account efficiently with minimal friction.
+    owner: Renewals Specialist
+    sla: Quote out 75 days before renewal
+    success_metric: On-time renewal
+    sequence:
+      - {day: 0, channel: Email, action: "Send renewal quote for {quote_seats} seats to {contact_name}"}
+      - {day: 10, channel: Email, action: "Follow up; offer a quick call"}
+    talk_track:
+      - "Your renewal quote is attached. Same plan, same terms, and we've included your usage summary."
+    assets: [Renewal quote, Usage summary]
+
+  advocacy:
+    name: Advocacy ask
+    objective: Turn a happy, low-risk customer into a reference, case study or review.
+    owner: CSM + Customer Marketing
+    sla: Ask within 30 days of a positive milestone
+    success_metric: Reference, case study or review secured
+    sequence:
+      - {day: 0, channel: Email, action: "Thank {contact_name} for the NPS {nps}; ask about a short case study or reference call"}
+    talk_track:
+      - "You told us you'd recommend us, so would you be open to telling your story? We'll do the writing."
+    assets: [Case study brief, Reference program perks]

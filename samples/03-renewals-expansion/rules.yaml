@@ -1,0 +1,182 @@
+scores: [health, risk, expansion]
+
+computed:
+  days_to_renewal: {days_until: renewal_date}
+  seat_utilization: {ratio: [active_users, seats]}
+  # seats to quote = active users + 15% headroom, rounded up to 5
+  right_sized_seats: {scale: {field: active_users, factor: 1.15, round_to: 5}}
+  growth_seats: {max: [seats, right_sized_seats]}
+
+score_bands:
+  risk:
+    - {min: -15, label: Low}
+    - {min: -40, label: Medium}
+    - {min: -999, label: High}
+  total:
+    - {min: 60, label: "Strong"}
+    - {min: 20, label: "Stable"}
+    - {min: -10, label: "Watch"}
+    - {min: -999, label: "At risk"}
+
+stages:
+  - name: Health
+    rules:
+      - id: h-utilization-high
+        when: {field: seat_utilization, gte: 0.9}
+        then: {score: {health: 20, expansion: 15}, tag: at-capacity}
+        reason: "{active_users} of {seats} seats active ({seat_utilization:.0%})"
+      - id: h-utilization-ok
+        when: {field: seat_utilization, between: [0.6, 0.8999]}
+        then: {score: {health: 10}}
+        reason: "Healthy utilization ({seat_utilization:.0%})"
+      - id: h-utilization-low
+        when: {field: seat_utilization, lt: 0.6}
+        then: {score: {risk: -20}, tag: shelfware}
+        reason: "Only {seat_utilization:.0%} of seats in use"
+      - id: h-trend-up
+        when: {field: usage_trend, eq: up}
+        then: {score: {health: 10}}
+        reason: "Usage trending up over 90 days"
+      - id: h-trend-down
+        when: {field: usage_trend, eq: down}
+        then: {score: {risk: -15}}
+        reason: "Usage trending down over 90 days"
+      - id: h-depth
+        when: {field: workflows, gte: 25}
+        then: {score: {health: 10}, tag: deeply-embedded}
+        reason: "{workflows} live workflows = high switching cost"
+      - id: h-shallow
+        when: {field: workflows, lt: 8}
+        then: {score: {risk: -10}}
+        reason: "Only {workflows} live workflows"
+      - id: h-promoter
+        when: {field: nps, gte: 9}
+        then: {score: {health: 15}, tag: promoter}
+        reason: "NPS {nps} (promoter)"
+      - id: h-detractor
+        when: {field: nps, lte: 6}
+        then: {score: {risk: -15}}
+        reason: "NPS {nps} (detractor)"
+      - id: h-no-nps
+        when: {field: nps, missing: true}
+        then: {flag: "No NPS response — get a pulse check before renewal"}
+        reason: "No NPS response on file"
+
+  - name: Risk signals
+    rules:
+      - id: r-champion-left
+        when: {field: champion_status, in: [left, unknown]}
+        then: {score: {risk: -25}, flag: "Champion {champion_status} — identify and onboard a new champion"}
+        reason: "Champion status: {champion_status}"
+      - id: r-p1s
+        when: {field: p1_tickets, gte: 2}
+        then: {score: {risk: -15}, flag: "{p1_tickets} P1 incidents in 90 days — bring support lead to renewal call"}
+        reason: "{p1_tickets} P1 incidents in 90 days"
+      - id: r-escalated
+        when: {field: escalated, is_true: true}
+        then: {score: {risk: -10}}
+        reason: "Open escalation"
+      - id: r-low-csat
+        when: {field: csat, lt: 85}
+        then: {score: {risk: -10}}
+        reason: "CSAT {csat}"
+      - id: r-budget
+        when: {field: budget_signal, in: [frozen, under review, cut]}
+        then: {score: {risk: -15}, tag: budget-pressure}
+        reason: "Budget {budget_signal}"
+      - id: r-competitor
+        when: {field: competitor_mention, exists: true}
+        then: {score: {risk: -15}, tag: competitive-threat}
+        reason: "Evaluating {competitor_mention}"
+      - id: r-no-sponsor
+        when: {all: [{field: exec_sponsor, missing: true}, {field: arr, gte: 100000}]}
+        then: {score: {risk: -5}, flag: "Six-figure account with no exec sponsor on file"}
+        reason: "No executive sponsor on a ${arr} account"
+
+  - name: Expansion signals
+    rules:
+      - id: x-budget
+        when: {field: budget_signal, in: [expanding, approved]}
+        then: {score: {expansion: 20}}
+        reason: "Budget {budget_signal}"
+      - id: x-ask
+        when: {field: customer_ask, exists: true}
+        then: {score: {expansion: 15}}
+        reason: "Customer asked: {customer_ask}"
+      - id: x-plan-limit
+        when: {any: [{field: notes, matches: "plan limit|api limit|does not include"}, {field: customer_ask, matches: "sso|api|rate limit"}]}
+        then: {score: {expansion: 15}, tag: upgrade-candidate}
+        reason: "Hitting limits of the {plan} plan"
+      - id: x-new-unit
+        when: {field: customer_ask, matches: "business unit|team onboarded|more users|division"}
+        then: {score: {expansion: 10}, tag: new-team}
+        reason: "New team or business unit to onboard"
+
+  - name: Quote
+    rules:
+      - id: qt-upgrade
+        when: {all: [{field: plan, eq: growth}, {field: tags, contains: upgrade-candidate}]}
+        then: {package: enterprise, copy: {quote_seats: growth_seats}, tag: plan-upgrade}
+        reason: "Growth → Enterprise upgrade to unlock SSO / API limits"
+      - id: qt-expand
+        when: {all: [{field: package, missing: true}, {field: right_sized_seats, gt: {ref: seats}}]}
+        then: {copy: {quote_seats: growth_seats}, tag: seat-expansion}
+        reason: "Usage exceeds licenses → quote {growth_seats} seats"
+      - id: qt-rightsize
+        when: {all: [{field: package, missing: true}, {field: tags, contains: shelfware}]}
+        then: {copy: {quote_seats: right_sized_seats}, tag: right-size}
+        reason: "Proactively right-size to {right_sized_seats} seats to protect the renewal"
+      - id: qt-flat
+        when: {field: quote_seats, missing: true}
+        then: {copy: {quote_seats: seats}}
+        reason: "Renew at current {seats} seats"
+      - id: qt-plan-growth
+        when: {all: [{field: package, missing: true}, {field: plan, eq: growth}]}
+        then: {package: growth}
+        reason: "Renew on Growth"
+      - id: qt-plan-enterprise
+        when: {all: [{field: package, missing: true}, {field: plan, eq: enterprise}]}
+        then: {package: enterprise}
+        reason: "Renew on Enterprise"
+      - id: qt-compliance
+        when: {field: industry, in: [healthcare, financial services]}
+        then: {addons: [compliance-pack]}
+        reason: "Regulated industry keeps the Compliance Pack"
+      - id: qt-integrations
+        when: {field: features_used, contains: integrations}
+        then: {addons: [integration-hub]}
+        reason: "Uses integrations"
+
+  - name: Route
+    first_match: true
+    rules:
+      - id: p-rescue
+        when: {field: score.risk, lte: -40}
+        then: {play: churn-rescue}
+        reason: "Risk score {score_risk} → rescue plan"
+      - id: p-expand
+        when: {field: score.expansion, gte: 30}
+        then: {play: expansion}
+        reason: "Expansion score {score_expansion} → expansion play"
+      - id: p-rightsize
+        when: {field: tags, contains: right-size}
+        then: {play: right-size-renewal}
+        reason: "Low utilization → proactive right-size"
+      - id: p-exec
+        when: {all: [{field: arr, gte: 100000}, {field: days_to_renewal, lte: 120}]}
+        then: {play: exec-renewal}
+        reason: "Six-figure renewal inside 120 days"
+    else:
+      then: {play: standard-renewal}
+      reason: "Healthy, standard renewal"
+
+  - name: Overlay
+    rules:
+      - id: o-advocacy
+        when: {all: [{field: tags, contains: promoter}, {field: score.risk, gte: -15}]}
+        then: {play: advocacy}
+        reason: "Promoter with low risk → ask for a reference or case study"
+      - id: o-timing
+        when: {field: days_to_renewal, lte: 60}
+        then: {flag: "Renews in {days_to_renewal} days — renewal quote should already be out"}
+        reason: "Renewal inside 60 days"

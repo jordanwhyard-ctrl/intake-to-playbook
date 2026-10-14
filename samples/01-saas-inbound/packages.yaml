@@ -1,0 +1,40 @@
+currency: USD
+term_months: 12
+
+packages:
+  starter:
+    name: Starter
+    description: Templates, basic approvals and email notifications for small teams.
+    per_unit: {field: est_seats, price: 12, min: 5, label: seats}
+    includes: [Unlimited workflows, 20 templates, Email support]
+  growth:
+    name: Growth
+    description: Multi-step approvals, reporting and standard integrations for growing operations teams.
+    base: 300
+    per_unit: {field: est_seats, price: 28, min: 20, label: seats}
+    includes: [Conditional routing, Reporting dashboards, 10 standard integrations, Business-hours support]
+    one_time:
+      - {name: Guided onboarding, amount: 2500}
+  enterprise:
+    name: Enterprise
+    description: Governed workflow platform with SSO/SCIM, audit trail, sandbox and a named CSM.
+    base: 1500
+    per_unit: {field: est_seats, price: 42, min: 100, label: seats}
+    includes: [SSO + SCIM, Full audit trail, Sandbox environment, Named CSM, 99.9% SLA]
+    one_time:
+      - {name: Enterprise onboarding, amount: 12000}
+
+addons:
+  compliance-pack:
+    name: Compliance Pack
+    price: 750
+  integration-hub:
+    name: Integration Hub
+    per_unit: {field: est_seats, price: 6, min: 20}
+  migration-service:
+    name: Migration Service (amortized)
+    price: 400
+
+discounts:
+  - {min_annual: 100000, pct: 0.10}
+  - {min_annual: 250000, pct: 0.15}

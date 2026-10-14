@@ -1,0 +1,29 @@
+currency: USD
+term_months: 12
+
+packages:
+  growth:
+    name: Growth renewal
+    description: Growth plan, quoted at seats sized to actual usage.
+    base: 300
+    per_unit: {field: quote_seats, price: 28, min: 20, label: seats}
+    includes: [Conditional routing, Reporting dashboards, 10 standard integrations]
+  enterprise:
+    name: Enterprise renewal
+    description: Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.
+    base: 1500
+    per_unit: {field: quote_seats, price: 42, min: 100, label: seats}
+    includes: [SSO + SCIM, Full audit trail, Sandbox, 10x API limits, Named CSM]
+
+addons:
+  compliance-pack:
+    name: Compliance Pack
+    price: 750
+  integration-hub:
+    name: Integration Hub
+    per_unit: {field: quote_seats, price: 6, min: 20}
+
+discounts:
+  - {min_annual: 100000, pct: 0.10}
+  - {min_annual: 250000, pct: 0.15}
+  - {tag: right-size, min_annual: 0, pct: 0.05}

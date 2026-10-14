@@ -1,0 +1,45 @@
+Account: Atlas Cold Chain
+Champion: stable
+Budget: expanding
+Ask: wants a second business unit (Atlas Fleet Services) onboarded in Q1
+
+Ops team is now routing all carrier onboarding through workflows. Maria (COO) mentioned us on their earnings call.
+---
+Account: Brookfield Health Partners
+Champion: left
+Budget: under review
+Competitor: TaskForge
+
+Lauren's manager (our champion, VP Ops) left in August. New VP is reviewing all tooling. Two P1 outages in September around SSO login.
+---
+Account: Delta Ridge Credit Union
+Champion: stable
+Budget: approved
+Ask: SSO and audit exports for examiners
+
+Rita (CFO) wants SSO before the next regulatory exam. Growth plan does not include SSO.
+---
+Account: Granite State Insurance
+Champion: stable
+Budget: frozen
+Competitor: Procline
+
+Hiring freeze; finance asked for 20% cost reduction on all vendors. Claims team still uses it daily but marketing team stopped.
+---
+Account: Ironwood Labs
+Champion: stable
+Budget: expanding
+Ask: API rate limits; wants engineering team onboarded (~60 more users)
+
+Hit Growth plan API limits twice last month.
+---
+Account: Juniper Senior Living
+Champion: unknown
+
+Original admin left. No logins from leadership in 60 days.
+---
+Account: Cedar & Pine Outfitters
+Champion: stable
+Budget: flat
+
+Seasonal business; usage spikes in Nov-Dec.

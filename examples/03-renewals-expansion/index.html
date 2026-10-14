@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Renewal &amp; Expansion Desk — Cobalt Ops</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--mut:#6b6a66;--line:#e4e1da;--acc:#2f5d50;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#151614;--fg:#ecebe6;--mut:#a3a29c;--line:#2e2f2b;--acc:#7fb8a6;--card:#1d1e1b}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:32px 16px} h1{margin:0 0 4px;font-size:26px}
+p.sub{color:var(--mut);margin:0 0 24px} a{color:var(--acc)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:24px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.tile b{display:block;font-size:24px} .tile span{color:var(--mut);font-size:13px}
+.cols{display:grid;grid-template-columns:1fr 3fr;gap:24px} @media(max-width:760px){.cols{grid-template-columns:1fr}}
+ul{list-style:none;padding:0;margin:0} li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)}
+li span{color:var(--mut)} h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{cursor:pointer;color:var(--mut);font-weight:600} td[data-v]{font-variant-numeric:tabular-nums}
+</style></head><body><main>
+<h1>Renewal &amp; Expansion Desk — Cobalt Ops</h1>
+<p class="sub">CRM accounts, product usage, support history and CSM notes for a fictional SaaS customer base, combined into health, risk and expansion scores, renewal quotes sized to real usage, and a play for every account renewing in the next two quarters. · as of 2026-10-14</p>
+<div class="tiles"><div class='tile'><b>37</b><span>Records in</span></div><div class='tile'><b>10</b><span>Accounts after dedupe</span></div><div class='tile'><b>0</b><span>Data issues flagged</span></div><div class='tile'><b>$1,044,234</b><span>Quoted renewal value</span></div><div class='tile'><b>$214,188</b><span>Expansion quoted</span></div><div class='tile'><b>−$217,014</b><span>Contraction quoted</span></div></div>
+<div class="cols"><section><h2>Plays</h2><ul><li><a href='plays/churn-rescue.md'>Churn rescue</a> <span>3</span></li><li><a href='plays/expansion.md'>Expansion</a> <span>3</span></li><li><a href='plays/right-size-renewal.md'>Right-size renewal</a> <span>1</span></li><li><a href='plays/standard-renewal.md'>Standard renewal</a> <span>3</span></li></ul>
+<h2>Priority bands</h2><ul><li>At risk <span>4</span></li><li>Stable <span>1</span></li><li>Strong <span>5</span></li></ul>
+<h2>Files</h2><ul><li><a href="crm_import.csv">crm_import.csv</a></li>
+<li><a href="data_quality.md">data_quality.md</a></li><li><a href="results.json">results.json</a></li></ul></section>
+<section><h2>Accounts</h2><div class="wrap"><table id="t"><thead><tr><th>Account</th><th>Score</th><th>Band</th>
+<th>Churn risk</th><th>Play</th><th>Package</th><th>Value</th><th>Flags</th></tr></thead><tbody><tr><td><a href='accounts/ACCT-001-atlas-cold-chain-inc.md'>Atlas Cold Chain Inc.</a></td><td data-v='115'>115</td><td>Strong</td><td>Low</td><td>Expansion</td><td>Enterprise renewal</td><td data-v='269892.0'>$269,892</td><td data-v='0'></td></tr><tr><td><a href='accounts/ACCT-009-ironwood-labs.md'>Ironwood Labs</a></td><td data-v='115'>115</td><td>Strong</td><td>Low</td><td>Expansion</td><td>Enterprise renewal</td><td data-v='122472.0'>$122,472</td><td data-v='0'></td></tr><tr><td><a href='accounts/ACCT-004-delta-ridge-credit-union.md'>Delta Ridge Credit Union</a></td><td data-v='105'>105</td><td>Strong</td><td>Low</td><td>Expansion</td><td>Enterprise renewal</td><td data-v='104652.0'>$104,652</td><td data-v='1'>1</td></tr><tr><td><a href='accounts/ACCT-005-evergreen-fabrication.md'>Evergreen Fabrication</a></td><td data-v='60'>60</td><td>Strong</td><td>Low</td><td>Standard renewal</td><td>Growth renewal</td><td data-v='40320.0'>$40,320</td><td data-v='0'></td></tr><tr><td><a href='accounts/ACCT-008-horizon-learning-co.md'>Horizon Learning Co.</a></td><td data-v='60'>60</td><td>Strong</td><td>Low</td><td>Standard renewal</td><td>Growth renewal</td><td data-v='20400.0'>$20,400</td><td data-v='0'></td></tr><tr><td><a href='accounts/ACCT-006-falcon-freight-systems.md'>Falcon Freight Systems</a></td><td data-v='45'>45</td><td>Stable</td><td>Low</td><td>Standard renewal</td><td>Enterprise renewal</td><td data-v='161352.0'>$161,352</td><td data-v='0'></td></tr><tr><td><a href='accounts/ACCT-003-cedar-pine-outfitters.md'>Cedar &amp; Pine Outfitters</a></td><td data-v='-30'>-30</td><td>At risk</td><td>Medium</td><td>Right-size renewal</td><td>Growth renewal</td><td data-v='12996.0'>$12,996</td><td data-v='1'>1</td></tr><tr><td><a href='accounts/ACCT-010-juniper-senior-living.md'>Juniper Senior Living</a></td><td data-v='-80'>-80</td><td>At risk</td><td>High</td><td>Churn rescue</td><td>Growth renewal</td><td data-v='23142.0'>$23,142</td><td data-v='2'>2</td></tr><tr><td><a href='accounts/ACCT-007-granite-state-insurance.md'>Granite State Insurance</a></td><td data-v='-120'>-120</td><td>At risk</td><td>High</td><td>Churn rescue</td><td>Enterprise renewal</td><td data-v='112752.0'>$112,752</td><td data-v='3'>3</td></tr><tr><td><a href='accounts/ACCT-002-brookfield-health-partners.md'>Brookfield Health Partners</a></td><td data-v='-145'>-145</td><td>At risk</td><td>High</td><td>Churn rescue</td><td>Enterprise renewal</td><td data-v='176256.0'>$176,256</td><td data-v='3'>3</td></tr></tbody></table></div></section></div>
+</main><script>
+document.querySelectorAll('#t th').forEach((th,i)=>th.onclick=()=>{const tb=document.querySelector('#t tbody');
+const rs=[...tb.rows];const asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+rs.sort((a,b)=>{const x=a.cells[i],y=b.cells[i];const va=x.dataset.v??x.innerText,vb=y.dataset.v??y.innerText;
+const n=parseFloat(va)-parseFloat(vb);return (isNaN(n)?va.localeCompare(vb):n)*(asc?1:-1)});rs.forEach(r=>tb.appendChild(r))});
+</script></body></html>

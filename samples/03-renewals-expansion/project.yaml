@@ -1,0 +1,116 @@
+name: "Renewal & Expansion Desk — Cobalt Ops"
+description: >-
+  CRM accounts, product usage, support history and CSM notes for a fictional SaaS
+  customer base, combined into health, risk and expansion scores, renewal quotes
+  sized to real usage, and a play for every account renewing in the next two quarters.
+as_of: 2026-10-14
+id_prefix: ACCT
+
+sources:
+  - path: data/crm_accounts.csv
+    format: csv
+    label: CRM
+    map:
+      Account Name: company
+      Plan: plan
+      Licensed Seats: seats
+      ARR: arr
+      Renewal Date: renewal_date
+      CSM: csm
+      Industry: industry
+      Exec Sponsor: exec_sponsor
+      Primary Contact: contact_name
+      Contact Email: email
+  - path: data/product_usage.json
+    format: json
+    label: Product analytics
+    map:
+      account: company
+      active_users_30d: active_users
+      usage_trend_90d: usage_trend
+      features: features_used
+      live_workflows: workflows
+      nps_score: nps
+  - path: data/support_summary.csv
+    format: csv
+    label: Support desk
+    map:
+      Customer: company
+      Open Tickets: open_tickets
+      P1s (90d): p1_tickets
+      CSAT (90d): csat
+      Escalated?: escalated
+  - path: data/csm_notes.txt
+    format: text
+    label: CSM notes
+    map:
+      account: company
+      champion: champion_status
+      budget: budget_signal
+      competitor: competitor_mention
+      ask: customer_ask
+
+schema:
+  company: str
+  contact_name: str
+  email: email
+  plan: lower
+  seats: number
+  arr: money
+  renewal_date: date
+  csm: str
+  industry: lower
+  exec_sponsor: str
+  active_users: number
+  usage_trend: lower
+  features_used: list
+  workflows: number
+  nps: number
+  open_tickets: number
+  p1_tickets: number
+  csat: number
+  escalated: bool
+  champion_status: lower
+  budget_signal: lower
+  competitor_mention: str
+  customer_ask: str
+  notes: str
+
+dedupe_on: [company]
+required: [arr, renewal_date, seats]
+
+title_field: company
+brief_fields:
+  contact_name: Primary contact
+  exec_sponsor: Exec sponsor
+  csm: CSM
+  plan: Current plan
+  arr: Current ARR
+  renewal_date: Renewal date
+  days_to_renewal: Days to renewal
+  seats: Licensed seats
+  active_users: Active users (30d)
+  seat_utilization: Seat utilization
+  usage_trend: Usage trend (90d)
+  workflows: Live workflows
+  features_used: Features used
+  nps: NPS
+  csat: CSAT (90d)
+  p1_tickets: P1 tickets (90d)
+  champion_status: Champion
+  budget_signal: Budget signal
+  customer_ask: Customer ask
+  risk_band: Churn risk
+  quote_seats: Quoted seats
+
+crm_fields: [company, csm, plan, arr, renewal_date, days_to_renewal, seats, active_users, seat_utilization, risk_band, quote_seats]
+baseline_value_field: arr
+field_formats:
+  seat_utilization: pct
+  arr: money
+  plan: title
+  industry: title
+  champion_status: title
+  budget_signal: title
+  usage_trend: title
+dashboard_column: {field: risk_band, label: Churn risk}

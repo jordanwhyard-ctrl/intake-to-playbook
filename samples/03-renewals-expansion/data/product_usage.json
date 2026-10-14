@@ -1,0 +1,12 @@
+[
+  {"account": "Atlas Cold Chain", "active_users_30d": 452, "usage_trend_90d": "up", "features": "approvals; integrations; reporting; audit trail; sandbox", "live_workflows": 64, "nps_score": 9},
+  {"account": "Brookfield Health Partners", "active_users_30d": 288, "usage_trend_90d": "down", "features": "approvals; audit trail", "live_workflows": 11, "nps_score": 4},
+  {"account": "Cedar & Pine Outfitters", "active_users_30d": 22, "usage_trend_90d": "flat", "features": "templates; approvals", "live_workflows": 5, "nps_score": 7},
+  {"account": "Delta Ridge Credit Union", "active_users_30d": 131, "usage_trend_90d": "up", "features": "approvals; audit trail; reporting; integrations", "live_workflows": 27, "nps_score": 8},
+  {"account": "Evergreen Fabrication", "active_users_30d": 74, "usage_trend_90d": "up", "features": "approvals; integrations; reporting", "live_workflows": 19, "nps_score": 10},
+  {"account": "Falcon Freight Systems", "active_users_30d": 241, "usage_trend_90d": "flat", "features": "approvals; integrations; reporting; sso", "live_workflows": 38, "nps_score": 8},
+  {"account": "Granite State Insurance", "active_users_30d": 168, "usage_trend_90d": "down", "features": "approvals; reporting", "live_workflows": 14, "nps_score": 6},
+  {"account": "Horizon Learning", "active_users_30d": 41, "usage_trend_90d": "up", "features": "templates; approvals; reporting", "live_workflows": 9, "nps_score": 9},
+  {"account": "Ironwood Labs", "active_users_30d": 176, "usage_trend_90d": "up", "features": "approvals; integrations; api; reporting", "live_workflows": 41, "nps_score": 7},
+  {"account": "Juniper Senior Living", "active_users_30d": 29, "usage_trend_90d": "down", "features": "templates", "live_workflows": 3, "nps_score": null}
+]

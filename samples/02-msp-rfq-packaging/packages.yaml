@@ -1,0 +1,61 @@
+currency: USD
+term_months: 36
+
+packages:
+  essentials:
+    name: Essentials
+    description: Business-hours helpdesk, patching, antivirus and backup monitoring.
+    per_unit: {field: endpoints, price: 45, min: 10, label: devices}
+    includes: [Helpdesk 8–6 weekdays, Patch management, Managed antivirus, Backup monitoring]
+    one_time:
+      - {name: Onboarding, amount: 1500}
+  professional:
+    name: Professional
+    description: 24x7 monitoring and helpdesk, EDR, MFA rollout, security awareness training and a quarterly vCIO review.
+    per_unit: {field: endpoints, price: 85, min: 15, label: devices}
+    includes: [24x7 helpdesk, EDR, MFA rollout, Phishing training, Quarterly vCIO review]
+    one_time:
+      - {name: Onboarding + security baseline, amount: 3500}
+  secure-plus:
+    name: Secure Plus
+    description: Everything in Professional plus a 24x7 SOC/SIEM, compliance reporting and a fractional vCISO.
+    base: 1000
+    per_unit: {field: endpoints, price: 120, min: 50, label: devices}
+    includes: [Everything in Professional, 24x7 SOC + SIEM, Monthly compliance reporting, Fractional vCISO, Annual pen test]
+    one_time:
+      - {name: Onboarding + gap assessment, amount: 7500}
+  co-managed:
+    name: Co-Managed
+    description: Our tooling, SOC and after-hours coverage alongside your internal IT team.
+    base: 2000
+    per_unit: {field: endpoints, price: 40, min: 100, label: devices}
+    includes: [RMM + EDR tooling, 24x7 SOC, After-hours escalation, Project bench hours]
+    one_time:
+      - {name: Tooling deployment, amount: 5000}
+
+addons:
+  hipaa-pack:
+    name: HIPAA Compliance Pack
+    price: 450
+  pci-pack:
+    name: PCI Pack (segmentation + scans)
+    price: 400
+  cmmc-pack:
+    name: CMMC Program (SSP, POA&M, evidence)
+    price: 3500
+  soc2-evidence:
+    name: SOC 2 Evidence Collection
+    price: 900
+  server-mgmt:
+    name: Server management
+    per_unit: {field: servers, price: 175, min: 1}
+  multi-site-network:
+    name: Managed network (per site)
+    per_unit: {field: locations, price: 150, min: 1}
+  immutable-backup:
+    name: Immutable cloud backup
+    per_unit: {field: endpoints, price: 8, min: 20}
+
+discounts:
+  - {min_annual: 250000, pct: 0.05}
+  - {min_annual: 500000, pct: 0.08}

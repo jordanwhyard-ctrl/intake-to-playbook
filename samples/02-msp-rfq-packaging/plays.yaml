@@ -1,0 +1,123 @@
+plays:
+  rapid-proposal:
+    name: Rapid proposal (48-hour)
+    objective: Meet a hard deadline with a scoped proposal and onboarding plan within 48 hours.
+    owner: Account Executive + Onboarding Lead
+    sla: Proposal sent within 2 business days
+    success_metric: Signed agreement before the client's deadline
+    sequence:
+      - {day: 0, channel: Phone, action: "Call {contact_name}; confirm deadline, device count ({endpoints}) and decision process"}
+      - {day: 0, channel: Internal, action: "Reserve onboarding capacity for target start {start_date}"}
+      - {day: 1, channel: Meeting, action: "30-minute scoping call; collect network diagram and admin access list"}
+      - {day: 2, channel: Email, action: "Send proposal, onboarding timeline and agreement for e-signature"}
+      - {day: 4, channel: Phone, action: "Walk through proposal and answer questions"}
+    talk_track:
+      - "You have a deadline, so let's work backwards from it: onboarding takes about three weeks, and we'll start the security baseline in week one."
+      - "Everything the insurer or auditor asked for is mapped to a line in the proposal, so you can forward it as evidence."
+    discovery_questions:
+      - "What exactly does the deadline require? Can you share the letter or questionnaire?"
+      - "Who signs, and is there anyone else who needs to review?"
+      - "Which systems would hurt most if they went down during cutover?"
+    objections:
+      - {objection: "Can you really onboard that fast?", response: "We reserve onboarding capacity the day we scope. Security controls go in first and the full transition follows."}
+    assets: [Proposal template, Onboarding timeline, Insurance controls checklist]
+
+  compliance-led:
+    name: Compliance-led engagement
+    objective: Lead with a paid or credited gap assessment that produces a remediation roadmap, then convert it to a managed program.
+    owner: vCISO + Account Executive
+    sla: Gap assessment proposal within 3 business days
+    success_metric: Gap assessment signed; converts to managed contract within 60 days
+    sequence:
+      - {day: 0, channel: Email, action: "Send {compliance} readiness overview and sample gap report to {contact_name}"}
+      - {day: 2, channel: Meeting, action: "Discovery with vCISO: scope, audit dates, current evidence"}
+      - {day: 5, channel: Email, action: "Gap assessment SOW (fee credited toward first year)"}
+      - {day: 20, channel: Meeting, action: "Present findings and roadmap; introduce managed program proposal"}
+    talk_track:
+      - "Before anyone quotes you a monthly number, you need to know your gap. The assessment gives you a prioritized roadmap you can show the auditor either way."
+      - "If you move forward with us, the assessment fee is credited toward the first year."
+    discovery_questions:
+      - "When is your next audit or assessment, and who performs it?"
+      - "What findings or POA&M items are open today?"
+      - "Where does sensitive data (PHI / CUI / cardholder) live today?"
+    objections:
+      - {objection: "Our current provider says we're already compliant.", response: "Great. Then the assessment will confirm it quickly. Ask them for the evidence you would hand an auditor today."}
+    assets: [Sample gap report, Framework readiness overview, Gap assessment SOW]
+
+  co-managed:
+    name: Co-managed IT
+    objective: Position as an extension of the internal IT team (tooling, SOC and after-hours coverage), not a replacement.
+    owner: Account Executive + Solutions Architect
+    sla: Technical call within 3 business days
+    success_metric: Co-managed agreement with defined responsibility matrix
+    sequence:
+      - {day: 0, channel: Email, action: "Send co-managed responsibility matrix (RACI) to {contact_name}"}
+      - {day: 3, channel: Meeting, action: "Technical session with the internal IT team: tooling and escalation"}
+      - {day: 7, channel: Email, action: "Proposal with RACI and escalation runbook"}
+    talk_track:
+      - "Your team knows the business. We add the 2 a.m. coverage, the SOC and the tooling so they can focus on projects."
+    discovery_questions:
+      - "Which tasks does your team want to keep, and which do they want off their plate?"
+      - "What happens today when an alert fires at night?"
+    objections:
+      - {objection: "IT is worried about being replaced.", response: "The RACI keeps your team in charge of decisions. We report to them."}
+    assets: [Co-managed RACI template, SOC sample report]
+
+  security-assessment:
+    name: Free security assessment
+    objective: Earn the right to propose by showing real findings from a no-cost external and Microsoft 365/Google security assessment.
+    owner: Account Executive + Security Engineer
+    sla: Assessment scheduled within 5 business days
+    success_metric: Findings review held; proposal requested
+    sequence:
+      - {day: 0, channel: Phone, action: "Offer {contact_name} a free security assessment; get admin consent"}
+      - {day: 3, channel: Internal, action: "Run external scan + {cloud} security posture review"}
+      - {day: 7, channel: Meeting, action: "Findings review with {contact_name}; propose remediation as onboarding"}
+    talk_track:
+      - "Let us show you what an attacker sees. It takes us about an hour of your time, and you keep the report either way."
+    discovery_questions:
+      - "When did you last test a restore from backup?"
+      - "Is MFA on for every account, including admins and shared mailboxes?"
+    objections:
+      - {objection: "We're happy with our current provider.", response: "Then the report will confirm it. Most clients use it to hold their provider accountable."}
+    assets: [Assessment consent form, Sample findings report]
+
+  standard-proposal:
+    name: Standard discovery → proposal
+    objective: Run a normal discovery and send a tiered proposal (good / better / best).
+    owner: Account Executive
+    sla: Discovery within 5 business days
+    success_metric: Proposal sent within 10 business days
+    sequence:
+      - {day: 0, channel: Email, action: "Book discovery with {contact_name}"}
+      - {day: 5, channel: Meeting, action: "Discovery: environment, pains, budget"}
+      - {day: 10, channel: Email, action: "Good / better / best proposal"}
+    talk_track:
+      - "We'll show three options so you can see what each level of protection costs."
+    assets: [Tiered proposal template]
+
+  partner-co-sell:
+    name: Partner co-sell
+    objective: Keep the referring partner informed and credited, and use their relationship to accelerate the decision.
+    owner: Partner Manager
+    sla: Partner updated within 1 business day
+    success_metric: Partner joins at least one client meeting
+    sequence:
+      - {day: 0, channel: Email, action: "Thank {referral_partner}; confirm referral fee terms and preferred update cadence"}
+      - {day: 7, channel: Email, action: "Status update to {referral_partner}"}
+    talk_track:
+      - "Thanks for the introduction. We'll keep you posted at every stage."
+    assets: [Partner referral agreement]
+
+  refer-out:
+    name: Refer out (below minimum)
+    objective: Help small requests politely without spending sales time, and protect the relationship for later.
+    owner: Sales coordinator
+    sla: Reply within 1 business day
+    success_metric: Referral accepted; added to annual check-in list
+    sequence:
+      - {day: 0, channel: Email, action: "Reply to {contact_name} with break/fix partner referral and our security checklist"}
+      - {day: 0, channel: CRM, action: "Add to 12-month check-in list"}
+    talk_track:
+      - "Our managed plans start at 20 devices, so here's a trusted partner who's a better fit today, plus a free checklist to keep you safe."
+    assets: [Small-business security checklist, Break/fix partner list]

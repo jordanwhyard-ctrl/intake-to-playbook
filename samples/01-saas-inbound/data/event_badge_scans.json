@@ -1,0 +1,10 @@
+{
+  "event": "OpsSummit 2026 (fictional)",
+  "records": [
+    {"name": "Sofia Lindqvist", "badge_email": "s.lindqvist@vardacapital.com", "org": "Varda Capital Ltd", "job": "Head of Finance Ops", "headcount": "300", "region": "United Kingdom", "vertical": "Finance", "tools": "Procline", "rep_notes": "Contract with Procline ends in Q1. Wants side-by-side comparison. Asked about SOC 2 report."},
+    {"name": "Victor Huang", "badge_email": "victor.huang@crestmontbank.com", "org": "Crestmont Bank", "job": "SVP Shared Services", "headcount": "4,200", "region": "USA", "vertical": "Banking", "tools": "spreadsheets", "rep_notes": "Exec sponsor for ops modernization program. Budget approved for 2027. Wants an architecture review."},
+    {"name": "Nora Feld", "badge_email": "nfeld@alpinegrocers.com", "org": "Alpine Grocers", "job": "Ops Analyst", "headcount": "900", "region": "Canada", "vertical": "Retail", "tools": "Procline", "rep_notes": "Unhappy with Procline pricing increase. Not the decision maker - boss is the COO."},
+    {"name": "Sam Ortiz", "badge_email": "sam@ortizdesign.studio", "org": "Ortiz Design Studio", "job": "Owner", "headcount": "3", "region": "USA", "vertical": "Agency", "tools": "", "rep_notes": "Came for the swag."},
+    {"name": "Aisha Kamara", "badge_email": "aisha.kamara@meridianhealthnet.com", "org": "Meridian Health Network", "job": "COO", "headcount": "8500", "region": "USA", "vertical": "Healthcare", "tools": "TaskForge", "rep_notes": "Needs HIPAA BAA and SSO. Board wants consolidation of 3 workflow tools this fiscal year."}
+  ]
+}

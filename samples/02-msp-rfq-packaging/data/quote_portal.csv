@@ -1,0 +1,9 @@
+Organization,Contact,Email,Phone,Industry,Staff,Devices (laptops/desktops),Servers,Office locations,Compliance requirements,Current IT,Biggest problems,Monthly budget,Ideal start,Email platform
+Lakeshore Family Dental,Dr. Renee Albright,ralbright@lakeshoredental.com,555-0141,Dental,22,26,1,2,HIPPA,Break/fix guy,slow computers; backups; phishing,"$2,500",11/02/2026,Office 365
+Corbin & Hale LLP,Martin Hale,mhale@corbinhale.law,555-0177,Law firm,48,55,2,1,,Another MSP,slow response times; security,$6k,01/05/2027,Microsoft 365
+Ridgeview Precision Machining,Tanya Brooks,tbrooks@ridgeviewprecision.com,555-0102,Aerospace,130,95,6,2,CMMC L2; NIST 800-171,Internal IT (1 person),compliance deadline; audit; turnover,"$14,000",11/15/2026,O365
+Sunfield Accounting Group,Paul Desai,pdesai@sunfieldcpa.com,555-0190,CPA,17,19,0,1,SOC 2,None,tax season downtime; remote access,"$1,800",01/04/2027,Google Workspace
+Harbor Point Animal Hospital,Lena Ortiz,lena@harborpointvet.com,555-0115,Veterinary,35,30,1,1,PCI-DSS,Break/fix guy,network outages; printers,$2200,10/26/2026,Gmail
+Greenway Property Management,Jim Kowalski,jim@greenwaypm.com,,Real estate,9,9,0,1,none,Nephew,everything,$500,ASAP,gmail
+Northgate Charter Academy,Simone Grant,sgrant@northgatecharter.org,555-0168,Education,85,240,3,3,,Internal IT,chromebooks; network; content filtering,"$7,500",07/01/2027,Google Workspace
+Ridgeview Precision Machining,Carl Mendes,cmendes@ridgeviewprecision.com,555-0103,Manufacturing,130,98,6,2,DFARS,Internal IT (1 person),ransomware worry,,11/15/2026,

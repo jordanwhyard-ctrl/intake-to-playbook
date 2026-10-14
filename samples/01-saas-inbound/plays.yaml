@@ -1,0 +1,109 @@
+plays:
+  fast-track-demo:
+    name: Fast-track demo
+    objective: Convert a high-intent inbound lead into a scheduled, tailored demo within one business day.
+    owner: SDR → AE
+    sla: First touch within 1 business hour
+    success_metric: Demo held within 5 business days
+    sequence:
+      - {day: 0, channel: Phone, action: "Call {contact_name}; confirm use case and book the demo"}
+      - {day: 0, channel: Email, action: "Send calendar link + 2-minute video on {industry} approvals"}
+      - {day: 1, channel: LinkedIn, action: "Connect with {contact_name} with a note referencing the demo request"}
+      - {day: 3, channel: Phone, action: "Follow-up call if the demo is not yet booked"}
+    talk_track:
+      - "Thanks for raising your hand, {first_name}. Teams like {company} usually come to us when approvals live in inboxes and nobody can see where a request is stuck."
+      - "In 30 minutes I'll show the exact workflow you asked about and what rollout looks like for {est_seats} seats."
+    discovery_questions:
+      - "What triggered the search right now at {company}?"
+      - "Who else needs to see this before a decision?"
+      - "How are approvals handled today, and what breaks most often?"
+    objections:
+      - {objection: "We're just exploring.", response: "That's fine. Most teams use the demo to set requirements. I'll send the checklist we use so it's useful either way."}
+    assets: [2-minute product video, Requirements checklist, ROI calculator]
+
+  enterprise-abm:
+    name: Enterprise account-based play
+    objective: Multi-thread into a strategic account, align to an executive initiative, and run a structured evaluation.
+    owner: Enterprise AE + Solutions Engineer
+    sla: Account plan within 2 business days
+    success_metric: Executive sponsor meeting and mutual action plan signed
+    sequence:
+      - {day: 0, channel: Research, action: "Build account map for {company}: sponsor, champion, IT, security, procurement"}
+      - {day: 1, channel: Email, action: "Personalized exec note to {contact_name} tied to their initiative"}
+      - {day: 2, channel: Phone, action: "Discovery call with {contact_name}; propose a mutual action plan"}
+      - {day: 5, channel: Meeting, action: "Architecture and security review with IT"}
+      - {day: 10, channel: Meeting, action: "Executive sponsor alignment and business-case review"}
+    talk_track:
+      - "{first_name}, organizations the size of {company} ({employees} people) typically run three or more workflow tools. We help consolidate them under one governed platform."
+      - "I'd suggest a short evaluation plan with dates on both sides, so your team isn't carrying the process alone."
+    discovery_questions:
+      - "Which initiative does this roll up to, and who owns its outcome?"
+      - "What security and compliance reviews will we need to pass?"
+      - "What does procurement need to see, and what is its timeline?"
+    objections:
+      - {objection: "We need to involve IT and security.", response: "Agreed. We'll bring our SE and the security package (SOC 2, pen-test summary, SSO/SCIM docs) to the first IT session."}
+      - {objection: "Procurement takes six months.", response: "Let's start the vendor onboarding forms in parallel with the evaluation so they don't run back to back."}
+    assets: [Security package, Consolidation business-case template, Mutual action plan template, Peer reference in same industry]
+
+  competitive-switch:
+    name: Competitive switch
+    objective: Win a displacement deal by de-risking migration and timing the offer to the competitor's renewal.
+    owner: AE
+    sla: First touch within 1 business day
+    success_metric: Side-by-side evaluation booked before the competitor's renewal date
+    sequence:
+      - {day: 0, channel: Email, action: "Send {current_tool} comparison guide and migration overview to {contact_name}"}
+      - {day: 1, channel: Phone, action: "Call to map current {current_tool} workflows and renewal date"}
+      - {day: 3, channel: Meeting, action: "Side-by-side demo using one of their real workflows"}
+      - {day: 7, channel: Email, action: "Migration plan + switch incentive valid through their renewal date"}
+    talk_track:
+      - "Most teams leaving {current_tool} tell us the issue isn't features but what it costs to change anything. We'll migrate your top workflows for you."
+      - "If we time this to your renewal, you avoid paying twice."
+    discovery_questions:
+      - "When does your {current_tool} contract renew, and is there a notice period?"
+      - "Which three workflows would you migrate first?"
+      - "What would make switching not worth it?"
+    objections:
+      - {objection: "Migration is too risky.", response: "We run both systems in parallel for 30 days and migrate the first five workflows ourselves at no cost."}
+      - {objection: "Their pricing is lower.", response: "Let's compare total cost, including admin time and add-ons. The ROI calculator usually closes that gap."}
+    assets: [Competitor comparison guide, Migration plan template, Switch incentive terms]
+
+  partner-referral:
+    name: Partner referral
+    objective: Route consultants and implementers to the partner program rather than the direct sales funnel.
+    owner: Partner Manager
+    sla: Response within 2 business days
+    success_metric: Partner application submitted
+    sequence:
+      - {day: 0, channel: Email, action: "Send partner program overview and application link"}
+      - {day: 5, channel: Phone, action: "Intro call to qualify their client base"}
+    talk_track:
+      - "Thanks for reaching out. Our partner program offers implementation partners margin, a sandbox and co-selling support."
+    assets: [Partner program one-pager]
+
+  self-serve:
+    name: Self-serve trial
+    objective: Send small teams and unverified contacts to the free trial with automated onboarding, with no rep time spent.
+    owner: Marketing automation
+    sla: Automated within 1 hour
+    success_metric: Trial activated
+    sequence:
+      - {day: 0, channel: Email, action: "Automated: free trial invite + templates gallery"}
+      - {day: 7, channel: Email, action: "Automated: 'three workflows to build first'"}
+    talk_track:
+      - "Start free with the Starter templates; upgrade when you need more seats or integrations."
+    assets: [Templates gallery, Getting-started guide]
+
+  nurture:
+    name: Nurture
+    objective: Keep in-market but not-yet-ready leads warm until fit or intent improves.
+    owner: Marketing
+    sla: Enrolled within 1 business day
+    success_metric: Re-scores into fast-track or ABM within 90 days
+    sequence:
+      - {day: 0, channel: Email, action: "Enroll {contact_name} in the {industry} nurture track"}
+      - {day: 14, channel: Email, action: "Send relevant case study"}
+      - {day: 30, channel: Email, action: "Webinar invite"}
+    talk_track:
+      - "Useful content only: case studies and templates matched to {industry}."
+    assets: [Industry case study, Webinar series]

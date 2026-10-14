@@ -1,0 +1,161 @@
+scores: [fit, intent]
+
+computed:
+  est_seats_from_size: {scale: {field: employees, factor: 0.12, min: 5, max: 1500, round_to: 5}}
+  est_seats: {coalesce: [seats_requested, est_seats_from_size]}
+
+score_bands:
+  total:
+    - {min: 90, label: "A — act today"}
+    - {min: 60, label: "B — this week"}
+    - {min: 30, label: "C — nurture"}
+    - {min: -999, label: "D — no action"}
+
+stages:
+  - name: Segment
+    first_match: true
+    rules:
+      - id: seg-enterprise
+        when: {field: employees, gte: 1000}
+        then: {set: {segment: Enterprise}, score: {fit: 25}}
+        reason: "{employees} employees → Enterprise segment"
+      - id: seg-midmarket
+        when: {field: employees, gte: 100}
+        then: {set: {segment: Mid-Market}, score: {fit: 20}}
+        reason: "{employees} employees → Mid-Market segment"
+      - id: seg-smb
+        when: {field: employees, gte: 10}
+        then: {set: {segment: SMB}, score: {fit: 8}}
+        reason: "{employees} employees → SMB segment"
+      - id: seg-micro
+        when: {field: employees, lt: 10}
+        then: {set: {segment: Micro}, score: {fit: 0}}
+        reason: "Under 10 employees → self-serve"
+    else:
+      then: {set: {segment: Unknown}, flag: "Company size unknown — enrich before outreach"}
+      reason: "No company size provided"
+
+  - name: Fit
+    rules:
+      - id: fit-industry
+        when: {field: industry, in: [logistics, healthcare, financial services, manufacturing]}
+        then: {score: {fit: 15}, tag: core-vertical}
+        reason: "{industry} is a core vertical with reference customers"
+      - id: fit-region
+        when: {field: country, in: [us, ca, uk]}
+        then: {score: {fit: 5}}
+        reason: "Sales coverage in {country}"
+      - id: fit-region-partner
+        when: {field: country, in: [de, br, in]}
+        then: {tag: partner-region}
+        reason: "{country} is covered by resellers"
+      - id: fit-senior-buyer
+        when: {field: title, matches: "\\b(chief|c[oe]o|cfo|cto|vp|svp|vice president|head of|director|founder|owner)\\b"}
+        then: {score: {fit: 15}, tag: decision-maker}
+        reason: "{title} is likely a decision-maker"
+      - id: fit-free-email
+        when: {field: free_email, is_true: true}
+        then: {score: {fit: -20}, flag: "Personal email address — verify company"}
+        reason: "Personal email domain"
+      - id: fit-not-buyer
+        when: {field: title, matches: "student|analyst|coordinator|intern"}
+        then: {score: {fit: -10}, flag: "Contact is likely not the buyer — find the economic decision-maker"}
+        reason: "{title} is an influencer, not a buyer"
+
+  - name: Intent
+    rules:
+      - id: int-demo
+        when: {field: demo_requested, is_true: true}
+        then: {score: {intent: 30}, tag: demo-request}
+        reason: "Requested a demo"
+      - id: int-pricing
+        when: {field: pricing_views, gte: 3}
+        then: {score: {intent: 15}}
+        reason: "Viewed pricing {pricing_views} times"
+      - id: int-timeline-now
+        when: {field: timeline, matches: "asap|this quarter|30 days|this month|immediately|q4"}
+        then: {score: {intent: 25}, tag: active-buying-cycle}
+        reason: "Buying timeline: {timeline}"
+      - id: int-timeline-next
+        when: {field: timeline, matches: "q1|q2|next quarter|2027"}
+        then: {score: {intent: 10}}
+        reason: "Buying timeline: {timeline}"
+      - id: int-budget
+        when: {field: budget, gt: 0}
+        then: {score: {intent: 10}}
+        reason: "Stated budget of ${budget}"
+      - id: int-budget-notes
+        when: {field: notes, matches: "budget approved|board wants|this fiscal year"}
+        then: {score: {intent: 20}, tag: funded-initiative}
+        reason: "Notes mention a funded initiative"
+      - id: int-competitor
+        when: {field: current_tool, in: [procline, taskforge]}
+        then: {score: {intent: 15}, tag: displacement}
+        reason: "Currently using competitor {current_tool}"
+      - id: int-renewal-window
+        when: {field: notes, matches: "renewal|contract .* ends|pricing increase"}
+        then: {score: {intent: 10}, tag: switch-window}
+        reason: "Competitor contract or pricing change creates a switch window"
+      - id: int-browsing
+        when: {field: timeline, matches: "browsing|just looking|no timeline"}
+        then: {score: {intent: -10}}
+        reason: "Self-described as browsing"
+      - id: int-swag
+        when: {field: notes, matches: "swag"}
+        then: {score: {intent: -15}}
+        reason: "Rep notes suggest no buying intent"
+
+  - name: Package
+    rules:
+      - id: pkg-enterprise
+        when: {any: [{field: segment, eq: Enterprise}, {field: interest, contains: sso}]}
+        then: {package: enterprise}
+        reason: "Enterprise scale or SSO requirement → Enterprise plan"
+      - id: pkg-growth
+        when: {all: [{field: segment, in: [Mid-Market, SMB]}, {field: package, missing: true}]}
+        then: {package: growth}
+        reason: "{segment} → Growth plan"
+      - id: pkg-starter
+        when: {all: [{field: segment, eq: Micro}, {field: package, missing: true}]}
+        then: {package: starter}
+        reason: "Small team → Starter plan"
+      - id: addon-compliance
+        when: {all: [{field: package, exists: true},
+                     {any: [{field: industry, in: [healthcare, financial services]}, {field: notes, matches: "hipaa|soc 2|baa"}]}]}
+        then: {addons: [compliance-pack]}
+        reason: "Regulated industry → Compliance Pack (audit retention, BAA, SOC 2 reports)"
+      - id: addon-integrations
+        when: {all: [{field: package, in: [growth, enterprise]}, {field: interest, contains: integrations}]}
+        then: {addons: [integration-hub]}
+        reason: "Asked about integrations → Integration Hub"
+      - id: addon-migration
+        when: {all: [{field: package, exists: true}, {field: tags, contains: displacement}]}
+        then: {addons: [migration-service]}
+        reason: "Switching from {current_tool} → Migration Service"
+
+  - name: Route
+    first_match: true
+    rules:
+      - id: route-partner
+        when: {field: title, matches: "consultant|partner|reseller|implement"}
+        then: {play: partner-referral}
+        reason: "Contact is a potential channel partner"
+      - id: route-disqualify
+        when: {any: [{field: company, missing: true}, {field: segment, eq: Micro}]}
+        then: {play: self-serve}
+        reason: "No company or under 10 people → self-serve trial"
+      - id: route-abm
+        when: {all: [{field: segment, eq: Enterprise}, {field: score.fit, gte: 45}]}
+        then: {play: enterprise-abm}
+        reason: "Enterprise account with strong fit → account-based play"
+      - id: route-displace
+        when: {field: tags, contains: displacement}
+        then: {play: competitive-switch}
+        reason: "Competitor in place → competitive switch play"
+      - id: route-fast-track
+        when: {field: score.intent, gte: 30}
+        then: {play: fast-track-demo}
+        reason: "High intent → fast-track demo"
+    else:
+      then: {play: nurture}
+      reason: "Not sales-ready → nurture"

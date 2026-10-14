@@ -1,0 +1,43 @@
+From: Jamal Wright <jwright@keystonelogistics.com>
+Name: Jamal Wright
+Company: Keystone Logistics
+Role: Director of Operations
+Team size: 2,400
+Country: USA
+Industry: Logistics
+Currently using: Procline
+Timeline: this quarter
+Budget: $90k
+Seats: 200
+
+Hi team - we're evaluating replacements for Procline before our renewal in December.
+Can someone send pricing for ~200 seats and set up a demo next week?
+---
+From: Mei Tanaka <mei@fernleafcoffee.com>
+Name: Mei Tanaka
+Company: Fernleaf Coffee
+Role: Office Manager
+Employees: 40
+Country: US
+Timeline: just browsing
+
+Do you have a nonprofit or small business discount? Mostly need simple approval forms.
+---
+From: Oliver Grant <o.grant@stonebridgeinsure.com>
+Name: Oliver Grant
+Company: Stonebridge Insurance
+Role: VP, Claims Operations
+Team size: 1,800
+Country: Canada
+Industry: Financial services
+Timeline: Q1 2027
+Budget: TBD
+
+Our claims team wants to automate intake and routing. Interested in audit trail and integrations with our core system.
+---
+From: Kai Brennan <kai.brennan@outlook.com>
+Name: Kai
+Role: Consultant
+Timeline: ASAP
+
+Looking for a partner program. I implement workflow tools for mid-size clients.
