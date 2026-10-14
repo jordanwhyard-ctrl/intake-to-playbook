@@ -1,0 +1,70 @@
+Customer: Pemberton & Rowe
+Product: Microsoft 365 E3
+Users: 190
+Annual cost: $82,080
+Renewal: 07/31/2027
+Owner: Director of Operations
+Satisfaction: 4
+---
+Customer: Pemberton & Rowe
+Product: Dropbox Advanced
+Users: 190
+Annual cost: $34,200
+Renewal: 12/31/2026
+Auto renew: yes
+Notice: 30
+Owner: Records
+Satisfaction: 3
+
+Partners like Dropbox for client sharing. IT would rather move matters into SharePoint since they already pay for it.
+---
+Customer: Pemberton & Rowe
+Product: DocuSign Business Pro
+Users: 40
+Annual cost: $19,200
+Renewal: 11/20/2026
+Auto renew: yes
+Notice: 30
+Owner: Office Manager
+Satisfaction: 4
+Considering: Adobe Acrobat Sign
+
+Someone noticed Acrobat Pro includes e-signature. Wants to know if it covers engagement letters.
+---
+Customer: Pemberton & Rowe
+Product: Acrobat Pro DC
+Users: 190
+Annual cost: $45,600
+Renewal: 04/30/2027
+Owner: IT
+Satisfaction: 4
+---
+Customer: Pemberton & Rowe
+Product: Zoom One
+Users: 60
+Annual cost: $13,200
+Renewal: 11/05/2026
+Owner: IT
+Satisfaction: 3
+
+Most client calls already happen in Teams.
+---
+Customer: Pemberton & Rowe
+Product: HubSpot CRM
+Users: 15
+Annual cost: $27,000
+Renewal: 01/15/2027
+Owner: Business Development
+Satisfaction: 5
+
+BD team loves it. Wants marketing automation next year.
+---
+Customer: Pemberton & Rowe
+Product: Clio Manage
+Users: 120
+Annual cost: $64,800
+Renewal: 09/30/2027
+Owner: Practice Management
+Satisfaction: 4
+
+Core practice management system. Not going anywhere.

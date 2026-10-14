@@ -1,0 +1,14 @@
+{
+  "exported_by": "Halcyon Health Group procurement system",
+  "records": [
+    {"buyer": "Halcyon Health Group", "supplier": "Microsoft", "item_description": "Microsoft 365 E5 (EA)", "quantity": 2200, "po_amount": "$1,504,800", "period_end": "2027-06-30", "auto_renew": false, "notice_days": null},
+    {"buyer": "Halcyon Health Group", "supplier": "Okta", "item_description": "Okta Workforce Identity - SSO + MFA", "quantity": 2400, "po_amount": "$172,800", "period_end": "2027-01-31", "auto_renew": true, "notice_days": 60},
+    {"buyer": "Halcyon Health Group", "supplier": "CrowdStrike", "item_description": "CrowdStrike Falcon Enterprise", "quantity": 2600, "po_amount": "$208,000", "period_end": "2026-12-31", "auto_renew": false, "notice_days": null},
+    {"buyer": "Halcyon Health Group", "supplier": "ServiceNow", "item_description": "ServiceNow ITSM Pro - fulfiller licenses", "quantity": 80, "po_amount": "$480,000", "period_end": "2027-09-30", "auto_renew": false, "notice_days": 90},
+    {"buyer": "Halcyon Health Group", "supplier": "Zendesk", "item_description": "Zendesk Suite Professional - agents", "quantity": 150, "po_amount": "$207,000", "period_end": "2027-03-31", "auto_renew": true, "notice_days": 30},
+    {"buyer": "Halcyon Health Group", "supplier": "Salesforce", "item_description": "Tableau Cloud Creator + Viewer", "quantity": 300, "po_amount": "$216,000", "period_end": "2027-02-28", "auto_renew": false, "notice_days": null},
+    {"buyer": "Halcyon Health Group", "supplier": "Cisco", "item_description": "Webex Suite (Meetings + Calling)", "quantity": 1000, "po_amount": "$96,000", "period_end": "2026-11-15", "auto_renew": true, "notice_days": 60},
+    {"buyer": "Halcyon Health Group", "supplier": "Workday", "item_description": "Workday HCM + Payroll", "quantity": 2200, "po_amount": "$390,000", "period_end": "2028-01-31", "auto_renew": false, "notice_days": 180},
+    {"buyer": "Halcyon Health Group", "supplier": "Druva", "item_description": "Druva inSync endpoint backup", "quantity": 2200, "po_amount": "$48,000", "period_end": "2026-12-20", "auto_renew": false, "notice_days": null}
+  ]
+}

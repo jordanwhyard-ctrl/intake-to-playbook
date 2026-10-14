@@ -1,0 +1,297 @@
+# Consultant's software catalog — the reference data every inventory line is matched against.
+#
+#   product              canonical name (inventory lines are renamed to this)
+#   aliases              how customers actually write it in workbooks, POs and interviews
+#   vendor / category    used for overlap detection and reporting
+#   alternatives         competitive ISVs the consultant would put in front of the customer
+#   partner_alternatives the subset of alternatives the consultant resells or implements
+#   resale_margin        set when the consultant can resell THIS product (share of annual cost)
+#   covered_by           the capability that replaces this product inside a suite...
+#   covered_by_suites    ...when the customer already owns one of these suites
+#
+# Margins and alternatives are illustrative assumptions for the sample. Replace them with
+# your own partner agreements and positioning. Product names belong to their owners.
+
+entries:
+  # ---------------- CRM
+  - product: Salesforce Sales Cloud
+    aliases: [salesforce, sfdc, sales cloud, salesforce enterprise, salesforce crm]
+    vendor: Salesforce
+    category: CRM
+    alternatives: [HubSpot Sales Hub, Microsoft Dynamics 365 Sales, Zoho CRM]
+    partner_alternatives: [HubSpot Sales Hub, Microsoft Dynamics 365 Sales]
+  - product: HubSpot Sales Hub
+    aliases: [hubspot, hubspot crm, hubspot sales, hubspot pro]
+    vendor: HubSpot
+    category: CRM
+    alternatives: [Salesforce Sales Cloud, Microsoft Dynamics 365 Sales, Pipedrive]
+    partner_alternatives: [Microsoft Dynamics 365 Sales]
+    resale_margin: 0.15
+  - product: Microsoft Dynamics 365 Sales
+    aliases: [dynamics, dynamics 365, d365 sales, dynamics crm]
+    vendor: Microsoft
+    category: CRM
+    alternatives: [Salesforce Sales Cloud, HubSpot Sales Hub]
+    partner_alternatives: [HubSpot Sales Hub]
+    resale_margin: 0.10
+  - product: Pipedrive
+    aliases: [pipedrive crm]
+    vendor: Pipedrive
+    category: CRM
+    alternatives: [HubSpot Sales Hub, Zoho CRM]
+    partner_alternatives: [HubSpot Sales Hub]
+
+  # ---------------- Productivity suites
+  - product: Microsoft 365 E3
+    aliases: [m365 e3, office 365 e3, o365 e3, microsoft 365, office 365, m365, o365]
+    vendor: Microsoft
+    category: Productivity suite
+    alternatives: [Google Workspace Business Plus]
+    partner_alternatives: []
+    resale_margin: 0.08
+  - product: Microsoft 365 E5
+    aliases: [m365 e5, office 365 e5, o365 e5]
+    vendor: Microsoft
+    category: Productivity suite
+    alternatives: [Microsoft 365 E3, Google Workspace Enterprise]
+    partner_alternatives: [Microsoft 365 E3]
+    resale_margin: 0.08
+  - product: Google Workspace Business Plus
+    aliases: [google workspace, g suite, gsuite, gmail business]
+    vendor: Google
+    category: Productivity suite
+    alternatives: [Microsoft 365 E3]
+    partner_alternatives: [Microsoft 365 E3]
+
+  # ---------------- Collaboration & meetings
+  - product: Slack Business+
+    aliases: [slack, slack business, slack enterprise grid, slack pro]
+    vendor: Salesforce
+    category: Team chat
+    alternatives: [Microsoft Teams]
+    partner_alternatives: [Microsoft Teams]
+    covered_by: Microsoft Teams
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Microsoft Teams
+    aliases: [teams, ms teams, teams premium]
+    vendor: Microsoft
+    category: Team chat
+    alternatives: [Slack Business+]
+    partner_alternatives: []
+  - product: Zoom Workplace Business
+    aliases: [zoom, zoom meetings, zoom business, zoom one, zoom workplace]
+    vendor: Zoom
+    category: Video meetings
+    alternatives: [Microsoft Teams, Webex Suite, Google Meet]
+    partner_alternatives: [Microsoft Teams]
+    resale_margin: 0.10
+    covered_by: Microsoft Teams
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Webex Suite
+    aliases: [webex, cisco webex]
+    vendor: Cisco
+    category: Video meetings
+    alternatives: [Microsoft Teams, Zoom Workplace Business]
+    partner_alternatives: [Microsoft Teams, Zoom Workplace Business]
+
+  # ---------------- Identity & security
+    covered_by: Microsoft Teams
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Okta Workforce Identity
+    aliases: [okta, okta sso, okta workforce, okta mfa]
+    vendor: Okta
+    category: Identity
+    alternatives: [Microsoft Entra ID P1, Ping Identity, JumpCloud]
+    partner_alternatives: [Microsoft Entra ID P1, JumpCloud]
+    resale_margin: 0.10
+    covered_by: Microsoft Entra ID P1
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Microsoft Entra ID P1
+    aliases: [entra, entra id, azure ad, azure ad premium, aad p1]
+    vendor: Microsoft
+    category: Identity
+    alternatives: [Okta Workforce Identity, JumpCloud]
+    partner_alternatives: [Okta Workforce Identity]
+    resale_margin: 0.08
+  - product: CrowdStrike Falcon
+    aliases: [crowdstrike, falcon, crowdstrike falcon pro, crowdstrike edr]
+    vendor: CrowdStrike
+    category: Endpoint security
+    alternatives: [SentinelOne Singularity, Microsoft Defender for Endpoint]
+    partner_alternatives: [SentinelOne Singularity, Microsoft Defender for Endpoint]
+    resale_margin: 0.10
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites: [Microsoft 365 E5]
+  - product: SentinelOne Singularity
+    aliases: [sentinelone, sentinel one, s1, singularity]
+    vendor: SentinelOne
+    category: Endpoint security
+    alternatives: [CrowdStrike Falcon, Microsoft Defender for Endpoint]
+    partner_alternatives: [CrowdStrike Falcon]
+    resale_margin: 0.15
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites: [Microsoft 365 E5]
+  - product: Microsoft Defender for Endpoint
+    aliases: [defender, defender for endpoint, mde, microsoft defender]
+    vendor: Microsoft
+    category: Endpoint security
+    alternatives: [CrowdStrike Falcon, SentinelOne Singularity]
+    partner_alternatives: [CrowdStrike Falcon, SentinelOne Singularity]
+    resale_margin: 0.08
+  - product: Sophos Intercept X
+    aliases: [sophos, intercept x, sophos endpoint]
+    vendor: Sophos
+    category: Endpoint security
+    alternatives: [SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint]
+    partner_alternatives: [SentinelOne Singularity, CrowdStrike Falcon]
+
+  # ---------------- IT & customer service
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites: [Microsoft 365 E5]
+  - product: ServiceNow ITSM
+    aliases: [servicenow, service now, snow itsm, servicenow itsm pro]
+    vendor: ServiceNow
+    category: IT service management
+    alternatives: [Jira Service Management, Freshservice]
+    partner_alternatives: [Freshservice]
+  - product: Jira Service Management
+    aliases: [jsm, jira service desk, jira service management]
+    vendor: Atlassian
+    category: IT service management
+    alternatives: [Freshservice, ServiceNow ITSM]
+    partner_alternatives: [Freshservice]
+  - product: Freshservice
+    aliases: [freshservice itsm]
+    vendor: Freshworks
+    category: IT service management
+    alternatives: [Jira Service Management, ServiceNow ITSM]
+    partner_alternatives: []
+    resale_margin: 0.15
+  - product: Zendesk Suite
+    aliases: [zendesk, zendesk support, zendesk suite professional]
+    vendor: Zendesk
+    category: Customer service
+    alternatives: [Freshdesk, HubSpot Service Hub, Salesforce Service Cloud]
+    partner_alternatives: [Freshdesk, HubSpot Service Hub]
+  - product: Freshdesk
+    aliases: [freshdesk support]
+    vendor: Freshworks
+    category: Customer service
+    alternatives: [Zendesk Suite, HubSpot Service Hub]
+    partner_alternatives: [HubSpot Service Hub]
+    resale_margin: 0.15
+
+  # ---------------- Analytics
+  - product: Tableau Creator/Viewer
+    aliases: [tableau, tableau server, tableau cloud]
+    vendor: Salesforce
+    category: Business intelligence
+    alternatives: [Microsoft Power BI Pro, Looker, Qlik Sense]
+    partner_alternatives: [Microsoft Power BI Pro]
+    covered_by: Microsoft Power BI Pro
+    covered_by_suites: [Microsoft 365 E5]
+  - product: Microsoft Power BI Pro
+    aliases: [power bi, powerbi, pbi pro]
+    vendor: Microsoft
+    category: Business intelligence
+    alternatives: [Tableau Creator/Viewer, Looker]
+    partner_alternatives: []
+    resale_margin: 0.08
+  - product: Qlik Sense
+    aliases: [qlik, qlikview, qlik sense business]
+    vendor: Qlik
+    category: Business intelligence
+    alternatives: [Microsoft Power BI Pro, Tableau Creator/Viewer]
+    partner_alternatives: [Microsoft Power BI Pro]
+
+  # ---------------- Documents & e-signature
+    covered_by: Microsoft Power BI Pro
+    covered_by_suites: [Microsoft 365 E5]
+  - product: DocuSign eSignature
+    aliases: [docusign, docu sign, docusign business pro]
+    vendor: Docusign
+    category: E-signature
+    alternatives: [Adobe Acrobat Sign, Dropbox Sign]
+    partner_alternatives: [Adobe Acrobat Sign]
+    covered_by: Adobe Acrobat Sign
+    covered_by_suites: [Adobe Acrobat Pro]
+  - product: Adobe Acrobat Sign
+    aliases: [adobe sign, acrobat sign, echosign]
+    vendor: Adobe
+    category: E-signature
+    alternatives: [DocuSign eSignature, Dropbox Sign]
+    partner_alternatives: []
+    resale_margin: 0.08
+  - product: Adobe Acrobat Pro
+    aliases: [acrobat, acrobat pro, adobe acrobat, acrobat dc]
+    vendor: Adobe
+    category: PDF
+    alternatives: [Foxit PDF Editor]
+    partner_alternatives: []
+    resale_margin: 0.08
+  - product: Box Business
+    aliases: [box, box.com, box enterprise]
+    vendor: Box
+    category: File storage
+    alternatives: [Microsoft SharePoint / OneDrive, Dropbox Business, Egnyte]
+    partner_alternatives: [Microsoft SharePoint / OneDrive]
+    covered_by: Microsoft SharePoint / OneDrive
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Dropbox Business
+    aliases: [dropbox, dropbox advanced, dropbox team]
+    vendor: Dropbox
+    category: File storage
+    alternatives: [Microsoft SharePoint / OneDrive, Box Business]
+    partner_alternatives: [Microsoft SharePoint / OneDrive]
+
+  # ---------------- Work management
+    covered_by: Microsoft SharePoint / OneDrive
+    covered_by_suites: [Microsoft 365 E3, Microsoft 365 E5]
+  - product: Asana Business
+    aliases: [asana, asana premium]
+    vendor: Asana
+    category: Work management
+    alternatives: [Monday.com Work Management, Smartsheet, Microsoft Planner]
+    partner_alternatives: [Monday.com Work Management, Smartsheet]
+  - product: Monday.com Work Management
+    aliases: [monday, monday.com, monday com]
+    vendor: monday.com
+    category: Work management
+    alternatives: [Asana Business, Smartsheet]
+    partner_alternatives: [Smartsheet]
+    resale_margin: 0.12
+  - product: Smartsheet Business
+    aliases: [smartsheet]
+    vendor: Smartsheet
+    category: Work management
+    alternatives: [Monday.com Work Management, Asana Business]
+    partner_alternatives: [Monday.com Work Management]
+    resale_margin: 0.12
+
+  # ---------------- HR & backup
+  - product: Workday HCM
+    aliases: [workday, workday hr]
+    vendor: Workday
+    category: HR
+    alternatives: [Rippling, UKG Pro, ADP Workforce Now]
+    partner_alternatives: [Rippling]
+  - product: BambooHR
+    aliases: [bamboo, bamboo hr]
+    vendor: BambooHR
+    category: HR
+    alternatives: [Rippling, Gusto]
+    partner_alternatives: [Rippling]
+  - product: Veeam Data Platform
+    aliases: [veeam, veeam backup, veeam b&r]
+    vendor: Veeam
+    category: Backup
+    alternatives: [Druva, Rubrik]
+    partner_alternatives: [Druva]
+    resale_margin: 0.12
+  - product: Druva
+    aliases: [druva insync, druva phoenix]
+    vendor: Druva
+    category: Backup
+    alternatives: [Veeam Data Platform, Rubrik]
+    partner_alternatives: [Veeam Data Platform]
+    resale_margin: 0.15

@@ -1,0 +1,5537 @@
+{
+  "project": "Software Estate Review \u2014 Keystone Advisory",
+  "stats": {
+    "sources": {
+      "data/discovery_workbook.csv": 21,
+      "data/halcyon_procurement_export.json": 9,
+      "data/pemberton_interview_notes.txt": 7,
+      "data/license_usage_export.csv": 11
+    },
+    "raw": 48,
+    "issues": 3,
+    "deduped": 36,
+    "as_of": "2026-10-14"
+  },
+  "records": [
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Zoom Workplace Business",
+      "vendor": "Zoom",
+      "category": "Video meetings",
+      "licenses": 300.0,
+      "active_users": 122.0,
+      "unit_cost_monthly": 18.33,
+      "annual_cost": null,
+      "renewal_date": "2026-11-30",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "IT",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Zoom",
+      "alternatives": [
+        "Google Meet",
+        "Microsoft Teams",
+        "Webex Suite"
+      ],
+      "partner_alternatives": [
+        "Microsoft Teams"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Teams",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-004",
+      "line_name": "Zoom Workplace Business \u00b7 Northbeam Logistics",
+      "unit_cost_annual": 219.96,
+      "est_annual_from_units": 65988.0,
+      "annual_spend": 65988.0,
+      "cost_per_license": 219.96,
+      "days_to_renewal": 47,
+      "notice_deadline": "2026-10-31",
+      "days_to_notice": 17,
+      "utilization": 0.407,
+      "unused_licenses": 178.0,
+      "negotiation_savings": 8000.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Zoom Workplace Business"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": 39152.88,
+      "consolidate_onto": "Microsoft Teams",
+      "package": "consolidation-project",
+      "score_total": 127,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 70,
+        "value": 12,
+        "opportunity": 45
+      },
+      "tags": [
+        "renewing-90",
+        "notice-imminent",
+        "already-owned-alternative",
+        "shelfware",
+        "partner-alternative",
+        "resellable",
+        "deadline-driven"
+      ],
+      "flags": [
+        "Send non-renewal / renegotiation notice by 2026-10-31 (17 days) to keep options open"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 47 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-close",
+          "reason": "Auto-renew notice due in 17 days",
+          "effects": [
+            "urgency +30"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$65,988/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Teams through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Teams",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "178 of 300 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Teams",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-notice-first",
+          "reason": "Lead with the notice deadline in the first conversation",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 300.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 6000.0
+          }
+        ],
+        "monthly": 13500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 13500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "DocuSign eSignature",
+      "vendor": "Docusign",
+      "category": "E-signature",
+      "licenses": 40.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 19200.0,
+      "renewal_date": "2026-11-20",
+      "term_months": null,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "Office Manager",
+      "satisfaction": 4.0,
+      "considering": "Adobe Acrobat Sign",
+      "notes": "Someone noticed Acrobat Pro includes e-signature. Wants to know if it covers engagement letters.",
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Adobe Acrobat Sign",
+        "Dropbox Sign"
+      ],
+      "partner_alternatives": [
+        "Adobe Acrobat Sign"
+      ],
+      "covered_by": "Adobe Acrobat Sign",
+      "covered_by_suites": [
+        "Adobe Acrobat Pro"
+      ],
+      "id": "SW-032",
+      "line_name": "DocuSign eSignature \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 19200.0,
+      "cost_per_license": 480.0,
+      "days_to_renewal": 37,
+      "notice_deadline": "2026-10-21",
+      "days_to_notice": 7,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 2400.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "DocuSign eSignature"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "consolidate_onto": "Adobe Acrobat Sign",
+      "package": "consolidation-project",
+      "score_total": 123,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 70,
+        "value": 3,
+        "opportunity": 50
+      },
+      "tags": [
+        "renewing-90",
+        "notice-imminent",
+        "already-owned-alternative",
+        "evaluating-alternative",
+        "partner-alternative",
+        "deadline-driven"
+      ],
+      "flags": [
+        "Send non-renewal / renegotiation notice by 2026-10-21 (7 days) to keep options open"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 37 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-close",
+          "reason": "Auto-renew notice due in 7 days",
+          "effects": [
+            "urgency +30"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($19,200/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Adobe Acrobat Sign through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Adobe Acrobat Sign",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-evaluating",
+          "reason": "Customer is already evaluating Adobe Acrobat Sign",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Adobe Acrobat Sign",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-notice-first",
+          "reason": "Lead with the notice deadline in the first conversation",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 40.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 800.0
+          }
+        ],
+        "monthly": 8300.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 8300.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Asana Business",
+      "vendor": "Asana",
+      "category": "Work management",
+      "licenses": 80.0,
+      "active_users": 52.0,
+      "unit_cost_monthly": 27.5,
+      "annual_cost": null,
+      "renewal_date": "2026-12-01",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "PMO",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Asana Premium",
+      "alternatives": [
+        "Microsoft Planner",
+        "Monday.com Work Management",
+        "Smartsheet"
+      ],
+      "partner_alternatives": [
+        "Monday.com Work Management",
+        "Smartsheet"
+      ],
+      "id": "SW-010",
+      "line_name": "Asana Business \u00b7 Northbeam Logistics",
+      "unit_cost_annual": 330.0,
+      "est_annual_from_units": 26400.0,
+      "annual_spend": 26400.0,
+      "cost_per_license": 330.0,
+      "days_to_renewal": 48,
+      "notice_deadline": "2026-11-01",
+      "days_to_notice": 18,
+      "utilization": 0.65,
+      "unused_licenses": 28.0,
+      "negotiation_savings": 3200.0,
+      "tools_in_category": 2,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Asana Business",
+        "Smartsheet Business"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [
+        "Smartsheet Business"
+      ],
+      "rightsizing_savings": 9240.0,
+      "consolidate_onto": [
+        "Smartsheet Business"
+      ],
+      "package": "consolidation-project",
+      "score_total": 117,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 70,
+        "value": 12,
+        "opportunity": 35
+      },
+      "tags": [
+        "renewing-90",
+        "notice-imminent",
+        "category-overlap",
+        "shelfware",
+        "partner-alternative",
+        "deadline-driven"
+      ],
+      "flags": [
+        "Send non-renewal / renegotiation notice by 2026-11-01 (18 days) to keep options open"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 48 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-close",
+          "reason": "Auto-renew notice due in 18 days",
+          "effects": [
+            "urgency +30"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$26,400/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-overlap",
+          "reason": "2 tools in the Work management category at this customer",
+          "effects": [
+            "consolidate_onto=['Smartsheet Business']",
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "28 of 80 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Monday.com Work Management, Smartsheet",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-notice-first",
+          "reason": "Lead with the notice deadline in the first conversation",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 80.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 1600.0
+          }
+        ],
+        "monthly": 9100.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 9100.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Slack Business+",
+      "vendor": "Salesforce",
+      "category": "Team chat",
+      "licenses": 400.0,
+      "active_users": 388.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 72000.0,
+      "renewal_date": "2026-12-15",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "IT",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": "Teams is also live through M365; people use both",
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Microsoft Teams"
+      ],
+      "partner_alternatives": [
+        "Microsoft Teams"
+      ],
+      "covered_by": "Microsoft Teams",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "captured_as": "Slack",
+      "id": "SW-003",
+      "line_name": "Slack Business+ \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 72000.0,
+      "cost_per_license": 180.0,
+      "days_to_renewal": 62,
+      "notice_deadline": "2026-11-15",
+      "days_to_notice": 32,
+      "utilization": 0.97,
+      "unused_licenses": 12.0,
+      "negotiation_savings": 8700.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Slack Business+"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": 2160.0,
+      "consolidate_onto": "Microsoft Teams",
+      "package": "consolidation-project",
+      "score_total": 112,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 70,
+        "value": 12,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "notice-imminent",
+        "already-owned-alternative",
+        "partner-alternative",
+        "deadline-driven"
+      ],
+      "flags": [
+        "Send non-renewal / renegotiation notice by 2026-11-15 (32 days) to keep options open"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 62 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-close",
+          "reason": "Auto-renew notice due in 32 days",
+          "effects": [
+            "urgency +30"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$72,000/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Teams through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Teams",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Teams",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-notice-first",
+          "reason": "Lead with the notice deadline in the first conversation",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 400.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 8000.0
+          }
+        ],
+        "monthly": 15500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 15500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Okta Workforce Identity",
+      "vendor": "Okta",
+      "category": "Identity",
+      "licenses": 450.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 40500.0,
+      "renewal_date": "2026-11-30",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 45.0,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Microsoft Entra ID P1",
+        "Ping Identity",
+        "JumpCloud"
+      ],
+      "partner_alternatives": [
+        "Microsoft Entra ID P1",
+        "JumpCloud"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Entra ID P1",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-014",
+      "line_name": "Okta Workforce Identity \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 40500.0,
+      "cost_per_license": 90.0,
+      "days_to_renewal": 47,
+      "notice_deadline": "2026-10-16",
+      "days_to_notice": 2,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 4900.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Okta Workforce Identity"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "consolidate_onto": "Microsoft Entra ID P1",
+      "package": "consolidation-project",
+      "score_total": 112,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 70,
+        "value": 12,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "notice-imminent",
+        "already-owned-alternative",
+        "partner-alternative",
+        "resellable",
+        "deadline-driven"
+      ],
+      "flags": [
+        "Send non-renewal / renegotiation notice by 2026-10-16 (2 days) to keep options open"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 47 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-close",
+          "reason": "Auto-renew notice due in 2 days",
+          "effects": [
+            "urgency +30"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$40,500/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Entra ID P1 through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Entra ID P1",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Entra ID P1, JumpCloud",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-notice-first",
+          "reason": "Lead with the notice deadline in the first conversation",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 450.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 9000.0
+          }
+        ],
+        "monthly": 16500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 16500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Webex Suite",
+      "vendor": "Cisco",
+      "category": "Video meetings",
+      "licenses": 1000.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 96000.0,
+      "renewal_date": "2026-11-15",
+      "term_months": null,
+      "auto_renew": true,
+      "notice_days": 60.0,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Webex Suite (Meetings + Calling)",
+      "alternatives": [
+        "Microsoft Teams",
+        "Zoom Workplace Business"
+      ],
+      "partner_alternatives": [
+        "Microsoft Teams",
+        "Zoom Workplace Business"
+      ],
+      "covered_by": "Microsoft Teams",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-027",
+      "line_name": "Webex Suite \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 96000.0,
+      "cost_per_license": 96.0,
+      "days_to_renewal": 32,
+      "notice_deadline": "2026-09-16",
+      "days_to_notice": -28,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 11600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Webex Suite"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "consolidate_onto": "Microsoft Teams",
+      "package": "consolidation-project",
+      "score_total": 110,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 55,
+        "value": 25,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "notice-missed",
+        "already-owned-alternative",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Auto-renew notice deadline (2026-09-16) already passed \u2014 ask the vendor for a short-term extension or a co-term instead of a full renewal"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 32 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-missed",
+          "reason": "Notice deadline 2026-09-16 has passed",
+          "effects": [
+            "urgency +15"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$96,000/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Teams through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Teams",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Teams, Zoom Workplace Business",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 1000.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 20000.0
+          }
+        ],
+        "monthly": 27500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 27500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Salesforce Sales Cloud",
+      "vendor": "Salesforce",
+      "category": "CRM",
+      "licenses": 120.0,
+      "active_users": 71.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 237600.0,
+      "renewal_date": "2027-02-28",
+      "term_months": 36.0,
+      "auto_renew": true,
+      "notice_days": 60.0,
+      "business_owner": "VP Sales",
+      "satisfaction": 2.0,
+      "considering": "HubSpot",
+      "notes": "Admin overhead is high; only the sales team uses it",
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Salesforce Enterprise",
+      "alternatives": [
+        "HubSpot Sales Hub",
+        "Microsoft Dynamics 365 Sales",
+        "Zoho CRM"
+      ],
+      "partner_alternatives": [
+        "HubSpot Sales Hub",
+        "Microsoft Dynamics 365 Sales"
+      ],
+      "id": "SW-001",
+      "line_name": "Salesforce Sales Cloud \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 237600.0,
+      "cost_per_license": 1980.0,
+      "days_to_renewal": 137,
+      "notice_deadline": "2026-12-30",
+      "days_to_notice": 77,
+      "utilization": 0.592,
+      "unused_licenses": 49.0,
+      "negotiation_savings": 28600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Salesforce Sales Cloud"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": 97020.0,
+      "package": "migration-project",
+      "score_total": 105,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 25,
+        "value": 25,
+        "opportunity": 55
+      },
+      "tags": [
+        "renewing-180",
+        "dissatisfied",
+        "evaluating-alternative",
+        "shelfware",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2026-12-30"
+      ],
+      "plays": [
+        "competitive-swap"
+      ],
+      "addons": [
+        "first-year-resale"
+      ],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 137 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2026-12-30",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$237,600/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-unhappy",
+          "reason": "Satisfaction 2/5",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-evaluating",
+          "reason": "Customer is already evaluating HubSpot",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "49 of 120 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: HubSpot Sales Hub, Microsoft Dynamics 365 Sales",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-swap",
+          "reason": "Unhappy or evaluating, and we have a partner alternative \u2192 competitive swap",
+          "effects": [
+            "play=competitive-swap",
+            "package=migration-project",
+            "+first-year-resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "migration-project",
+        "name": "Competitive migration",
+        "description": "Fixed-fee migration to the partner ISV.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Competitive migration \u2014 platform",
+            "qty": 1,
+            "unit": 10000.0,
+            "monthly": 10000.0
+          },
+          {
+            "item": "Competitive migration \u2014 users migrated",
+            "qty": 120.0,
+            "unit": 35.0,
+            "unit_fmt": null,
+            "monthly": 4200.0
+          },
+          {
+            "item": "First-year resale margin on replacement (est. 12% of current spend)",
+            "qty": 237600.0,
+            "unit": 0.12,
+            "unit_fmt": "pct",
+            "monthly": 28512.0
+          }
+        ],
+        "monthly": 42712.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 42712.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Box Business",
+      "vendor": "Box",
+      "category": "File storage",
+      "licenses": 120.0,
+      "active_users": 60.0,
+      "unit_cost_monthly": 17.5,
+      "annual_cost": null,
+      "renewal_date": "2026-12-31",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "Compliance",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Dropbox Business",
+        "Egnyte",
+        "Microsoft SharePoint / OneDrive"
+      ],
+      "partner_alternatives": [
+        "Microsoft SharePoint / OneDrive"
+      ],
+      "covered_by": "Microsoft SharePoint / OneDrive",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-016",
+      "line_name": "Box Business \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": 210.0,
+      "est_annual_from_units": 25200.0,
+      "annual_spend": 25200.0,
+      "cost_per_license": 210.0,
+      "days_to_renewal": 78,
+      "notice_deadline": "2026-12-01",
+      "days_to_notice": 48,
+      "utilization": 0.5,
+      "unused_licenses": 60.0,
+      "negotiation_savings": 3100.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Box Business"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": 12600.0,
+      "consolidate_onto": "Microsoft SharePoint / OneDrive",
+      "package": "consolidation-project",
+      "score_total": 97,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 40,
+        "value": 12,
+        "opportunity": 45
+      },
+      "tags": [
+        "renewing-90",
+        "already-owned-alternative",
+        "shelfware",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2026-12-01"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 78 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2026-12-01",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$25,200/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft SharePoint / OneDrive through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft SharePoint / OneDrive",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "60 of 120 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft SharePoint / OneDrive",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 120.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 2400.0
+          }
+        ],
+        "monthly": 9900.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 9900.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "CrowdStrike Falcon",
+      "vendor": "CrowdStrike",
+      "category": "Endpoint security",
+      "licenses": 2600.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 208000.0,
+      "renewal_date": "2026-12-31",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "CrowdStrike Falcon Enterprise",
+      "alternatives": [
+        "SentinelOne Singularity",
+        "Microsoft Defender for Endpoint"
+      ],
+      "partner_alternatives": [
+        "SentinelOne Singularity",
+        "Microsoft Defender for Endpoint"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Defender for Endpoint",
+      "covered_by_suites": [
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-023",
+      "line_name": "CrowdStrike Falcon \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 208000.0,
+      "cost_per_license": 80.0,
+      "days_to_renewal": 78,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 25000.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "CrowdStrike Falcon"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "consolidate_onto": "Microsoft Defender for Endpoint",
+      "package": "consolidation-project",
+      "score_total": 95,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 40,
+        "value": 25,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "already-owned-alternative",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 78 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$208,000/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Defender for Endpoint through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Defender for Endpoint",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: SentinelOne Singularity, Microsoft Defender for Endpoint",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 2600.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 52000.0
+          }
+        ],
+        "monthly": 59500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 59500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Tableau Creator/Viewer",
+      "vendor": "Salesforce",
+      "category": "Business intelligence",
+      "licenses": 300.0,
+      "active_users": 140.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 216000.0,
+      "renewal_date": "2027-02-28",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Tableau Cloud Creator + Viewer",
+      "alternatives": [
+        "Looker",
+        "Microsoft Power BI Pro",
+        "Qlik Sense"
+      ],
+      "partner_alternatives": [
+        "Microsoft Power BI Pro"
+      ],
+      "covered_by": "Microsoft Power BI Pro",
+      "covered_by_suites": [
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-026",
+      "line_name": "Tableau Creator/Viewer \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 216000.0,
+      "cost_per_license": 720.0,
+      "days_to_renewal": 137,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": 0.467,
+      "unused_licenses": 160.0,
+      "negotiation_savings": 26000.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Tableau Creator/Viewer"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": 115200.0,
+      "consolidate_onto": "Microsoft Power BI Pro",
+      "package": "consolidation-project",
+      "score_total": 95,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 25,
+        "value": 25,
+        "opportunity": 45
+      },
+      "tags": [
+        "renewing-180",
+        "already-owned-alternative",
+        "shelfware",
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 137 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$216,000/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Power BI Pro through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Power BI Pro",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "160 of 300 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Power BI Pro",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 300.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 6000.0
+          }
+        ],
+        "monthly": 13500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 13500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "Dropbox Business",
+      "vendor": "Dropbox",
+      "category": "File storage",
+      "licenses": 190.0,
+      "active_users": 176.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 34200.0,
+      "renewal_date": "2026-12-31",
+      "term_months": null,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "Records",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": "Partners like Dropbox for client sharing. IT would rather move matters into SharePoint since they already pay for it.",
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Box Business",
+        "Microsoft SharePoint / OneDrive"
+      ],
+      "partner_alternatives": [
+        "Microsoft SharePoint / OneDrive"
+      ],
+      "covered_by": "Microsoft SharePoint / OneDrive",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-031",
+      "line_name": "Dropbox Business \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 34200.0,
+      "cost_per_license": 180.0,
+      "days_to_renewal": 78,
+      "notice_deadline": "2026-12-01",
+      "days_to_notice": 48,
+      "utilization": 0.926,
+      "unused_licenses": 14.0,
+      "negotiation_savings": 4200.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Dropbox Business"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": 2520.0,
+      "consolidate_onto": "Microsoft SharePoint / OneDrive",
+      "package": "consolidation-project",
+      "score_total": 82,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 40,
+        "value": 12,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "already-owned-alternative",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2026-12-01"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 78 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2026-12-01",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$34,200/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft SharePoint / OneDrive through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft SharePoint / OneDrive",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft SharePoint / OneDrive",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Pemberton interview notes"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 190.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 3800.0
+          }
+        ],
+        "monthly": 11300.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 11300.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Okta Workforce Identity",
+      "vendor": "Okta",
+      "category": "Identity",
+      "licenses": 2400.0,
+      "active_users": 2310.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 172800.0,
+      "renewal_date": "2027-01-31",
+      "term_months": null,
+      "auto_renew": true,
+      "notice_days": 60.0,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Okta Workforce Identity - SSO + MFA",
+      "alternatives": [
+        "JumpCloud",
+        "Microsoft Entra ID P1",
+        "Ping Identity"
+      ],
+      "partner_alternatives": [
+        "JumpCloud",
+        "Microsoft Entra ID P1"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Entra ID P1",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-022",
+      "line_name": "Okta Workforce Identity \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 172800.0,
+      "cost_per_license": 72.0,
+      "days_to_renewal": 109,
+      "notice_deadline": "2026-12-02",
+      "days_to_notice": 49,
+      "utilization": 0.963,
+      "unused_licenses": 90.0,
+      "negotiation_savings": 20800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Okta Workforce Identity"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": 6480.0,
+      "consolidate_onto": "Microsoft Entra ID P1",
+      "package": "consolidation-project",
+      "score_total": 80,
+      "total_band": "Act now",
+      "scores": {
+        "urgency": 25,
+        "value": 25,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-180",
+        "already-owned-alternative",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2026-12-02"
+      ],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 109 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2026-12-02",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$172,800/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Entra ID P1 through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Entra ID P1",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: JumpCloud, Microsoft Entra ID P1",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 2400.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 48000.0
+          }
+        ],
+        "monthly": 55500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 55500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Sophos Intercept X",
+      "vendor": "Sophos",
+      "category": "Endpoint security",
+      "licenses": 500.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 27500.0,
+      "renewal_date": "2027-02-15",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 2.0,
+      "considering": "SentinelOne",
+      "notes": "Missed a ransomware alert in Q2; examiner asked about EDR",
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "SentinelOne Singularity",
+        "CrowdStrike Falcon",
+        "Microsoft Defender for Endpoint"
+      ],
+      "partner_alternatives": [
+        "SentinelOne Singularity",
+        "CrowdStrike Falcon"
+      ],
+      "covered_by": "Microsoft Defender for Endpoint",
+      "covered_by_suites": [
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-015",
+      "line_name": "Sophos Intercept X \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 27500.0,
+      "cost_per_license": 55.0,
+      "days_to_renewal": 124,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 3300.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Sophos Intercept X"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "migration-project",
+      "score_total": 77,
+      "total_band": "High",
+      "scores": {
+        "urgency": 25,
+        "value": 12,
+        "opportunity": 40
+      },
+      "tags": [
+        "renewing-180",
+        "dissatisfied",
+        "evaluating-alternative",
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "competitive-swap"
+      ],
+      "addons": [
+        "first-year-resale"
+      ],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 124 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$27,500/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-unhappy",
+          "reason": "Satisfaction 2/5",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-evaluating",
+          "reason": "Customer is already evaluating SentinelOne",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: SentinelOne Singularity, CrowdStrike Falcon",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-swap",
+          "reason": "Unhappy or evaluating, and we have a partner alternative \u2192 competitive swap",
+          "effects": [
+            "play=competitive-swap",
+            "package=migration-project",
+            "+first-year-resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "migration-project",
+        "name": "Competitive migration",
+        "description": "Fixed-fee migration to the partner ISV.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Competitive migration \u2014 platform",
+            "qty": 1,
+            "unit": 10000.0,
+            "monthly": 10000.0
+          },
+          {
+            "item": "Competitive migration \u2014 users migrated",
+            "qty": 500.0,
+            "unit": 35.0,
+            "unit_fmt": null,
+            "monthly": 17500.0
+          },
+          {
+            "item": "First-year resale margin on replacement (est. 12% of current spend)",
+            "qty": 27500.0,
+            "unit": 0.12,
+            "unit_fmt": "pct",
+            "monthly": 3300.0
+          }
+        ],
+        "monthly": 30800.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 30800.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "Zoom Workplace Business",
+      "vendor": "Zoom",
+      "category": "Video meetings",
+      "licenses": 60.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 13200.0,
+      "renewal_date": "2026-11-05",
+      "term_months": null,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": "Most client calls already happen in Teams.",
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Microsoft Teams",
+        "Webex Suite",
+        "Google Meet"
+      ],
+      "partner_alternatives": [
+        "Microsoft Teams"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Teams",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-034",
+      "line_name": "Zoom Workplace Business \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 13200.0,
+      "cost_per_license": 220.0,
+      "days_to_renewal": 22,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 1600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Zoom Workplace Business"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "consolidate_onto": "Microsoft Teams",
+      "package": "consolidation-project",
+      "score_total": 73,
+      "total_band": "High",
+      "scores": {
+        "urgency": 40,
+        "value": 3,
+        "opportunity": 30
+      },
+      "tags": [
+        "renewing-90",
+        "already-owned-alternative",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 22 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($13,200/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Teams through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Teams",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Teams",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 60.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 1200.0
+          }
+        ],
+        "monthly": 8700.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 8700.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Tableau Creator/Viewer",
+      "vendor": "Salesforce",
+      "category": "Business intelligence",
+      "licenses": 45.0,
+      "active_users": 19.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 54000.0,
+      "renewal_date": "2027-03-31",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "Finance",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": "Finance also bought Power BI",
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Tableau Cloud",
+      "alternatives": [
+        "Looker",
+        "Microsoft Power BI Pro",
+        "Qlik Sense"
+      ],
+      "partner_alternatives": [
+        "Microsoft Power BI Pro"
+      ],
+      "covered_by": "Microsoft Power BI Pro",
+      "covered_by_suites": [
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-005",
+      "line_name": "Tableau Creator/Viewer \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 54000.0,
+      "cost_per_license": 1200.0,
+      "days_to_renewal": 168,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": 0.422,
+      "unused_licenses": 26.0,
+      "negotiation_savings": 6500.0,
+      "tools_in_category": 2,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft Power BI Pro",
+        "Tableau Creator/Viewer"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [
+        "Microsoft Power BI Pro"
+      ],
+      "rightsizing_savings": 31200.0,
+      "consolidate_onto": [
+        "Microsoft Power BI Pro"
+      ],
+      "package": "consolidation-project",
+      "score_total": 72,
+      "total_band": "High",
+      "scores": {
+        "urgency": 25,
+        "value": 12,
+        "opportunity": 35
+      },
+      "tags": [
+        "renewing-180",
+        "category-overlap",
+        "shelfware",
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 168 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$54,000/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-overlap",
+          "reason": "2 tools in the Business intelligence category at this customer",
+          "effects": [
+            "consolidate_onto=['Microsoft Power BI Pro']",
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "26 of 45 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Power BI Pro",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 45.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 900.0
+          }
+        ],
+        "monthly": 8400.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 8400.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Zoom Workplace Business",
+      "vendor": "Zoom",
+      "category": "Video meetings",
+      "licenses": 150.0,
+      "active_users": 40.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 29700.0,
+      "renewal_date": "2027-05-31",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Google Meet",
+        "Microsoft Teams",
+        "Webex Suite"
+      ],
+      "partner_alternatives": [
+        "Microsoft Teams"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Teams",
+      "covered_by_suites": [
+        "Microsoft 365 E3",
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-017",
+      "line_name": "Zoom Workplace Business \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 29700.0,
+      "cost_per_license": 198.0,
+      "days_to_renewal": 229,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": 0.267,
+      "unused_licenses": 110.0,
+      "negotiation_savings": 3600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Zoom Workplace Business"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": 21780.0,
+      "consolidate_onto": "Microsoft Teams",
+      "package": "consolidation-project",
+      "score_total": 67,
+      "total_band": "High",
+      "scores": {
+        "urgency": 10,
+        "value": 12,
+        "opportunity": 45
+      },
+      "tags": [
+        "already-owned-alternative",
+        "shelfware",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "consolidate"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 229 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$29,700/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-covered",
+          "reason": "Customer already owns Microsoft Teams through a suite they pay for",
+          "effects": [
+            "consolidate_onto=Microsoft Teams",
+            "opportunity +30"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "110 of 150 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Teams",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-consolidate",
+          "reason": "Overlap with tools already owned \u2192 consolidation",
+          "effects": [
+            "play=consolidate",
+            "package=consolidation-project"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "consolidation-project",
+        "name": "Consolidation project",
+        "description": "Fixed-fee migration onto the platform the customer already owns.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Consolidation project \u2014 platform",
+            "qty": 1,
+            "unit": 7500.0,
+            "monthly": 7500.0
+          },
+          {
+            "item": "Consolidation project \u2014 users migrated",
+            "qty": 150.0,
+            "unit": 20.0,
+            "unit_fmt": null,
+            "monthly": 3000.0
+          }
+        ],
+        "monthly": 10500.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 10500.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Zendesk Suite",
+      "vendor": "Zendesk",
+      "category": "Customer service",
+      "licenses": 150.0,
+      "active_users": 96.0,
+      "unit_cost_monthly": null,
+      "annual_cost": 207000.0,
+      "renewal_date": "2027-03-31",
+      "term_months": null,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Zendesk Suite Professional - agents",
+      "alternatives": [
+        "Freshdesk",
+        "HubSpot Service Hub",
+        "Salesforce Service Cloud"
+      ],
+      "partner_alternatives": [
+        "Freshdesk",
+        "HubSpot Service Hub"
+      ],
+      "id": "SW-025",
+      "line_name": "Zendesk Suite \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 207000.0,
+      "cost_per_license": 1380.0,
+      "days_to_renewal": 168,
+      "notice_deadline": "2027-03-01",
+      "days_to_notice": 138,
+      "utilization": 0.64,
+      "unused_licenses": 54.0,
+      "negotiation_savings": 24900.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Zendesk Suite"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": 74520.0,
+      "package": "optimization-fee",
+      "score_total": 65,
+      "total_band": "High",
+      "scores": {
+        "urgency": 25,
+        "value": 25,
+        "opportunity": 15
+      },
+      "tags": [
+        "renewing-180",
+        "shelfware",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2027-03-01"
+      ],
+      "plays": [
+        "license-optimization"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 168 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2027-03-01",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$207,000/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-shelfware",
+          "reason": "54 of 150 licenses unused in the last 30 days",
+          "effects": [
+            "opportunity +15"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Freshdesk, HubSpot Service Hub",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-rightsize",
+          "reason": "Unused licenses before renewal \u2192 right-size",
+          "effects": [
+            "play=license-optimization",
+            "package=optimization-fee"
+          ]
+        }
+      ],
+      "sources": [
+        "Admin-console usage export",
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "optimization-fee",
+        "name": "License optimization",
+        "description": "Fee of 25% of first-year savings from reclaimed licenses.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "License optimization \u2014 share of right-sizing savings",
+            "qty": 74520.0,
+            "unit": 0.25,
+            "unit_fmt": "pct",
+            "monthly": 18630.0
+          }
+        ],
+        "monthly": 18630.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 18630.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "ServiceNow ITSM",
+      "vendor": "ServiceNow",
+      "category": "IT service management",
+      "licenses": 25.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 135000.0,
+      "renewal_date": "2027-04-30",
+      "term_months": 36.0,
+      "auto_renew": true,
+      "notice_days": 90.0,
+      "business_owner": "IT",
+      "satisfaction": 2.0,
+      "considering": null,
+      "notes": "Too complex for a 6-person IT team; consultants needed for every change",
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "ServiceNow",
+      "alternatives": [
+        "Jira Service Management",
+        "Freshservice"
+      ],
+      "partner_alternatives": [
+        "Freshservice"
+      ],
+      "id": "SW-008",
+      "line_name": "ServiceNow ITSM \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 135000.0,
+      "cost_per_license": 5400.0,
+      "days_to_renewal": 198,
+      "notice_deadline": "2027-01-30",
+      "days_to_notice": 108,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 16200.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "ServiceNow ITSM"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "migration-project",
+      "score_total": 55,
+      "total_band": "High",
+      "scores": {
+        "urgency": 10,
+        "value": 25,
+        "opportunity": 20
+      },
+      "tags": [
+        "dissatisfied",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2027-01-30"
+      ],
+      "plays": [
+        "competitive-swap"
+      ],
+      "addons": [
+        "first-year-resale"
+      ],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 198 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2027-01-30",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$135,000/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-unhappy",
+          "reason": "Satisfaction 2/5",
+          "effects": [
+            "opportunity +20"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Freshservice",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-swap",
+          "reason": "Unhappy or evaluating, and we have a partner alternative \u2192 competitive swap",
+          "effects": [
+            "play=competitive-swap",
+            "package=migration-project",
+            "+first-year-resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "migration-project",
+        "name": "Competitive migration",
+        "description": "Fixed-fee migration to the partner ISV.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Competitive migration \u2014 platform",
+            "qty": 1,
+            "unit": 10000.0,
+            "monthly": 10000.0
+          },
+          {
+            "item": "Competitive migration \u2014 users migrated",
+            "qty": 25.0,
+            "unit": 35.0,
+            "unit_fmt": null,
+            "monthly": 875.0
+          },
+          {
+            "item": "First-year resale margin on replacement (est. 12% of current spend)",
+            "qty": 135000.0,
+            "unit": 0.12,
+            "unit_fmt": "pct",
+            "monthly": 16200.0
+          }
+        ],
+        "monthly": 27075.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 27075.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "CrowdStrike Falcon",
+      "vendor": "CrowdStrike",
+      "category": "Endpoint security",
+      "licenses": 900.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 72000.0,
+      "renewal_date": "2026-12-31",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "Security",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "CrowdStrike Falcon Pro",
+      "alternatives": [
+        "SentinelOne Singularity",
+        "Microsoft Defender for Endpoint"
+      ],
+      "partner_alternatives": [
+        "SentinelOne Singularity",
+        "Microsoft Defender for Endpoint"
+      ],
+      "resale_margin": 0.1,
+      "covered_by": "Microsoft Defender for Endpoint",
+      "covered_by_suites": [
+        "Microsoft 365 E5"
+      ],
+      "id": "SW-007",
+      "line_name": "CrowdStrike Falcon \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 72000.0,
+      "cost_per_license": 80.0,
+      "days_to_renewal": 78,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 8700.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "CrowdStrike Falcon"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 52,
+      "total_band": "High",
+      "scores": {
+        "urgency": 40,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-90",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 78 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$72,000/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: SentinelOne Singularity, Microsoft Defender for Endpoint",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 72000.0,
+            "unit": 0.1,
+            "unit_fmt": "pct",
+            "monthly": 7200.0
+          }
+        ],
+        "monthly": 7200.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 7200.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Druva",
+      "vendor": "Druva",
+      "category": "Backup",
+      "licenses": 2200.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 48000.0,
+      "renewal_date": "2026-12-20",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Druva inSync endpoint backup",
+      "alternatives": [
+        "Veeam Data Platform",
+        "Rubrik"
+      ],
+      "partner_alternatives": [
+        "Veeam Data Platform"
+      ],
+      "resale_margin": 0.15,
+      "id": "SW-029",
+      "line_name": "Druva \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 48000.0,
+      "cost_per_license": 21.818,
+      "days_to_renewal": 67,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 5800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Druva"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 52,
+      "total_band": "High",
+      "scores": {
+        "urgency": 40,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-90",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 67 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$48,000/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Veeam Data Platform",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (15% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 48000.0,
+            "unit": 0.15,
+            "unit_fmt": "pct",
+            "monthly": 7200.0
+          }
+        ],
+        "monthly": 7200.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 7200.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Microsoft 365 E3",
+      "vendor": "Microsoft",
+      "category": "Productivity suite",
+      "licenses": 420.0,
+      "active_users": null,
+      "unit_cost_monthly": 36.0,
+      "annual_cost": null,
+      "renewal_date": "2027-03-31",
+      "term_months": 36.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Google Workspace Business Plus"
+      ],
+      "partner_alternatives": [],
+      "resale_margin": 0.08,
+      "id": "SW-013",
+      "line_name": "Microsoft 365 E3 \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": 432.0,
+      "est_annual_from_units": 181440.0,
+      "annual_spend": 181440.0,
+      "cost_per_license": 432.0,
+      "days_to_renewal": 168,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 21800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft 365 E3"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "negotiation-fee",
+      "score_total": 50,
+      "total_band": "High",
+      "scores": {
+        "urgency": 25,
+        "value": 25,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-180",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "renewal-negotiation",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 168 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$181,440/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-negotiate",
+          "reason": "Large renewal inside the negotiation window",
+          "effects": [
+            "play=renewal-negotiation",
+            "package=negotiation-fee"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "negotiation-fee",
+        "name": "Negotiation advisory",
+        "description": "Fee of 25% of first-year savings (savings modeled at 12% of annual spend).",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Negotiation advisory \u2014 share of modeled savings",
+            "qty": 21800.0,
+            "unit": 0.25,
+            "unit_fmt": "pct",
+            "monthly": 5450.0
+          }
+        ],
+        "monthly": 5450.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 5450.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Microsoft 365 E3",
+      "vendor": "Microsoft",
+      "category": "Productivity suite",
+      "licenses": 850.0,
+      "active_users": null,
+      "unit_cost_monthly": 36.0,
+      "annual_cost": null,
+      "renewal_date": "2027-06-30",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Google Workspace Business Plus"
+      ],
+      "partner_alternatives": [],
+      "resale_margin": 0.08,
+      "id": "SW-002",
+      "line_name": "Microsoft 365 E3 \u00b7 Northbeam Logistics",
+      "unit_cost_annual": 432.0,
+      "est_annual_from_units": 367200.0,
+      "annual_spend": 367200.0,
+      "cost_per_license": 432.0,
+      "days_to_renewal": 259,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 44100.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft 365 E3"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "negotiation-fee",
+      "score_total": 45,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 10,
+        "value": 35,
+        "opportunity": 0
+      },
+      "tags": [
+        "strategic-spend",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "renewal-negotiation",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 259 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-250k",
+          "reason": "$367,200/yr \u2014 strategic spend",
+          "effects": [
+            "value +35"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-negotiate",
+          "reason": "Large renewal inside the negotiation window",
+          "effects": [
+            "play=renewal-negotiation",
+            "package=negotiation-fee"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "negotiation-fee",
+        "name": "Negotiation advisory",
+        "description": "Fee of 25% of first-year savings (savings modeled at 12% of annual spend).",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Negotiation advisory \u2014 share of modeled savings",
+            "qty": 44100.0,
+            "unit": 0.25,
+            "unit_fmt": "pct",
+            "monthly": 11025.0
+          }
+        ],
+        "monthly": 11025.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 11025.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Microsoft 365 E5",
+      "vendor": "Microsoft",
+      "category": "Productivity suite",
+      "licenses": 2200.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 1504800.0,
+      "renewal_date": "2027-06-30",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Microsoft 365 E5 (EA)",
+      "alternatives": [
+        "Microsoft 365 E3",
+        "Google Workspace Enterprise"
+      ],
+      "partner_alternatives": [
+        "Microsoft 365 E3"
+      ],
+      "resale_margin": 0.08,
+      "id": "SW-021",
+      "line_name": "Microsoft 365 E5 \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 1504800.0,
+      "cost_per_license": 684.0,
+      "days_to_renewal": 259,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 180600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Microsoft 365 E5"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "negotiation-fee",
+      "score_total": 45,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 10,
+        "value": 35,
+        "opportunity": 0
+      },
+      "tags": [
+        "strategic-spend",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "renewal-negotiation",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 259 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-250k",
+          "reason": "$1,504,800/yr \u2014 strategic spend",
+          "effects": [
+            "value +35"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft 365 E3",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-negotiate",
+          "reason": "Large renewal inside the negotiation window",
+          "effects": [
+            "play=renewal-negotiation",
+            "package=negotiation-fee"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "negotiation-fee",
+        "name": "Negotiation advisory",
+        "description": "Fee of 25% of first-year savings (savings modeled at 12% of annual spend).",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Negotiation advisory \u2014 share of modeled savings",
+            "qty": 180600.0,
+            "unit": 0.25,
+            "unit_fmt": "pct",
+            "monthly": 45150.0
+          }
+        ],
+        "monthly": 45150.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 45150.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "ServiceNow ITSM",
+      "vendor": "ServiceNow",
+      "category": "IT service management",
+      "licenses": 80.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 480000.0,
+      "renewal_date": "2027-09-30",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": 90.0,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "ServiceNow ITSM Pro - fulfiller licenses",
+      "alternatives": [
+        "Jira Service Management",
+        "Freshservice"
+      ],
+      "partner_alternatives": [
+        "Freshservice"
+      ],
+      "id": "SW-024",
+      "line_name": "ServiceNow ITSM \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 480000.0,
+      "cost_per_license": 6000.0,
+      "days_to_renewal": 351,
+      "notice_deadline": "2027-07-02",
+      "days_to_notice": 261,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 57600.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "ServiceNow ITSM"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "negotiation-fee",
+      "score_total": 45,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 10,
+        "value": 35,
+        "opportunity": 0
+      },
+      "tags": [
+        "strategic-spend",
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "renewal-negotiation"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 351 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-250k",
+          "reason": "$480,000/yr \u2014 strategic spend",
+          "effects": [
+            "value +35"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Freshservice",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-negotiate",
+          "reason": "Large renewal inside the negotiation window",
+          "effects": [
+            "play=renewal-negotiation",
+            "package=negotiation-fee"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": {
+        "package": "negotiation-fee",
+        "name": "Negotiation advisory",
+        "description": "Fee of 25% of first-year savings (savings modeled at 12% of annual spend).",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Negotiation advisory \u2014 share of modeled savings",
+            "qty": 57600.0,
+            "unit": 0.25,
+            "unit_fmt": "pct",
+            "monthly": 14400.0
+          }
+        ],
+        "monthly": 14400.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 14400.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Veeam Data Platform",
+      "vendor": "Veeam",
+      "category": "Backup",
+      "licenses": null,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 18000.0,
+      "renewal_date": "2026-12-10",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Druva",
+        "Rubrik"
+      ],
+      "partner_alternatives": [
+        "Druva"
+      ],
+      "resale_margin": 0.12,
+      "id": "SW-019",
+      "line_name": "Veeam Data Platform \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 18000.0,
+      "cost_per_license": null,
+      "days_to_renewal": 57,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 2200.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Veeam Data Platform"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 43,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 40,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-90",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-90",
+          "reason": "Renews in 57 days",
+          "effects": [
+            "urgency +40"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($18,000/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Druva",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (12% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 18000.0,
+            "unit": 0.12,
+            "unit_fmt": "pct",
+            "monthly": 2160.0
+          }
+        ],
+        "monthly": 2160.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 2160.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Microsoft Dynamics 365 Sales",
+      "vendor": "Microsoft",
+      "category": "CRM",
+      "licenses": 60.0,
+      "active_users": null,
+      "unit_cost_monthly": 95.0,
+      "annual_cost": null,
+      "renewal_date": "2027-01-31",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "Member Services",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Salesforce Sales Cloud",
+        "HubSpot Sales Hub"
+      ],
+      "partner_alternatives": [
+        "HubSpot Sales Hub"
+      ],
+      "resale_margin": 0.1,
+      "id": "SW-012",
+      "line_name": "Microsoft Dynamics 365 Sales \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": 1140.0,
+      "est_annual_from_units": 68400.0,
+      "annual_spend": 68400.0,
+      "cost_per_license": 1140.0,
+      "days_to_renewal": 109,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 8300.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft Dynamics 365 Sales"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 37,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 25,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-180",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 109 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$68,400/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: HubSpot Sales Hub",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (10% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 68400.0,
+            "unit": 0.1,
+            "unit_fmt": "pct",
+            "monthly": 6840.0
+          }
+        ],
+        "monthly": 6840.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 6840.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "HubSpot Sales Hub",
+      "vendor": "HubSpot",
+      "category": "CRM",
+      "licenses": 15.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 27000.0,
+      "renewal_date": "2027-01-15",
+      "term_months": null,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "Business Development",
+      "satisfaction": 5.0,
+      "considering": null,
+      "notes": "BD team loves it. Wants marketing automation next year.",
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Salesforce Sales Cloud",
+        "Microsoft Dynamics 365 Sales",
+        "Pipedrive"
+      ],
+      "partner_alternatives": [
+        "Microsoft Dynamics 365 Sales"
+      ],
+      "resale_margin": 0.15,
+      "id": "SW-035",
+      "line_name": "HubSpot Sales Hub \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 27000.0,
+      "cost_per_license": 1800.0,
+      "days_to_renewal": 93,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 3300.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "HubSpot Sales Hub"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 37,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 25,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-180",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 93 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$27,000/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Microsoft Dynamics 365 Sales",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (15% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 27000.0,
+            "unit": 0.15,
+            "unit_fmt": "pct",
+            "monthly": 4050.0
+          }
+        ],
+        "monthly": 4050.0,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 4050.0,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Halcyon Health Group",
+      "product": "Workday HCM",
+      "vendor": "Workday",
+      "category": "HR",
+      "licenses": 2200.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 390000.0,
+      "renewal_date": "2028-01-31",
+      "term_months": null,
+      "auto_renew": false,
+      "notice_days": 180.0,
+      "business_owner": null,
+      "satisfaction": null,
+      "considering": null,
+      "notes": null,
+      "industry": "Healthcare",
+      "employees": 2200,
+      "exec_contact": "Dr. Priya Nair (CIO)",
+      "account_lead": "Sara Kim",
+      "captured_as": "Workday HCM + Payroll",
+      "alternatives": [
+        "Rippling",
+        "UKG Pro",
+        "ADP Workforce Now"
+      ],
+      "partner_alternatives": [
+        "Rippling"
+      ],
+      "id": "SW-028",
+      "line_name": "Workday HCM \u00b7 Halcyon Health Group",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 390000.0,
+      "cost_per_license": 177.273,
+      "days_to_renewal": 474,
+      "notice_deadline": "2027-08-04",
+      "days_to_notice": 294,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 46800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "CrowdStrike Falcon",
+        "Druva",
+        "Microsoft 365 E5",
+        "Okta Workforce Identity",
+        "ServiceNow ITSM",
+        "Tableau Creator/Viewer",
+        "Webex Suite",
+        "Workday HCM",
+        "Zendesk Suite"
+      ],
+      "category_products": [
+        "Workday HCM"
+      ],
+      "customer_spend": 3322600.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 35,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 0,
+        "value": 35,
+        "opportunity": 0
+      },
+      "tags": [
+        "strategic-spend",
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "monitor"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "Renewal timing-default",
+          "reason": "Renewal is more than a year out",
+          "effects": [
+            "urgency +0"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-250k",
+          "reason": "$390,000/yr \u2014 strategic spend",
+          "effects": [
+            "value +35"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Rippling",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        }
+      ],
+      "sources": [
+        "Halcyon procurement export"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "Microsoft 365 E3",
+      "vendor": "Microsoft",
+      "category": "Productivity suite",
+      "licenses": 190.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 82080.0,
+      "renewal_date": "2027-07-31",
+      "term_months": null,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "Director of Operations",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Google Workspace Business Plus"
+      ],
+      "partner_alternatives": [],
+      "resale_margin": 0.08,
+      "id": "SW-030",
+      "line_name": "Microsoft 365 E3 \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 82080.0,
+      "cost_per_license": 432.0,
+      "days_to_renewal": 290,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 9900.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft 365 E3"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 35,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 10,
+        "value": 25,
+        "opportunity": 0
+      },
+      "tags": [
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "monitor",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 290 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-75k",
+          "reason": "$82,080/yr",
+          "effects": [
+            "value +25"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "DocuSign eSignature",
+      "vendor": "Docusign",
+      "category": "E-signature",
+      "licenses": 30.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 14400.0,
+      "renewal_date": "2027-01-20",
+      "term_months": 12.0,
+      "auto_renew": true,
+      "notice_days": 30.0,
+      "business_owner": "Legal",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "DocuSign",
+      "alternatives": [
+        "Adobe Acrobat Sign",
+        "Dropbox Sign"
+      ],
+      "partner_alternatives": [
+        "Adobe Acrobat Sign"
+      ],
+      "covered_by": "Adobe Acrobat Sign",
+      "covered_by_suites": [
+        "Adobe Acrobat Pro"
+      ],
+      "id": "SW-009",
+      "line_name": "DocuSign eSignature \u00b7 Northbeam Logistics",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 14400.0,
+      "cost_per_license": 480.0,
+      "days_to_renewal": 98,
+      "notice_deadline": "2026-12-21",
+      "days_to_notice": 68,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 1800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "DocuSign eSignature"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 28,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 25,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-180",
+        "partner-alternative"
+      ],
+      "flags": [
+        "Calendar the auto-renew notice deadline: 2026-12-21"
+      ],
+      "plays": [
+        "monitor"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 98 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Auto-renew",
+          "rule": "ar-deadline-tracked",
+          "reason": "Auto-renews; notice deadline 2026-12-21",
+          "effects": []
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($14,400/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Adobe Acrobat Sign",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Smartsheet Business",
+      "vendor": "Smartsheet",
+      "category": "Work management",
+      "licenses": 40.0,
+      "active_users": null,
+      "unit_cost_monthly": 28.0,
+      "annual_cost": null,
+      "renewal_date": "2027-03-15",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "Operations",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Smartsheet",
+      "alternatives": [
+        "Monday.com Work Management",
+        "Asana Business"
+      ],
+      "partner_alternatives": [
+        "Monday.com Work Management"
+      ],
+      "resale_margin": 0.12,
+      "id": "SW-011",
+      "line_name": "Smartsheet Business \u00b7 Northbeam Logistics",
+      "unit_cost_annual": 336.0,
+      "est_annual_from_units": 13440.0,
+      "annual_spend": 13440.0,
+      "cost_per_license": 336.0,
+      "days_to_renewal": 152,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 1700.0,
+      "tools_in_category": 2,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Asana Business",
+        "Smartsheet Business"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [
+        "Asana Business"
+      ],
+      "rightsizing_savings": null,
+      "package": "resale",
+      "score_total": 28,
+      "total_band": "Medium",
+      "scores": {
+        "urgency": 25,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "renewing-180",
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-180",
+          "reason": "Renews in 152 days",
+          "effects": [
+            "urgency +25"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($13,440/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Monday.com Work Management",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (12% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "p-resell",
+          "reason": "We resell it and it renews within 180 days \u2192 quote the renewal",
+          "effects": [
+            "play=own-the-renewal",
+            "package=resale"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": {
+        "package": "resale",
+        "name": "Renewal resale",
+        "description": "Margin on transacting the renewal through us.",
+        "includes": [],
+        "lines": [
+          {
+            "item": "Renewal resale \u2014 margin on annual spend",
+            "qty": 13440.0,
+            "unit": 0.12,
+            "unit_fmt": "pct",
+            "monthly": 1612.8
+          }
+        ],
+        "monthly": 1612.8,
+        "discount_pct": 0.0,
+        "term_months": 1,
+        "contract_value": 1612.8,
+        "total_mode": true,
+        "one_time": [],
+        "one_time_total": 0
+      }
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "Adobe Acrobat Pro",
+      "vendor": "Adobe",
+      "category": "PDF",
+      "licenses": 190.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 45600.0,
+      "renewal_date": "2027-04-30",
+      "term_months": null,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "alternatives": [
+        "Foxit PDF Editor"
+      ],
+      "partner_alternatives": [],
+      "resale_margin": 0.08,
+      "id": "SW-033",
+      "line_name": "Adobe Acrobat Pro \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 45600.0,
+      "cost_per_license": 240.0,
+      "days_to_renewal": 198,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 5500.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Adobe Acrobat Pro"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 22,
+      "total_band": "Low",
+      "scores": {
+        "urgency": 10,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "monitor",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 198 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$45,600/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Pemberton & Rowe LLP",
+      "product": "Clio Manage",
+      "vendor": null,
+      "category": null,
+      "licenses": 120.0,
+      "active_users": null,
+      "unit_cost_monthly": null,
+      "annual_cost": 64800.0,
+      "renewal_date": "2027-09-30",
+      "term_months": null,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "Practice Management",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": "Core practice management system. Not going anywhere.",
+      "captured_as": "Pemberton & Rowe",
+      "industry": "Legal",
+      "employees": 180,
+      "exec_contact": "Claire Pemberton (Managing Partner)",
+      "account_lead": "Sara Kim",
+      "id": "SW-036",
+      "line_name": "Clio Manage \u00b7 Pemberton & Rowe LLP",
+      "unit_cost_annual": null,
+      "est_annual_from_units": null,
+      "annual_spend": 64800.0,
+      "cost_per_license": 540.0,
+      "days_to_renewal": 351,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 7800.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Adobe Acrobat Pro",
+        "Clio Manage",
+        "DocuSign eSignature",
+        "Dropbox Business",
+        "HubSpot Sales Hub",
+        "Microsoft 365 E3",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Clio Manage"
+      ],
+      "customer_spend": 286080.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 22,
+      "total_band": "Low",
+      "scores": {
+        "urgency": 10,
+        "value": 12,
+        "opportunity": 0
+      },
+      "tags": [],
+      "flags": [
+        "Product not in the catalog \u2014 add it with category and alternatives so it can be assessed",
+        "Data: 'Clio Manage' not found in reference/isv_catalog.yaml \u2014 add it or an alias"
+      ],
+      "plays": [
+        "monitor"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 351 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "s-25k",
+          "reason": "$64,800/yr",
+          "effects": [
+            "value +12"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-unknown",
+          "reason": "Not in the software catalog",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        }
+      ],
+      "sources": [
+        "Pemberton interview notes"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Northbeam Logistics",
+      "product": "Microsoft Power BI Pro",
+      "vendor": "Microsoft",
+      "category": "Business intelligence",
+      "licenses": 60.0,
+      "active_users": null,
+      "unit_cost_monthly": 14.0,
+      "annual_cost": null,
+      "renewal_date": "2027-06-30",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "Finance",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "industry": "Logistics",
+      "employees": 850,
+      "exec_contact": "Dana Whitfield (CIO)",
+      "account_lead": "Marcus Lee",
+      "captured_as": "Power BI Pro",
+      "alternatives": [
+        "Tableau Creator/Viewer",
+        "Looker"
+      ],
+      "partner_alternatives": [],
+      "resale_margin": 0.08,
+      "id": "SW-006",
+      "line_name": "Microsoft Power BI Pro \u00b7 Northbeam Logistics",
+      "unit_cost_annual": 168.0,
+      "est_annual_from_units": 10080.0,
+      "annual_spend": 10080.0,
+      "cost_per_license": 168.0,
+      "days_to_renewal": 259,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 1300.0,
+      "tools_in_category": 2,
+      "customer_products": [
+        "Asana Business",
+        "CrowdStrike Falcon",
+        "DocuSign eSignature",
+        "Microsoft 365 E3",
+        "Microsoft Power BI Pro",
+        "Salesforce Sales Cloud",
+        "ServiceNow ITSM",
+        "Slack Business+",
+        "Smartsheet Business",
+        "Tableau Creator/Viewer",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Microsoft Power BI Pro",
+        "Tableau Creator/Viewer"
+      ],
+      "customer_spend": 1068108.0,
+      "category_peers": [
+        "Tableau Creator/Viewer"
+      ],
+      "rightsizing_savings": null,
+      "score_total": 13,
+      "total_band": "Low",
+      "scores": {
+        "urgency": 10,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "resellable"
+      ],
+      "flags": [],
+      "plays": [
+        "monitor",
+        "own-the-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 259 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($10,080/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (8% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-resale",
+          "reason": "Also offer to transact the renewal through us",
+          "effects": [
+            "play=own-the-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Jira Service Management",
+      "vendor": "Atlassian",
+      "category": "IT service management",
+      "licenses": 8.0,
+      "active_users": null,
+      "unit_cost_monthly": 60.0,
+      "annual_cost": null,
+      "renewal_date": "2027-08-31",
+      "term_months": 12.0,
+      "auto_renew": false,
+      "notice_days": null,
+      "business_owner": "IT",
+      "satisfaction": 4.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Freshservice",
+        "ServiceNow ITSM"
+      ],
+      "partner_alternatives": [
+        "Freshservice"
+      ],
+      "id": "SW-018",
+      "line_name": "Jira Service Management \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": 720.0,
+      "est_annual_from_units": 5760.0,
+      "annual_spend": 5760.0,
+      "cost_per_license": 720.0,
+      "days_to_renewal": 321,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 700.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Jira Service Management"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 13,
+      "total_band": "Low",
+      "scores": {
+        "urgency": 10,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "partner-alternative"
+      ],
+      "flags": [],
+      "plays": [
+        "monitor"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "t-365",
+          "reason": "Renews in 321 days",
+          "effects": [
+            "urgency +10"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($5,760/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Freshservice",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": null
+    },
+    {
+      "customer": "Brightwater Credit Union",
+      "product": "Smartsheet Business",
+      "vendor": "Smartsheet",
+      "category": "Work management",
+      "licenses": 30.0,
+      "active_users": null,
+      "unit_cost_monthly": 25.0,
+      "annual_cost": null,
+      "renewal_date": null,
+      "term_months": 12.0,
+      "auto_renew": null,
+      "notice_days": null,
+      "business_owner": "Lending",
+      "satisfaction": 3.0,
+      "considering": null,
+      "notes": null,
+      "captured_as": "Brightwater CU",
+      "industry": "Financial services",
+      "employees": 420,
+      "exec_contact": "Tom Alvarez (VP IT)",
+      "account_lead": "Marcus Lee",
+      "alternatives": [
+        "Monday.com Work Management",
+        "Asana Business"
+      ],
+      "partner_alternatives": [
+        "Monday.com Work Management"
+      ],
+      "resale_margin": 0.12,
+      "id": "SW-020",
+      "line_name": "Smartsheet Business \u00b7 Brightwater Credit Union",
+      "unit_cost_annual": 300.0,
+      "est_annual_from_units": 9000.0,
+      "annual_spend": 9000.0,
+      "cost_per_license": 300.0,
+      "days_to_renewal": null,
+      "notice_deadline": null,
+      "days_to_notice": null,
+      "utilization": null,
+      "unused_licenses": null,
+      "negotiation_savings": 1100.0,
+      "tools_in_category": 1,
+      "customer_products": [
+        "Box Business",
+        "Jira Service Management",
+        "Microsoft 365 E3",
+        "Microsoft Dynamics 365 Sales",
+        "Okta Workforce Identity",
+        "Smartsheet Business",
+        "Sophos Intercept X",
+        "Veeam Data Platform",
+        "Zoom Workplace Business"
+      ],
+      "category_products": [
+        "Smartsheet Business"
+      ],
+      "customer_spend": 405500.0,
+      "category_peers": [],
+      "rightsizing_savings": null,
+      "score_total": 3,
+      "total_band": "Low",
+      "scores": {
+        "urgency": 0,
+        "value": 3,
+        "opportunity": 0
+      },
+      "tags": [
+        "partner-alternative",
+        "resellable"
+      ],
+      "flags": [
+        "Data: could not read renewal_date='TBD' as date",
+        "Data: missing required field 'renewal_date'"
+      ],
+      "plays": [
+        "monitor"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Renewal timing",
+          "rule": "Renewal timing-default",
+          "reason": "Renewal is more than a year out",
+          "effects": [
+            "urgency +0"
+          ]
+        },
+        {
+          "stage": "Spend",
+          "rule": "Spend-default",
+          "reason": "Small line ($9,000/yr)",
+          "effects": [
+            "value +3"
+          ]
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-partner-alt",
+          "reason": "We resell or implement: Monday.com Work Management",
+          "effects": []
+        },
+        {
+          "stage": "Signals",
+          "rule": "sig-resellable",
+          "reason": "We can resell this product (12% margin)",
+          "effects": []
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "No action needed yet \u2014 revisit 180 days before renewal",
+          "effects": [
+            "play=monitor"
+          ]
+        }
+      ],
+      "sources": [
+        "Discovery workbook"
+      ],
+      "estimate": null
+    }
+  ]
+}

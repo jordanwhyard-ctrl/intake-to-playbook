@@ -101,7 +101,8 @@ class TestSamples(unittest.TestCase):
             out = res["out_dir"]
             for r in res["records"]:
                 self.assertTrue(r["_plays"], f"{name} {r['id']} has no play")
-            self.assertEqual(len(list((out / "accounts").glob("*.md"))), len(res["records"]))
+            rdir = load_project(ROOT / "samples" / name)["project"].get("records_dir", "accounts")
+            self.assertEqual(len(list((out / rdir).glob("*.md"))), len(res["records"]))
             for f in ("index.html", "crm_import.csv", "results.json", "data_quality.md"):
                 self.assertTrue((out / f).exists(), f)
             with zipfile.ZipFile(res["zip"]) as z:
@@ -111,8 +112,44 @@ class TestSamples(unittest.TestCase):
             self.assertEqual(len(rows), len(res["records"]))
             json.loads((out / "results.json").read_text())
 
+    def line(self, customer, product):
+        return next(r for r in self.results["01-isv-inventory"]["records"]
+                    if r.get("customer") == customer and r.get("product") == product)
+
+    def test_isv_catalog_matching_and_merge(self):
+        slack = self.line("Northbeam Logistics", "Slack Business+")
+        self.assertEqual(slack["_merged"], 3)                  # workbook row, duplicate row, usage export
+        self.assertEqual(slack["active_users"], 388)
+        self.assertEqual(slack["captured_as"], "Slack")
+        okta = self.line("Brightwater Credit Union", "Okta Workforce Identity")   # captured as "Okta SSO" / "Brightwater CU"
+        self.assertEqual(okta["category"], "Identity")
+        clio = next(r for r in self.results["01-isv-inventory"]["records"] if r.get("product") == "Clio Manage")
+        self.assertTrue(any("not found" in i for i in clio["_issues"]))
+
+    def test_isv_dates_and_plays(self):
+        zoom = self.line("Northbeam Logistics", "Zoom Workplace Business")
+        self.assertEqual(zoom["notice_deadline"], "2026-10-31")
+        self.assertEqual(zoom["_plays"][0], "consolidate")     # Teams already owned via Microsoft 365 E3
+        self.assertEqual(zoom["consolidate_onto"], "Microsoft Teams")
+        webex = self.line("Halcyon Health Group", "Webex Suite")
+        self.assertIn("notice-missed", webex["_tags"])
+        sfdc = self.line("Northbeam Logistics", "Salesforce Sales Cloud")
+        self.assertEqual(sfdc["_plays"][0], "competitive-swap")
+        asana = self.line("Northbeam Logistics", "Asana Business")
+        self.assertEqual(asana["consolidate_onto"], ["Smartsheet Business"])
+        zendesk = self.line("Halcyon Health Group", "Zendesk Suite")
+        self.assertEqual(zendesk["_plays"][0], "license-optimization")
+        self.assertEqual(self.line("Halcyon Health Group", "Workday HCM")["_plays"][0], "monitor")
+
+    def test_isv_rollups_and_calendar(self):
+        out = self.results["01-isv-inventory"]["out_dir"]
+        self.assertEqual(len(list((out / "customers").glob("*.md"))), 4)
+        cal = (out / "calendar.md").read_text()
+        self.assertIn("## November 2026", cal)
+        self.assertLess(cal.index("Nov 05"), cal.index("Nov 30"))
+
     def test_saas_dedupe_and_routing(self):
-        s = "01-saas-inbound"
+        s = "02-saas-inbound"
         harbor = self.by_company(s, "Harborline Freight Inc.")
         self.assertEqual(harbor["_merged"], 2)
         self.assertIn("Raj Patel (Director Process Excellence)", harbor["other_contacts"])
@@ -122,7 +159,7 @@ class TestSamples(unittest.TestCase):
         self.assertEqual(quill["_plays"][0], "self-serve")
 
     def test_msp_packaging(self):
-        s = "02-msp-rfq-packaging"
+        s = "03-msp-rfq-packaging"
         ridge = self.by_company(s, "Ridgeview Precision Machining")
         self.assertEqual(ridge["package"], "secure-plus")
         self.assertIn("cmmc-pack", ridge["_addons"])
@@ -134,7 +171,7 @@ class TestSamples(unittest.TestCase):
         self.assertIsNone(self.by_company(s, "Greenway Property Management").get("package"))
 
     def test_renewals(self):
-        s = "03-renewals-expansion"
+        s = "04-renewals-expansion"
         brook = self.by_company(s, "Brookfield Health Partners")
         self.assertEqual(brook["risk_band"], "High")
         self.assertEqual(brook["_plays"][0], "churn-rescue")

@@ -16,6 +16,8 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 FREE_MAIL = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "aol.com", "proton.me"}
 
 
@@ -187,6 +189,63 @@ def _merge(a: dict, b: dict) -> dict:
     return out
 
 
+def _norm_text(s: Any) -> str:
+    return " " + re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip() + " "
+
+
+class Lookup:
+    """Reference table (e.g. a software catalog) matched on a messy field via names + aliases.
+
+    YAML: {entries: [{<key>: "Salesforce Sales Cloud", aliases: [sfdc, salesforce], ...fields}]}
+    Exact alias match wins; otherwise the longest alias found inside the value as whole words.
+    """
+
+    def __init__(self, project_dir: Path, spec: dict):
+        self.spec = spec
+        data = yaml.safe_load((project_dir / spec["path"]).read_text(encoding="utf-8"))
+        self.entries = data["entries"]
+        self.key = spec.get("entry_key", "name")
+        self.names: list[tuple[str, dict]] = []
+        for e in self.entries:
+            for n in [e[self.key], *e.get("aliases", [])]:
+                self.names.append((_norm_text(n), e))
+        self.names.sort(key=lambda t: -len(t[0]))
+
+    def match(self, value: Any) -> dict | None:
+        v = _norm_text(value)
+        if not v.strip():
+            return None
+        for n, e in self.names:
+            if n == v:
+                return e
+        for n, e in self.names:
+            if n in v:
+                return e
+        return None
+
+    def apply(self, rec: dict) -> None:
+        field = self.spec["field"]
+        if rec.get(field) in (None, ""):
+            return
+        e = self.match(rec[field])
+        if not e:
+            rec["_issues"].append(f"'{rec[field]}' not found in {self.spec['path']} — add it or an alias")
+            return
+        if self.spec.get("canonicalize", True):
+            if rec[field] != e[self.key]:
+                rec.setdefault("captured_as", rec[field])
+            rec[field] = e[self.key]
+        for k, v in e.items():
+            if k in (self.key, "aliases"):
+                continue
+            if rec.get(k) in (None, [], "") or self.spec.get("overwrite"):
+                rec[k] = v
+
+
+def _part(v: Any) -> str:
+    return company_key(v) if isinstance(v, str) else str(v).lower()
+
+
 def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
     schema: dict[str, str] = cfg["schema"]
     key_fields: list[str] = cfg.get("dedupe_on", ["domain", "company"])
@@ -203,6 +262,8 @@ def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
             elif isinstance(v, str):
                 rec[f] = m.get(v.lower(), v)
 
+    lookups = [Lookup(project_dir, spec) for spec in cfg.get("lookups", [])]
+
     for src in cfg["sources"]:
         path = project_dir / src["path"]
         rows = LOADERS[src["format"]](path)
@@ -216,6 +277,8 @@ def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
             remap(rec)
             rec["_sources"] = [src.get("label", src["path"])]
             rec["_issues"] = issues
+            for lk in lookups:
+                lk.apply(rec)
             records.append(rec)
     stats["raw"] = len(records)
 
@@ -224,6 +287,12 @@ def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
     for i, rec in enumerate(records):
         key = None
         for f in key_fields:
+            if isinstance(f, list):  # composite key, e.g. [customer, product]
+                parts = [rec.get(x) for x in f]
+                if all(p not in (None, "") for p in parts):
+                    key = "+".join(f) + ":" + "|".join(_part(p) for p in parts)
+                    break
+                continue
             val = rec.get(f)
             if f == "domain" and rec.get("free_email"):
                 continue  # gmail.com is not a company
@@ -234,9 +303,10 @@ def run_intake(project_dir: Path, cfg: dict) -> tuple[list[dict], dict]:
                 break
         key = key or f"row:{i}"
         # also link records sharing a company name to an existing domain key
-        ck = company_key(rec.get("company"))
-        alias = next((k for k, r in merged.items() if ck and company_key(r.get("company")) == ck), None)
-        key = alias or key
+        if "company" in key_fields:
+            ck = company_key(rec.get("company"))
+            alias = next((k for k, r in merged.items() if ck and company_key(r.get("company")) == ck), None)
+            key = alias or key
         if key in merged:
             merged[key] = _merge(merged[key], rec)
         else:

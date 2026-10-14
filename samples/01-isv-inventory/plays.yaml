@@ -1,0 +1,111 @@
+plays:
+  consolidate:
+    name: Consolidate onto what they own
+    objective: Retire a product the customer is paying for twice, either because a suite they already own covers it or because two tools overlap. Run the migration as a fixed-scope project.
+    owner: Advisory lead + Solutions architect
+    sla: Consolidation brief within 5 business days
+    success_metric: Signed migration SOW before the renewal or notice deadline
+    sequence:
+      - {day: 0, channel: Internal, action: "Pull usage and contract terms for {product} at {customer}; confirm what {consolidate_onto} covers"}
+      - {day: 2, channel: Email, action: "Send {exec_contact} a one-page consolidation brief: {product} (${annual_spend}/yr) vs what they already own"}
+      - {day: 5, channel: Meeting, action: "Workshop with {business_owner} owner: must-have features, migration risks, change plan"}
+      - {day: 10, channel: Email, action: "Fixed-fee migration SOW timed to the {renewal_date} renewal"}
+    talk_track:
+      - "You're paying ${annual_spend} a year for {product}, and you already pay for {consolidate_onto}, which covers most of the same ground. Most of the work is change management, not technology."
+      - "We'd time the cutover so you never pay for both after {renewal_date}."
+    discovery_questions:
+      - "Which teams would push back on moving off {product}, and why?"
+      - "Which integrations or workflows depend on {product} today?"
+      - "Is there a contractual notice we need to send, and by when?"
+    objections:
+      - {objection: "Users love the current tool.", response: "We run a pilot with the most vocal team first and only proceed if adoption targets are met."}
+      - {objection: "Migration will disrupt the business.", response: "Fixed scope, phased by team, with a rollback plan, and finished before the renewal date so there's no double spend."}
+    assets: [Consolidation brief template, Feature-gap checklist, Migration SOW template]
+
+  competitive-swap:
+    name: Competitive swap to a partner ISV
+    objective: Customer is unhappy or already evaluating. Run a structured evaluation of our partner alternative, then resell it and deliver the migration.
+    owner: Account lead + Partner ISV rep
+    sla: Evaluation plan within 3 business days
+    success_metric: Partner ISV selected; resale + migration signed before renewal
+    sequence:
+      - {day: 0, channel: Internal, action: "Register the opportunity with the partner ISV ({partner_alternatives}); request competitive pricing"}
+      - {day: 1, channel: Phone, action: "Call {business_owner} owner at {customer}: confirm pain with {product} and the decision process"}
+      - {day: 5, channel: Meeting, action: "Side-by-side demo: {product} vs {partner_alternatives} on their real workflows"}
+      - {day: 10, channel: Email, action: "Proposal: subscription through us + fixed-fee migration, timed to {renewal_date}"}
+    talk_track:
+      - "You rated {product} {satisfaction}/5. Let's put {partner_alternatives} against your actual workflows, not a canned demo."
+      - "We handle the vendor negotiation and the migration, so your team isn't running a project on top of their day job."
+    discovery_questions:
+      - "What would {product} have to fix for you to stay?"
+      - "Who signs off, and what's the budget path for a switch?"
+      - "What data and integrations have to move?"
+    objections:
+      - {objection: "Switching costs are too high.", response: "We price the migration as a fixed fee and the partner often funds part of it. We'll show the 3-year total cost side by side."}
+      - {objection: "We're locked in until renewal.", response: "That's when we'd switch. We start now so the evaluation is done before the notice deadline."}
+    assets: [Competitive comparison, Partner incentive summary, Migration plan template]
+
+  license-optimization:
+    name: License optimization
+    objective: Right-size licenses to actual use before the renewal is signed, with the fee tied to verified savings.
+    owner: Advisory analyst
+    sla: Usage review within 5 business days
+    success_metric: Renewal signed at the right-sized quantity
+    sequence:
+      - {day: 0, channel: Email, action: "Share usage snapshot with {business_owner} owner: {active_users} active of {licenses} licenses"}
+      - {day: 3, channel: Meeting, action: "Agree on reclaim list and new license count with {customer}"}
+      - {day: 7, channel: Email, action: "Vendor notice: reduce {product} to the agreed count at renewal ({renewal_date})"}
+    talk_track:
+      - "{unused_licenses} {product} licenses weren't used in the last 30 days. That's about ${rightsizing_savings} a year you can stop paying at renewal."
+      - "Our fee is a share of the savings, so if nothing is saved, you don't pay."
+    discovery_questions:
+      - "Are any inactive users seasonal or on leave?"
+      - "Does the contract allow reducing quantity at renewal?"
+    assets: [Usage snapshot, Reclaim checklist]
+
+  renewal-negotiation:
+    name: Renewal negotiation
+    objective: Benchmark price and terms on a large renewal and negotiate on the customer's behalf for a share of the savings.
+    owner: Advisory lead
+    sla: Benchmark within 10 business days
+    success_metric: Savings of 10%+ against the vendor's first renewal quote
+    sequence:
+      - {day: 0, channel: Email, action: "Ask {customer} for the current {product} order form and any renewal quote received"}
+      - {day: 5, channel: Internal, action: "Benchmark ${cost_per_license}/license/yr against comparable deals; list alternatives ({alternatives})"}
+      - {day: 10, channel: Meeting, action: "Negotiation plan with {exec_contact}: targets, walk-away, timeline"}
+      - {day: 15, channel: Email, action: "Open negotiation with {vendor} well before {renewal_date}"}
+    talk_track:
+      - "At ${annual_spend} a year, a 10–15% improvement on {product} is worth about ${negotiation_savings}. Credible alternatives ({alternatives}) are what move the vendor."
+    discovery_questions:
+      - "What did the last renewal increase look like?"
+      - "Are there modules or SKUs nobody uses?"
+      - "Would a longer term be acceptable for better pricing?"
+    objections:
+      - {objection: "We can negotiate ourselves.", response: "Sure. We bring benchmark data from other deals and we're paid only from the savings we get."}
+    assets: [Benchmark summary, Negotiation plan template]
+
+  own-the-renewal:
+    name: Own the renewal (resale)
+    objective: Transact the renewal through us, co-term where possible, and check for a better SKU or multi-year price.
+    owner: Account lead
+    sla: Renewal quote 60+ days before renewal
+    success_metric: Renewal transacted through us
+    sequence:
+      - {day: 0, channel: Email, action: "Send {customer} a renewal quote for {product} ({licenses} licenses) through us"}
+      - {day: 5, channel: Phone, action: "Review SKU fit, co-terming and multi-year options with {business_owner} owner"}
+      - {day: 10, channel: Email, action: "Final order form with consolidated billing"}
+    talk_track:
+      - "We can renew {product} for you on one invoice with your other software, and check whether you're on the right edition."
+    assets: [Renewal quote, Co-term calculator]
+
+  monitor:
+    name: Monitor
+    objective: No action yet. Keep the line on the renewal calendar and revisit 180 days before it renews.
+    owner: Account lead
+    sla: Review 180 days before renewal
+    success_metric: Line reassessed on time
+    sequence:
+      - {day: 0, channel: CRM, action: "Set a reminder 180 days before {renewal_date} for {product} at {customer}"}
+    talk_track:
+      - "Nothing to change on {product} right now. We'll check back before the renewal."
+    assets: []

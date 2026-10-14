@@ -1,0 +1,22 @@
+Client,Software / Service,Vendor,# Licenses,Cost per user / mo,Annual spend,Renewal date,Term (months),Auto-renew?,Notice period (days),Business owner,Satisfaction (1-5),Notes,Evaluating
+Northbeam Logistics,Salesforce Enterprise,Salesforce,120,,"$237,600",02/28/2027,36,Y,60,VP Sales,2,Admin overhead is high; only the sales team uses it,HubSpot
+Northbeam Logistics,Microsoft 365 E3,Microsoft,850,$36,,06/30/2027,12,N,,IT,4,,
+Northbeam Logistics,Slack Business+,Salesforce,400,,"$72,000",12/15/2026,12,Y,30,IT,3,Teams is also live through M365; people use both,
+Northbeam Logistics,Zoom,Zoom,300,$18.33,,11/30/2026,12,Yes,30,IT,3,,
+Northbeam Logistics,Tableau Cloud,Salesforce,45,,"$54,000",03/31/2027,12,N,,Finance,3,Finance also bought Power BI,
+Northbeam Logistics,Power BI Pro,Microsoft,60,$14,,06/30/2027,12,N,,Finance,4,,
+Northbeam Logistics,CrowdStrike Falcon Pro,CrowdStrike,900,,"$72,000",12/31/2026,12,N,,Security,4,,
+Northbeam Logistics,ServiceNow,ServiceNow,25,,"$135,000",04/30/2027,36,Y,90,IT,2,Too complex for a 6-person IT team; consultants needed for every change,
+Northbeam Logistics,DocuSign,Docusign,30,,"$14,400",01/20/2027,12,Y,30,Legal,4,,
+Northbeam Logistics,Asana Premium,Asana,80,$27.50,,12/01/2026,12,Y,30,PMO,3,,
+Northbeam Logistics,Smartsheet,Smartsheet,40,$28,,03/15/2027,12,N,,Operations,4,,
+Brightwater CU,Dynamics 365,Microsoft,60,$95,,1/31/2027,12,N,,Member Services,4,,
+Brightwater CU,O365 E3,Microsoft,420,$36,,3/31/2027,36,N,,IT,4,,
+Brightwater CU,Okta SSO,Okta,450,,"$40,500",11/30/2026,12,Y,45,IT,4,,
+Brightwater CU,Sophos,Sophos,500,,"$27,500",2/15/2027,12,N,,IT,2,Missed a ransomware alert in Q2; examiner asked about EDR,SentinelOne
+Brightwater CU,Box,Box,120,$17.50,,12/31/2026,12,Y,30,Compliance,3,,
+Brightwater CU,Zoom,Zoom,150,,"$29,700",5/31/2027,12,N,,IT,3,,
+Brightwater CU,Jira Service Desk,Atlassian,8,$60,,8/31/2027,12,N,,IT,4,,
+Brightwater CU,Veeam,Veeam,,,"$18,000",12/10/2026,12,N,,IT,4,,
+Brightwater CU,Smartsheet,Smartsheet,30,$25,,TBD,12,,,Lending,3,,
+Northbeam Logistics,Slack,Salesforce,400,,"$72,000",12/15/2026,12,Y,30,IT,,(duplicate row from second workshop),

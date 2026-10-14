@@ -1,0 +1,26 @@
+# The consultant's customer list (all fictional). Inventory lines are matched to it by name or alias.
+entries:
+  - customer: Northbeam Logistics
+    aliases: [northbeam, northbeam logistics inc, nbl]
+    industry: Logistics
+    employees: 850
+    exec_contact: Dana Whitfield (CIO)
+    account_lead: Marcus Lee
+  - customer: Halcyon Health Group
+    aliases: [halcyon, halcyon health, hhg]
+    industry: Healthcare
+    employees: 2200
+    exec_contact: Dr. Priya Nair (CIO)
+    account_lead: Sara Kim
+  - customer: Brightwater Credit Union
+    aliases: [brightwater, brightwater cu, bwcu]
+    industry: Financial services
+    employees: 420
+    exec_contact: Tom Alvarez (VP IT)
+    account_lead: Marcus Lee
+  - customer: Pemberton & Rowe LLP
+    aliases: [pemberton, pemberton and rowe, pemberton rowe, p&r]
+    industry: Legal
+    employees: 180
+    exec_contact: Claire Pemberton (Managing Partner)
+    account_lead: Sara Kim

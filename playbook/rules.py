@@ -23,7 +23,8 @@ from __future__ import annotations
 
 import re
 import string
-from datetime import date
+from datetime import date, timedelta
+from math import prod as _prod
 from typing import Any
 
 
@@ -130,6 +131,19 @@ def compute(rec: dict, spec: dict, as_of: date) -> None:
             rec[name] = sum(v for v in vals if v is not None)
         elif kind == "count":
             rec[name] = len(rec.get(arg) or [])
+        elif kind == "product":
+            vals = [_num(rec.get(x)) if isinstance(x, str) else float(x) for x in arg]
+            rec[name] = None if any(v is None for v in vals) else round(_prod(vals), 2)
+        elif kind == "difference":
+            a, b = (_num(rec.get(x)) for x in arg)
+            rec[name] = a - b if a is not None and b is not None else None
+        elif kind == "date_minus_days":
+            d, n = rec.get(arg[0]), _num(rec.get(arg[1])) if isinstance(arg[1], str) else arg[1]
+            rec[name] = (date.fromisoformat(d) - timedelta(days=int(n))).isoformat() if d and n is not None else None
+        elif kind == "without":
+            rec[name] = [x for x in (rec.get(arg[0]) or []) if x != rec.get(arg[1])]
+        elif kind == "template":
+            rec[name] = _fmt(arg, rec)
         elif kind == "max":
             vals = [v for v in (_num(rec.get(x)) for x in arg) if v is not None]
             rec[name] = max(vals) if vals else None
@@ -156,7 +170,8 @@ class _SafeDict(dict):
 
 
 def _fmt(template: str, rec: dict) -> str:
-    flat = _SafeDict({k: v for k, v in rec.items() if not k.startswith("_") and v not in (None, [], "")})
+    flat = _SafeDict({k: (", ".join(map(str, v)) if isinstance(v, list) else v)
+                      for k, v in rec.items() if not k.startswith("_") and v not in (None, [], "")})
     flat.update({f"score_{k}": v for k, v in rec["_scores"].items()})
     for _, field, spec, _ in string.Formatter().parse(template):
         if field and isinstance(flat.get(field), float) and not spec:
@@ -205,6 +220,32 @@ def _apply(rule: dict, rec: dict, stage: str) -> bool:
     return bool(then.get("stop"))
 
 
+def group_compute(records: list[dict], spec: dict) -> None:
+    """Fields that look across records, e.g. how many tools a customer has in the same category.
+
+      tools_in_category: {count: {by: [customer, category]}}
+      customer_spend:    {sum: {by: [customer], field: annual_cost}}
+      customer_products: {values: {by: [customer], field: product}}
+    """
+    for name, how in (spec or {}).items():
+        (kind, arg), = how.items()
+        by = arg["by"] if isinstance(arg["by"], list) else [arg["by"]]
+        groups: dict[tuple, list[dict]] = {}
+        for r in records:
+            groups.setdefault(tuple(str(r.get(b) or "").lower() for b in by), []).append(r)
+        for members in groups.values():
+            if kind == "count":
+                val = len(members)
+            elif kind == "sum":
+                val = sum(_num(m.get(arg["field"])) or 0 for m in members)
+            elif kind == "values":
+                val = sorted({m.get(arg["field"]) for m in members if m.get(arg["field"])})
+            else:
+                raise ValueError(f"unknown group computed kind '{kind}'")
+            for m in members:
+                m[name] = val
+
+
 def run_rules(records: list[dict], rules_cfg: dict, as_of: date) -> list[dict]:
     score_names = rules_cfg.get("scores", [])
     bands = rules_cfg.get("score_bands", {})
@@ -212,6 +253,9 @@ def run_rules(records: list[dict], rules_cfg: dict, as_of: date) -> list[dict]:
         rec.update(_scores={s: 0 for s in score_names}, _tags=[], _flags=[], _plays=[],
                    _addons=[], _trace=[])
         compute(rec, rules_cfg.get("computed"), as_of)
+    group_compute(records, rules_cfg.get("group_computed"))
+    for rec in records:
+        compute(rec, rules_cfg.get("computed_after"), as_of)
         for stage in rules_cfg["stages"]:
             if not evaluate(stage.get("when"), rec):
                 continue  # whole stage doesn't apply to this record

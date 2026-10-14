@@ -51,7 +51,7 @@ def run(project_dir: Path, out_root: Path, as_of: date | None = None, quiet: boo
     if not quiet:
         plays = Counter(cfg["plays"][r["_plays"][0]]["name"] if r["_plays"] else "(none)" for r in records)
         print(f"\n{cfg['project']['name']}")
-        print(f"  intake   {stats['raw']} records from {len(stats['sources'])} sources -> {stats['deduped']} accounts, "
+        print(f"  intake   {stats['raw']} records from {len(stats['sources'])} sources -> {stats['deduped']} {cfg['project'].get('record_noun', 'account')}s, "
               f"{stats['issues']} data issues")
         print("  plays    " + ", ".join(f"{k}: {v}" for k, v in plays.most_common()))
         print(f"  output   {out_dir}/index.html")

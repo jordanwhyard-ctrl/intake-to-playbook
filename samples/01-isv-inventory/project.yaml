@@ -1,0 +1,144 @@
+name: "Software Estate Review — Keystone Advisory"
+description: >-
+  A fictional consultancy's inventory of every ISV product its customers run, captured from
+  discovery workshops, a procurement export, interview notes and admin-console usage. Each line
+  gets a renewal timeline, auto-renew notice deadline, competitive alternatives and a next-step
+  play (resale, advisory or migration) with the consultant's estimated revenue.
+as_of: 2026-10-14
+id_prefix: SW
+record_noun: product line
+records_dir: lines
+title_field: line_name
+
+sources:
+  - path: data/discovery_workbook.csv
+    format: csv
+    label: Discovery workbook
+    map:
+      Client: customer
+      Software / Service: product
+      Vendor: vendor
+      "# Licenses": licenses
+      Cost per user / mo: unit_cost_monthly
+      Annual spend: annual_cost
+      Renewal date: renewal_date
+      Term (months): term_months
+      Auto-renew?: auto_renew
+      Notice period (days): notice_days
+      Business owner: business_owner
+      Satisfaction (1-5): satisfaction
+      Notes: notes
+      Evaluating: considering
+  - path: data/halcyon_procurement_export.json
+    format: json
+    label: Halcyon procurement export
+    map:
+      buyer: customer
+      supplier: vendor
+      item_description: product
+      quantity: licenses
+      po_amount: annual_cost
+      period_end: renewal_date
+  - path: data/pemberton_interview_notes.txt
+    format: text
+    label: Pemberton interview notes
+    map:
+      users: licenses
+      annual_cost: annual_cost
+      renewal: renewal_date
+      auto_renew: auto_renew
+      notice: notice_days
+      owner: business_owner
+  - path: data/license_usage_export.csv
+    format: csv
+    label: Admin-console usage export
+    map:
+      tenant: customer
+      app: product
+      assigned_licenses: licenses
+      active_users_30d: active_users
+
+# Reference data: canonical customer + product names, plus everything we know about each product.
+lookups:
+  - {path: reference/customers.yaml, field: customer, entry_key: customer}
+  - {path: reference/isv_catalog.yaml, field: product, entry_key: product}
+
+schema:
+  customer: str
+  product: str
+  vendor: str
+  category: str
+  licenses: number
+  active_users: number
+  unit_cost_monthly: money
+  annual_cost: money
+  renewal_date: date
+  term_months: number
+  auto_renew: bool
+  notice_days: number
+  business_owner: str
+  satisfaction: number
+  considering: str
+  notes: str
+
+dedupe_on: [[customer, product]]
+required: [customer, product, renewal_date]
+
+field_formats:
+  annual_spend: money
+  annual_cost: money
+  customer_spend: money
+  cost_per_license: money
+  utilization: pct
+  rightsizing_savings: money
+
+brief_fields:
+  customer: Customer
+  exec_contact: Customer executive
+  account_lead: Account lead
+  product: Product
+  captured_as: Captured as
+  vendor: Vendor
+  category: Category
+  annual_spend: Annual spend
+  licenses: Licenses
+  active_users: Active users (30d)
+  utilization: Utilization
+  cost_per_license: Cost per license / yr
+  renewal_date: Renewal date
+  days_to_renewal: Days to renewal
+  auto_renew: Auto-renews
+  notice_deadline: Notice deadline
+  days_to_notice: Days to notice deadline
+  business_owner: Business owner
+  satisfaction: Satisfaction (1–5)
+  considering: Customer is evaluating
+  alternatives: Competitive alternatives
+  partner_alternatives: Alternatives we resell or implement
+  consolidate_onto: Consolidate onto
+  tools_in_category: Tools in this category
+
+dashboard_column: {field: renewal_date, label: Renewal}
+crm_fields: [customer, product, vendor, category, annual_spend, renewal_date, notice_deadline, licenses, utilization, alternatives, partner_alternatives, account_lead]
+
+rollup:
+  by: customer
+  dir: customers
+  noun: customer
+  title: Software estate brief
+  date_field: renewal_date
+  windows: [90, 180]
+  group_field: category
+  line_label_field: product
+  overlap_title: Overlapping tools (same category)
+  lines_title: Software estate by renewal date
+  opportunity_label: Consultant opportunity
+  sum_fields: {annual_spend: Annual software spend}
+  header_fields: {industry: Industry, employees: Employees, exec_contact: Executive contact, account_lead: Account lead}
+  line_columns: {category: Category, annual_spend: Annual spend, renewal_date: Renewal, notice_deadline: Notice deadline}
+
+calendar:
+  title: Renewal calendar — all customers
+  date_field: renewal_date
+  horizon_days: 365
+  columns: {customer: Customer, annual_spend: Annual spend, notice_deadline: Notice deadline}

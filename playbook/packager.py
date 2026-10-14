@@ -63,29 +63,35 @@ def estimate(rec: dict, pkg_cfg: dict) -> dict | None:
     if not key or key not in pkgs:
         return None
     p = pkgs[key]
-    term = pkg_cfg.get("term_months", 12)
+    total_mode = pkg_cfg.get("mode") == "total"   # lines are one-off amounts, not monthly fees
+    term = 1 if total_mode else pkg_cfg.get("term_months", 12)
     lines = []
 
     def units_for(spec: dict) -> float:
         u = rec.get(spec["field"]) or 0
         return max(float(u), spec.get("min", 0))
 
+    def price_for(spec: dict) -> float:
+        if spec.get("price_field") and isinstance(rec.get(spec["price_field"]), (int, float)):
+            return float(rec[spec["price_field"]])
+        return float(spec.get("price", 0))
+
     base = float(p.get("base", 0))
     if base:
         lines.append({"item": f"{p['name']} — platform", "qty": 1, "unit": base, "monthly": base})
     if p.get("per_unit"):
         spec = p["per_unit"]
-        q = units_for(spec)
+        q, price = units_for(spec), price_for(spec)
         lines.append({"item": f"{p['name']} — {spec.get('label', spec['field'])}", "qty": q,
-                      "unit": spec["price"], "monthly": q * spec["price"]})
+                      "unit": price, "unit_fmt": spec.get("unit_format"), "monthly": q * price})
     for a in rec.get("_addons", []):
         ad = pkg_cfg.get("addons", {}).get(a)
         if not ad:
             continue
         if ad.get("per_unit"):
-            q = units_for(ad["per_unit"])
-            lines.append({"item": ad["name"], "qty": q, "unit": ad["per_unit"]["price"],
-                          "monthly": q * ad["per_unit"]["price"]})
+            q, price = units_for(ad["per_unit"]), price_for(ad["per_unit"])
+            lines.append({"item": ad["name"], "qty": q, "unit": price,
+                          "unit_fmt": ad["per_unit"].get("unit_format"), "monthly": q * price})
         else:
             lines.append({"item": ad["name"], "qty": 1, "unit": ad["price"], "monthly": ad["price"]})
     one_time = [{"item": o["name"], "amount": o["amount"]} for o in p.get("one_time", [])]
@@ -97,7 +103,7 @@ def estimate(rec: dict, pkg_cfg: dict) -> dict | None:
     annual = monthly * term * (1 - discount)
     return {"package": key, "name": p["name"], "description": p.get("description", ""),
             "includes": p.get("includes", []), "lines": lines, "monthly": monthly,
-            "discount_pct": discount, "term_months": term, "contract_value": annual,
+            "discount_pct": discount, "term_months": term, "contract_value": annual, "total_mode": total_mode,
             "one_time": one_time, "one_time_total": sum(o["amount"] for o in one_time)}
 
 
@@ -143,8 +149,13 @@ def account_brief(rec: dict, cfg: dict, plays: dict, est: dict | None, as_of: da
         headline.append(f"**Segment:** {rec['segment']}")
     if primary:
         headline.append(f"**Play:** {primary['name']}")
+    pkg_cfg = cfg.get("packages", {})
+    if est and est["total_mode"]:
+        headline.append(f"**{pkg_cfg.get('headline_label', 'Package')}:** {est['name']} · {money(est['contract_value'], cur)}")
+    elif est:
+        headline.append(f"**{pkg_cfg.get('headline_label', 'Package')}:** {est['name']} · "
+                        f"{money(est['contract_value'], cur)} / {est['term_months']} mo")
     if est:
-        headline.append(f"**Package:** {est['name']} · {money(est['contract_value'], cur)} / {est['term_months']} mo")
         if est.get("baseline") is not None:
             headline.append(f"**vs current:** {money(est['baseline'], cur)} ({est['delta']:+,.0f})")
     out.append(" · ".join(headline) + "\n")
@@ -168,21 +179,31 @@ def account_brief(rec: dict, cfg: dict, plays: dict, est: dict | None, as_of: da
     out.append("")
 
     if est:
-        out.append(f"## Recommended package: {est['name']}\n")
+        out.append(f"## {pkg_cfg.get('section_title', 'Recommended package')}: {est['name']}\n")
         if est["description"]:
             out.append(est["description"] + "\n")
         if est["includes"]:
             out.append("Includes: " + "; ".join(est["includes"]) + "\n")
-        rows = [[l["item"], _display(l["qty"]), money(l["unit"], cur), money(l["monthly"], cur)] for l in est["lines"]]
-        rows.append(["**Monthly**", "", "", f"**{money(est['monthly'], cur)}**"])
-        out.append(_md_table(rows, ["Line", "Qty", "Unit / mo", "Monthly"]) + "\n")
-        terms = f"**{est['term_months']}-month value: {money(est['contract_value'], cur)}**"
-        if est["discount_pct"]:
-            terms += f" (includes {est['discount_pct']:.0%} volume discount)"
-        out.append(terms)
+
+        def unit(l):
+            return f"{l['unit']:.0%}" if l.get("unit_fmt") == "pct" else money(l["unit"], cur)
+
+        if est["total_mode"]:
+            rows = [[l["item"], money(l["qty"], cur) if l.get("unit_fmt") == "pct" else _display(l["qty"]), unit(l),
+                     money(l["monthly"], cur)] for l in est["lines"]]
+            rows.append(["**Total**", "", "", f"**{money(est['contract_value'], cur)}**"])
+            out.append(_md_table(rows, ["Line", "Basis", "Rate", "Amount"]) + "\n")
+        else:
+            rows = [[l["item"], _display(l["qty"]), unit(l), money(l["monthly"], cur)] for l in est["lines"]]
+            rows.append(["**Monthly**", "", "", f"**{money(est['monthly'], cur)}**"])
+            out.append(_md_table(rows, ["Line", "Qty", "Unit / mo", "Monthly"]) + "\n")
+            terms = f"**{est['term_months']}-month value: {money(est['contract_value'], cur)}**"
+            if est["discount_pct"]:
+                terms += f" (includes {est['discount_pct']:.0%} volume discount)"
+            out.append(terms)
         if est["one_time"]:
             out.append(" · One-time: " + ", ".join(f"{o['item']} {money(o['amount'], cur)}" for o in est["one_time"]))
-        out.append("\n> Estimate generated from list pricing; confirm with deal desk before sending.\n")
+        out.append("\n> " + pkg_cfg.get("note", "Estimate generated from list pricing; confirm with deal desk before sending.") + "\n")
 
     if primary:
         out.append(f"## Sales play: {primary['name']}\n")
@@ -219,24 +240,32 @@ def account_brief(rec: dict, cfg: dict, plays: dict, est: dict | None, as_of: da
 def play_pack(key: str, play: dict, members: list[dict], cfg: dict, briefs: dict, ests: dict) -> str:
     cur = cfg.get("packages", {}).get("currency", "USD")
     title_field = cfg["project"].get("title_field", "company")
-    out = [f"# Play: {play['name']}", "", f"*{cfg['project']['name']} · {len(members)} account(s)*", ""]
+    out = [f"# Play: {play['name']}", "",
+           f"*{cfg['project']['name']} · {len(members)} {cfg['project'].get('record_noun', 'account')}(s)*", ""]
     out.append(f"**Objective:** {play['objective']}\n")
     names = {"owner": "Owner", "sla": "SLA", "success_metric": "Success metric"}
     meta = [f"**{v}:** {play[k]}" for k, v in names.items() if play.get(k)]
     if meta:
         out.append(" · ".join(meta) + "\n")
-    out.append("## Target accounts (highest priority first)\n")
+    noun = cfg["project"].get("record_noun", "account")
+    rdir = cfg["project"].get("records_dir", "accounts")
+    col = cfg["project"].get("dashboard_column", {"field": "segment", "label": "Segment"})
+    roll = cfg["project"].get("rollup")
+    fmts = cfg["project"].get("field_formats", {})
+    out.append(f"## Target {noun}s (highest priority first)\n")
     rows = []
     pipeline = 0.0
     for r in members:
         est = ests.get(r["id"])
         if est:
             pipeline += est["contract_value"]
-        rows.append([f"[{label(r, cfg)}](../accounts/{briefs[r['id']]})", r["score_total"],
-                     r.get("total_band") or "—", r.get("segment") or "—",
+        rows.append([f"[{label(r, cfg)}](../{rdir}/{briefs[r['id']]})",
+                     *([r.get(roll["by"]) or "—"] if roll else []), r["score_total"],
+                     r.get("total_band") or "—", _display(r.get(col["field"]), fmts.get(col["field"]), cur),
                      est["name"] if est else "—", money(est["contract_value"], cur) if est else "—",
                      len(r["_flags"])])
-    out.append(_md_table(rows, ["Account", "Score", "Band", "Segment", "Package", "Value", "Flags"]))
+    out.append(_md_table(rows, [noun.title(), *([roll.get("noun", roll["by"]).title()] if roll else []), "Score",
+                                "Band", col["label"], "Package", "Value", "Flags"]))
     if pipeline:
         out.append(f"\n**Pipeline in this play: {money(pipeline, cur)}**\n")
     else:
@@ -263,7 +292,136 @@ def play_pack(key: str, play: dict, members: list[dict], cfg: dict, briefs: dict
     return "\n".join(out)
 
 
-def _dashboard(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: dict, stats: dict) -> str:
+def rollup_briefs(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: dict, as_of: date) -> dict[str, str]:
+    """One brief per group (e.g. per customer) summarizing all of its records."""
+    roll = cfg["project"]["rollup"]
+    cur = cfg.get("packages", {}).get("currency", "USD")
+    fmts = cfg["project"].get("field_formats", {})
+    rdir = cfg["project"].get("records_dir", "accounts")
+    noun = roll.get("noun", roll["by"])
+    groups: dict[str, list[dict]] = {}
+    for r in records:
+        groups.setdefault(r.get(roll["by"]) or "(unassigned)", []).append(r)
+    docs = {}
+    date_f = roll.get("date_field")
+    for name, members in sorted(groups.items()):
+        members.sort(key=lambda r: (r.get(date_f) or "9999") if date_f else -r["score_total"])
+        first = members[0]
+        opp = sum(ests[r["id"]]["contract_value"] for r in members if r["id"] in ests)
+        out = [f"# {name}", "", f"*{roll.get('title', noun.title() + ' brief')} · {cfg['project']['name']} · "
+                                f"prepared {as_of.isoformat()}*", ""]
+        head = [f"**{len(members)}** {cfg['project'].get('record_noun', 'record')}s"]
+        for f, lbl in (roll.get("sum_fields") or {}).items():
+            head.append(f"**{lbl}:** {_display(sum(r.get(f) or 0 for r in members), fmts.get(f), cur)}")
+        if date_f:
+            for days in roll.get("windows", [90, 180]):
+                n = sum(1 for r in members if r.get(date_f) and
+                        0 <= (date.fromisoformat(r[date_f]) - as_of).days <= days)
+                head.append(f"**Renewing ≤{days} days:** {n}")
+        if opp:
+            head.append(f"**{roll.get('opportunity_label', 'Opportunity')}:** {money(opp, cur)}")
+        out.append(" · ".join(head) + "\n")
+        hf = roll.get("header_fields") or {}
+        if hf:
+            out.append(_md_table([[lbl, _display(first.get(f), fmts.get(f), cur)] for f, lbl in hf.items()], ["", ""]) + "\n")
+
+        out.append(f"## {roll.get('lines_title', 'Lines')}\n")
+        cols = roll.get("line_columns", {})
+        rows = []
+        for r in members:
+            est = ests.get(r["id"])
+            pl = plays.get(r["_plays"][0], {}).get("name", "—") if r["_plays"] else "—"
+            link_text = r.get(roll["line_label_field"]) if roll.get("line_label_field") else None
+            rows.append([f"[{link_text or label(r, cfg)}](../{rdir}/{briefs[r['id']]})",
+                         *[_display(r.get(f), fmts.get(f), cur) for f in cols if f != cfg["project"].get("title_field")],
+                         pl, money(est["contract_value"], cur) if est else "—"])
+        out.append(_md_table(rows, [cfg["project"].get("record_noun", "record").title(),
+                                    *[l for f, l in cols.items() if f != cfg["project"].get("title_field")],
+                                    "Next play", "Opportunity"]) + "\n")
+
+        gf = roll.get("group_field")
+        if gf:
+            by_g: dict[str, list[dict]] = {}
+            for r in members:
+                if r.get(gf):
+                    by_g.setdefault(r[gf], []).append(r)
+            overlaps = {g: rs for g, rs in by_g.items() if len(rs) > 1}
+            if overlaps:
+                out.append(f"## {roll.get('overlap_title', 'Overlaps')}\n")
+                for g, rs in sorted(overlaps.items()):
+                    spend_f = next(iter(roll.get("sum_fields") or {}), None)
+                    spend = f" · {money(sum(r.get(spend_f) or 0 for r in rs), cur)} combined" if spend_f else ""
+                    names = ', '.join((r.get(roll["line_label_field"]) if roll.get("line_label_field") else None) or label(r, cfg) for r in rs)
+                    out.append(f"- **{_display(g, fmts.get(gf))}:** {names}{spend}")
+                out.append("")
+
+        by_play: dict[str, list[dict]] = {}
+        for r in members:
+            if r["_plays"]:
+                by_play.setdefault(r["_plays"][0], []).append(r)
+        out.append("## Opportunities by play\n")
+        out.append(_md_table([[plays[p]["name"], len(rs), money(sum(ests[r["id"]]["contract_value"] for r in rs if r["id"] in ests), cur)]
+                              for p, rs in sorted(by_play.items(), key=lambda kv: -sum(ests[r["id"]]["contract_value"] for r in kv[1] if r["id"] in ests))],
+                             ["Play", "Lines", "Value"]) + "\n")
+
+        out.append("## Next steps\n")
+        steps = []
+        for r in sorted(members, key=lambda r: -r["score_total"])[: roll.get("top_n", 5)]:
+            pl = plays.get(r["_plays"][0]) if r["_plays"] else None
+            if pl and pl.get("sequence"):
+                s0 = pl["sequence"][0]
+                steps.append([business_day(as_of, s0["day"]).strftime("%a %b %d"),
+                              (r.get(roll["line_label_field"]) if roll.get("line_label_field") else None) or label(r, cfg),
+                              pl["name"], _fmt(s0["action"], r)])
+        out.append(_md_table(steps, ["When", cfg["project"].get("record_noun", "record").title(), "Play", "First action"]) + "\n")
+
+        flags = [((r.get(roll["line_label_field"]) if roll.get("line_label_field") else None) or label(r, cfg), f)
+                 for r in members for f in r["_flags"]]
+        if flags:
+            out.append("## To-dos\n")
+            out.extend(f"- [ ] **{n}:** {f}" for n, f in flags)
+            out.append("")
+        docs[name] = "\n".join(out)
+    return docs
+
+
+def calendar_md(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: dict, as_of: date) -> str:
+    cal = cfg["project"]["calendar"]
+    cur = cfg.get("packages", {}).get("currency", "USD")
+    fmts = cfg["project"].get("field_formats", {})
+    rdir = cfg["project"].get("records_dir", "accounts")
+    f = cal["date_field"]
+    horizon = cal.get("horizon_days", 365)
+    rows = [r for r in records if r.get(f) and -30 <= (date.fromisoformat(r[f]) - as_of).days <= horizon]
+    rows.sort(key=lambda r: r[f])
+    out = [f"# {cal.get('title', 'Calendar')}", "",
+           f"*{cfg['project']['name']} · next {horizon} days from {as_of.isoformat()} · {len(rows)} items*", ""]
+    month = None
+    cols = cal.get("columns", {})
+    buf: list[list[str]] = []
+
+    def flush():
+        if buf:
+            out.append(_md_table(buf, ["Date", cfg["project"].get("record_noun", "record").title(), *cols.values(), "Play", "Opportunity"]) + "\n")
+            buf.clear()
+
+    for r in rows:
+        d = date.fromisoformat(r[f])
+        m = d.strftime("%B %Y")
+        if m != month:
+            flush()
+            out.append(f"## {m}\n")
+            month = m
+        est = ests.get(r["id"])
+        pl = plays.get(r["_plays"][0], {}).get("name", "—") if r["_plays"] else "—"
+        buf.append([d.strftime("%b %d"), f"[{label(r, cfg)}](./{rdir}/{briefs[r['id']]})",
+                    *[_display(r.get(c), fmts.get(c), cur) for c in cols], pl, money(est["contract_value"], cur) if est else "—"])
+    flush()
+    return "\n".join(out)
+
+
+def _dashboard(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: dict, stats: dict,
+               rollups: dict | None = None) -> str:
     cur = cfg.get("packages", {}).get("currency", "USD")
     tf = cfg["project"].get("title_field", "company")
     e = html.escape
@@ -277,9 +435,9 @@ def _dashboard(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: 
         est = ests.get(r["id"])
         play = plays.get(r["_plays"][0], {}).get("name", "—") if r["_plays"] else "—"
         rows.append(
-            f"<tr><td><a href='accounts/{briefs[r['id']]}'>{e(label(r, cfg))}</a></td>"
+            f"<tr><td><a href='{cfg['project'].get('records_dir', 'accounts')}/{briefs[r['id']]}'>{e(label(r, cfg))}</a></td>"
             f"<td data-v='{r['score_total']}'>{r['score_total']}</td><td>{e(r.get('total_band') or '—')}</td>"
-            + (f"<td>{e(str(r.get(col['field']) or '—'))}</td>" if show_col else "") +
+            + (f"<td>{e(_display(r.get(col['field']), cfg['project'].get('field_formats', {}).get(col['field']), cur))}</td>" if show_col else "") +
             f"<td>{e(play)}</td>"
             f"<td>{e(est['name'] if est else '—')}</td>"
             f"<td data-v='{est['contract_value'] if est else 0}'>{money(est['contract_value'], cur) if est else '—'}</td>"
@@ -288,10 +446,18 @@ def _dashboard(cfg: dict, records: list[dict], plays: dict, ests: dict, briefs: 
         f"<li><a href='plays/{k}.md'>{e(plays[k]['name'])}</a> <span>{play_counts.get(k, 0)}</span></li>"
         for k in plays if play_counts.get(k))
     bands = "".join(f"<li>{e(k)} <span>{v}</span></li>" for k, v in sorted(band_counts.items()))
-    tiles = [("Records in", stats["raw"]), ("Accounts after dedupe", stats["deduped"]),
+    roll = cfg["project"].get("rollup")
+    roll_html = ""
+    if rollups:
+        roll_html = (f"<h2>{e(roll.get('noun', roll['by']).title())}s</h2><ul>" + "".join(
+            f"<li><a href='{roll.get('dir', 'groups')}/{slug(n)}.md'>{e(n)}</a> <span>{sum(1 for r in records if r.get(roll['by']) == n)}</span></li>"
+            for n in rollups) + "</ul>")
+    cal_link = "<li><a href='calendar.md'>calendar.md</a></li>" if cfg["project"].get("calendar") else ""
+    noun = cfg["project"].get("record_noun", "account")
+    tiles = [("Records in", stats["raw"]), (f"{noun.capitalize()}s after dedupe", stats["deduped"]),
              ("Data issues flagged", stats["issues"])]
     if pipeline:
-        tiles.append(("Total packaged value", money(pipeline, cur)))
+        tiles.append((cfg.get("packages", {}).get("headline_label", "Total packaged value"), money(pipeline, cur)))
     deltas = [x["delta"] for x in ests.values() if "delta" in x]
     if deltas:
         tiles[-1] = ("Quoted renewal value", money(pipeline, cur))
@@ -319,11 +485,11 @@ th{{cursor:pointer;color:var(--mut);font-weight:600}} td[data-v]{{font-variant-n
 <h1>{e(cfg['project']['name'])}</h1>
 <p class="sub">{e(cfg['project'].get('description', ''))} · as of {e(stats['as_of'])}</p>
 <div class="tiles">{tile_html}</div>
-<div class="cols"><section><h2>Plays</h2><ul>{play_links}</ul>
+<div class="cols"><section>{roll_html}<h2>Plays</h2><ul>{play_links}</ul>
 <h2>Priority bands</h2><ul>{bands}</ul>
-<h2>Files</h2><ul><li><a href="crm_import.csv">crm_import.csv</a></li>
+<h2>Files</h2><ul>{cal_link}<li><a href="crm_import.csv">crm_import.csv</a></li>
 <li><a href="data_quality.md">data_quality.md</a></li><li><a href="results.json">results.json</a></li></ul></section>
-<section><h2>Accounts</h2><div class="wrap"><table id="t"><thead><tr><th>Account</th><th>Score</th><th>Band</th>
+<section><h2>{e(noun.title())}s</h2><div class="wrap"><table id="t"><thead><tr><th>{e(noun.title())}</th><th>Score</th><th>Band</th>
 {f"<th>{e(col['label'])}</th>" if show_col else ""}<th>Play</th><th>Package</th><th>Value</th><th>Flags</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section></div>
 </main><script>
 document.querySelectorAll('#t th').forEach((th,i)=>th.onclick=()=>{{const tb=document.querySelector('#t tbody');
@@ -336,7 +502,8 @@ const n=parseFloat(va)-parseFloat(vb);return (isNaN(n)?va.localeCompare(vb):n)*(
 def package_outputs(out_dir: Path, cfg: dict, records: list[dict], plays: dict, stats: dict, as_of: date) -> Path:
     if out_dir.exists():
         shutil.rmtree(out_dir)
-    (out_dir / "accounts").mkdir(parents=True)
+    rdir = cfg["project"].get("records_dir", "accounts")
+    (out_dir / rdir).mkdir(parents=True)
     (out_dir / "plays").mkdir()
     pkg_cfg = cfg.get("packages", {})
     cur = pkg_cfg.get("currency", "USD")
@@ -361,7 +528,7 @@ def package_outputs(out_dir: Path, cfg: dict, records: list[dict], plays: dict, 
                     r["_tags"].append("over-budget")
         fname = f"{r['id']}-{slug(label(r, cfg))}.md"
         briefs[r["id"]] = fname
-        (out_dir / "accounts" / fname).write_text(account_brief(r, cfg, plays, est, as_of), encoding="utf-8")
+        (out_dir / rdir / fname).write_text(account_brief(r, cfg, plays, est, as_of), encoding="utf-8")
 
     ranked = sorted(records, key=lambda r: -r["score_total"])
     for key, play in plays.items():
@@ -411,7 +578,16 @@ def package_outputs(out_dir: Path, cfg: dict, records: list[dict], plays: dict, 
     (out_dir / "results.json").write_text(json.dumps({"project": cfg["project"]["name"], "stats": stats,
                                                       "records": [clean(r) for r in ranked]}, indent=2, default=str),
                                           encoding="utf-8")
-    (out_dir / "index.html").write_text(_dashboard(cfg, records, plays, ests, briefs, stats), encoding="utf-8")
+    rollups = None
+    if cfg["project"].get("rollup"):
+        rollups = rollup_briefs(cfg, records, plays, ests, briefs, as_of)
+        gdir = out_dir / cfg["project"]["rollup"].get("dir", "groups")
+        gdir.mkdir()
+        for n, doc in rollups.items():
+            (gdir / f"{slug(n)}.md").write_text(doc, encoding="utf-8")
+    if cfg["project"].get("calendar"):
+        (out_dir / "calendar.md").write_text(calendar_md(cfg, records, plays, ests, briefs, as_of), encoding="utf-8")
+    (out_dir / "index.html").write_text(_dashboard(cfg, records, plays, ests, briefs, stats, rollups), encoding="utf-8")
 
     zip_path = out_dir.parent / f"{out_dir.name}-deliverables.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:

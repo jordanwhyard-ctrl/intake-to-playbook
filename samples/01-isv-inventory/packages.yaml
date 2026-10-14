@@ -1,0 +1,36 @@
+# Consultant revenue by play. Amounts are one-off opportunity values, not monthly fees.
+# Rates are illustrative; set them to your own margins and fee schedule.
+currency: USD
+mode: total
+headline_label: Consultant opportunity
+section_title: Consultant opportunity
+note: Opportunity estimate from catalog margins and standard fees (illustrative). Validate against partner pricing before quoting.
+
+packages:
+  resale:
+    name: Renewal resale
+    description: Margin on transacting the renewal through us.
+    per_unit: {field: annual_spend, price_field: resale_margin, label: margin on annual spend, unit_format: pct}
+  negotiation-fee:
+    name: Negotiation advisory
+    description: Fee of 25% of first-year savings (savings modeled at 12% of annual spend).
+    per_unit: {field: negotiation_savings, price: 0.25, label: share of modeled savings, unit_format: pct}
+  optimization-fee:
+    name: License optimization
+    description: Fee of 25% of first-year savings from reclaimed licenses.
+    per_unit: {field: rightsizing_savings, price: 0.25, label: share of right-sizing savings, unit_format: pct}
+  consolidation-project:
+    name: Consolidation project
+    description: Fixed-fee migration onto the platform the customer already owns.
+    base: 7500
+    per_unit: {field: licenses, price: 20, min: 25, label: users migrated}
+  migration-project:
+    name: Competitive migration
+    description: Fixed-fee migration to the partner ISV.
+    base: 10000
+    per_unit: {field: licenses, price: 35, min: 25, label: users migrated}
+
+addons:
+  first-year-resale:
+    name: First-year resale margin on replacement (est. 12% of current spend)
+    per_unit: {field: annual_spend, price: 0.12, unit_format: pct}

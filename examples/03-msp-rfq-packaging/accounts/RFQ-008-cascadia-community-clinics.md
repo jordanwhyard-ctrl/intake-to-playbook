@@ -1,0 +1,107 @@
+# Cascadia Community Clinics
+
+*Quote Request Packaging — Brightline Managed IT · RFQ-008 · prepared 2026-10-14 · sources: Intake inbox*
+
+**Priority:** A — propose this week (score 105) · **Play:** Compliance-led engagement · **Package:** Secure Plus · $1,049,904 / 36 mo
+
+## Snapshot
+
+|  |  |
+|---|---|
+| Contact | Andrea Novak |
+| Other contacts | — |
+| Email | anovak@cascadiaclinics.org |
+| Industry | Healthcare |
+| Staff | 210 |
+| Devices | 240 |
+| Servers | 4 |
+| Locations | 5 |
+| Compliance | HIPAA, SOC2 |
+| Email platform | M365 |
+| Current IT | Vantage It Partners |
+| Problems | slow response times, security, audit findings |
+| Monthly budget | $22,000 |
+| Target start | 2026-12-01 |
+| Days to start | 48 |
+| Referred by | — |
+
+## Scores
+
+| Score | Points |
+|---|---|
+| Fit | 45 |
+| Urgency | 60 |
+| **Total** | **105** |
+
+Tags: `regulated` `multi-site` `msp-displacement` `audit-driven` `security-concern` `over-budget`
+
+## Why this recommendation
+
+- **Qualify** · 240 devices is inside the 15–500 sweet spot → fit +20
+- **Qualify** · healthcare is a regulated vertical where we have references → fit +20
+- **Qualify** · 5 locations → fit +5
+- **Qualify** · Replacing an incumbent MSP (vantage it partners)
+- **Urgency** · Wants to start in 48 days → urgency +20
+- **Urgency** · Open audit findings or compliance deadline → urgency +20
+- **Urgency** · Incumbent contract ending → urgency +10
+- **Urgency** · Named security as a problem → urgency +10
+- **Tier** · CMMC/NIST, SOC 2 at scale, or 150+ devices → Secure Plus → package=secure-plus
+- **Add-ons** · HIPAA → risk assessment, BAA, policy pack → +hipaa-pack
+- **Add-ons** · 4 server(s) to manage → +server-mgmt
+- **Add-ons** · 5 sites → managed network per site → +multi-site-network
+- **Route** · Compliance-driven buyer → gap assessment first → play=compliance-led
+
+## Recommended package: Secure Plus
+
+Everything in Professional plus a 24x7 SOC/SIEM, compliance reporting and a fractional vCISO.
+
+Includes: Everything in Professional; 24x7 SOC + SIEM; Monthly compliance reporting; Fractional vCISO; Annual pen test
+
+| Line | Qty | Unit / mo | Monthly |
+|---|---|---|---|
+| Secure Plus — platform | 1 | $1,000 | $1,000 |
+| Secure Plus — devices | 240 | $120 | $28,800 |
+| HIPAA Compliance Pack | 1 | $450 | $450 |
+| Server management | 4 | $175 | $700 |
+| Managed network (per site) | 5 | $150 | $750 |
+| **Monthly** |  |  | **$31,700** |
+
+**36-month value: $1,049,904** (includes 8% volume discount)
+ · One-time: Onboarding + gap assessment $7,500
+
+> Estimate generated from list pricing; confirm with deal desk before sending.
+
+## Sales play: Compliance-led engagement
+
+Lead with a paid or credited gap assessment that produces a remediation roadmap, then convert it to a managed program.
+
+Owner: vCISO + Account Executive · SLA: Gap assessment proposal within 3 business days
+
+### Next steps
+
+| When | Channel | Action |
+|---|---|---|
+| Wed Oct 14 | Email | Send hipaa, soc2 readiness overview and sample gap report to Andrea Novak |
+| Fri Oct 16 | Meeting | Discovery with vCISO: scope, audit dates, current evidence |
+| Wed Oct 21 | Email | Gap assessment SOW (fee credited toward first year) |
+| Wed Nov 11 | Meeting | Present findings and roadmap; introduce managed program proposal |
+
+### Talk track
+
+> Before anyone quotes you a monthly number, you need to know your gap. The assessment gives you a prioritized roadmap you can show the auditor either way.
+>
+> If you move forward with us, the assessment fee is credited toward the first year.
+
+### Discovery questions
+
+1. When is your next audit or assessment, and who performs it?
+2. What findings or POA&M items are open today?
+3. Where does sensitive data (PHI / CUI / cardholder) live today?
+
+## Flags and to-dos
+
+- [ ] Budget gap: estimate $31,700/mo vs stated budget $22,000/mo — lead with phased scope or ROI
+
+## Original notes
+
+> We had two audit findings last quarter around access reviews and backup testing. Our contract with Vantage ends Nov 30 and we need a proposal by end of month.

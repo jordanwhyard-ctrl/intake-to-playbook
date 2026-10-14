@@ -1,0 +1,170 @@
+scores: [urgency, value, opportunity]
+
+# Per line, before anything else
+computed:
+  line_name: {template: "{product} · {customer}"}
+  unit_cost_annual: {product: [unit_cost_monthly, 12]}
+  est_annual_from_units: {product: [licenses, unit_cost_annual]}
+  annual_spend: {coalesce: [annual_cost, est_annual_from_units]}
+  cost_per_license: {ratio: [annual_spend, licenses]}
+  days_to_renewal: {days_until: renewal_date}
+  notice_deadline: {date_minus_days: [renewal_date, notice_days]}
+  days_to_notice: {days_until: notice_deadline}
+  utilization: {ratio: [active_users, licenses]}
+  unused_licenses: {difference: [licenses, active_users]}
+  negotiation_savings: {scale: {field: annual_spend, factor: 0.12, round_to: 100}}
+
+# Across lines: what else does this customer own?
+group_computed:
+  tools_in_category: {count: {by: [customer, category]}}
+  customer_products: {values: {by: [customer], field: product}}
+  category_products: {values: {by: [customer, category], field: product}}
+  customer_spend: {sum: {by: [customer], field: annual_spend}}
+
+computed_after:
+  category_peers: {without: [category_products, product]}
+  rightsizing_savings: {product: [unused_licenses, cost_per_license]}
+
+score_bands:
+  total:
+    - {min: 80, label: "Act now"}
+    - {min: 50, label: "High"}
+    - {min: 25, label: "Medium"}
+    - {min: -999, label: "Low"}
+
+stages:
+  - name: Renewal timing
+    first_match: true
+    rules:
+      - id: t-lapsed
+        when: {field: days_to_renewal, lt: 0}
+        then: {score: {urgency: 10}, flag: "Renewal date has passed — confirm whether it renewed and on what terms"}
+        reason: "Renewal date {renewal_date} has passed"
+      - id: t-90
+        when: {field: days_to_renewal, lte: 90}
+        then: {score: {urgency: 40}, tag: renewing-90}
+        reason: "Renews in {days_to_renewal} days"
+      - id: t-180
+        when: {field: days_to_renewal, lte: 180}
+        then: {score: {urgency: 25}, tag: renewing-180}
+        reason: "Renews in {days_to_renewal} days"
+      - id: t-365
+        when: {field: days_to_renewal, lte: 365}
+        then: {score: {urgency: 10}}
+        reason: "Renews in {days_to_renewal} days"
+    else:
+      then: {score: {urgency: 0}}
+      reason: "Renewal is more than a year out"
+
+  - name: Auto-renew
+    when: {field: auto_renew, is_true: true}
+    rules:
+      - id: ar-deadline-missed
+        when: {field: days_to_notice, lt: 0}
+        then: {score: {urgency: 15}, tag: notice-missed,
+               flag: "Auto-renew notice deadline ({notice_deadline}) already passed — ask the vendor for a short-term extension or a co-term instead of a full renewal"}
+        reason: "Notice deadline {notice_deadline} has passed"
+      - id: ar-deadline-close
+        when: {field: days_to_notice, between: [0, 45]}
+        then: {score: {urgency: 30}, tag: notice-imminent,
+               flag: "Send non-renewal / renegotiation notice by {notice_deadline} ({days_to_notice} days) to keep options open"}
+        reason: "Auto-renew notice due in {days_to_notice} days"
+      - id: ar-deadline-tracked
+        when: {field: days_to_notice, gt: 45}
+        then: {flag: "Calendar the auto-renew notice deadline: {notice_deadline}"}
+        reason: "Auto-renews; notice deadline {notice_deadline}"
+
+  - name: Spend
+    first_match: true
+    rules:
+      - id: s-250k
+        when: {field: annual_spend, gte: 250000}
+        then: {score: {value: 35}, tag: strategic-spend}
+        reason: "${annual_spend}/yr — strategic spend"
+      - id: s-75k
+        when: {field: annual_spend, gte: 75000}
+        then: {score: {value: 25}}
+        reason: "${annual_spend}/yr"
+      - id: s-25k
+        when: {field: annual_spend, gte: 25000}
+        then: {score: {value: 12}}
+        reason: "${annual_spend}/yr"
+    else:
+      then: {score: {value: 3}}
+      reason: "Small line (${annual_spend}/yr)"
+
+  - name: Signals
+    rules:
+      - id: sig-covered
+        when: {all: [{field: covered_by_suites, exists: true}, {field: customer_products, contains_any: {ref: covered_by_suites}}]}
+        then: {score: {opportunity: 30}, tag: already-owned-alternative, copy: {consolidate_onto: covered_by}}
+        reason: "Customer already owns {covered_by} through a suite they pay for"
+      - id: sig-overlap
+        when: {all: [{field: tools_in_category, gte: 2}, {field: resale_margin, missing: true}]}
+        then: {score: {opportunity: 20}, tag: category-overlap, copy: {consolidate_onto: category_peers}}
+        reason: "{tools_in_category} tools in the {category} category at this customer"
+      - id: sig-unhappy
+        when: {field: satisfaction, lte: 2}
+        then: {score: {opportunity: 20}, tag: dissatisfied}
+        reason: "Satisfaction {satisfaction}/5"
+      - id: sig-evaluating
+        when: {field: considering, exists: true}
+        then: {score: {opportunity: 20}, tag: evaluating-alternative}
+        reason: "Customer is already evaluating {considering}"
+      - id: sig-shelfware
+        when: {all: [{field: utilization, lt: 0.75}, {field: unused_licenses, gte: 10}]}
+        then: {score: {opportunity: 15}, tag: shelfware}
+        reason: "{unused_licenses} of {licenses} licenses unused in the last 30 days"
+      - id: sig-partner-alt
+        when: {field: partner_alternatives, exists: true}
+        then: {tag: partner-alternative}
+        reason: "We resell or implement: {partner_alternatives}"
+      - id: sig-resellable
+        when: {field: resale_margin, exists: true}
+        then: {tag: resellable}
+        reason: "We can resell this product ({resale_margin:.0%} margin)"
+      - id: sig-unknown
+        when: {field: category, missing: true}
+        then: {flag: "Product not in the catalog — add it with category and alternatives so it can be assessed"}
+        reason: "Not in the software catalog"
+
+  - name: Route
+    first_match: true
+    rules:
+      - id: p-consolidate
+        when: {any: [{field: tags, contains: already-owned-alternative}, {field: tags, contains: category-overlap}]}
+        then: {play: consolidate, package: consolidation-project}
+        reason: "Overlap with tools already owned → consolidation"
+      - id: p-swap
+        when: {all: [{any: [{field: tags, contains: dissatisfied}, {field: tags, contains: evaluating-alternative}]},
+                     {field: tags, contains: partner-alternative}]}
+        then: {play: competitive-swap, package: migration-project, addons: [first-year-resale]}
+        reason: "Unhappy or evaluating, and we have a partner alternative → competitive swap"
+      - id: p-rightsize
+        when: {all: [{field: tags, contains: shelfware}, {field: days_to_renewal, lte: 270}]}
+        then: {play: license-optimization, package: optimization-fee}
+        reason: "Unused licenses before renewal → right-size"
+      - id: p-negotiate
+        when: {any: [{all: [{field: annual_spend, gte: 75000}, {field: days_to_renewal, between: [0, 270]}]},
+                     {all: [{field: annual_spend, gte: 250000}, {field: days_to_renewal, between: [0, 365]}]}]}
+        then: {play: renewal-negotiation, package: negotiation-fee}
+        reason: "Large renewal inside the negotiation window"
+      - id: p-resell
+        when: {all: [{field: tags, contains: resellable}, {field: days_to_renewal, between: [-30, 180]}]}
+        then: {play: own-the-renewal, package: resale}
+        reason: "We resell it and it renews within 180 days → quote the renewal"
+    else:
+      then: {play: monitor}
+      reason: "No action needed yet — revisit 180 days before renewal"
+
+  - name: Overlay
+    rules:
+      - id: o-resale
+        when: {all: [{field: tags, contains: resellable}, {not: {field: plays, contains: own-the-renewal}},
+                     {not: {field: plays, contains: consolidate}}, {field: days_to_renewal, between: [-30, 365]}]}
+        then: {play: own-the-renewal}
+        reason: "Also offer to transact the renewal through us"
+      - id: o-notice-first
+        when: {field: tags, contains: notice-imminent}
+        then: {tag: deadline-driven}
+        reason: "Lead with the notice deadline in the first conversation"

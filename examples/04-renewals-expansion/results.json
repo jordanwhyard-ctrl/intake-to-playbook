@@ -1,0 +1,1909 @@
+{
+  "project": "Renewal & Expansion Desk \u2014 Cobalt Ops",
+  "stats": {
+    "sources": {
+      "data/crm_accounts.csv": 10,
+      "data/product_usage.json": 10,
+      "data/support_summary.csv": 10,
+      "data/csm_notes.txt": 7
+    },
+    "raw": 37,
+    "issues": 0,
+    "deduped": 10,
+    "as_of": "2026-10-14"
+  },
+  "records": [
+    {
+      "company": "Atlas Cold Chain Inc.",
+      "contact_name": "Ivan Petrov",
+      "email": "ivan.petrov@atlascoldchain.com",
+      "plan": "enterprise",
+      "seats": 400.0,
+      "arr": 214560.0,
+      "renewal_date": "2026-12-31",
+      "csm": "Dana Ruiz",
+      "industry": "logistics",
+      "exec_sponsor": "Maria Okonkwo (COO)",
+      "active_users": 452.0,
+      "usage_trend": "up",
+      "features_used": [
+        "approvals",
+        "audit trail",
+        "integrations",
+        "reporting",
+        "sandbox"
+      ],
+      "workflows": 64.0,
+      "nps": 9.0,
+      "open_tickets": 3.0,
+      "p1_tickets": 0.0,
+      "csat": 96.0,
+      "escalated": false,
+      "champion_status": "stable",
+      "budget_signal": "expanding",
+      "competitor_mention": null,
+      "customer_ask": "wants a second business unit (Atlas Fleet Services) onboarded in Q1",
+      "notes": "Ops team is now routing all carrier onboarding through workflows. Maria (COO) mentioned us on their earnings call.",
+      "first_name": "Ivan",
+      "domain": "atlascoldchain.com",
+      "free_email": false,
+      "id": "ACCT-001",
+      "days_to_renewal": 78,
+      "seat_utilization": 1.13,
+      "right_sized_seats": 520.0,
+      "growth_seats": 520.0,
+      "quote_seats": 520.0,
+      "package": "enterprise",
+      "score_total": 115,
+      "risk_band": "Low",
+      "total_band": "Strong",
+      "scores": {
+        "health": 55,
+        "risk": 0,
+        "expansion": 60
+      },
+      "tags": [
+        "at-capacity",
+        "deeply-embedded",
+        "promoter",
+        "new-team",
+        "seat-expansion"
+      ],
+      "flags": [],
+      "plays": [
+        "expansion",
+        "advocacy"
+      ],
+      "addons": [
+        "integration-hub"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "452 of 400 seats active (113%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-up",
+          "reason": "Usage trending up over 90 days",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-depth",
+          "reason": "64 live workflows = high switching cost",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-promoter",
+          "reason": "NPS 9 (promoter)",
+          "effects": [
+            "health +15"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-budget",
+          "reason": "Budget expanding",
+          "effects": [
+            "expansion +20"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-ask",
+          "reason": "Customer asked: wants a second business unit (Atlas Fleet Services) onboarded in Q1",
+          "effects": [
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-new-unit",
+          "reason": "New team or business unit to onboard",
+          "effects": [
+            "expansion +10"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-expand",
+          "reason": "Usage exceeds licenses \u2192 quote 520 seats",
+          "effects": [
+            "quote_seats=520"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-enterprise",
+          "reason": "Renew on Enterprise",
+          "effects": [
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-integrations",
+          "reason": "Uses integrations",
+          "effects": [
+            "+integration-hub"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-expand",
+          "reason": "Expansion score 60 \u2192 expansion play",
+          "effects": [
+            "play=expansion"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-advocacy",
+          "reason": "Promoter with low risk \u2192 ask for a reference or case study",
+          "effects": [
+            "play=advocacy"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 520.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 21840.0
+          },
+          {
+            "item": "Integration Hub",
+            "qty": 520.0,
+            "unit": 6.0,
+            "unit_fmt": null,
+            "monthly": 3120.0
+          }
+        ],
+        "monthly": 26460.0,
+        "discount_pct": 0.15,
+        "term_months": 12,
+        "contract_value": 269892.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 214560.0,
+        "delta": 55332.0
+      }
+    },
+    {
+      "company": "Ironwood Labs",
+      "contact_name": "Ava Chen",
+      "email": "ava@ironwoodlabs.io",
+      "plan": "growth",
+      "seats": 150.0,
+      "arr": 53400.0,
+      "renewal_date": "2027-01-31",
+      "csm": "Sam Patel",
+      "industry": "software",
+      "exec_sponsor": "Nick Ferraro (CTO)",
+      "active_users": 176.0,
+      "usage_trend": "up",
+      "features_used": [
+        "api",
+        "approvals",
+        "integrations",
+        "reporting"
+      ],
+      "workflows": 41.0,
+      "nps": 7.0,
+      "open_tickets": 5.0,
+      "p1_tickets": 0.0,
+      "csat": 85.0,
+      "escalated": false,
+      "champion_status": "stable",
+      "budget_signal": "expanding",
+      "competitor_mention": null,
+      "customer_ask": "API rate limits; wants engineering team onboarded (~60 more users)",
+      "notes": "Hit Growth plan API limits twice last month.",
+      "first_name": "Ava",
+      "domain": "ironwoodlabs.io",
+      "free_email": false,
+      "id": "ACCT-009",
+      "days_to_renewal": 109,
+      "seat_utilization": 1.173,
+      "right_sized_seats": 205.0,
+      "growth_seats": 205.0,
+      "quote_seats": 205.0,
+      "package": "enterprise",
+      "score_total": 115,
+      "risk_band": "Low",
+      "total_band": "Strong",
+      "scores": {
+        "health": 40,
+        "risk": 0,
+        "expansion": 75
+      },
+      "tags": [
+        "at-capacity",
+        "deeply-embedded",
+        "upgrade-candidate",
+        "new-team",
+        "plan-upgrade"
+      ],
+      "flags": [],
+      "plays": [
+        "expansion"
+      ],
+      "addons": [
+        "integration-hub"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "176 of 150 seats active (117%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-up",
+          "reason": "Usage trending up over 90 days",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-depth",
+          "reason": "41 live workflows = high switching cost",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-budget",
+          "reason": "Budget expanding",
+          "effects": [
+            "expansion +20"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-ask",
+          "reason": "Customer asked: API rate limits; wants engineering team onboarded (~60 more users)",
+          "effects": [
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-plan-limit",
+          "reason": "Hitting limits of the growth plan",
+          "effects": [
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-new-unit",
+          "reason": "New team or business unit to onboard",
+          "effects": [
+            "expansion +10"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-upgrade",
+          "reason": "Growth \u2192 Enterprise upgrade to unlock SSO / API limits",
+          "effects": [
+            "quote_seats=205",
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-integrations",
+          "reason": "Uses integrations",
+          "effects": [
+            "+integration-hub"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-expand",
+          "reason": "Expansion score 75 \u2192 expansion play",
+          "effects": [
+            "play=expansion"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 205.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 8610.0
+          },
+          {
+            "item": "Integration Hub",
+            "qty": 205.0,
+            "unit": 6.0,
+            "unit_fmt": null,
+            "monthly": 1230.0
+          }
+        ],
+        "monthly": 11340.0,
+        "discount_pct": 0.1,
+        "term_months": 12,
+        "contract_value": 122472.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 53400.0,
+        "delta": 69072.0
+      }
+    },
+    {
+      "company": "Delta Ridge Credit Union",
+      "contact_name": "Henry Walsh",
+      "email": "hwalsh@deltaridgecu.org",
+      "plan": "growth",
+      "seats": 120.0,
+      "arr": 44640.0,
+      "renewal_date": "2026-12-05",
+      "csm": "Sam Patel",
+      "industry": "financial services",
+      "exec_sponsor": "Rita Gomez (CFO)",
+      "active_users": 131.0,
+      "usage_trend": "up",
+      "features_used": [
+        "approvals",
+        "audit trail",
+        "integrations",
+        "reporting"
+      ],
+      "workflows": 27.0,
+      "nps": 8.0,
+      "open_tickets": 2.0,
+      "p1_tickets": 0.0,
+      "csat": 94.0,
+      "escalated": false,
+      "champion_status": "stable",
+      "budget_signal": "approved",
+      "competitor_mention": null,
+      "customer_ask": "SSO and audit exports for examiners",
+      "notes": "Rita (CFO) wants SSO before the next regulatory exam. Growth plan does not include SSO.",
+      "first_name": "Henry",
+      "domain": "deltaridgecu.org",
+      "free_email": false,
+      "id": "ACCT-004",
+      "days_to_renewal": 52,
+      "seat_utilization": 1.092,
+      "right_sized_seats": 155.0,
+      "growth_seats": 155.0,
+      "quote_seats": 155.0,
+      "package": "enterprise",
+      "score_total": 105,
+      "risk_band": "Low",
+      "total_band": "Strong",
+      "scores": {
+        "health": 40,
+        "risk": 0,
+        "expansion": 65
+      },
+      "tags": [
+        "at-capacity",
+        "deeply-embedded",
+        "upgrade-candidate",
+        "plan-upgrade"
+      ],
+      "flags": [
+        "Renews in 52 days \u2014 renewal quote should already be out"
+      ],
+      "plays": [
+        "expansion"
+      ],
+      "addons": [
+        "compliance-pack",
+        "integration-hub"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "131 of 120 seats active (109%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-up",
+          "reason": "Usage trending up over 90 days",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-depth",
+          "reason": "27 live workflows = high switching cost",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-budget",
+          "reason": "Budget approved",
+          "effects": [
+            "expansion +20"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-ask",
+          "reason": "Customer asked: SSO and audit exports for examiners",
+          "effects": [
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Expansion signals",
+          "rule": "x-plan-limit",
+          "reason": "Hitting limits of the growth plan",
+          "effects": [
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-upgrade",
+          "reason": "Growth \u2192 Enterprise upgrade to unlock SSO / API limits",
+          "effects": [
+            "quote_seats=155",
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-compliance",
+          "reason": "Regulated industry keeps the Compliance Pack",
+          "effects": [
+            "+compliance-pack"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-integrations",
+          "reason": "Uses integrations",
+          "effects": [
+            "+integration-hub"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-expand",
+          "reason": "Expansion score 65 \u2192 expansion play",
+          "effects": [
+            "play=expansion"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-timing",
+          "reason": "Renewal inside 60 days",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 155.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 6510.0
+          },
+          {
+            "item": "Compliance Pack",
+            "qty": 1,
+            "unit": 750,
+            "monthly": 750
+          },
+          {
+            "item": "Integration Hub",
+            "qty": 155.0,
+            "unit": 6.0,
+            "unit_fmt": null,
+            "monthly": 930.0
+          }
+        ],
+        "monthly": 9690.0,
+        "discount_pct": 0.1,
+        "term_months": 12,
+        "contract_value": 104652.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 44640.0,
+        "delta": 60012.0
+      }
+    },
+    {
+      "company": "Evergreen Fabrication",
+      "contact_name": "Tara Nguyen",
+      "email": "tnguyen@evergreenfab.com",
+      "plan": "growth",
+      "seats": 80.0,
+      "arr": 30480.0,
+      "renewal_date": "2027-02-28",
+      "csm": "Sam Patel",
+      "industry": "manufacturing",
+      "exec_sponsor": null,
+      "active_users": 74.0,
+      "usage_trend": "up",
+      "features_used": [
+        "approvals",
+        "integrations",
+        "reporting"
+      ],
+      "workflows": 19.0,
+      "nps": 10.0,
+      "open_tickets": 0.0,
+      "p1_tickets": 0.0,
+      "csat": 100.0,
+      "escalated": false,
+      "champion_status": null,
+      "budget_signal": null,
+      "competitor_mention": null,
+      "customer_ask": null,
+      "notes": null,
+      "first_name": "Tara",
+      "domain": "evergreenfab.com",
+      "free_email": false,
+      "id": "ACCT-005",
+      "days_to_renewal": 137,
+      "seat_utilization": 0.925,
+      "right_sized_seats": 90.0,
+      "growth_seats": 90.0,
+      "quote_seats": 90.0,
+      "package": "growth",
+      "score_total": 60,
+      "risk_band": "Low",
+      "total_band": "Strong",
+      "scores": {
+        "health": 45,
+        "risk": 0,
+        "expansion": 15
+      },
+      "tags": [
+        "at-capacity",
+        "promoter",
+        "seat-expansion"
+      ],
+      "flags": [],
+      "plays": [
+        "standard-renewal",
+        "advocacy"
+      ],
+      "addons": [
+        "integration-hub"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "74 of 80 seats active (92%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-up",
+          "reason": "Usage trending up over 90 days",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-promoter",
+          "reason": "NPS 10 (promoter)",
+          "effects": [
+            "health +15"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-expand",
+          "reason": "Usage exceeds licenses \u2192 quote 90 seats",
+          "effects": [
+            "quote_seats=90"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-growth",
+          "reason": "Renew on Growth",
+          "effects": [
+            "package=growth"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-integrations",
+          "reason": "Uses integrations",
+          "effects": [
+            "+integration-hub"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "Healthy, standard renewal",
+          "effects": [
+            "play=standard-renewal"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-advocacy",
+          "reason": "Promoter with low risk \u2192 ask for a reference or case study",
+          "effects": [
+            "play=advocacy"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "growth",
+        "name": "Growth renewal",
+        "description": "Growth plan, quoted at seats sized to actual usage.",
+        "includes": [
+          "Conditional routing",
+          "Reporting dashboards",
+          "10 standard integrations"
+        ],
+        "lines": [
+          {
+            "item": "Growth renewal \u2014 platform",
+            "qty": 1,
+            "unit": 300.0,
+            "monthly": 300.0
+          },
+          {
+            "item": "Growth renewal \u2014 seats",
+            "qty": 90.0,
+            "unit": 28.0,
+            "unit_fmt": null,
+            "monthly": 2520.0
+          },
+          {
+            "item": "Integration Hub",
+            "qty": 90.0,
+            "unit": 6.0,
+            "unit_fmt": null,
+            "monthly": 540.0
+          }
+        ],
+        "monthly": 3360.0,
+        "discount_pct": 0.0,
+        "term_months": 12,
+        "contract_value": 40320.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 30480.0,
+        "delta": 9840.0
+      }
+    },
+    {
+      "company": "Horizon Learning Co.",
+      "contact_name": "Bea Larson",
+      "email": "blarson@horizonlearning.co",
+      "plan": "growth",
+      "seats": 45.0,
+      "arr": 17820.0,
+      "renewal_date": "2027-06-30",
+      "csm": "Sam Patel",
+      "industry": "education",
+      "exec_sponsor": null,
+      "active_users": 41.0,
+      "usage_trend": "up",
+      "features_used": [
+        "approvals",
+        "reporting",
+        "templates"
+      ],
+      "workflows": 9.0,
+      "nps": 9.0,
+      "open_tickets": 0.0,
+      "p1_tickets": 0.0,
+      "csat": 98.0,
+      "escalated": false,
+      "champion_status": null,
+      "budget_signal": null,
+      "competitor_mention": null,
+      "customer_ask": null,
+      "notes": null,
+      "first_name": "Bea",
+      "domain": "horizonlearning.co",
+      "free_email": false,
+      "id": "ACCT-008",
+      "days_to_renewal": 259,
+      "seat_utilization": 0.911,
+      "right_sized_seats": 50.0,
+      "growth_seats": 50.0,
+      "quote_seats": 50.0,
+      "package": "growth",
+      "score_total": 60,
+      "risk_band": "Low",
+      "total_band": "Strong",
+      "scores": {
+        "health": 45,
+        "risk": 0,
+        "expansion": 15
+      },
+      "tags": [
+        "at-capacity",
+        "promoter",
+        "seat-expansion"
+      ],
+      "flags": [],
+      "plays": [
+        "standard-renewal",
+        "advocacy"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "41 of 45 seats active (91%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-up",
+          "reason": "Usage trending up over 90 days",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-promoter",
+          "reason": "NPS 9 (promoter)",
+          "effects": [
+            "health +15"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-expand",
+          "reason": "Usage exceeds licenses \u2192 quote 50 seats",
+          "effects": [
+            "quote_seats=50"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-growth",
+          "reason": "Renew on Growth",
+          "effects": [
+            "package=growth"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "Healthy, standard renewal",
+          "effects": [
+            "play=standard-renewal"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-advocacy",
+          "reason": "Promoter with low risk \u2192 ask for a reference or case study",
+          "effects": [
+            "play=advocacy"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "growth",
+        "name": "Growth renewal",
+        "description": "Growth plan, quoted at seats sized to actual usage.",
+        "includes": [
+          "Conditional routing",
+          "Reporting dashboards",
+          "10 standard integrations"
+        ],
+        "lines": [
+          {
+            "item": "Growth renewal \u2014 platform",
+            "qty": 1,
+            "unit": 300.0,
+            "monthly": 300.0
+          },
+          {
+            "item": "Growth renewal \u2014 seats",
+            "qty": 50.0,
+            "unit": 28.0,
+            "unit_fmt": null,
+            "monthly": 1400.0
+          }
+        ],
+        "monthly": 1700.0,
+        "discount_pct": 0.0,
+        "term_months": 12,
+        "contract_value": 20400.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 17820.0,
+        "delta": 2580.0
+      }
+    },
+    {
+      "company": "Falcon Freight Systems",
+      "contact_name": "Nadia Rahman",
+      "email": "nrahman@falconfreight.com",
+      "plan": "enterprise",
+      "seats": 250.0,
+      "arr": 144000.0,
+      "renewal_date": "2027-03-31",
+      "csm": "Dana Ruiz",
+      "industry": "logistics",
+      "exec_sponsor": "James Lee (VP Ops)",
+      "active_users": 241.0,
+      "usage_trend": "flat",
+      "features_used": [
+        "approvals",
+        "integrations",
+        "reporting",
+        "sso"
+      ],
+      "workflows": 38.0,
+      "nps": 8.0,
+      "open_tickets": 4.0,
+      "p1_tickets": 1.0,
+      "csat": 88.0,
+      "escalated": false,
+      "champion_status": null,
+      "budget_signal": null,
+      "competitor_mention": null,
+      "customer_ask": null,
+      "notes": null,
+      "first_name": "Nadia",
+      "domain": "falconfreight.com",
+      "free_email": false,
+      "id": "ACCT-006",
+      "days_to_renewal": 168,
+      "seat_utilization": 0.964,
+      "right_sized_seats": 280.0,
+      "growth_seats": 280.0,
+      "quote_seats": 280.0,
+      "package": "enterprise",
+      "score_total": 45,
+      "risk_band": "Low",
+      "total_band": "Stable",
+      "scores": {
+        "health": 30,
+        "risk": 0,
+        "expansion": 15
+      },
+      "tags": [
+        "at-capacity",
+        "deeply-embedded",
+        "seat-expansion"
+      ],
+      "flags": [],
+      "plays": [
+        "standard-renewal"
+      ],
+      "addons": [
+        "integration-hub"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-high",
+          "reason": "241 of 250 seats active (96%)",
+          "effects": [
+            "health +20",
+            "expansion +15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-depth",
+          "reason": "38 live workflows = high switching cost",
+          "effects": [
+            "health +10"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-expand",
+          "reason": "Usage exceeds licenses \u2192 quote 280 seats",
+          "effects": [
+            "quote_seats=280"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-enterprise",
+          "reason": "Renew on Enterprise",
+          "effects": [
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-integrations",
+          "reason": "Uses integrations",
+          "effects": [
+            "+integration-hub"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "Route-default",
+          "reason": "Healthy, standard renewal",
+          "effects": [
+            "play=standard-renewal"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 280.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 11760.0
+          },
+          {
+            "item": "Integration Hub",
+            "qty": 280.0,
+            "unit": 6.0,
+            "unit_fmt": null,
+            "monthly": 1680.0
+          }
+        ],
+        "monthly": 14940.0,
+        "discount_pct": 0.1,
+        "term_months": 12,
+        "contract_value": 161352.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 144000.0,
+        "delta": 17352.0
+      }
+    },
+    {
+      "company": "Cedar & Pine Outfitters",
+      "contact_name": "Owen Price",
+      "email": "owen@cedarandpine.com",
+      "plan": "growth",
+      "seats": 60.0,
+      "arr": 23760.0,
+      "renewal_date": "2026-11-20",
+      "csm": "Sam Patel",
+      "industry": "retail",
+      "exec_sponsor": null,
+      "active_users": 22.0,
+      "usage_trend": "flat",
+      "features_used": [
+        "approvals",
+        "templates"
+      ],
+      "workflows": 5.0,
+      "nps": 7.0,
+      "open_tickets": 1.0,
+      "p1_tickets": 0.0,
+      "csat": 90.0,
+      "escalated": false,
+      "champion_status": "stable",
+      "budget_signal": "flat",
+      "competitor_mention": null,
+      "customer_ask": null,
+      "notes": "Seasonal business; usage spikes in Nov-Dec.",
+      "first_name": "Owen",
+      "domain": "cedarandpine.com",
+      "free_email": false,
+      "id": "ACCT-003",
+      "days_to_renewal": 37,
+      "seat_utilization": 0.367,
+      "right_sized_seats": 30.0,
+      "growth_seats": 60.0,
+      "quote_seats": 30.0,
+      "package": "growth",
+      "score_total": -30,
+      "risk_band": "Medium",
+      "total_band": "At risk",
+      "scores": {
+        "health": 0,
+        "risk": -30,
+        "expansion": 0
+      },
+      "tags": [
+        "shelfware",
+        "right-size"
+      ],
+      "flags": [
+        "Renews in 37 days \u2014 renewal quote should already be out"
+      ],
+      "plays": [
+        "right-size-renewal"
+      ],
+      "addons": [],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-low",
+          "reason": "Only 37% of seats in use",
+          "effects": [
+            "risk -20"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-shallow",
+          "reason": "Only 5 live workflows",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-rightsize",
+          "reason": "Proactively right-size to 30 seats to protect the renewal",
+          "effects": [
+            "quote_seats=30"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-growth",
+          "reason": "Renew on Growth",
+          "effects": [
+            "package=growth"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-rightsize",
+          "reason": "Low utilization \u2192 proactive right-size",
+          "effects": [
+            "play=right-size-renewal"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-timing",
+          "reason": "Renewal inside 60 days",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "growth",
+        "name": "Growth renewal",
+        "description": "Growth plan, quoted at seats sized to actual usage.",
+        "includes": [
+          "Conditional routing",
+          "Reporting dashboards",
+          "10 standard integrations"
+        ],
+        "lines": [
+          {
+            "item": "Growth renewal \u2014 platform",
+            "qty": 1,
+            "unit": 300.0,
+            "monthly": 300.0
+          },
+          {
+            "item": "Growth renewal \u2014 seats",
+            "qty": 30.0,
+            "unit": 28.0,
+            "unit_fmt": null,
+            "monthly": 840.0
+          }
+        ],
+        "monthly": 1140.0,
+        "discount_pct": 0.05,
+        "term_months": 12,
+        "contract_value": 12996.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 23760.0,
+        "delta": -10764.0
+      }
+    },
+    {
+      "company": "Juniper Senior Living",
+      "contact_name": "Gina Torres",
+      "email": "gtorres@junipersl.com",
+      "plan": "growth",
+      "seats": 70.0,
+      "arr": 27000.0,
+      "renewal_date": "2026-12-15",
+      "csm": "Sam Patel",
+      "industry": "healthcare",
+      "exec_sponsor": null,
+      "active_users": 29.0,
+      "usage_trend": "down",
+      "features_used": [
+        "templates"
+      ],
+      "workflows": 3.0,
+      "nps": null,
+      "open_tickets": 2.0,
+      "p1_tickets": 1.0,
+      "csat": 80.0,
+      "escalated": false,
+      "champion_status": "unknown",
+      "budget_signal": null,
+      "competitor_mention": null,
+      "customer_ask": null,
+      "notes": "Original admin left. No logins from leadership in 60 days.",
+      "first_name": "Gina",
+      "domain": "junipersl.com",
+      "free_email": false,
+      "id": "ACCT-010",
+      "days_to_renewal": 62,
+      "seat_utilization": 0.414,
+      "right_sized_seats": 35.0,
+      "growth_seats": 70.0,
+      "quote_seats": 35.0,
+      "package": "growth",
+      "score_total": -80,
+      "risk_band": "High",
+      "total_band": "At risk",
+      "scores": {
+        "health": 0,
+        "risk": -80,
+        "expansion": 0
+      },
+      "tags": [
+        "shelfware",
+        "right-size"
+      ],
+      "flags": [
+        "No NPS response \u2014 get a pulse check before renewal",
+        "Champion unknown \u2014 identify and onboard a new champion"
+      ],
+      "plays": [
+        "churn-rescue"
+      ],
+      "addons": [
+        "compliance-pack"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-low",
+          "reason": "Only 41% of seats in use",
+          "effects": [
+            "risk -20"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-down",
+          "reason": "Usage trending down over 90 days",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-shallow",
+          "reason": "Only 3 live workflows",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-no-nps",
+          "reason": "No NPS response on file",
+          "effects": []
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-champion-left",
+          "reason": "Champion status: unknown",
+          "effects": [
+            "risk -25"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-low-csat",
+          "reason": "CSAT 80",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-rightsize",
+          "reason": "Proactively right-size to 35 seats to protect the renewal",
+          "effects": [
+            "quote_seats=35"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-growth",
+          "reason": "Renew on Growth",
+          "effects": [
+            "package=growth"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-compliance",
+          "reason": "Regulated industry keeps the Compliance Pack",
+          "effects": [
+            "+compliance-pack"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-rescue",
+          "reason": "Risk score -80 \u2192 rescue plan",
+          "effects": [
+            "play=churn-rescue"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "growth",
+        "name": "Growth renewal",
+        "description": "Growth plan, quoted at seats sized to actual usage.",
+        "includes": [
+          "Conditional routing",
+          "Reporting dashboards",
+          "10 standard integrations"
+        ],
+        "lines": [
+          {
+            "item": "Growth renewal \u2014 platform",
+            "qty": 1,
+            "unit": 300.0,
+            "monthly": 300.0
+          },
+          {
+            "item": "Growth renewal \u2014 seats",
+            "qty": 35.0,
+            "unit": 28.0,
+            "unit_fmt": null,
+            "monthly": 980.0
+          },
+          {
+            "item": "Compliance Pack",
+            "qty": 1,
+            "unit": 750,
+            "monthly": 750
+          }
+        ],
+        "monthly": 2030.0,
+        "discount_pct": 0.05,
+        "term_months": 12,
+        "contract_value": 23142.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 27000.0,
+        "delta": -3858.0
+      }
+    },
+    {
+      "company": "Granite State Insurance",
+      "contact_name": "Chris Doyle",
+      "email": "cdoyle@granitestateins.com",
+      "plan": "enterprise",
+      "seats": 300.0,
+      "arr": 169200.0,
+      "renewal_date": "2026-11-30",
+      "csm": "Dana Ruiz",
+      "industry": "financial services",
+      "exec_sponsor": null,
+      "active_users": 168.0,
+      "usage_trend": "down",
+      "features_used": [
+        "approvals",
+        "reporting"
+      ],
+      "workflows": 14.0,
+      "nps": 6.0,
+      "open_tickets": 6.0,
+      "p1_tickets": 2.0,
+      "csat": 79.0,
+      "escalated": true,
+      "champion_status": "stable",
+      "budget_signal": "frozen",
+      "competitor_mention": "Procline",
+      "customer_ask": null,
+      "notes": "Hiring freeze; finance asked for 20% cost reduction on all vendors. Claims team still uses it daily but marketing team stopped.",
+      "first_name": "Chris",
+      "domain": "granitestateins.com",
+      "free_email": false,
+      "id": "ACCT-007",
+      "days_to_renewal": 47,
+      "seat_utilization": 0.56,
+      "right_sized_seats": 195.0,
+      "growth_seats": 300.0,
+      "quote_seats": 195.0,
+      "package": "enterprise",
+      "score_total": -120,
+      "risk_band": "High",
+      "total_band": "At risk",
+      "scores": {
+        "health": 0,
+        "risk": -120,
+        "expansion": 0
+      },
+      "tags": [
+        "shelfware",
+        "budget-pressure",
+        "competitive-threat",
+        "right-size"
+      ],
+      "flags": [
+        "2 P1 incidents in 90 days \u2014 bring support lead to renewal call",
+        "Six-figure account with no exec sponsor on file",
+        "Renews in 47 days \u2014 renewal quote should already be out"
+      ],
+      "plays": [
+        "churn-rescue"
+      ],
+      "addons": [
+        "compliance-pack"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-low",
+          "reason": "Only 56% of seats in use",
+          "effects": [
+            "risk -20"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-down",
+          "reason": "Usage trending down over 90 days",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-detractor",
+          "reason": "NPS 6 (detractor)",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-p1s",
+          "reason": "2 P1 incidents in 90 days",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-escalated",
+          "reason": "Open escalation",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-low-csat",
+          "reason": "CSAT 79",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-budget",
+          "reason": "Budget frozen",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-competitor",
+          "reason": "Evaluating Procline",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-no-sponsor",
+          "reason": "No executive sponsor on a $169,200 account",
+          "effects": [
+            "risk -5"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-rightsize",
+          "reason": "Proactively right-size to 195 seats to protect the renewal",
+          "effects": [
+            "quote_seats=195"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-enterprise",
+          "reason": "Renew on Enterprise",
+          "effects": [
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-compliance",
+          "reason": "Regulated industry keeps the Compliance Pack",
+          "effects": [
+            "+compliance-pack"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-rescue",
+          "reason": "Risk score -120 \u2192 rescue plan",
+          "effects": [
+            "play=churn-rescue"
+          ]
+        },
+        {
+          "stage": "Overlay",
+          "rule": "o-timing",
+          "reason": "Renewal inside 60 days",
+          "effects": []
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 195.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 8190.0
+          },
+          {
+            "item": "Compliance Pack",
+            "qty": 1,
+            "unit": 750,
+            "monthly": 750
+          }
+        ],
+        "monthly": 10440.0,
+        "discount_pct": 0.1,
+        "term_months": 12,
+        "contract_value": 112752.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 169200.0,
+        "delta": -56448.0
+      }
+    },
+    {
+      "company": "Brookfield Health Partners",
+      "contact_name": "Lauren Mills",
+      "email": "lmills@brookfieldhp.org",
+      "plan": "enterprise",
+      "seats": 600.0,
+      "arr": 322200.0,
+      "renewal_date": "2027-01-15",
+      "csm": "Dana Ruiz",
+      "industry": "healthcare",
+      "exec_sponsor": null,
+      "active_users": 288.0,
+      "usage_trend": "down",
+      "features_used": [
+        "approvals",
+        "audit trail"
+      ],
+      "workflows": 11.0,
+      "nps": 4.0,
+      "open_tickets": 9.0,
+      "p1_tickets": 3.0,
+      "csat": 71.0,
+      "escalated": true,
+      "champion_status": "left",
+      "budget_signal": "under review",
+      "competitor_mention": "TaskForge",
+      "customer_ask": null,
+      "notes": "Lauren's manager (our champion, VP Ops) left in August. New VP is reviewing all tooling. Two P1 outages in September around SSO login.",
+      "first_name": "Lauren",
+      "domain": "brookfieldhp.org",
+      "free_email": false,
+      "id": "ACCT-002",
+      "days_to_renewal": 93,
+      "seat_utilization": 0.48,
+      "right_sized_seats": 335.0,
+      "growth_seats": 600.0,
+      "quote_seats": 335.0,
+      "package": "enterprise",
+      "score_total": -145,
+      "risk_band": "High",
+      "total_band": "At risk",
+      "scores": {
+        "health": 0,
+        "risk": -145,
+        "expansion": 0
+      },
+      "tags": [
+        "shelfware",
+        "budget-pressure",
+        "competitive-threat",
+        "right-size"
+      ],
+      "flags": [
+        "Champion left \u2014 identify and onboard a new champion",
+        "3 P1 incidents in 90 days \u2014 bring support lead to renewal call",
+        "Six-figure account with no exec sponsor on file"
+      ],
+      "plays": [
+        "churn-rescue"
+      ],
+      "addons": [
+        "compliance-pack"
+      ],
+      "trace": [
+        {
+          "stage": "Health",
+          "rule": "h-utilization-low",
+          "reason": "Only 48% of seats in use",
+          "effects": [
+            "risk -20"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-trend-down",
+          "reason": "Usage trending down over 90 days",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Health",
+          "rule": "h-detractor",
+          "reason": "NPS 4 (detractor)",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-champion-left",
+          "reason": "Champion status: left",
+          "effects": [
+            "risk -25"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-p1s",
+          "reason": "3 P1 incidents in 90 days",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-escalated",
+          "reason": "Open escalation",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-low-csat",
+          "reason": "CSAT 71",
+          "effects": [
+            "risk -10"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-budget",
+          "reason": "Budget under review",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-competitor",
+          "reason": "Evaluating TaskForge",
+          "effects": [
+            "risk -15"
+          ]
+        },
+        {
+          "stage": "Risk signals",
+          "rule": "r-no-sponsor",
+          "reason": "No executive sponsor on a $322,200 account",
+          "effects": [
+            "risk -5"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-rightsize",
+          "reason": "Proactively right-size to 335 seats to protect the renewal",
+          "effects": [
+            "quote_seats=335"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-plan-enterprise",
+          "reason": "Renew on Enterprise",
+          "effects": [
+            "package=enterprise"
+          ]
+        },
+        {
+          "stage": "Quote",
+          "rule": "qt-compliance",
+          "reason": "Regulated industry keeps the Compliance Pack",
+          "effects": [
+            "+compliance-pack"
+          ]
+        },
+        {
+          "stage": "Route",
+          "rule": "p-rescue",
+          "reason": "Risk score -145 \u2192 rescue plan",
+          "effects": [
+            "play=churn-rescue"
+          ]
+        }
+      ],
+      "sources": [
+        "CRM",
+        "CSM notes",
+        "Product analytics",
+        "Support desk"
+      ],
+      "estimate": {
+        "package": "enterprise",
+        "name": "Enterprise renewal",
+        "description": "Enterprise plan with SSO/SCIM, audit trail, sandbox, higher API limits and a named CSM.",
+        "includes": [
+          "SSO + SCIM",
+          "Full audit trail",
+          "Sandbox",
+          "10x API limits",
+          "Named CSM"
+        ],
+        "lines": [
+          {
+            "item": "Enterprise renewal \u2014 platform",
+            "qty": 1,
+            "unit": 1500.0,
+            "monthly": 1500.0
+          },
+          {
+            "item": "Enterprise renewal \u2014 seats",
+            "qty": 335.0,
+            "unit": 42.0,
+            "unit_fmt": null,
+            "monthly": 14070.0
+          },
+          {
+            "item": "Compliance Pack",
+            "qty": 1,
+            "unit": 750,
+            "monthly": 750
+          }
+        ],
+        "monthly": 16320.0,
+        "discount_pct": 0.1,
+        "term_months": 12,
+        "contract_value": 176256.0,
+        "total_mode": false,
+        "one_time": [],
+        "one_time_total": 0,
+        "baseline": 322200.0,
+        "delta": -145944.0
+      }
+    }
+  ]
+}
