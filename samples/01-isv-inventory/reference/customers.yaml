@@ -1,4 +1,7 @@
 # The consultant's customer list (all fictional). Inventory lines are matched to it by name or alias.
+# Cloud commitments are what each customer has committed to spend with AWS (EDP / private pricing)
+# or Microsoft (MACC). Marketplace purchases of eligible offers may count toward them, subject to
+# the customer's own agreement. Figures are illustrative.
 entries:
   - customer: Northbeam Logistics
     aliases: [northbeam, northbeam logistics inc, nbl]
@@ -6,12 +9,18 @@ entries:
     employees: 850
     exec_contact: Dana Whitfield (CIO)
     account_lead: Marcus Lee
+    aws_commit_annual: 1200000
+    aws_commit_remaining: 310000
+    aws_commit_end: 2027-03-31
   - customer: Halcyon Health Group
     aliases: [halcyon, halcyon health, hhg]
     industry: Healthcare
     employees: 2200
     exec_contact: Dr. Priya Nair (CIO)
     account_lead: Sara Kim
+    azure_commit_annual: 3000000
+    azure_commit_remaining: 1150000
+    azure_commit_end: 2027-06-30
   - customer: Brightwater Credit Union
     aliases: [brightwater, brightwater cu, bwcu]
     industry: Financial services
@@ -24,3 +33,15 @@ entries:
     employees: 180
     exec_contact: Claire Pemberton (Managing Partner)
     account_lead: Sara Kim
+    azure_commit_annual: 250000
+    azure_commit_remaining: 90000
+    azure_commit_end: 2026-12-31
+  - customer: Ridgeline Software Co.
+    aliases: [ridgeline, ridgeline software, rsc]
+    industry: Software
+    employees: 600
+    exec_contact: Omar Haddad (CFO)
+    account_lead: Marcus Lee
+    aws_commit_annual: 2500000
+    aws_commit_remaining: 1400000
+    aws_commit_end: 2027-01-31

@@ -30,6 +30,11 @@ packages:
     base: 10000
     per_unit: {field: licenses, price: 35, min: 25, label: users migrated}
 
+  marketplace-transaction:
+    name: Marketplace private offer
+    description: Margin on transacting the renewal as a channel-partner private offer (AWS CPPO / Microsoft MPO). Uses the partner-program margin where one exists, otherwise an illustrative 3%.
+    per_unit: {field: annual_spend, price_field: marketplace_margin, price: 0.03, label: margin on annual spend, unit_format: pct}
+
 addons:
   first-year-resale:
     name: First-year resale margin on replacement (est. 12% of current spend)

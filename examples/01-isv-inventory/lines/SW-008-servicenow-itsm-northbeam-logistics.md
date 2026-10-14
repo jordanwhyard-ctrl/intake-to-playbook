@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-008 · prepared 2026-10-14 · sources: Discovery workbook*
 
-**Priority:** High (score 55) · **Play:** Competitive swap to a partner ISV · **Consultant opportunity:** Competitive migration · $27,075
+**Priority:** Act now (score 90) · **Play:** Competitive swap to a partner ISV · **Consultant opportunity:** Competitive migration · $27,075
 
 ## Snapshot
 
@@ -29,20 +29,27 @@
 | Satisfaction (1–5) | 2 |
 | Customer is evaluating | — |
 | Competitive alternatives | Jira Service Management, Freshservice |
-| Alternatives we resell or implement | Freshservice |
+| Alternatives we resell or implement | Jira Service Management, Freshservice |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | AWS Marketplace |
+| Commitment remaining on that cloud | $310,000 |
+| Commitment ends | 2027-03-31 |
+| Could count toward commitment (up to) | $135,000 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 10 |
+| Urgency | 30 |
 | Value | 25 |
-| Opportunity | 20 |
-| **Total** | **55** |
+| Opportunity | 35 |
+| **Total** | **90** |
 
-Tags: `dissatisfied` `partner-alternative`
+Tags: `dissatisfied` `partner-alternative` `marketplace-eligible` `commit-expiring`
 
 ## Why this recommendation
 
@@ -50,7 +57,9 @@ Tags: `dissatisfied` `partner-alternative`
 - **Auto-renew** · Auto-renews; notice deadline 2027-01-30
 - **Spend** · $135,000/yr → value +25
 - **Signals** · Satisfaction 2/5 → opportunity +20
-- **Signals** · We resell or implement: Freshservice
+- **Signals** · We resell or implement: Jira Service Management, Freshservice
+- **Marketplace** · Listed on AWS Marketplace and $310000 of AWS commitment is still unused → marketplace_route=AWS Marketplace, route_commit_remaining=310000, route_commit_end=2027-03-31, route_commit_days_left=168, opportunity +15
+- **Commitment pressure** · Commitment on AWS Marketplace ends in 168 days → urgency +20
 - **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project, +first-year-resale
 
 ## Consultant opportunity: Competitive migration
@@ -77,14 +86,14 @@ Owner: Account lead + Partner ISV rep · SLA: Evaluation plan within 3 business 
 
 | When | Channel | Action |
 |---|---|---|
-| Wed Oct 14 | Internal | Register the opportunity with the partner ISV (Freshservice); request competitive pricing |
+| Wed Oct 14 | Internal | Register the opportunity with the partner ISV (Jira Service Management, Freshservice); request competitive pricing |
 | Thu Oct 15 | Phone | Call IT owner at Northbeam Logistics: confirm pain with ServiceNow ITSM and the decision process |
-| Wed Oct 21 | Meeting | Side-by-side demo: ServiceNow ITSM vs Freshservice on their real workflows |
+| Wed Oct 21 | Meeting | Side-by-side demo: ServiceNow ITSM vs Jira Service Management, Freshservice on their real workflows |
 | Wed Oct 28 | Email | Proposal: subscription through us + fixed-fee migration, timed to 2027-04-30 |
 
 ### Talk track
 
-> You rated ServiceNow ITSM 2/5. Let's put Freshservice against your actual workflows, not a canned demo.
+> You rated ServiceNow ITSM 2/5. Let's put Jira Service Management, Freshservice against your actual workflows, not a canned demo.
 >
 > We handle the vendor negotiation and the migration, so your team isn't running a project on top of their day job.
 
@@ -97,6 +106,7 @@ Owner: Account lead + Partner ISV rep · SLA: Evaluation plan within 3 business 
 ## Flags and to-dos
 
 - [ ] Calendar the auto-renew notice deadline: 2027-01-30
+- [ ] Cloud commitment ends 2027-03-31 with $310000 unused. Routing this renewal through AWS Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team
 
 ## Original notes
 

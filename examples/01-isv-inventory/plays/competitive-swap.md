@@ -10,9 +10,9 @@
 
 | Product Line | Customer | Score | Band | Renewal | Package | Value | Flags |
 |---|---|---|---|---|---|---|---|
-| [Salesforce Sales Cloud · Northbeam Logistics](../lines/SW-001-salesforce-sales-cloud-northbeam-logisti.md) | Northbeam Logistics | 105 | Act now | 2027-02-28 | Competitive migration | $42,712 | 1 |
+| [Salesforce Sales Cloud · Northbeam Logistics](../lines/SW-001-salesforce-sales-cloud-northbeam-logisti.md) | Northbeam Logistics | 140 | Act now | 2027-02-28 | Competitive migration | $42,712 | 2 |
+| [ServiceNow ITSM · Northbeam Logistics](../lines/SW-008-servicenow-itsm-northbeam-logistics.md) | Northbeam Logistics | 90 | Act now | 2027-04-30 | Competitive migration | $27,075 | 2 |
 | [Sophos Intercept X · Brightwater Credit Union](../lines/SW-015-sophos-intercept-x-brightwater-credit-un.md) | Brightwater Credit Union | 77 | High | 2027-02-15 | Competitive migration | $30,800 | 0 |
-| [ServiceNow ITSM · Northbeam Logistics](../lines/SW-008-servicenow-itsm-northbeam-logistics.md) | Northbeam Logistics | 55 | High | 2027-04-30 | Competitive migration | $27,075 | 1 |
 
 **Pipeline in this play: $100,587**
 

@@ -1,12 +1,13 @@
 # Data quality — Software Estate Review — Keystone Advisory
 
-48 raw records from 4 sources merged into 36 accounts.
+70 raw records from 5 sources merged into 58 accounts.
 
 | Source | Records |
 |---|---|
 | data/discovery_workbook.csv | 21 |
 | data/halcyon_procurement_export.json | 9 |
 | data/pemberton_interview_notes.txt | 7 |
+| data/ridgeline_saas_spend_export.csv | 22 |
 | data/license_usage_export.csv | 11 |
 
 ## Issues by account
@@ -15,8 +16,8 @@
 - could not read renewal_date='TBD' as date
 - missing required field 'renewal_date'
 
-**Clio Manage · Pemberton & Rowe LLP** (SW-036)
-- 'Clio Manage' not found in reference/isv_catalog.yaml — add it or an alias
+**MatterDesk Pro · Pemberton & Rowe LLP** (SW-036)
+- 'MatterDesk Pro' not found in reference/isv_catalog.yaml — add it or an alias
 
 ## Duplicates merged
 

@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Rippling, UKG Pro, ADP Workforce Now |
-| Alternatives we resell or implement | Rippling |
+| Alternatives we resell or implement | — |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | — |
 
 ## Scores
 
@@ -42,13 +49,12 @@
 | Opportunity | 0 |
 | **Total** | **35** |
 
-Tags: `strategic-spend` `partner-alternative`
+Tags: `strategic-spend`
 
 ## Why this recommendation
 
 - **Renewal timing** · Renewal is more than a year out → urgency +0
 - **Spend** · $390,000/yr — strategic spend → value +35
-- **Signals** · We resell or implement: Rippling
 - **Route** · No action needed yet — revisit 180 days before renewal → play=monitor
 
 ## Sales play: Monitor

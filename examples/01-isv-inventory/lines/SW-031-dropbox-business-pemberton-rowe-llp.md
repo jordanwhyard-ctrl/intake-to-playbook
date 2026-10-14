@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | 3 |
 | Customer is evaluating | — |
 | Competitive alternatives | Box Business, Microsoft SharePoint / OneDrive |
-| Alternatives we resell or implement | Microsoft SharePoint / OneDrive |
+| Alternatives we resell or implement | — |
 | Consolidate onto | Microsoft SharePoint / OneDrive |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $34,200 |
 
 ## Scores
 
@@ -42,7 +49,7 @@
 | Opportunity | 30 |
 | **Total** | **82** |
 
-Tags: `renewing-90` `already-owned-alternative` `partner-alternative`
+Tags: `renewing-90` `already-owned-alternative`
 
 ## Why this recommendation
 
@@ -50,7 +57,6 @@ Tags: `renewing-90` `already-owned-alternative` `partner-alternative`
 - **Auto-renew** · Auto-renews; notice deadline 2026-12-01
 - **Spend** · $34,200/yr → value +12
 - **Signals** · Customer already owns Microsoft SharePoint / OneDrive through a suite they pay for → consolidate_onto=Microsoft SharePoint / OneDrive, opportunity +30
-- **Signals** · We resell or implement: Microsoft SharePoint / OneDrive
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project

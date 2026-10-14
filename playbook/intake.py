@@ -238,6 +238,8 @@ class Lookup:
         for k, v in e.items():
             if k in (self.key, "aliases"):
                 continue
+            if isinstance(v, (date, datetime)):
+                v = v.isoformat()
             if rec.get(k) in (None, [], "") or self.spec.get("overwrite"):
                 rec[k] = v
 

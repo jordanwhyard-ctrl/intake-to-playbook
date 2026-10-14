@@ -1,6 +1,6 @@
 # Play: License optimization
 
-*Software Estate Review — Keystone Advisory · 1 product line(s)*
+*Software Estate Review — Keystone Advisory · 2 product line(s)*
 
 **Objective:** Right-size licenses to actual use before the renewal is signed, with the fee tied to verified savings.
 
@@ -10,9 +10,10 @@
 
 | Product Line | Customer | Score | Band | Renewal | Package | Value | Flags |
 |---|---|---|---|---|---|---|---|
-| [Zendesk Suite · Halcyon Health Group](../lines/SW-025-zendesk-suite-halcyon-health-group.md) | Halcyon Health Group | 65 | High | 2027-03-31 | License optimization | $18,630 | 1 |
+| [GitLab Ultimate · Ridgeline Software Co.](../lines/SW-042-gitlab-ultimate-ridgeline-software-co.md) | Ridgeline Software Co. | 145 | Act now | 2026-12-15 | License optimization | $19,800 | 2 |
+| [Zendesk Suite · Halcyon Health Group](../lines/SW-025-zendesk-suite-halcyon-health-group.md) | Halcyon Health Group | 65 | High | 2027-03-31 | License optimization | $18,630 | 2 |
 
-**Pipeline in this play: $18,630**
+**Pipeline in this play: $38,430**
 
 ## Sequence
 

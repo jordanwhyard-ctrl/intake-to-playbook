@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Monday.com Work Management |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | — |
 
 ## Scores
 

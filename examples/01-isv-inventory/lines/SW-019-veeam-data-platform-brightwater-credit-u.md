@@ -28,10 +28,17 @@
 | Business owner | IT |
 | Satisfaction (1–5) | 4 |
 | Customer is evaluating | — |
-| Competitive alternatives | Druva, Rubrik |
+| Competitive alternatives | Druva, Rubrik Security Cloud |
 | Alternatives we resell or implement | Druva |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $18,000 |
 
 ## Scores
 

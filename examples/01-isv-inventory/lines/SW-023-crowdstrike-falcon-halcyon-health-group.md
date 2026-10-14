@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-023 · prepared 2026-10-14 · sources: Halcyon procurement export*
 
-**Priority:** Act now (score 95) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $59,500
+**Priority:** Act now (score 110) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $59,500
 
 ## Snapshot
 
@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | SentinelOne Singularity, Microsoft Defender for Endpoint |
 | Consolidate onto | Microsoft Defender for Endpoint |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | Microsoft Marketplace |
+| Commitment remaining on that cloud | $1,150,000 |
+| Commitment ends | 2027-06-30 |
+| Could count toward commitment (up to) | $208,000 |
 
 ## Scores
 
@@ -39,10 +46,10 @@
 |---|---|
 | Urgency | 40 |
 | Value | 25 |
-| Opportunity | 30 |
-| **Total** | **95** |
+| Opportunity | 45 |
+| **Total** | **110** |
 
-Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellable`
+Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellable` `marketplace-eligible`
 
 ## Why this recommendation
 
@@ -51,6 +58,7 @@ Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellabl
 - **Signals** · Customer already owns Microsoft Defender for Endpoint through a suite they pay for → consolidate_onto=Microsoft Defender for Endpoint, opportunity +30
 - **Signals** · We resell or implement: SentinelOne Singularity, Microsoft Defender for Endpoint
 - **Signals** · We can resell this product (10% margin)
+- **Marketplace** · Listed on Microsoft Marketplace and $1150000 of MACC is still unused → marketplace_route=Microsoft Marketplace, route_commit_remaining=1150000, route_commit_end=2027-06-30, route_commit_days_left=259, opportunity +15
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project

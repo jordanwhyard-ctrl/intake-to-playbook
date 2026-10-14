@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-004 · prepared 2026-10-14 · sources: Admin-console usage export, Discovery workbook*
 
-**Priority:** Act now (score 127) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $13,500
+**Priority:** Act now (score 162) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $13,500
 
 ## Snapshot
 
@@ -32,17 +32,24 @@
 | Alternatives we resell or implement | Microsoft Teams |
 | Consolidate onto | Microsoft Teams |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | AWS Marketplace |
+| Commitment remaining on that cloud | $310,000 |
+| Commitment ends | 2027-03-31 |
+| Could count toward commitment (up to) | $65,988 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 70 |
+| Urgency | 90 |
 | Value | 12 |
-| Opportunity | 45 |
-| **Total** | **127** |
+| Opportunity | 60 |
+| **Total** | **162** |
 
-Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `shelfware` `partner-alternative` `resellable` `deadline-driven`
+Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `shelfware` `partner-alternative` `resellable` `marketplace-eligible` `commit-expiring` `deadline-driven`
 
 ## Why this recommendation
 
@@ -53,6 +60,8 @@ Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `shelfware` `p
 - **Signals** · 178 of 300 licenses unused in the last 30 days → opportunity +15
 - **Signals** · We resell or implement: Microsoft Teams
 - **Signals** · We can resell this product (10% margin)
+- **Marketplace** · Listed on AWS Marketplace and $310000 of AWS commitment is still unused → marketplace_route=AWS Marketplace, route_commit_remaining=310000, route_commit_end=2027-03-31, route_commit_days_left=168, opportunity +15
+- **Commitment pressure** · Commitment on AWS Marketplace ends in 168 days → urgency +20
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 - **Overlay** · Lead with the notice deadline in the first conversation
 
@@ -99,3 +108,4 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 ## Flags and to-dos
 
 - [ ] Send non-renewal / renegotiation notice by 2026-10-31 (17 days) to keep options open
+- [ ] Cloud commitment ends 2027-03-31 with $310000 unused. Routing this renewal through AWS Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team

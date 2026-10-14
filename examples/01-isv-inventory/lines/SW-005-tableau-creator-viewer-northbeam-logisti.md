@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-005 · prepared 2026-10-14 · sources: Admin-console usage export, Discovery workbook*
 
-**Priority:** High (score 72) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,400
+**Priority:** Act now (score 107) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,400
 
 ## Snapshot
 
@@ -32,17 +32,24 @@
 | Alternatives we resell or implement | Microsoft Power BI Pro |
 | Consolidate onto | Microsoft Power BI Pro |
 | Tools in this category | 2 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | AWS Marketplace |
+| Commitment remaining on that cloud | $310,000 |
+| Commitment ends | 2027-03-31 |
+| Could count toward commitment (up to) | $54,000 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 25 |
+| Urgency | 45 |
 | Value | 12 |
-| Opportunity | 35 |
-| **Total** | **72** |
+| Opportunity | 50 |
+| **Total** | **107** |
 
-Tags: `renewing-180` `category-overlap` `shelfware` `partner-alternative`
+Tags: `renewing-180` `category-overlap` `shelfware` `partner-alternative` `marketplace-eligible` `commit-expiring`
 
 ## Why this recommendation
 
@@ -51,6 +58,8 @@ Tags: `renewing-180` `category-overlap` `shelfware` `partner-alternative`
 - **Signals** · 2 tools in the Business intelligence category at this customer → consolidate_onto=['Microsoft Power BI Pro'], opportunity +20
 - **Signals** · 26 of 45 licenses unused in the last 30 days → opportunity +15
 - **Signals** · We resell or implement: Microsoft Power BI Pro
+- **Marketplace** · Listed on AWS Marketplace and $310000 of AWS commitment is still unused → marketplace_route=AWS Marketplace, route_commit_remaining=310000, route_commit_end=2027-03-31, route_commit_days_left=168, opportunity +15
+- **Commitment pressure** · Commitment on AWS Marketplace ends in 168 days → urgency +20
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project
@@ -92,6 +101,10 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 1. Which teams would push back on moving off Tableau Creator/Viewer, and why?
 2. Which integrations or workflows depend on Tableau Creator/Viewer today?
 3. Is there a contractual notice we need to send, and by when?
+
+## Flags and to-dos
+
+- [ ] Cloud commitment ends 2027-03-31 with $310000 unused. Routing this renewal through AWS Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team
 
 ## Original notes
 

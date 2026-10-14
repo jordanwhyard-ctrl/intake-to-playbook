@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft Entra ID P1, JumpCloud |
 | Consolidate onto | Microsoft Entra ID P1 |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $40,500 |
 
 ## Scores
 

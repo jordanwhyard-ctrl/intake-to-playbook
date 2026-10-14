@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Adobe Acrobat Sign |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | not_found |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $14,400 |
 
 ## Scores
 

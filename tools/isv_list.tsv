@@ -1,0 +1,158 @@
+product	vendor	category	search
+Salesforce Sales Cloud	Salesforce	CRM	Salesforce Sales Cloud
+HubSpot Sales Hub	HubSpot	CRM	HubSpot
+Pipedrive	Pipedrive	CRM	Pipedrive CRM
+Zoho CRM	Zoho	CRM	Zoho CRM
+Microsoft Dynamics 365 Sales	Microsoft	CRM	Dynamics 365 Sales
+Google Workspace	Google	Productivity suite	Google Workspace
+Microsoft 365 E3	Microsoft	Productivity suite	Microsoft 365 E3
+Slack	Salesforce	Team chat	Slack
+Zoom Workplace	Zoom	Video meetings	Zoom
+Webex Suite	Cisco	Video meetings	Webex
+RingCentral RingEX	RingCentral	UCaaS	RingCentral
+Miro	Miro	Whiteboarding	Miro
+Atlassian Confluence	Atlassian	Knowledge base	Atlassian Confluence
+Notion	Notion Labs	Knowledge base	Notion
+Okta Workforce Identity	Okta	Identity	Okta
+Ping Identity	Ping Identity	Identity	Ping Identity
+CyberArk Identity Security	CyberArk	Privileged access	CyberArk
+SailPoint Identity Security Cloud	SailPoint	Identity governance	SailPoint
+JumpCloud	JumpCloud	Identity	JumpCloud
+BeyondTrust	BeyondTrust	Privileged access	BeyondTrust
+Delinea Secret Server	Delinea	Privileged access	Delinea
+1Password Business	1Password	Password management	1Password
+Keeper Enterprise	Keeper Security	Password management	Keeper Security
+CrowdStrike Falcon	CrowdStrike	Endpoint security	CrowdStrike Falcon
+SentinelOne Singularity	SentinelOne	Endpoint security	SentinelOne
+Sophos Intercept X	Sophos	Endpoint security	Sophos
+Trend Vision One	Trend Micro	Endpoint security	Trend Micro Vision One
+Palo Alto Networks Cortex XDR	Palo Alto Networks	Endpoint security	Cortex XDR
+Microsoft Defender for Endpoint	Microsoft	Endpoint security	Microsoft Defender for Endpoint
+Zscaler Internet Access	Zscaler	SASE / network security	Zscaler
+Netskope One	Netskope	SASE / network security	Netskope
+Palo Alto Networks Prisma Access	Palo Alto Networks	SASE / network security	Prisma Access
+Cloudflare Zero Trust	Cloudflare	SASE / network security	Cloudflare
+Fortinet FortiGate	Fortinet	Firewall	FortiGate
+Check Point CloudGuard	Check Point	Firewall	Check Point CloudGuard
+Cisco Duo	Cisco	Identity	Cisco Duo
+Wiz	Wiz	Cloud security	Wiz cloud security
+Orca Security	Orca Security	Cloud security	Orca Security
+Prisma Cloud	Palo Alto Networks	Cloud security	Prisma Cloud
+Aqua Security	Aqua Security	Cloud security	Aqua Security
+Splunk Enterprise Security	Splunk (Cisco)	SIEM	Splunk
+Datadog	Datadog	Observability	Datadog
+Dynatrace	Dynatrace	Observability	Dynatrace
+New Relic	New Relic	Observability	New Relic
+Elastic Cloud	Elastic	Observability	Elastic Cloud
+Sumo Logic	Sumo Logic	SIEM	Sumo Logic
+Grafana Cloud	Grafana Labs	Observability	Grafana Cloud
+LogicMonitor	LogicMonitor	Observability	LogicMonitor
+PagerDuty	PagerDuty	Incident management	PagerDuty
+Proofpoint Email Protection	Proofpoint	Email security	Proofpoint
+Mimecast Email Security	Mimecast	Email security	Mimecast
+Abnormal Security	Abnormal Security	Email security	Abnormal Security
+KnowBe4 Security Awareness Training	KnowBe4	Security awareness	KnowBe4
+Tenable Vulnerability Management	Tenable	Vulnerability management	Tenable
+Rapid7 InsightVM	Rapid7	Vulnerability management	Rapid7
+Qualys VMDR	Qualys	Vulnerability management	Qualys
+Snyk	Snyk	Application security	Snyk
+Veracode	Veracode	Application security	Veracode
+Checkmarx One	Checkmarx	Application security	Checkmarx
+ServiceNow ITSM	ServiceNow	IT service management	ServiceNow
+Jira Service Management	Atlassian	IT service management	Jira Service Management
+Freshservice	Freshworks	IT service management	Freshservice
+Ivanti Neurons for ITSM	Ivanti	IT service management	Ivanti
+BMC Helix ITSM	BMC	IT service management	BMC Helix
+Zendesk Suite	Zendesk	Customer service	Zendesk
+Freshdesk	Freshworks	Customer service	Freshdesk
+Genesys Cloud CX	Genesys	Contact center	Genesys Cloud
+Five9	Five9	Contact center	Five9
+NICE CXone	NICE	Contact center	NICE CXone
+Talkdesk	Talkdesk	Contact center	Talkdesk
+Twilio	Twilio	Communications APIs	Twilio
+Intercom	Intercom	Customer service	Intercom
+Tableau	Salesforce	Business intelligence	Tableau
+Microsoft Power BI Pro	Microsoft	Business intelligence	Power BI
+Qlik Cloud Analytics	Qlik	Business intelligence	Qlik
+ThoughtSpot	ThoughtSpot	Business intelligence	ThoughtSpot
+Domo	Domo	Business intelligence	Domo
+Sisense	Sisense	Business intelligence	Sisense
+Alteryx	Alteryx	Analytics automation	Alteryx
+Snowflake	Snowflake	Data platform	Snowflake
+Databricks	Databricks	Data platform	Databricks
+MongoDB Atlas	MongoDB	Database	MongoDB Atlas
+Confluent Cloud	Confluent	Data streaming	Confluent Cloud
+Fivetran	Fivetran	Data integration	Fivetran
+dbt Cloud	dbt Labs	Data transformation	dbt Cloud
+Informatica Intelligent Data Management Cloud	Informatica	Data integration	Informatica
+Redis Cloud	Redis	Database	Redis Cloud
+Couchbase Capella	Couchbase	Database	Couchbase Capella
+Teradata VantageCloud	Teradata	Data platform	Teradata VantageCloud
+Cloudera Data Platform	Cloudera	Data platform	Cloudera
+Neo4j AuraDB	Neo4j	Database	Neo4j
+Dataiku	Dataiku	AI / ML platform	Dataiku
+DataRobot	DataRobot	AI / ML platform	DataRobot
+GitHub Enterprise	Microsoft	Source control & CI/CD	GitHub Enterprise
+GitLab Ultimate	GitLab	Source control & CI/CD	GitLab
+Jira Software	Atlassian	Work tracking	Jira Software
+JFrog Platform	JFrog	Artifact management	JFrog
+HashiCorp Terraform	HashiCorp (IBM)	Infrastructure as code	HashiCorp Terraform
+Harness	Harness	CI/CD	Harness
+CircleCI	CircleCI	CI/CD	CircleCI
+SonarQube	SonarSource	Application security	SonarQube
+Postman	Postman	API platform	Postman
+DocuSign eSignature	Docusign	E-signature	Docusign
+Adobe Acrobat Sign	Adobe	E-signature	Adobe Acrobat Sign
+Adobe Acrobat Pro	Adobe	PDF	Adobe Acrobat
+Box	Box	File storage	Box
+Dropbox Business	Dropbox	File storage	Dropbox
+Egnyte	Egnyte	File storage	Egnyte
+Asana	Asana	Work management	Asana
+monday.com	monday.com	Work management	monday.com
+Smartsheet	Smartsheet	Work management	Smartsheet
+Wrike	Wrike	Work management	Wrike
+Workday HCM	Workday	HR	Workday
+BambooHR	BambooHR	HR	BambooHR
+Rippling	Rippling	HR	Rippling
+ADP Workforce Now	ADP	HR	ADP
+UKG Pro	UKG	HR	UKG
+SAP SuccessFactors	SAP	HR	SAP SuccessFactors
+SAP Concur	SAP	Spend management	SAP Concur
+Coupa	Coupa	Spend management	Coupa
+Oracle NetSuite	Oracle	ERP	NetSuite
+SAP S/4HANA Cloud	SAP	ERP	SAP S/4HANA
+Infor CloudSuite	Infor	ERP	Infor CloudSuite
+Veeam Data Platform	Veeam	Backup	Veeam
+Druva	Druva	Backup	Druva
+Rubrik Security Cloud	Rubrik	Backup	Rubrik
+Commvault Cloud	Commvault	Backup	Commvault
+Cohesity DataProtect	Cohesity	Backup	Cohesity
+N2W Backup & Recovery	N2W Software	Backup	N2WS
+Acronis Cyber Protect	Acronis	Backup	Acronis
+Jamf Pro	Jamf	Device management	Jamf
+NinjaOne	NinjaOne	Device management	NinjaOne
+TeamViewer Tensor	TeamViewer	Remote access	TeamViewer
+Citrix DaaS	Cloud Software Group	Virtual desktop	Citrix DaaS
+Omnissa Horizon	Omnissa	Virtual desktop	Omnissa Horizon
+Nerdio Manager	Nerdio	Virtual desktop	Nerdio
+Adobe Creative Cloud	Adobe	Design	Adobe Creative Cloud
+Figma	Figma	Design	Figma
+Canva Enterprise	Canva	Design	Canva
+Adobe Experience Manager	Adobe	Marketing	Adobe Experience Manager
+Braze	Braze	Marketing	Braze
+Sprinklr	Sprinklr	Marketing	Sprinklr
+Optimizely	Optimizely	Marketing	Optimizely
+Mailchimp	Intuit	Marketing	Mailchimp
+Ironclad	Ironclad	Contract management	Ironclad
+Icertis	Icertis	Contract management	Icertis
+Gong	Gong	Revenue intelligence	Gong
+Outreach	Outreach	Sales engagement	Outreach
+ZoomInfo	ZoomInfo	Sales intelligence	ZoomInfo
+Clio Manage	Clio	Legal practice management	Clio
+Autodesk AutoCAD	Autodesk	Design	Autodesk
+Trellix Endpoint Security	Trellix	Endpoint security	Trellix
+Vanta	Vanta	Compliance automation	Vanta
+Drata	Drata	Compliance automation	Drata
+Microsoft 365 E5	Microsoft	Productivity suite	Microsoft 365 E5
+Microsoft Teams	Microsoft	Team chat	Microsoft Teams
+Microsoft Entra ID P1	Microsoft	Identity	Microsoft Entra ID

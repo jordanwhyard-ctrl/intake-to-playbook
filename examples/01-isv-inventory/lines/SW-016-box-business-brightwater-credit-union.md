@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | 3 |
 | Customer is evaluating | — |
 | Competitive alternatives | Dropbox Business, Egnyte, Microsoft SharePoint / OneDrive |
-| Alternatives we resell or implement | Microsoft SharePoint / OneDrive |
+| Alternatives we resell or implement | — |
 | Consolidate onto | Microsoft SharePoint / OneDrive |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $25,200 |
 
 ## Scores
 
@@ -42,7 +49,7 @@
 | Opportunity | 45 |
 | **Total** | **97** |
 
-Tags: `renewing-90` `already-owned-alternative` `shelfware` `partner-alternative`
+Tags: `renewing-90` `already-owned-alternative` `shelfware`
 
 ## Why this recommendation
 
@@ -51,7 +58,6 @@ Tags: `renewing-90` `already-owned-alternative` `shelfware` `partner-alternative
 - **Spend** · $25,200/yr → value +12
 - **Signals** · Customer already owns Microsoft SharePoint / OneDrive through a suite they pay for → consolidate_onto=Microsoft SharePoint / OneDrive, opportunity +30
 - **Signals** · 60 of 120 licenses unused in the last 30 days → opportunity +15
-- **Signals** · We resell or implement: Microsoft SharePoint / OneDrive
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project

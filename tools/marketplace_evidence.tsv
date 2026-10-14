@@ -1,0 +1,110 @@
+product	aws	aws_url	microsoft	microsoft_url
+Salesforce Sales Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-t33dyolio5un6	app	https://marketplace.microsoft.com/en-us/product/office/wa104379334
+HubSpot Sales Hub	listed	https://aws.amazon.com/marketplace/pp/prodview-akanxx7ngrvuc	app	https://marketplace.microsoft.com/en-us/product/WA200003343
+Pipedrive	not_found		not_found	
+Zoho CRM	not_found		listed	https://marketplace.microsoft.com/en-us/product/saas/zohocorp.zoho_crm
+Microsoft Dynamics 365 Sales	n_a		first_party	https://marketplace.microsoft.com/en-us/product/dynamics-365/mscrm.9babf7d7-8bf8-45aa-8cd9-5d916d00d279
+Google Workspace	not_found		not_found	
+Microsoft 365 E3	n_a		first_party	
+Slack	listed	https://aws.amazon.com/marketplace/pp/prodview-lpuntnlfdfeiy	app	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aad.slack
+Zoom Workplace	listed	https://aws.amazon.com/marketplace/pp/prodview-dnojftiabnvnc	listed	https://marketplace.microsoft.com/en-us/product/saas/wa200004018
+Webex Suite	listed	https://aws.amazon.com/marketplace/pp/prodview-74pwpi6urzop4	app	https://marketplace.microsoft.com/en-us/product/WA200000068
+RingCentral RingEX	listed	https://aws.amazon.com/marketplace/pp/prodview-4q7tu2jsl52py	app	https://marketplace.microsoft.com/en-us/product/office/wa200000135
+Miro	listed	https://aws.amazon.com/marketplace/pp/prodview-wky5ywoz3bxay	listed	https://marketplace.microsoft.com/en-us/product/saas/realtimeboardincdbamiro1645117589045.miro-the-ai-innovation-workspace-for-microsoft
+Atlassian Confluence	listed	https://aws.amazon.com/marketplace/pp/prodview-drjuw7lxicri4	app	https://marketplace.microsoft.com/en-us/product/office/wa200003113
+Notion	listed	https://aws.amazon.com/marketplace/pp/prodview-eoc4gcvwcs3a6	app	https://marketplace.microsoft.com/en-us/product/aad.notion
+Okta Workforce Identity	listed	https://aws.amazon.com/marketplace/pp/prodview-m6pcz3p3unut4	app	https://marketplace.microsoft.com/en-us/product/wa200004365
+Ping Identity	listed	https://aws.amazon.com/marketplace/pp/prodview-7dv7avtgfk6ys	not_found	
+CyberArk Identity Security	listed	https://aws.amazon.com/marketplace/pp/prodview-ffskngvyyhb6i	listed	https://azuremarketplace.microsoft.com/en/marketplace/apps/cyberark.cyberark_core_pas_june2020
+SailPoint Identity Security Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-pz66rdhrnioru	listed	https://marketplace.microsoft.com/en-us/product/sailpoint1582673310610.access_risk_management
+JumpCloud	listed	https://aws.amazon.com/marketplace/pp/prodview-pgxmhhvtda4ze	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/jumpcloud10262023161924.jumpcloud-open-directory-platform
+BeyondTrust	listed	https://aws.amazon.com/marketplace/pp/prodview-bygxa76q5ldqm	listed	https://marketplace.microsoft.com/en-us/product/beyondtrust.pm_saas
+Delinea Secret Server	listed	https://aws.amazon.com/marketplace/pp/prodview-r2xpa7v3jk2fi	listed	https://marketplace.microsoft.com/en-us/product/saas/delineainc1667920346745.delinea_privileged_access_q1
+1Password Business	listed	https://aws.amazon.com/marketplace/pp/prodview-clnpoydhgzyhk	listed	https://marketplace.microsoft.com/en-us/product/1password1617200969773.1password_mss
+Keeper Enterprise	listed	https://aws.amazon.com/marketplace/pp/prodview-kjuhla3ztoxlc	app	https://marketplace.microsoft.com/en-us/product/aad.keeperpasswordmanager
+CrowdStrike Falcon	listed	https://aws.amazon.com/marketplace/pp/prodview-mwudoxdwqgmhu	listed	https://marketplace.microsoft.com/en-us/product/crowdstrike1726000395811.falconcloudsecurity
+SentinelOne Singularity	listed	https://aws.amazon.com/marketplace/pp/prodview-5voek5zej3c4e	listed	https://marketplace.microsoft.com/en-us/product/saas/sentinelone.sentinelonewindows-extension
+Sophos Intercept X	listed	https://aws.amazon.com/marketplace/pp/prodview-bdwmjj56pnzp2	listed	https://marketplace.microsoft.com/lt-lt/product/saas/sophos.sophos_central
+Trend Vision One	listed	https://aws.amazon.com/marketplace/pp/prodview-u2in6sa3igl7c	listed	https://marketplace.microsoft.com/en-us/product/saas/trendmicro.trend-vision-one-enterprise
+Palo Alto Networks Cortex XDR	not_found		not_found	
+Zscaler Internet Access	listed	https://aws.amazon.com/marketplace/pp/prodview-rmyvldwh66r26	listed	https://marketplace.microsoft.com/en-us/product/saas/zscaler1579058425289.zia_flat_rate
+Netskope One	listed	https://aws.amazon.com/marketplace/pp/prodview-rhphwiywrinha	listed	https://marketplace.microsoft.com/en-us/product/saas/netskope.netskope-security-cloud-azure
+Palo Alto Networks Prisma Access	listed	https://aws.amazon.com/marketplace/pp/prodview-ilcxwgunnx5oo	listed	https://marketplace.microsoft.com/en-us/product/paloaltonetworks.prisma-access-private-offer
+Cloudflare Zero Trust	not_found		listed	https://marketplace.microsoft.com/en-us/product/cloudflare.cloudflare_one_intune
+Fortinet FortiGate	listed	https://aws.amazon.com/marketplace/pp/prodview-wory773oau6wq	listed	https://marketplace.microsoft.com/en-us/product/azure-applications/fortinet.fortinet-fortigate
+Check Point CloudGuard	listed	https://aws.amazon.com/marketplace/pp/prodview-dykqbbilq47mg	listed	https://marketplace.microsoft.com/en-us/product/checkpoint.vsec
+Cisco Duo	listed	https://aws.amazon.com/marketplace/pp/prodview-4zpn2qxfjx2i4	listed	https://marketplace.microsoft.com/en-us/product/saas/cisco.duo-security
+Wiz	listed	https://aws.amazon.com/marketplace/pp/prodview-ibgbkrqusncsm	listed	https://marketplace.microsoft.com/en-us/product/saas/wizinc1627338511749.wiz-azure-marketplace
+Orca Security	listed	https://aws.amazon.com/marketplace/pp/prodview-rogbt2k4b63xc	listed	https://marketplace.microsoft.com/en-us/product/saas/orcasecurityinc1621870991703.orca-test
+Prisma Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-fhoptf6o4hcyu	listed	https://azuremarketplace.microsoft.com/en-gb/marketplace/apps/paloaltonetworks.prisma_cloud
+Aqua Security	listed	https://aws.amazon.com/marketplace/pp/prodview-kbyd6xjphbpiy	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aqua-security.aqua-security
+Splunk Enterprise Security	listed	https://aws.amazon.com/marketplace/pp/prodview-jlaunompo5wbw	listed	https://marketplace.microsoft.com/en-us/product/saas/splunk.splunk_enterprise
+Datadog	listed	https://aws.amazon.com/marketplace/pp/prodview-7tlwraipohxq6	listed	https://marketplace.microsoft.com/en-us/product/saas/datadog1591740804488.dd_liftr_v2
+Dynatrace	listed	https://aws.amazon.com/marketplace/pp/prodview-si2angoettdnc	listed	https://marketplace.microsoft.com/en-us/product/dynatrace.dynatrace-apm
+New Relic	listed	https://aws.amazon.com/marketplace/pp/prodview-yg3ykwh5tmolg	listed	https://marketplace.microsoft.com/en-us/product/saas/newrelicinc-privateoffers.nr-privateoffers2
+Elastic Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k	listed	https://marketplace.microsoft.com/en-us/product/saas/elastic.ec-azure-annual
+Sumo Logic	listed	https://aws.amazon.com/marketplace/pp/prodview-raubhekkfigxs	listed	https://marketplace.microsoft.com/en-us/product/saas/sumologic.sumo-logic-azure-webapp
+Grafana Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-abqxd6uqqpsju	listed	https://marketplace.microsoft.com/en-gb/product/saas/grafana-labs.grafana-cloud-new
+LogicMonitor	listed	https://aws.amazon.com/marketplace/pp/prodview-7dgkta4xctiig	listed	https://marketplace.microsoft.com/en-us/product/saas/logicmonitor.logicmonitor
+PagerDuty	listed	https://aws.amazon.com/marketplace/pp/prodview-qyerqmi3xasym	listed	https://marketplace.microsoft.com/en-us/product/pagerduty.pagerdutysaas
+Proofpoint Email Protection	listed	https://aws.amazon.com/marketplace/pp/prodview-dcj7rctb55qie	listed	https://marketplace.microsoft.com/en-us/product/proofpointinc1600438591120.proofpoint_core_email_protection_for_m365
+Mimecast Email Security	listed	https://aws.amazon.com/marketplace/pp/prodview-geee5uen7feew	listed	https://marketplace.microsoft.com/en-us/product/saas/mimecastnorthamerica1584469118674.mimecast_email_security_free_trial
+Abnormal Security	listed	https://aws.amazon.com/marketplace/pp/prodview-erwjiypgjdjps	listed	https://marketplace.microsoft.com/en-us/product/saas/abnormalsecuritycorporation1593011233180.abnormalsecurity-2
+KnowBe4 Security Awareness Training	listed	https://aws.amazon.com/marketplace/pp/prodview-fg5lglla4mwzw	listed	https://marketplace.microsoft.com/en-us/product/saas/knowbe41757596355407.ksat
+Tenable Vulnerability Management	listed	https://aws.amazon.com/marketplace/pp/prodview-xlosaxiycxnle	listed	https://marketplace.microsoft.com/en-us/product/tenable.tenablecore_tenablesc_byol
+Rapid7 InsightVM	listed	https://aws.amazon.com/marketplace/pp/prodview-iytoknlkgcesm	listed	https://marketplace.microsoft.com/en-us/product/rapid7.rapid7-vm-console
+Qualys VMDR	listed	https://aws.amazon.com/marketplace/pp/prodview-5g6ecotizcru6	listed	https://marketplace.microsoft.com/en-us/product/qualysguard.qualys-virtual-scanner
+Snyk	listed	https://aws.amazon.com/marketplace/pp/prodview-gsqvbwdckcrfq	not_found	
+Veracode	listed	https://aws.amazon.com/marketplace/pp/prodview-fce3dcrhn5fes	app	https://marketplace.microsoft.com/en-us/product/aad.veracode
+Checkmarx One	listed	https://aws.amazon.com/marketplace/pp/prodview-xbxjoco7f6xwi	not_found	
+ServiceNow ITSM	listed	https://aws.amazon.com/marketplace/pp/prodview-ruxchcof6gjpg	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/servicenow1594831756316.servicenow-itsm-on-servicenow-dc
+Jira Service Management	listed	https://aws.amazon.com/marketplace/pp/prodview-ufltb2gag6vjs	listed	https://marketplace.microsoft.com/en-us/product/atlassian.jira-service-desk
+Freshservice	listed	https://aws.amazon.com/marketplace/pp/prodview-eulmmcxds2nqo	app	https://marketplace.microsoft.com/en-us/product/aad.freshservice
+Ivanti Neurons for ITSM	listed	https://aws.amazon.com/marketplace/pp/prodview-76hhzvj5swo6e	listed	https://marketplace.microsoft.com/en-us/product/saas/ivanti16879408669.ivantineuronsforitam
+BMC Helix ITSM	listed	https://aws.amazon.com/marketplace/pp/prodview-2lw3ciw3up4ds	listed	https://appsource.microsoft.com/en-sg/product/web-apps/bmcsoftware.bmchelix
+Zendesk Suite	listed	https://aws.amazon.com/marketplace/pp/prodview-3rztyxjwcucg2	app	https://marketplace.microsoft.com/en-us/product/aad.zendesk
+Freshdesk	listed	https://aws.amazon.com/marketplace/pp/prodview-h54kdzendnnkm	app	https://marketplace.microsoft.com/en-us/product/office/wa104381505
+Genesys Cloud CX	listed	https://aws.amazon.com/marketplace/pp/prodview-6xp3ohkksrgsu	app	https://marketplace.microsoft.com/en-us/product/aad.purecloudbygenesys
+Five9	not_found		app	https://marketplace.microsoft.com/en-us/product/dynamics-365/five9.97c6e2df-4ed9-4b1c-bc4c-fac9cb2625b9
+NICE CXone	listed	https://aws.amazon.com/marketplace/pp/prodview-gvk3f2drmtgug	listed	https://marketplace.microsoft.com/en-us/product/saas/nice.nice-cxone
+Talkdesk	listed	https://aws.amazon.com/marketplace/pp/prodview-oamvrx6eecs4o	app	https://marketplace.microsoft.com/en-us/product/dynamics-365/talkdeskinc1579824950513.talkdesk_for_dynamics_365
+Twilio	listed	https://aws.amazon.com/marketplace/pp/prodview-5gezqb7abnavo	not_found	
+Intercom	listed	https://aws.amazon.com/marketplace/pp/prodview-5hc7hc5bz2vu6	app	https://marketplace.microsoft.com/sl-si/product/wa200012185
+Tableau	listed	https://aws.amazon.com/marketplace/pp/prodview-smvevd7wwdy3q	listed	https://marketplace.microsoft.com/en-us/product/tableau.tableau-server
+Microsoft Power BI Pro	n_a		first_party	
+Qlik Cloud Analytics	listed	https://aws.amazon.com/marketplace/pp/prodview-lsmb2zovi2x4e	listed	https://azuremarketplace.microsoft.com/en-in/marketplace/apps/qlik.qlik-sense
+ThoughtSpot	listed	https://aws.amazon.com/marketplace/pp/prodview-pzd5cgl3pfvyu	listed	https://marketplace.microsoft.com/en-us/product/saas/thoughtspot-inc.94dbb212-c403-42f7-aef6-651f7c1617b8
+Domo	listed	https://aws.amazon.com/marketplace/pp/prodview-mvnkbxoflqb5u	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/domo_inc.domo
+Sisense	listed	https://aws.amazon.com/marketplace/pp/prodview-whvwqekecyakw	not_found	
+Alteryx	listed	https://aws.amazon.com/marketplace/pp/prodview-zdl5i24vucuwo	listed	https://azuremarketplace.microsoft.com/en/marketplace/apps/alteryx.alteryx-analytics-platform
+Snowflake	listed	https://aws.amazon.com/marketplace/pp/prodview-3gdrsg3vnyjmo	listed	https://marketplace.microsoft.com/en-us/product/saas/snowflake.data_cloud
+Databricks	listed	https://aws.amazon.com/marketplace/pp/prodview-wtyi5lgtce6n6	listed	https://marketplace.microsoft.com/en-us/product/azure-services/microsoft.databricks
+MongoDB Atlas	listed	https://aws.amazon.com/marketplace/pp/prodview-pp445qepfdy34	listed	https://marketplace.microsoft.com/en-us/product/saas/mongodb.mongodb_atlas_self_serve_prod_2022
+Confluent Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-g5ujul6iovvcy	listed	https://marketplace.microsoft.com/en-us/product/saas/confluentinc.confluent-cloud-azure-prod
+Fivetran	listed	https://aws.amazon.com/marketplace/pp/prodview-ehwrmjctutyxo	listed	https://marketplace.microsoft.com/en-us/product/saas/fivetran.fivetran_data_pipelines_2023
+dbt Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko	listed	https://marketplace.microsoft.com/en-us/product/fishtownanalyticsinc1621444423835.dbt_cloud
+Informatica Intelligent Data Management Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-vetdnosd4u6oe	listed	https://marketplace.microsoft.com/en-us/product/saas/informatica.prod-idmc_as_azure_native_isv_service
+Redis Cloud	listed	https://aws.amazon.com/marketplace/pp/prodview-mwscixe4ujhkq	listed	https://marketplace.microsoft.com/en-us/product/saas/garantiadata.redisvpc
+Couchbase Capella	listed	https://aws.amazon.com/marketplace/pp/prodview-xrhx5zgue5c26	listed	https://marketplace.microsoft.com/en-us/product/saas/couchbase.couchbase_capella_dbaas
+Teradata VantageCloud	listed	https://aws.amazon.com/marketplace/pp/prodview-zhvzzxw2q5rqa	listed	https://marketplace.microsoft.com/en-us/product/saas/teradata.teradata-vantage-saas
+Cloudera Data Platform	listed	https://aws.amazon.com/marketplace/pp/prodview-333fgxdfwvlh4	listed	https://appsource.microsoft.com/en-us/product/saas/cloudera.cloudera-data-platform-public-cloud
+Neo4j AuraDB	listed	https://aws.amazon.com/marketplace/pp/prodview-xd42uzj2v7dae	listed	https://marketplace.microsoft.com/en-us/product/saas/neo4j.neo4j_aura_professional
+Dataiku	listed	https://aws.amazon.com/marketplace/pp/prodview-xof6cmsunnnra	listed	https://marketplace.microsoft.com/en-us/product/saas/dataikuinc.ready_ai
+DataRobot	listed	https://aws.amazon.com/marketplace/pp/prodview-fuf2kssofoydm	listed	https://marketplace.microsoft.com/en-us/product/saas/datarobotinc1582216525216.datarobot-enterprise-ai-po-v2
+GitHub Enterprise	not_found		listed	https://marketplace.microsoft.com/en-us/product/GitHub.GitHubEnterprise
+GitLab Ultimate	listed	https://aws.amazon.com/marketplace/pp/prodview-si5mlpxc22ni2	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/gitlabinc1586447921813.gitlabee
+Jira Software	listed	https://aws.amazon.com/marketplace/pp/prodview-yparzzd4ojhjs	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atlassian.jira-data-center
+JFrog Platform	listed	https://aws.amazon.com/marketplace/pp/prodview-g67cv5omo2v7w	listed	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/jfrog.jfrog-software-supply-chain
+HashiCorp Terraform	listed	https://aws.amazon.com/marketplace/pp/prodview-y4jmw3saewkcm	listed	https://marketplace.microsoft.com/en-us/product/saas/hashicorp-4665790.terraform-azure-saas
+Harness	listed	https://aws.amazon.com/marketplace/pp/prodview-wrmqdjrxjdrf2	listed	https://appsource.microsoft.com/en-us/product/web-apps/harness.harness_pro
+CircleCI	listed	https://aws.amazon.com/marketplace/pp/prodview-puu7lb34aqr66	listed	https://marketplace.microsoft.com/en-us/product/circleci.circleci-enterprise
+SonarQube	not_found		listed	https://marketplace.microsoft.com/en-us/product/saas/sonarsource1734539765849.sonarqube_server_container
+Postman	listed	https://aws.amazon.com/marketplace/pp/prodview-2nezdpu4cqcac	app	https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aad.postman
+DocuSign eSignature	not_found		listed	https://marketplace.microsoft.com/en-us/product/web-apps/docusign.docusign-azure-offer
+Adobe Acrobat Sign	not_found		listed	https://marketplace.microsoft.com/de-de/product/saas/adobe.adobe_acrobat_sign_saas
+Adobe Creative Cloud	listed	https://aws.amazon.com/marketplace/seller-profile?id=f420dbe2-e48b-4b3d-b101-439fb5c8a4b4	app	https://marketplace.microsoft.com/en-us/product/wa104381222
+Microsoft Defender for Endpoint	n_a		first_party	
+Adobe Experience Manager	listed	https://aws.amazon.com/marketplace/pp/prodview-7u77m5aeggzhs	unverified	
+Microsoft 365 E5	n_a		first_party	
+Microsoft Teams	n_a		first_party	
+Microsoft Entra ID P1	n_a		first_party	

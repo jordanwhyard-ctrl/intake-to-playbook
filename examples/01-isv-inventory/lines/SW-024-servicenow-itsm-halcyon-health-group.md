@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-024 · prepared 2026-10-14 · sources: Halcyon procurement export*
 
-**Priority:** Medium (score 45) · **Play:** Renewal negotiation · **Consultant opportunity:** Negotiation advisory · $14,400
+**Priority:** High (score 60) · **Play:** Renewal negotiation · **Consultant opportunity:** Negotiation advisory · $14,400
 
 ## Snapshot
 
@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Jira Service Management, Freshservice |
-| Alternatives we resell or implement | Freshservice |
+| Alternatives we resell or implement | Jira Service Management, Freshservice |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | Microsoft Marketplace |
+| Commitment remaining on that cloud | $1,150,000 |
+| Commitment ends | 2027-06-30 |
+| Could count toward commitment (up to) | $480,000 |
 
 ## Scores
 
@@ -39,17 +46,19 @@
 |---|---|
 | Urgency | 10 |
 | Value | 35 |
-| Opportunity | 0 |
-| **Total** | **45** |
+| Opportunity | 15 |
+| **Total** | **60** |
 
-Tags: `strategic-spend` `partner-alternative`
+Tags: `strategic-spend` `partner-alternative` `marketplace-eligible`
 
 ## Why this recommendation
 
 - **Renewal timing** · Renews in 351 days → urgency +10
 - **Spend** · $480,000/yr — strategic spend → value +35
-- **Signals** · We resell or implement: Freshservice
+- **Signals** · We resell or implement: Jira Service Management, Freshservice
+- **Marketplace** · Listed on Microsoft Marketplace and $1150000 of MACC is still unused → marketplace_route=Microsoft Marketplace, route_commit_remaining=1150000, route_commit_end=2027-06-30, route_commit_days_left=259, opportunity +15
 - **Route** · Large renewal inside the negotiation window → play=renewal-negotiation, package=negotiation-fee
+- **Overlay** · Also transact the renegotiated renewal through Microsoft Marketplace → play=marketplace-private-offer
 
 ## Consultant opportunity: Negotiation advisory
 
@@ -87,3 +96,5 @@ Owner: Advisory lead · SLA: Benchmark within 10 business days
 1. What did the last renewal increase look like?
 2. Are there modules or SKUs nobody uses?
 3. Would a longer term be acceptable for better pricing?
+
+Also qualifies for: Buy through the cloud marketplace

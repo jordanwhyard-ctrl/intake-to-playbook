@@ -1,0 +1,459 @@
+# Hand-curated catalog details merged in by tools/build_catalog.py.
+# canonical_names: rename a list entry to the name used in inventory data.
+# products: extra aliases, curated alternatives, and suite coverage (covered_by / covered_by_suites).
+canonical_names:
+  Slack: Slack Business+
+  Zoom Workplace: Zoom Workplace Business
+  Tableau: Tableau Creator/Viewer
+  Box: Box Business
+  Asana: Asana Business
+  monday.com: Monday.com Work Management
+  Smartsheet: Smartsheet Business
+  Google Workspace: Google Workspace Business Plus
+  Qlik Cloud Analytics: Qlik Sense
+products:
+  Salesforce Sales Cloud:
+    aliases:
+    - salesforce
+    - sfdc
+    - sales cloud
+    - salesforce enterprise
+    - salesforce crm
+    alternatives:
+    - HubSpot Sales Hub
+    - Microsoft Dynamics 365 Sales
+    - Zoho CRM
+  HubSpot Sales Hub:
+    aliases:
+    - hubspot
+    - hubspot crm
+    - hubspot sales
+    - hubspot pro
+    alternatives:
+    - Salesforce Sales Cloud
+    - Microsoft Dynamics 365 Sales
+    - Pipedrive
+  Microsoft Dynamics 365 Sales:
+    aliases:
+    - dynamics
+    - dynamics 365
+    - d365 sales
+    - dynamics crm
+    alternatives:
+    - Salesforce Sales Cloud
+    - HubSpot Sales Hub
+  Pipedrive:
+    aliases:
+    - pipedrive crm
+    alternatives:
+    - HubSpot Sales Hub
+    - Zoho CRM
+  Microsoft 365 E3:
+    aliases:
+    - m365 e3
+    - office 365 e3
+    - o365 e3
+    - microsoft 365
+    - office 365
+    - m365
+    - o365
+    alternatives:
+    - Google Workspace Business Plus
+  Microsoft 365 E5:
+    aliases:
+    - m365 e5
+    - office 365 e5
+    - o365 e5
+    alternatives:
+    - Microsoft 365 E3
+    - Google Workspace Enterprise
+  Google Workspace Business Plus:
+    aliases:
+    - google workspace
+    - g suite
+    - gsuite
+    - gmail business
+    alternatives:
+    - Microsoft 365 E3
+  Slack Business+:
+    aliases:
+    - slack
+    - slack business
+    - slack enterprise grid
+    - slack pro
+    alternatives:
+    - Microsoft Teams
+    covered_by: Microsoft Teams
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Microsoft Teams:
+    aliases:
+    - teams
+    - ms teams
+    - teams premium
+    alternatives:
+    - Slack Business+
+  Zoom Workplace Business:
+    aliases:
+    - zoom
+    - zoom meetings
+    - zoom business
+    - zoom one
+    - zoom workplace
+    alternatives:
+    - Microsoft Teams
+    - Webex Suite
+    - Google Meet
+    covered_by: Microsoft Teams
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Webex Suite:
+    aliases:
+    - webex
+    - cisco webex
+    alternatives:
+    - Microsoft Teams
+    - Zoom Workplace Business
+    covered_by: Microsoft Teams
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Okta Workforce Identity:
+    aliases:
+    - okta
+    - okta sso
+    - okta workforce
+    - okta mfa
+    alternatives:
+    - Microsoft Entra ID P1
+    - Ping Identity
+    - JumpCloud
+    covered_by: Microsoft Entra ID P1
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Microsoft Entra ID P1:
+    aliases:
+    - entra
+    - entra id
+    - azure ad
+    - azure ad premium
+    - aad p1
+    alternatives:
+    - Okta Workforce Identity
+    - JumpCloud
+  CrowdStrike Falcon:
+    aliases:
+    - crowdstrike
+    - falcon
+    - crowdstrike falcon pro
+    - crowdstrike edr
+    alternatives:
+    - SentinelOne Singularity
+    - Microsoft Defender for Endpoint
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites:
+    - Microsoft 365 E5
+  SentinelOne Singularity:
+    aliases:
+    - sentinelone
+    - sentinel one
+    - s1
+    - singularity
+    alternatives:
+    - CrowdStrike Falcon
+    - Microsoft Defender for Endpoint
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites:
+    - Microsoft 365 E5
+  Microsoft Defender for Endpoint:
+    aliases:
+    - defender
+    - defender for endpoint
+    - mde
+    - microsoft defender
+    alternatives:
+    - CrowdStrike Falcon
+    - SentinelOne Singularity
+  Sophos Intercept X:
+    aliases:
+    - sophos
+    - intercept x
+    - sophos endpoint
+    alternatives:
+    - SentinelOne Singularity
+    - CrowdStrike Falcon
+    - Microsoft Defender for Endpoint
+    covered_by: Microsoft Defender for Endpoint
+    covered_by_suites:
+    - Microsoft 365 E5
+  ServiceNow ITSM:
+    aliases:
+    - servicenow
+    - service now
+    - snow itsm
+    - servicenow itsm pro
+    alternatives:
+    - Jira Service Management
+    - Freshservice
+  Jira Service Management:
+    aliases:
+    - jsm
+    - jira service desk
+    - jira service management
+    alternatives:
+    - Freshservice
+    - ServiceNow ITSM
+  Freshservice:
+    aliases:
+    - freshservice itsm
+    alternatives:
+    - Jira Service Management
+    - ServiceNow ITSM
+  Zendesk Suite:
+    aliases:
+    - zendesk
+    - zendesk support
+    - zendesk suite professional
+    alternatives:
+    - Freshdesk
+    - HubSpot Service Hub
+    - Salesforce Service Cloud
+  Freshdesk:
+    aliases:
+    - freshdesk support
+    alternatives:
+    - Zendesk Suite
+    - HubSpot Service Hub
+  Tableau Creator/Viewer:
+    aliases:
+    - tableau
+    - tableau server
+    - tableau cloud
+    alternatives:
+    - Microsoft Power BI Pro
+    - Looker
+    - Qlik Sense
+    covered_by: Microsoft Power BI Pro
+    covered_by_suites:
+    - Microsoft 365 E5
+  Microsoft Power BI Pro:
+    aliases:
+    - power bi
+    - powerbi
+    - pbi pro
+    alternatives:
+    - Tableau Creator/Viewer
+    - Looker
+  Qlik Sense:
+    aliases:
+    - qlik
+    - qlikview
+    - qlik sense business
+    alternatives:
+    - Microsoft Power BI Pro
+    - Tableau Creator/Viewer
+    covered_by: Microsoft Power BI Pro
+    covered_by_suites:
+    - Microsoft 365 E5
+  DocuSign eSignature:
+    aliases:
+    - docusign
+    - docu sign
+    - docusign business pro
+    alternatives:
+    - Adobe Acrobat Sign
+    - Dropbox Sign
+    covered_by: Adobe Acrobat Sign
+    covered_by_suites:
+    - Adobe Acrobat Pro
+  Adobe Acrobat Sign:
+    aliases:
+    - adobe sign
+    - acrobat sign
+    - echosign
+    alternatives:
+    - DocuSign eSignature
+    - Dropbox Sign
+  Adobe Acrobat Pro:
+    aliases:
+    - acrobat
+    - acrobat pro
+    - adobe acrobat
+    - acrobat dc
+    alternatives:
+    - Foxit PDF Editor
+  Box Business:
+    aliases:
+    - box
+    - box.com
+    - box enterprise
+    alternatives:
+    - Microsoft SharePoint / OneDrive
+    - Dropbox Business
+    - Egnyte
+    covered_by: Microsoft SharePoint / OneDrive
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Dropbox Business:
+    aliases:
+    - dropbox
+    - dropbox advanced
+    - dropbox team
+    alternatives:
+    - Microsoft SharePoint / OneDrive
+    - Box Business
+    covered_by: Microsoft SharePoint / OneDrive
+    covered_by_suites:
+    - Microsoft 365 E3
+    - Microsoft 365 E5
+  Asana Business:
+    aliases:
+    - asana
+    - asana premium
+    alternatives:
+    - Monday.com Work Management
+    - Smartsheet Business
+    - Microsoft Planner
+  Monday.com Work Management:
+    aliases:
+    - monday
+    - monday.com
+    - monday com
+    alternatives:
+    - Asana Business
+    - Smartsheet Business
+  Smartsheet Business:
+    aliases:
+    - smartsheet
+    alternatives:
+    - Monday.com Work Management
+    - Asana Business
+  Workday HCM:
+    aliases:
+    - workday
+    - workday hr
+    alternatives:
+    - Rippling
+    - UKG Pro
+    - ADP Workforce Now
+  BambooHR:
+    aliases:
+    - bamboo
+    - bamboo hr
+    alternatives:
+    - Rippling
+    - Gusto
+  Veeam Data Platform:
+    aliases:
+    - veeam
+    - veeam backup
+    - veeam b&r
+    alternatives:
+    - Druva
+    - Rubrik Security Cloud
+  Druva:
+    aliases:
+    - druva insync
+    - druva phoenix
+    alternatives:
+    - Veeam Data Platform
+    - Rubrik Security Cloud
+  Datadog:
+    aliases:
+    - datadog pro
+    - datadog enterprise
+    - dd
+  Snowflake:
+    aliases:
+    - snowflake data cloud
+    - snowflake enterprise
+    - snowflake ai data cloud
+  Databricks:
+    aliases:
+    - databricks premium
+    - databricks lakehouse
+    - databricks on aws
+  MongoDB Atlas:
+    aliases:
+    - mongodb
+    - mongo atlas
+    - atlas
+  Confluent Cloud:
+    aliases:
+    - confluent
+    - kafka (confluent)
+  GitLab Ultimate:
+    aliases:
+    - gitlab
+    - gitlab premium
+    - gitlab saas
+  JFrog Platform:
+    aliases:
+    - jfrog
+    - artifactory
+    - jfrog artifactory
+  Wiz:
+    aliases:
+    - wiz.io
+    - wiz cnapp
+  Zscaler Internet Access:
+    aliases:
+    - zscaler
+    - zia
+    - zscaler zia
+  Splunk Enterprise Security:
+    aliases:
+    - splunk
+    - splunk cloud
+    - splunk es
+  PagerDuty:
+    aliases:
+    - pagerduty business
+  Atlassian Confluence:
+    aliases:
+    - confluence
+    - confluence cloud
+    - confluence premium
+  Jira Software:
+    aliases:
+    - jira
+    - jira cloud
+    - jira premium
+  Snyk:
+    aliases:
+    - snyk enterprise
+  Fivetran:
+    aliases:
+    - fivetran standard
+    - fivetran enterprise
+  Miro:
+    aliases:
+    - miro business
+    - miro enterprise
+  Notion:
+    aliases:
+    - notion business
+    - notion plus
+    - notion enterprise
+  1Password Business:
+    aliases:
+    - 1password
+    - 1 password
+  Postman:
+    aliases:
+    - postman enterprise
+  Figma:
+    aliases:
+    - figma organization
+    - figma enterprise
+  New Relic:
+    aliases:
+    - newrelic
+  KnowBe4 Security Awareness Training:
+    aliases:
+    - knowbe4
+    - kb4

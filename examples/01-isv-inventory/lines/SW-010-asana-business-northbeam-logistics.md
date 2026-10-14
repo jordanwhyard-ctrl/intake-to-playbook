@@ -28,10 +28,17 @@
 | Business owner | PMO |
 | Satisfaction (1–5) | 3 |
 | Customer is evaluating | — |
-| Competitive alternatives | Microsoft Planner, Monday.com Work Management, Smartsheet |
-| Alternatives we resell or implement | Monday.com Work Management, Smartsheet |
+| Competitive alternatives | Microsoft Planner, Monday.com Work Management, Smartsheet Business |
+| Alternatives we resell or implement | Monday.com Work Management, Smartsheet Business |
 | Consolidate onto | Smartsheet Business |
 | Tools in this category | 2 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $26,400 |
 
 ## Scores
 
@@ -51,7 +58,7 @@ Tags: `renewing-90` `notice-imminent` `category-overlap` `shelfware` `partner-al
 - **Spend** · $26,400/yr → value +12
 - **Signals** · 2 tools in the Work management category at this customer → consolidate_onto=['Smartsheet Business'], opportunity +20
 - **Signals** · 28 of 80 licenses unused in the last 30 days → opportunity +15
-- **Signals** · We resell or implement: Monday.com Work Management, Smartsheet
+- **Signals** · We resell or implement: Monday.com Work Management, Smartsheet Business
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 - **Overlay** · Lead with the notice deadline in the first conversation
 

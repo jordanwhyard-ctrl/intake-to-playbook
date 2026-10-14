@@ -13,6 +13,9 @@ computed:
   utilization: {ratio: [active_users, licenses]}
   unused_licenses: {difference: [licenses, active_users]}
   negotiation_savings: {scale: {field: annual_spend, factor: 0.12, round_to: 100}}
+  marketplace_margin: {coalesce: [resale_margin, 0.03]}
+  aws_commit_days_left: {days_until: aws_commit_end}
+  azure_commit_days_left: {days_until: azure_commit_end}
 
 # Across lines: what else does this customer own?
 group_computed:
@@ -128,6 +131,42 @@ stages:
         then: {flag: "Product not in the catalog — add it with category and alternatives so it can be assessed"}
         reason: "Not in the software catalog"
 
+  - name: Marketplace
+    # Route a renewal through AWS or Microsoft Marketplace when the product is listed there and the
+    # customer still has commitment left to burn on that cloud. Pick the cloud with more remaining.
+    when: {all: [{field: days_to_renewal, between: [-30, 365]}, {not: {field: purchased_via, matches: "marketplace"}}]}
+    first_match: true
+    after_compute:
+      marketplace_drawdown: {min: [annual_spend, route_commit_remaining]}
+    rules:
+      - id: mp-aws-preferred
+        when: {all: [{field: marketplaces, contains: AWS}, {field: aws_commit_remaining, gt: 0},
+                     {any: [{not: {field: marketplaces, contains: Azure}}, {field: azure_commit_remaining, missing: true},
+                            {field: aws_commit_remaining, gte: {ref: azure_commit_remaining}}]}]}
+        then: {set: {marketplace_route: AWS Marketplace},
+               copy: {route_commit_remaining: aws_commit_remaining, route_commit_end: aws_commit_end, route_commit_days_left: aws_commit_days_left},
+               score: {opportunity: 15}, tag: marketplace-eligible}
+        reason: "Listed on AWS Marketplace and ${aws_commit_remaining} of AWS commitment is still unused"
+      - id: mp-azure
+        when: {all: [{field: marketplaces, contains: Azure}, {field: azure_commit_remaining, gt: 0}]}
+        then: {set: {marketplace_route: Microsoft Marketplace},
+               copy: {route_commit_remaining: azure_commit_remaining, route_commit_end: azure_commit_end, route_commit_days_left: azure_commit_days_left},
+               score: {opportunity: 15}, tag: marketplace-eligible}
+        reason: "Listed on Microsoft Marketplace and ${azure_commit_remaining} of MACC is still unused"
+      - id: mp-app-only
+        when: {all: [{field: azure_marketplace, eq: app}, {field: azure_commit_remaining, gt: 0}]}
+        then: {flag: "On Microsoft Marketplace only as an add-in/app, not a purchasable offer, so it won't count toward MACC"}
+        reason: "Only an add-in on Microsoft Marketplace"
+
+  - name: Commitment pressure
+    when: {field: tags, contains: marketplace-eligible}
+    rules:
+      - id: cp-expiring
+        when: {field: route_commit_days_left, between: [0, 180]}
+        then: {score: {urgency: 20}, tag: commit-expiring,
+               flag: "Cloud commitment ends {route_commit_end} with ${route_commit_remaining} unused. Routing this renewal through {marketplace_route} could count toward it; confirm offer eligibility and drawdown terms with the cloud account team"}
+        reason: "Commitment on {marketplace_route} ends in {route_commit_days_left} days"
+
   - name: Route
     first_match: true
     rules:
@@ -149,6 +188,10 @@ stages:
                      {all: [{field: annual_spend, gte: 250000}, {field: days_to_renewal, between: [0, 365]}]}]}
         then: {play: renewal-negotiation, package: negotiation-fee}
         reason: "Large renewal inside the negotiation window"
+      - id: p-marketplace
+        when: {all: [{field: tags, contains: marketplace-eligible}, {field: days_to_renewal, between: [-30, 270]}]}
+        then: {play: marketplace-private-offer, package: marketplace-transaction}
+        reason: "Renewal can route through {marketplace_route} against the customer's cloud commitment"
       - id: p-resell
         when: {all: [{field: tags, contains: resellable}, {field: days_to_renewal, between: [-30, 180]}]}
         then: {play: own-the-renewal, package: resale}
@@ -159,9 +202,15 @@ stages:
 
   - name: Overlay
     rules:
+      - id: o-marketplace
+        when: {all: [{field: tags, contains: marketplace-eligible},
+                     {any: [{field: plays, contains: renewal-negotiation}, {field: plays, contains: license-optimization}]}]}
+        then: {play: marketplace-private-offer}
+        reason: "Also transact the renegotiated renewal through {marketplace_route}"
       - id: o-resale
         when: {all: [{field: tags, contains: resellable}, {not: {field: plays, contains: own-the-renewal}},
-                     {not: {field: plays, contains: consolidate}}, {field: days_to_renewal, between: [-30, 365]}]}
+                     {not: {field: plays, contains: consolidate}}, {not: {field: plays, contains: marketplace-private-offer}},
+                     {field: days_to_renewal, between: [-30, 365]}]}
         then: {play: own-the-renewal}
         reason: "Also offer to transact the renewal through us"
       - id: o-notice-first

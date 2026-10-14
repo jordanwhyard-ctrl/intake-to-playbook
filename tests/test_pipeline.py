@@ -123,8 +123,8 @@ class TestSamples(unittest.TestCase):
         self.assertEqual(slack["captured_as"], "Slack")
         okta = self.line("Brightwater Credit Union", "Okta Workforce Identity")   # captured as "Okta SSO" / "Brightwater CU"
         self.assertEqual(okta["category"], "Identity")
-        clio = next(r for r in self.results["01-isv-inventory"]["records"] if r.get("product") == "Clio Manage")
-        self.assertTrue(any("not found" in i for i in clio["_issues"]))
+        unknown = next(r for r in self.results["01-isv-inventory"]["records"] if r.get("product") == "MatterDesk Pro")
+        self.assertTrue(any("not found" in i for i in unknown["_issues"]))
 
     def test_isv_dates_and_plays(self):
         zoom = self.line("Northbeam Logistics", "Zoom Workplace Business")
@@ -141,9 +141,33 @@ class TestSamples(unittest.TestCase):
         self.assertEqual(zendesk["_plays"][0], "license-optimization")
         self.assertEqual(self.line("Halcyon Health Group", "Workday HCM")["_plays"][0], "monitor")
 
+    def test_isv_marketplace_routing(self):
+        dd = self.line("Ridgeline Software Co.", "Datadog")              # captured as "Datadog Enterprise"
+        self.assertEqual(dd["marketplace_route"], "AWS Marketplace")
+        self.assertEqual(dd["marketplace_drawdown"], 420000)
+        self.assertIn("commit-expiring", dd["_tags"])                     # AWS commitment ends 2027-01-31
+        self.assertIn("marketplace-private-offer", dd["_plays"])
+        snow = self.line("Ridgeline Software Co.", "Snowflake")          # already bought via AWS Marketplace
+        self.assertIsNone(snow.get("marketplace_route"))
+        st = self.line("Halcyon Health Group", "ServiceNow ITSM")       # Azure MACC customer
+        self.assertEqual(st["marketplace_route"], "Microsoft Marketplace")
+        self.assertIsNone(self.line("Brightwater Credit Union", "Sophos Intercept X").get("marketplace_route"))  # no commitment
+        okta = self.line("Ridgeline Software Co.", "Okta Workforce Identity")
+        self.assertEqual(okta["_plays"][0], "marketplace-private-offer")
+        self.assertEqual(okta["marketplace_margin"], 0.10)                # partner margin, not the 3% default
+
+    def test_isv_catalog_evidence(self):
+        import yaml
+        cat = yaml.safe_load((ROOT / "samples/01-isv-inventory/reference/isv_catalog.yaml").read_text())["entries"]
+        self.assertGreaterEqual(len(cat), 150)
+        for e in cat:
+            for side in ("aws", "azure"):
+                if e[f"{side}_marketplace"] == "listed":
+                    self.assertTrue(e.get(f"{side}_listing", "").startswith("https://"), e["product"])
+
     def test_isv_rollups_and_calendar(self):
         out = self.results["01-isv-inventory"]["out_dir"]
-        self.assertEqual(len(list((out / "customers").glob("*.md"))), 4)
+        self.assertEqual(len(list((out / "customers").glob("*.md"))), 5)
         cal = (out / "calendar.md").read_text()
         self.assertIn("## November 2026", cal)
         self.assertLess(cal.index("Nov 05"), cal.index("Nov 30"))

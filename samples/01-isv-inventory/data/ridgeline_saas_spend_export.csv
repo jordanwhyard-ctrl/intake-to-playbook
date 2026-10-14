@@ -1,0 +1,23 @@
+Application,Vendor,Department,Annual Cost,Contract End,Licenses,Active Users (90d),Auto Renew,Notice (days),Purchased Via,App Owner,Owner Rating,Notes,Evaluating
+Datadog Enterprise,Datadog,Engineering,"$420,000",2026-12-31,,,No,,Direct,VP Engineering,4,Host-based pricing; usage up 30% this year
+Snowflake Enterprise,Snowflake,Data,"$610,000",2027-01-31,,,No,,AWS Marketplace,Head of Data,4,
+Databricks Premium,Databricks,Data,"$280,000",2027-04-30,,,No,,Direct,Head of Data,3,Overlaps with Snowflake for some workloads
+MongoDB Atlas,MongoDB,Engineering,"$165,000",2026-11-30,,,No,,Direct,VP Engineering,4,
+Confluent Cloud,Confluent,Engineering,"$140,000",2027-02-28,,,No,,AWS Marketplace,VP Engineering,4,
+GitLab Ultimate,GitLab,Engineering,"$217,800",2026-12-15,220,140,Yes,45,Direct,VP Engineering,3,Contractors offboarded in Q3
+JFrog Artifactory,JFrog,Engineering,"$96,000",2027-03-31,,,No,,Direct,Platform Lead,4,
+Wiz,Wiz,Security,"$185,000",2026-12-01,,,No,,Direct,CISO,5,
+CrowdStrike Falcon Pro,CrowdStrike,Security,"$66,000",2027-01-15,600,588,No,,Direct,CISO,4,
+Okta,Okta,IT,"$58,500",2026-11-20,650,612,Yes,30,Direct,IT Director,4,
+Zscaler ZIA,Zscaler,Security,"$120,000",2027-05-31,600,571,No,,Direct,CISO,4,
+Splunk Cloud,Splunk,Security,"$310,000",2027-06-30,,,No,,Direct,CISO,2,Ingest costs keep climbing; evaluating alternatives,Sumo Logic
+PagerDuty Business,PagerDuty,Engineering,"$48,000",2027-02-15,120,104,No,,Direct,SRE Lead,4,
+Confluence Premium,Atlassian,All,"$72,000",2027-03-31,600,590,No,,Direct,IT Director,4,
+Jira Premium,Atlassian,Engineering,"$96,000",2027-03-31,600,575,No,,Direct,IT Director,4,
+Notion Business,Notion Labs,Product,"$72,000",2027-01-31,600,210,Yes,30,Direct,VP Product,3,Most docs live in Confluence
+Slack Business+,Salesforce,All,"$108,000",2027-03-15,600,596,No,,Direct,IT Director,4,
+Google Workspace Business Plus,Google,All,"$129,600",2027-08-31,600,600,No,,Direct,IT Director,4,
+Zoom Workplace,Zoom,All,"$79,200",2026-12-31,600,480,Yes,30,Direct,IT Director,3,Most meetings moved to Google Meet
+Snyk Enterprise,Snyk,Engineering,"$88,000",2027-02-28,200,190,No,,Direct,Platform Lead,2,False positives; developers ignore findings
+Fivetran Standard,Fivetran,Data,"$54,000",2026-12-20,,,No,,Direct,Head of Data,4,
+1Password Business,1Password,IT,"$47,880",2027-05-15,600,566,No,,Direct,IT Director,5,

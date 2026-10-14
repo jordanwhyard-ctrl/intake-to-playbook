@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | JumpCloud, Microsoft Entra ID P1 |
 | Consolidate onto | Microsoft Entra ID P1 |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $172,800 |
 
 ## Scores
 
@@ -52,6 +59,7 @@ Tags: `renewing-180` `already-owned-alternative` `partner-alternative` `resellab
 - **Signals** · Customer already owns Microsoft Entra ID P1 through a suite they pay for → consolidate_onto=Microsoft Entra ID P1, opportunity +30
 - **Signals** · We resell or implement: JumpCloud, Microsoft Entra ID P1
 - **Signals** · We can resell this product (10% margin)
+- **Marketplace** · Only an add-in on Microsoft Marketplace
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project
@@ -97,3 +105,4 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 ## Flags and to-dos
 
 - [ ] Calendar the auto-renew notice deadline: 2026-12-02
+- [ ] On Microsoft Marketplace only as an add-in/app, not a purchasable offer, so it won't count toward MACC

@@ -5,7 +5,8 @@
 Consultants who resell, advise on and implement software collect each customer's ISV estate from everywhere: discovery workshops, procurement exports, interview notes and admin-console usage reports. The same product shows up as `SFDC`, `Salesforce Enterprise` and `Salesforce`, and the same customer as `Brightwater CU` and `Brightwater`. This project turns all of that into:
 
 - **one line per product per customer**, with canonical names, vendor, category, spend, licenses vs active users, renewal date and **auto-renew notice deadline**
-- **competitive alternatives** for every line, highlighting the ones you resell or implement
+- **competitive alternatives** for every line from a **157-product ISV catalog**, highlighting the ones you resell or implement
+- **AWS Marketplace and Microsoft Marketplace status** for each product, with the listing URL as evidence, and a **marketplace route** when the customer has an AWS or Microsoft (MACC) commitment the renewal could count toward
 - **a next-step sales play** for every line (consolidate, competitive swap, license optimization, renewal negotiation, own the renewal, or monitor) with **your estimated revenue**
 - **a software estate brief per customer**: spend, renewals in the next 90/180 days, overlapping tools, opportunities by play, dated next steps
 - **a renewal calendar across all customers**, plus a CRM import file, data-quality report and dashboard
@@ -20,15 +21,18 @@ flowchart LR
 
 ## The flagship sample: software estate review
 
-[`samples/01-isv-inventory`](samples/01-isv-inventory) is a fictional consultancy with four fictional customers. It takes 48 raw records from 4 sources and turns them into 36 product lines and about $490K of identified consultant opportunity.
+[`samples/01-isv-inventory`](samples/01-isv-inventory) is a fictional consultancy with five fictional customers. It takes 70 raw records from 5 sources and turns them into 58 product lines and about $630K of identified consultant opportunity. 30 of those lines can route through a cloud marketplace against a customer's commitment.
 
 | Input | What's messy about it |
 |---|---|
 | [`discovery_workbook.csv`](samples/01-isv-inventory/data/discovery_workbook.csv) | Two customers in one sheet, per-user vs annual pricing, `Y` / `Yes`, `TBD` dates, a duplicate row |
 | [`halcyon_procurement_export.json`](samples/01-isv-inventory/data/halcyon_procurement_export.json) | PO line descriptions like `CrowdStrike Falcon Enterprise` and `Okta Workforce Identity - SSO + MFA` |
 | [`pemberton_interview_notes.txt`](samples/01-isv-inventory/data/pemberton_interview_notes.txt) | Free-text notes from stakeholder interviews |
+| [`ridgeline_saas_spend_export.csv`](samples/01-isv-inventory/data/ridgeline_saas_spend_export.csv) | A SaaS-management export: edition names (`Datadog Enterprise`, `Zscaler ZIA`), "Purchased via" column, owner ratings |
 | [`license_usage_export.csv`](samples/01-isv-inventory/data/license_usage_export.csv) | Active users from admin consoles, with different customer and app names |
-| [`reference/isv_catalog.yaml`](samples/01-isv-inventory/reference/isv_catalog.yaml) | Your catalog: canonical names, aliases, categories, alternatives, partner status, resale margins, and which suites already cover a product |
+| [`reference/isv_catalog.yaml`](samples/01-isv-inventory/reference/isv_catalog.yaml) | 157 ISV products: canonical names, aliases, categories, alternatives, partner status, marketplace status + listing URLs, and which suites already cover a product |
+| [`reference/customers.yaml`](samples/01-isv-inventory/reference/customers.yaml) | Customer list with AWS and Microsoft cloud commitments (remaining amount, end date) |
+| [`reference/partner_program.yaml`](samples/01-isv-inventory/reference/partner_program.yaml) | Which vendors you resell or implement, your margins, and your marketplace programs (AWS CPPO / Microsoft MPO) |
 
 What the rules find, for example:
 
@@ -36,6 +40,7 @@ What the rules find, for example:
 - **Halcyon Health Group** owns Microsoft 365 E5, which includes endpoint security, identity and BI. Its CrowdStrike, Okta and Tableau renewals become consolidation projects. Its Webex notice deadline has **already passed**, so that line is flagged.
 - Northbeam rated **Salesforce 2/5** and is evaluating HubSpot, which the consultant resells, so it gets a *Competitive swap* worth migration fees plus first-year resale margin.
 - **Zendesk** at Halcyon has 54 of 150 agent seats idle, so it gets *License optimization* with the fee tied to savings.
+- **Ridgeline Software** has $1.4M of AWS commitment left and it ends January 31. Nineteen of its renewals are listed on AWS Marketplace, so each line gets a marketplace route, a to-do to confirm drawdown terms, and (where nothing bigger applies) the *Buy through the cloud marketplace* play. Snowflake and Confluent are skipped because they were already bought through AWS Marketplace.
 
 Browse the generated output: [dashboard](examples/01-isv-inventory/index.html) · [renewal calendar](examples/01-isv-inventory/calendar.md) · [customer brief](examples/01-isv-inventory/customers/northbeam-logistics.md) · [line brief](examples/01-isv-inventory/lines/SW-003-slack-business-northbeam-logistics.md) · [play pack](examples/01-isv-inventory/plays/consolidate.md)
 
@@ -47,10 +52,24 @@ Browse the generated output: [dashboard](examples/01-isv-inventory/index.html) �
 | Competitive swap to a partner ISV | Satisfaction ≤ 2 or already evaluating, and you have a partner alternative | Migration + first-year resale margin |
 | License optimization | ≥ 10 licenses and < 75% used, renewing within 270 days | Share of verified savings |
 | Renewal negotiation | ≥ $75K renewing within 270 days (≥ $250K within 365) | Share of negotiated savings |
+| Buy through the cloud marketplace | Listed on AWS or Microsoft Marketplace, the customer has commitment left on that cloud, renewing within 270 days | Channel-partner private offer margin |
 | Own the renewal | You resell it and it renews within 180 days | Resale margin |
 | Monitor | Nothing to do yet | Reminder 180 days before renewal |
 
+When a line qualifies for both negotiation and a marketplace route, the brief recommends negotiating first and then transacting through the marketplace.
+
 Every threshold, rate and alternative lives in YAML ([`rules.yaml`](samples/01-isv-inventory/rules.yaml), [`plays.yaml`](samples/01-isv-inventory/plays.yaml), [`packages.yaml`](samples/01-isv-inventory/packages.yaml), [`isv_catalog.yaml`](samples/01-isv-inventory/reference/isv_catalog.yaml)). Margins, fees and positioning in the sample are placeholders: swap in your own partner agreements.
+
+## The ISV catalog and marketplace status
+
+[`docs/isv_marketplace_catalog.md`](docs/isv_marketplace_catalog.md) lists all 157 products in 59 categories with their AWS Marketplace and Microsoft Marketplace status. Each "Listed" cell links to the listing found. The catalog is generated by [`tools/build_catalog.py`](tools/build_catalog.py) from:
+
+- [`tools/isv_list.tsv`](tools/isv_list.tsv): the products, vendors and categories
+- [`tools/marketplace_evidence.tsv`](tools/marketplace_evidence.tsv): status and listing URL per product and marketplace
+- [`reference/curated.yaml`](samples/01-isv-inventory/reference/curated.yaml): extra aliases, hand-picked alternatives, suite coverage
+- [`reference/partner_program.yaml`](samples/01-isv-inventory/reference/partner_program.yaml): your partner agreements
+
+Status was checked in October 2026 with a domain-restricted search of each marketplace. 108 products are checked on both marketplaces; 49 are still marked *Not yet verified* (mostly HR, ERP, backup, marketing and design tools), and the rules treat them as not listed until they're checked. *Not found* means no ISV-published listing turned up, not proof that none exists. *App/add-in only* means only a Teams/Office add-in or Entra gallery app, which you can't buy as a software offer. Listings change often, so re-check before quoting.
 
 ## Quick start
 
@@ -58,7 +77,8 @@ Every threshold, rate and alternative lives in YAML ([`rules.yaml`](samples/01-i
 pip install -r requirements.txt                 # just PyYAML
 python -m playbook samples/01-isv-inventory     # writes ./out/01-isv-inventory
 open out/01-isv-inventory/index.html            # dashboard linking every deliverable
-python -m unittest discover tests               # 14 tests
+python -m unittest discover tests               # 16 tests
+python tools/build_catalog.py                   # rebuild the catalog after editing tools/*.tsv
 ```
 
 To use your own data, copy `samples/01-isv-inventory`, drop your exports into `data/`, point `project.yaml` at them (one `map:` per source to rename columns), and extend `reference/isv_catalog.yaml` with the products your customers run. Products that aren't in the catalog are listed in `data_quality.md` so you know what to add.

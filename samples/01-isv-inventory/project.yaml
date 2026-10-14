@@ -1,9 +1,11 @@
 name: "Software Estate Review — Keystone Advisory"
 description: >-
   A fictional consultancy's inventory of every ISV product its customers run, captured from
-  discovery workshops, a procurement export, interview notes and admin-console usage. Each line
-  gets a renewal timeline, auto-renew notice deadline, competitive alternatives and a next-step
-  play (resale, advisory or migration) with the consultant's estimated revenue.
+  discovery workshops, a procurement export, a SaaS-spend export, interview notes and
+  admin-console usage, matched against a 157-product catalog with AWS and Microsoft marketplace
+  status. Each line gets a renewal timeline, auto-renew notice deadline, competitive alternatives,
+  a marketplace route against the customer's cloud commitment, and a next-step play with the
+  consultant's estimated revenue.
 as_of: 2026-10-14
 id_prefix: SW
 record_noun: product line
@@ -49,6 +51,26 @@ sources:
       auto_renew: auto_renew
       notice: notice_days
       owner: business_owner
+  - path: data/ridgeline_saas_spend_export.csv
+    format: csv
+    label: Ridgeline SaaS-spend export
+    defaults:
+      customer: Ridgeline Software Co.
+    map:
+      Application: product
+      Vendor: vendor
+      Department: department
+      Annual Cost: annual_cost
+      Contract End: renewal_date
+      Licenses: licenses
+      Active Users (90d): active_users
+      Auto Renew: auto_renew
+      Notice (days): notice_days
+      Purchased Via: purchased_via
+      App Owner: business_owner
+      Owner Rating: satisfaction
+      Notes: notes
+      Evaluating: considering
   - path: data/license_usage_export.csv
     format: csv
     label: Admin-console usage export
@@ -80,6 +102,8 @@ schema:
   satisfaction: number
   considering: str
   notes: str
+  department: str
+  purchased_via: str
 
 dedupe_on: [[customer, product]]
 required: [customer, product, renewal_date]
@@ -91,6 +115,10 @@ field_formats:
   cost_per_license: money
   utilization: pct
   rightsizing_savings: money
+  route_commit_remaining: money
+  marketplace_drawdown: money
+  aws_commit_remaining: money
+  azure_commit_remaining: money
 
 brief_fields:
   customer: Customer
@@ -117,9 +145,16 @@ brief_fields:
   partner_alternatives: Alternatives we resell or implement
   consolidate_onto: Consolidate onto
   tools_in_category: Tools in this category
+  purchased_via: Purchased via
+  aws_marketplace: AWS Marketplace
+  azure_marketplace: Microsoft Marketplace
+  marketplace_route: Recommended marketplace route
+  route_commit_remaining: Commitment remaining on that cloud
+  route_commit_end: Commitment ends
+  marketplace_drawdown: Could count toward commitment (up to)
 
 dashboard_column: {field: renewal_date, label: Renewal}
-crm_fields: [customer, product, vendor, category, annual_spend, renewal_date, notice_deadline, licenses, utilization, alternatives, partner_alternatives, account_lead]
+crm_fields: [customer, product, vendor, category, annual_spend, renewal_date, notice_deadline, licenses, utilization, alternatives, partner_alternatives, marketplace_route, marketplace_drawdown, account_lead]
 
 rollup:
   by: customer
@@ -133,9 +168,17 @@ rollup:
   overlap_title: Overlapping tools (same category)
   lines_title: Software estate by renewal date
   opportunity_label: Consultant opportunity
-  sum_fields: {annual_spend: Annual software spend}
-  header_fields: {industry: Industry, employees: Employees, exec_contact: Executive contact, account_lead: Account lead}
-  line_columns: {category: Category, annual_spend: Annual spend, renewal_date: Renewal, notice_deadline: Notice deadline}
+  sum_fields: {annual_spend: Annual software spend, marketplace_drawdown: Marketplace-eligible renewal spend}
+  header_fields:
+    industry: Industry
+    employees: Employees
+    exec_contact: Executive contact
+    account_lead: Account lead
+    aws_commit_remaining: AWS commitment remaining
+    aws_commit_end: AWS commitment ends
+    azure_commit_remaining: Microsoft (MACC) commitment remaining
+    azure_commit_end: Microsoft commitment ends
+  line_columns: {category: Category, annual_spend: Annual spend, renewal_date: Renewal, notice_deadline: Notice deadline, marketplace_route: Marketplace route}
 
 calendar:
   title: Renewal calendar — all customers

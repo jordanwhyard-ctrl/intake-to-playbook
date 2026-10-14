@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-001 · prepared 2026-10-14 · sources: Admin-console usage export, Discovery workbook*
 
-**Priority:** Act now (score 105) · **Play:** Competitive swap to a partner ISV · **Consultant opportunity:** Competitive migration · $42,712
+**Priority:** Act now (score 140) · **Play:** Competitive swap to a partner ISV · **Consultant opportunity:** Competitive migration · $42,712
 
 ## Snapshot
 
@@ -32,17 +32,24 @@
 | Alternatives we resell or implement | HubSpot Sales Hub, Microsoft Dynamics 365 Sales |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | AWS Marketplace |
+| Commitment remaining on that cloud | $310,000 |
+| Commitment ends | 2027-03-31 |
+| Could count toward commitment (up to) | $237,600 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 25 |
+| Urgency | 45 |
 | Value | 25 |
-| Opportunity | 55 |
-| **Total** | **105** |
+| Opportunity | 70 |
+| **Total** | **140** |
 
-Tags: `renewing-180` `dissatisfied` `evaluating-alternative` `shelfware` `partner-alternative`
+Tags: `renewing-180` `dissatisfied` `evaluating-alternative` `shelfware` `partner-alternative` `marketplace-eligible` `commit-expiring`
 
 ## Why this recommendation
 
@@ -53,6 +60,8 @@ Tags: `renewing-180` `dissatisfied` `evaluating-alternative` `shelfware` `partne
 - **Signals** · Customer is already evaluating HubSpot → opportunity +20
 - **Signals** · 49 of 120 licenses unused in the last 30 days → opportunity +15
 - **Signals** · We resell or implement: HubSpot Sales Hub, Microsoft Dynamics 365 Sales
+- **Marketplace** · Listed on AWS Marketplace and $310000 of AWS commitment is still unused → marketplace_route=AWS Marketplace, route_commit_remaining=310000, route_commit_end=2027-03-31, route_commit_days_left=168, opportunity +15
+- **Commitment pressure** · Commitment on AWS Marketplace ends in 168 days → urgency +20
 - **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project, +first-year-resale
 
 ## Consultant opportunity: Competitive migration
@@ -99,6 +108,7 @@ Owner: Account lead + Partner ISV rep · SLA: Evaluation plan within 3 business 
 ## Flags and to-dos
 
 - [ ] Calendar the auto-renew notice deadline: 2026-12-30
+- [ ] Cloud commitment ends 2027-03-31 with $310000 unused. Routing this renewal through AWS Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team
 
 ## Original notes
 

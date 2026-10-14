@@ -60,11 +60,11 @@ Satisfaction: 5
 BD team loves it. Wants marketing automation next year.
 ---
 Customer: Pemberton & Rowe
-Product: Clio Manage
+Product: MatterDesk Pro
 Users: 120
 Annual cost: $64,800
 Renewal: 09/30/2027
 Owner: Practice Management
 Satisfaction: 4
 
-Core practice management system. Not going anywhere.
+Niche matter-intake tool the litigation group bought directly. Not in our catalog yet.

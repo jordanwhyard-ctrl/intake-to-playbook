@@ -1,6 +1,6 @@
 # Play: Own the renewal (resale)
 
-*Software Estate Review — Keystone Advisory · 6 product line(s)*
+*Software Estate Review — Keystone Advisory · 5 product line(s)*
 
 **Objective:** Transact the renewal through us, co-term where possible, and check for a better SKU or multi-year price.
 
@@ -10,14 +10,13 @@
 
 | Product Line | Customer | Score | Band | Renewal | Package | Value | Flags |
 |---|---|---|---|---|---|---|---|
-| [CrowdStrike Falcon · Northbeam Logistics](../lines/SW-007-crowdstrike-falcon-northbeam-logistics.md) | Northbeam Logistics | 52 | High | 2026-12-31 | Renewal resale | $7,200 | 0 |
 | [Druva · Halcyon Health Group](../lines/SW-029-druva-halcyon-health-group.md) | Halcyon Health Group | 52 | High | 2026-12-20 | Renewal resale | $7,200 | 0 |
 | [Veeam Data Platform · Brightwater Credit Union](../lines/SW-019-veeam-data-platform-brightwater-credit-u.md) | Brightwater Credit Union | 43 | Medium | 2026-12-10 | Renewal resale | $2,160 | 0 |
-| [Microsoft Dynamics 365 Sales · Brightwater Credit Union](../lines/SW-012-microsoft-dynamics-365-sales-brightwater.md) | Brightwater Credit Union | 37 | Medium | 2027-01-31 | Renewal resale | $6,840 | 0 |
-| [HubSpot Sales Hub · Pemberton & Rowe LLP](../lines/SW-035-hubspot-sales-hub-pemberton-rowe-llp.md) | Pemberton & Rowe LLP | 37 | Medium | 2027-01-15 | Renewal resale | $4,050 | 0 |
+| [Microsoft Dynamics 365 Sales · Brightwater Credit Union](../lines/SW-012-microsoft-dynamics-365-sales-brightwater.md) | Brightwater Credit Union | 37 | Medium | 2027-01-31 | Renewal resale | $5,472 | 0 |
+| [HubSpot Sales Hub · Pemberton & Rowe LLP](../lines/SW-035-hubspot-sales-hub-pemberton-rowe-llp.md) | Pemberton & Rowe LLP | 37 | Medium | 2027-01-15 | Renewal resale | $4,050 | 1 |
 | [Smartsheet Business · Northbeam Logistics](../lines/SW-011-smartsheet-business-northbeam-logistics.md) | Northbeam Logistics | 28 | Medium | 2027-03-15 | Renewal resale | $1,613 | 0 |
 
-**Pipeline in this play: $29,063**
+**Pipeline in this play: $20,495**
 
 ## Sequence
 

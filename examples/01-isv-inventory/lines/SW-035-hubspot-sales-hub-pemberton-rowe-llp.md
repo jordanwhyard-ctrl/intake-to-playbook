@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft Dynamics 365 Sales |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $27,000 |
 
 ## Scores
 
@@ -50,6 +57,7 @@ Tags: `renewing-180` `partner-alternative` `resellable`
 - **Spend** · $27,000/yr → value +12
 - **Signals** · We resell or implement: Microsoft Dynamics 365 Sales
 - **Signals** · We can resell this product (15% margin)
+- **Marketplace** · Only an add-in on Microsoft Marketplace
 - **Route** · We resell it and it renews within 180 days → quote the renewal → play=own-the-renewal, package=resale
 
 ## Consultant opportunity: Renewal resale
@@ -81,6 +89,10 @@ Owner: Account lead · SLA: Renewal quote 60+ days before renewal
 ### Talk track
 
 > We can renew HubSpot Sales Hub for you on one invoice with your other software, and check whether you're on the right edition.
+
+## Flags and to-dos
+
+- [ ] On Microsoft Marketplace only as an add-in/app, not a purchasable offer, so it won't count toward MACC
 
 ## Original notes
 

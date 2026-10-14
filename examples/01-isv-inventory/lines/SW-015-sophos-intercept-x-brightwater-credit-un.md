@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | 2 |
 | Customer is evaluating | SentinelOne |
 | Competitive alternatives | SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint |
-| Alternatives we resell or implement | SentinelOne Singularity, CrowdStrike Falcon |
+| Alternatives we resell or implement | SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $27,500 |
 
 ## Scores
 
@@ -50,7 +57,7 @@ Tags: `renewing-180` `dissatisfied` `evaluating-alternative` `partner-alternativ
 - **Spend** · $27,500/yr → value +12
 - **Signals** · Satisfaction 2/5 → opportunity +20
 - **Signals** · Customer is already evaluating SentinelOne → opportunity +20
-- **Signals** · We resell or implement: SentinelOne Singularity, CrowdStrike Falcon
+- **Signals** · We resell or implement: SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint
 - **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project, +first-year-resale
 
 ## Consultant opportunity: Competitive migration
@@ -77,14 +84,14 @@ Owner: Account lead + Partner ISV rep · SLA: Evaluation plan within 3 business 
 
 | When | Channel | Action |
 |---|---|---|
-| Wed Oct 14 | Internal | Register the opportunity with the partner ISV (SentinelOne Singularity, CrowdStrike Falcon); request competitive pricing |
+| Wed Oct 14 | Internal | Register the opportunity with the partner ISV (SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint); request competitive pricing |
 | Thu Oct 15 | Phone | Call IT owner at Brightwater Credit Union: confirm pain with Sophos Intercept X and the decision process |
-| Wed Oct 21 | Meeting | Side-by-side demo: Sophos Intercept X vs SentinelOne Singularity, CrowdStrike Falcon on their real workflows |
+| Wed Oct 21 | Meeting | Side-by-side demo: Sophos Intercept X vs SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint on their real workflows |
 | Wed Oct 28 | Email | Proposal: subscription through us + fixed-fee migration, timed to 2027-02-15 |
 
 ### Talk track
 
-> You rated Sophos Intercept X 2/5. Let's put SentinelOne Singularity, CrowdStrike Falcon against your actual workflows, not a canned demo.
+> You rated Sophos Intercept X 2/5. Let's put SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint against your actual workflows, not a canned demo.
 >
 > We handle the vendor negotiation and the migration, so your team isn't running a project on top of their day job.
 

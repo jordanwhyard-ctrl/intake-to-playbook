@@ -1,0 +1,30 @@
+# The fictional consultancy's partner agreements: which vendors it can resell and/or implement.
+# Margins are illustrative placeholders. Replace with your own agreements.
+#   resale_margin   share of the customer's annual spend the consultant keeps on resale
+#   services        true when the consultant has an implementation practice for the vendor
+#   marketplace     how the consultant can transact through a cloud marketplace for this vendor
+#                   (CPPO = AWS Channel Partner Private Offer, MPO = Microsoft multiparty private offer)
+vendors:
+  Microsoft:   {resale_margin: 0.08, services: true}
+  HubSpot:     {resale_margin: 0.15, services: true}
+  Okta:        {resale_margin: 0.10, services: true, marketplace: [CPPO]}
+  CrowdStrike: {resale_margin: 0.10, services: true, marketplace: [CPPO, MPO]}
+  SentinelOne: {resale_margin: 0.15, services: true, marketplace: [CPPO]}
+  Zoom:        {resale_margin: 0.10, services: false, marketplace: [CPPO]}
+  Freshworks:  {resale_margin: 0.15, services: true, marketplace: [CPPO]}
+  Smartsheet:  {resale_margin: 0.12, services: true}
+  monday.com:  {resale_margin: 0.12, services: true}
+  Veeam:       {resale_margin: 0.12, services: true}
+  Druva:       {resale_margin: 0.15, services: true}
+  Adobe:       {resale_margin: 0.08, services: false}
+  JumpCloud:   {resale_margin: 0.12, services: true, marketplace: [CPPO]}
+  Wiz:         {resale_margin: 0.10, services: true, marketplace: [CPPO, MPO]}
+  Zscaler:     {resale_margin: 0.10, services: true, marketplace: [CPPO, MPO]}
+  Datadog:     {resale_margin: 0.06, services: true, marketplace: [CPPO, MPO]}
+  Snowflake:   {resale_margin: 0.04, services: true, marketplace: [CPPO, MPO]}
+  Databricks:  {resale_margin: 0.04, services: true, marketplace: [CPPO]}
+  Atlassian:   {resale_margin: 0.08, services: true, marketplace: [CPPO]}
+  GitLab:      {resale_margin: 0.10, services: true, marketplace: [CPPO, MPO]}
+  Splunk (Cisco): {resale_margin: 0.06, services: true, marketplace: [CPPO]}
+  Proofpoint:  {resale_margin: 0.10, services: false, marketplace: [CPPO, MPO]}
+  KnowBe4:     {resale_margin: 0.15, services: false, marketplace: [CPPO, MPO]}

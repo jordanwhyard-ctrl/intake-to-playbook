@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-034 · prepared 2026-10-14 · sources: Pemberton interview notes*
 
-**Priority:** High (score 73) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,700
+**Priority:** Act now (score 108) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,700
 
 ## Snapshot
 
@@ -32,17 +32,24 @@
 | Alternatives we resell or implement | Microsoft Teams |
 | Consolidate onto | Microsoft Teams |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | Microsoft Marketplace |
+| Commitment remaining on that cloud | $90,000 |
+| Commitment ends | 2026-12-31 |
+| Could count toward commitment (up to) | $13,200 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 40 |
+| Urgency | 60 |
 | Value | 3 |
-| Opportunity | 30 |
-| **Total** | **73** |
+| Opportunity | 45 |
+| **Total** | **108** |
 
-Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellable`
+Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellable` `marketplace-eligible` `commit-expiring`
 
 ## Why this recommendation
 
@@ -51,6 +58,8 @@ Tags: `renewing-90` `already-owned-alternative` `partner-alternative` `resellabl
 - **Signals** · Customer already owns Microsoft Teams through a suite they pay for → consolidate_onto=Microsoft Teams, opportunity +30
 - **Signals** · We resell or implement: Microsoft Teams
 - **Signals** · We can resell this product (10% margin)
+- **Marketplace** · Listed on Microsoft Marketplace and $90000 of MACC is still unused → marketplace_route=Microsoft Marketplace, route_commit_remaining=90000, route_commit_end=2026-12-31, route_commit_days_left=78, opportunity +15
+- **Commitment pressure** · Commitment on Microsoft Marketplace ends in 78 days → urgency +20
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project
@@ -92,6 +101,10 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 1. Which teams would push back on moving off Zoom Workplace Business, and why?
 2. Which integrations or workflows depend on Zoom Workplace Business today?
 3. Is there a contractual notice we need to send, and by when?
+
+## Flags and to-dos
+
+- [ ] Cloud commitment ends 2026-12-31 with $90000 unused. Routing this renewal through Microsoft Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team
 
 ## Original notes
 

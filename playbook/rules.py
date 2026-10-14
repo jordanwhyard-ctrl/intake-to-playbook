@@ -144,11 +144,15 @@ def compute(rec: dict, spec: dict, as_of: date) -> None:
             rec[name] = [x for x in (rec.get(arg[0]) or []) if x != rec.get(arg[1])]
         elif kind == "template":
             rec[name] = _fmt(arg, rec)
+        elif kind == "min":
+            vals = [v for v in (_num(rec.get(x)) for x in arg) if v is not None]
+            rec[name] = min(vals) if vals else None
         elif kind == "max":
             vals = [v for v in (_num(rec.get(x)) for x in arg) if v is not None]
             rec[name] = max(vals) if vals else None
-        elif kind == "coalesce":
-            rec[name] = next((rec.get(x) for x in arg if rec.get(x) not in (None, [], "")), None)
+        elif kind == "coalesce":  # first non-empty field; non-string items are literal defaults
+            rec[name] = next((x if not isinstance(x, str) else rec.get(x) for x in arg
+                              if (x if not isinstance(x, str) else rec.get(x)) not in (None, [], "")), None)
         elif kind == "scale":
             v = _num(rec.get(arg["field"]))
             if v is None:

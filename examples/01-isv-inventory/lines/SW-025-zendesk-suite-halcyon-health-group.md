@@ -29,9 +29,16 @@
 | Satisfaction (1–5) | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Freshdesk, HubSpot Service Hub, Salesforce Service Cloud |
-| Alternatives we resell or implement | Freshdesk, HubSpot Service Hub |
+| Alternatives we resell or implement | Freshdesk |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $207,000 |
 
 ## Scores
 
@@ -50,7 +57,8 @@ Tags: `renewing-180` `shelfware` `partner-alternative`
 - **Auto-renew** · Auto-renews; notice deadline 2027-03-01
 - **Spend** · $207,000/yr → value +25
 - **Signals** · 54 of 150 licenses unused in the last 30 days → opportunity +15
-- **Signals** · We resell or implement: Freshdesk, HubSpot Service Hub
+- **Signals** · We resell or implement: Freshdesk
+- **Marketplace** · Only an add-in on Microsoft Marketplace
 - **Route** · Unused licenses before renewal → right-size → play=license-optimization, package=optimization-fee
 
 ## Consultant opportunity: License optimization
@@ -93,3 +101,4 @@ Owner: Advisory analyst · SLA: Usage review within 5 business days
 ## Flags and to-dos
 
 - [ ] Calendar the auto-renew notice deadline: 2027-03-01
+- [ ] On Microsoft Marketplace only as an add-in/app, not a purchasable offer, so it won't count toward MACC

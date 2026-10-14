@@ -1,4 +1,4 @@
-# Clio Manage · Pemberton & Rowe LLP
+# MatterDesk Pro · Pemberton & Rowe LLP
 
 *Software Estate Review — Keystone Advisory · SW-036 · prepared 2026-10-14 · sources: Pemberton interview notes*
 
@@ -11,7 +11,7 @@
 | Customer | Pemberton & Rowe LLP |
 | Customer executive | Claire Pemberton (Managing Partner) |
 | Account lead | Sara Kim |
-| Product | Clio Manage |
+| Product | MatterDesk Pro |
 | Captured as | Pemberton & Rowe |
 | Vendor | — |
 | Category | — |
@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | — |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | — |
+| Microsoft Marketplace | — |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $64,800 |
 
 ## Scores
 
@@ -59,17 +66,17 @@ Owner: Account lead · SLA: Review 180 days before renewal
 
 | When | Channel | Action |
 |---|---|---|
-| Wed Oct 14 | CRM | Set a reminder 180 days before 2027-09-30 for Clio Manage at Pemberton & Rowe LLP |
+| Wed Oct 14 | CRM | Set a reminder 180 days before 2027-09-30 for MatterDesk Pro at Pemberton & Rowe LLP |
 
 ### Talk track
 
-> Nothing to change on Clio Manage right now. We'll check back before the renewal.
+> Nothing to change on MatterDesk Pro right now. We'll check back before the renewal.
 
 ## Flags and to-dos
 
 - [ ] Product not in the catalog — add it with category and alternatives so it can be assessed
-- [ ] Data: 'Clio Manage' not found in reference/isv_catalog.yaml — add it or an alias
+- [ ] Data: 'MatterDesk Pro' not found in reference/isv_catalog.yaml — add it or an alias
 
 ## Original notes
 
-> Core practice management system. Not going anywhere.
+> Niche matter-intake tool the litigation group bought directly. Not in our catalog yet.

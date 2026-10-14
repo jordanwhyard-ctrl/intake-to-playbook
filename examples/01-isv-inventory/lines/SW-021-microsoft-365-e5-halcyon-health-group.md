@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft 365 E3 |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | n_a |
+| Microsoft Marketplace | first_party |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $1,504,800 |
 
 ## Scores
 

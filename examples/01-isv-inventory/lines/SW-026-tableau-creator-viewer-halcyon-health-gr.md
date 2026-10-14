@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-026 · prepared 2026-10-14 · sources: Admin-console usage export, Halcyon procurement export*
 
-**Priority:** Act now (score 95) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $13,500
+**Priority:** Act now (score 110) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $13,500
 
 ## Snapshot
 
@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft Power BI Pro |
 | Consolidate onto | Microsoft Power BI Pro |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | Microsoft Marketplace |
+| Commitment remaining on that cloud | $1,150,000 |
+| Commitment ends | 2027-06-30 |
+| Could count toward commitment (up to) | $216,000 |
 
 ## Scores
 
@@ -39,10 +46,10 @@
 |---|---|
 | Urgency | 25 |
 | Value | 25 |
-| Opportunity | 45 |
-| **Total** | **95** |
+| Opportunity | 60 |
+| **Total** | **110** |
 
-Tags: `renewing-180` `already-owned-alternative` `shelfware` `partner-alternative`
+Tags: `renewing-180` `already-owned-alternative` `shelfware` `partner-alternative` `marketplace-eligible`
 
 ## Why this recommendation
 
@@ -51,6 +58,7 @@ Tags: `renewing-180` `already-owned-alternative` `shelfware` `partner-alternativ
 - **Signals** · Customer already owns Microsoft Power BI Pro through a suite they pay for → consolidate_onto=Microsoft Power BI Pro, opportunity +30
 - **Signals** · 160 of 300 licenses unused in the last 30 days → opportunity +15
 - **Signals** · We resell or implement: Microsoft Power BI Pro
+- **Marketplace** · Listed on Microsoft Marketplace and $1150000 of MACC is still unused → marketplace_route=Microsoft Marketplace, route_commit_remaining=1150000, route_commit_end=2027-06-30, route_commit_days_left=259, opportunity +15
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project

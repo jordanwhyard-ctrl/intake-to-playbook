@@ -28,10 +28,17 @@
 | Business owner | — |
 | Satisfaction (1–5) | — |
 | Customer is evaluating | — |
-| Competitive alternatives | Veeam Data Platform, Rubrik |
+| Competitive alternatives | Veeam Data Platform, Rubrik Security Cloud |
 | Alternatives we resell or implement | Veeam Data Platform |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | unverified |
+| Microsoft Marketplace | unverified |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $48,000 |
 
 ## Scores
 

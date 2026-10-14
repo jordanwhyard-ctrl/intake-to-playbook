@@ -1,6 +1,6 @@
 # Play: Consolidate onto what they own
 
-*Software Estate Review — Keystone Advisory · 14 product line(s)*
+*Software Estate Review — Keystone Advisory · 15 product line(s)*
 
 **Objective:** Retire a product the customer is paying for twice, either because a suite they already own covers it or because two tools overlap. Run the migration as a fixed-scope project.
 
@@ -10,22 +10,23 @@
 
 | Product Line | Customer | Score | Band | Renewal | Package | Value | Flags |
 |---|---|---|---|---|---|---|---|
-| [Zoom Workplace Business · Northbeam Logistics](../lines/SW-004-zoom-workplace-business-northbeam-logist.md) | Northbeam Logistics | 127 | Act now | 2026-11-30 | Consolidation project | $13,500 | 1 |
-| [DocuSign eSignature · Pemberton & Rowe LLP](../lines/SW-032-docusign-esignature-pemberton-rowe-llp.md) | Pemberton & Rowe LLP | 123 | Act now | 2026-11-20 | Consolidation project | $8,300 | 1 |
+| [Zoom Workplace Business · Northbeam Logistics](../lines/SW-004-zoom-workplace-business-northbeam-logist.md) | Northbeam Logistics | 162 | Act now | 2026-11-30 | Consolidation project | $13,500 | 2 |
+| [DocuSign eSignature · Pemberton & Rowe LLP](../lines/SW-032-docusign-esignature-pemberton-rowe-llp.md) | Pemberton & Rowe LLP | 158 | Act now | 2026-11-20 | Consolidation project | $8,300 | 2 |
+| [Slack Business+ · Northbeam Logistics](../lines/SW-003-slack-business-northbeam-logistics.md) | Northbeam Logistics | 147 | Act now | 2026-12-15 | Consolidation project | $15,500 | 2 |
 | [Asana Business · Northbeam Logistics](../lines/SW-010-asana-business-northbeam-logistics.md) | Northbeam Logistics | 117 | Act now | 2026-12-01 | Consolidation project | $9,100 | 1 |
-| [Slack Business+ · Northbeam Logistics](../lines/SW-003-slack-business-northbeam-logistics.md) | Northbeam Logistics | 112 | Act now | 2026-12-15 | Consolidation project | $15,500 | 1 |
 | [Okta Workforce Identity · Brightwater Credit Union](../lines/SW-014-okta-workforce-identity-brightwater-cred.md) | Brightwater Credit Union | 112 | Act now | 2026-11-30 | Consolidation project | $16,500 | 1 |
-| [Webex Suite · Halcyon Health Group](../lines/SW-027-webex-suite-halcyon-health-group.md) | Halcyon Health Group | 110 | Act now | 2026-11-15 | Consolidation project | $27,500 | 1 |
+| [CrowdStrike Falcon · Halcyon Health Group](../lines/SW-023-crowdstrike-falcon-halcyon-health-group.md) | Halcyon Health Group | 110 | Act now | 2026-12-31 | Consolidation project | $59,500 | 0 |
+| [Tableau Creator/Viewer · Halcyon Health Group](../lines/SW-026-tableau-creator-viewer-halcyon-health-gr.md) | Halcyon Health Group | 110 | Act now | 2027-02-28 | Consolidation project | $13,500 | 0 |
+| [Webex Suite · Halcyon Health Group](../lines/SW-027-webex-suite-halcyon-health-group.md) | Halcyon Health Group | 110 | Act now | 2026-11-15 | Consolidation project | $27,500 | 2 |
+| [Zoom Workplace Business · Pemberton & Rowe LLP](../lines/SW-034-zoom-workplace-business-pemberton-rowe-l.md) | Pemberton & Rowe LLP | 108 | Act now | 2026-11-05 | Consolidation project | $8,700 | 1 |
+| [Tableau Creator/Viewer · Northbeam Logistics](../lines/SW-005-tableau-creator-viewer-northbeam-logisti.md) | Northbeam Logistics | 107 | Act now | 2027-03-31 | Consolidation project | $8,400 | 1 |
+| [Notion · Ridgeline Software Co.](../lines/SW-052-notion-ridgeline-software-co.md) | Ridgeline Software Co. | 107 | Act now | 2027-01-31 | Consolidation project | $19,500 | 2 |
 | [Box Business · Brightwater Credit Union](../lines/SW-016-box-business-brightwater-credit-union.md) | Brightwater Credit Union | 97 | Act now | 2026-12-31 | Consolidation project | $9,900 | 1 |
-| [CrowdStrike Falcon · Halcyon Health Group](../lines/SW-023-crowdstrike-falcon-halcyon-health-group.md) | Halcyon Health Group | 95 | Act now | 2026-12-31 | Consolidation project | $59,500 | 0 |
-| [Tableau Creator/Viewer · Halcyon Health Group](../lines/SW-026-tableau-creator-viewer-halcyon-health-gr.md) | Halcyon Health Group | 95 | Act now | 2027-02-28 | Consolidation project | $13,500 | 0 |
 | [Dropbox Business · Pemberton & Rowe LLP](../lines/SW-031-dropbox-business-pemberton-rowe-llp.md) | Pemberton & Rowe LLP | 82 | Act now | 2026-12-31 | Consolidation project | $11,300 | 1 |
-| [Okta Workforce Identity · Halcyon Health Group](../lines/SW-022-okta-workforce-identity-halcyon-health-g.md) | Halcyon Health Group | 80 | Act now | 2027-01-31 | Consolidation project | $55,500 | 1 |
-| [Zoom Workplace Business · Pemberton & Rowe LLP](../lines/SW-034-zoom-workplace-business-pemberton-rowe-l.md) | Pemberton & Rowe LLP | 73 | High | 2026-11-05 | Consolidation project | $8,700 | 0 |
-| [Tableau Creator/Viewer · Northbeam Logistics](../lines/SW-005-tableau-creator-viewer-northbeam-logisti.md) | Northbeam Logistics | 72 | High | 2027-03-31 | Consolidation project | $8,400 | 0 |
+| [Okta Workforce Identity · Halcyon Health Group](../lines/SW-022-okta-workforce-identity-halcyon-health-g.md) | Halcyon Health Group | 80 | Act now | 2027-01-31 | Consolidation project | $55,500 | 2 |
 | [Zoom Workplace Business · Brightwater Credit Union](../lines/SW-017-zoom-workplace-business-brightwater-cred.md) | Brightwater Credit Union | 67 | High | 2027-05-31 | Consolidation project | $10,500 | 0 |
 
-**Pipeline in this play: $267,700**
+**Pipeline in this play: $287,200**
 
 ## Sequence
 

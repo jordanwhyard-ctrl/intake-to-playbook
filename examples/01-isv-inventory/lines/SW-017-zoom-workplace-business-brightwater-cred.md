@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft Teams |
 | Consolidate onto | Microsoft Teams |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $29,700 |
 
 ## Scores
 

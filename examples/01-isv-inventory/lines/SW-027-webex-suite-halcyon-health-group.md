@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Microsoft Teams, Zoom Workplace Business |
 | Consolidate onto | Microsoft Teams |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | app |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $96,000 |
 
 ## Scores
 
@@ -51,6 +58,7 @@ Tags: `renewing-90` `notice-missed` `already-owned-alternative` `partner-alterna
 - **Spend** · $96,000/yr → value +25
 - **Signals** · Customer already owns Microsoft Teams through a suite they pay for → consolidate_onto=Microsoft Teams, opportunity +30
 - **Signals** · We resell or implement: Microsoft Teams, Zoom Workplace Business
+- **Marketplace** · Only an add-in on Microsoft Marketplace
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 
 ## Consultant opportunity: Consolidation project
@@ -96,3 +104,4 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 ## Flags and to-dos
 
 - [ ] Auto-renew notice deadline (2026-09-16) already passed — ask the vendor for a short-term extension or a co-term instead of a full renewal
+- [ ] On Microsoft Marketplace only as an add-in/app, not a purchasable offer, so it won't count toward MACC

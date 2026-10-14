@@ -32,6 +32,13 @@
 | Alternatives we resell or implement | Freshservice |
 | Consolidate onto | — |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | listed |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | — |
+| Commitment remaining on that cloud | — |
+| Commitment ends | — |
+| Could count toward commitment (up to) | $5,760 |
 
 ## Scores
 
@@ -42,14 +49,16 @@
 | Opportunity | 0 |
 | **Total** | **13** |
 
-Tags: `partner-alternative`
+Tags: `partner-alternative` `resellable`
 
 ## Why this recommendation
 
 - **Renewal timing** · Renews in 321 days → urgency +10
 - **Spend** · Small line ($5,760/yr) → value +3
 - **Signals** · We resell or implement: Freshservice
+- **Signals** · We can resell this product (8% margin)
 - **Route** · No action needed yet — revisit 180 days before renewal → play=monitor
+- **Overlay** · Also offer to transact the renewal through us → play=own-the-renewal
 
 ## Sales play: Monitor
 
@@ -66,3 +75,5 @@ Owner: Account lead · SLA: Review 180 days before renewal
 ### Talk track
 
 > Nothing to change on Jira Service Management right now. We'll check back before the renewal.
+
+Also qualifies for: Own the renewal (resale)

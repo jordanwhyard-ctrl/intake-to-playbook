@@ -2,7 +2,7 @@
 
 *Software Estate Review — Keystone Advisory · SW-032 · prepared 2026-10-14 · sources: Pemberton interview notes*
 
-**Priority:** Act now (score 123) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,300
+**Priority:** Act now (score 158) · **Play:** Consolidate onto what they own · **Consultant opportunity:** Consolidation project · $8,300
 
 ## Snapshot
 
@@ -32,17 +32,24 @@
 | Alternatives we resell or implement | Adobe Acrobat Sign |
 | Consolidate onto | Adobe Acrobat Sign |
 | Tools in this category | 1 |
+| Purchased via | — |
+| AWS Marketplace | not_found |
+| Microsoft Marketplace | listed |
+| Recommended marketplace route | Microsoft Marketplace |
+| Commitment remaining on that cloud | $90,000 |
+| Commitment ends | 2026-12-31 |
+| Could count toward commitment (up to) | $19,200 |
 
 ## Scores
 
 | Score | Points |
 |---|---|
-| Urgency | 70 |
+| Urgency | 90 |
 | Value | 3 |
-| Opportunity | 50 |
-| **Total** | **123** |
+| Opportunity | 65 |
+| **Total** | **158** |
 
-Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `evaluating-alternative` `partner-alternative` `deadline-driven`
+Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `evaluating-alternative` `partner-alternative` `marketplace-eligible` `commit-expiring` `deadline-driven`
 
 ## Why this recommendation
 
@@ -52,6 +59,8 @@ Tags: `renewing-90` `notice-imminent` `already-owned-alternative` `evaluating-al
 - **Signals** · Customer already owns Adobe Acrobat Sign through a suite they pay for → consolidate_onto=Adobe Acrobat Sign, opportunity +30
 - **Signals** · Customer is already evaluating Adobe Acrobat Sign → opportunity +20
 - **Signals** · We resell or implement: Adobe Acrobat Sign
+- **Marketplace** · Listed on Microsoft Marketplace and $90000 of MACC is still unused → marketplace_route=Microsoft Marketplace, route_commit_remaining=90000, route_commit_end=2026-12-31, route_commit_days_left=78, opportunity +15
+- **Commitment pressure** · Commitment on Microsoft Marketplace ends in 78 days → urgency +20
 - **Route** · Overlap with tools already owned → consolidation → play=consolidate, package=consolidation-project
 - **Overlay** · Lead with the notice deadline in the first conversation
 
@@ -98,6 +107,7 @@ Owner: Advisory lead + Solutions architect · SLA: Consolidation brief within 5 
 ## Flags and to-dos
 
 - [ ] Send non-renewal / renegotiation notice by 2026-10-21 (7 days) to keep options open
+- [ ] Cloud commitment ends 2026-12-31 with $90000 unused. Routing this renewal through Microsoft Marketplace could count toward it; confirm offer eligibility and drawdown terms with the cloud account team
 
 ## Original notes
 
