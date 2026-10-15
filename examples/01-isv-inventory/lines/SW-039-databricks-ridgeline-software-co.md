@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | Head of Data |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 3 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Cloudera Data Platform, Snowflake, Teradata VantageCloud |
 | Alternatives we resell or implement | Snowflake |

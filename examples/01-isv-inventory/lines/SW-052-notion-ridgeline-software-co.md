@@ -26,7 +26,12 @@
 | Notice deadline | 2027-01-01 |
 | Days to notice deadline | 79 |
 | Business owner | VP Product |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 3 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Atlassian Confluence |
 | Alternatives we resell or implement | Atlassian Confluence |

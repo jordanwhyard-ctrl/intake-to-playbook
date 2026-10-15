@@ -181,6 +181,35 @@ class TestSamples(unittest.TestCase):
             notion = next(x for x in mine if x["product"] == "Notion")
             self.assertEqual(notion["annual_spend"], 81000)                   # 15/user/month x 450 x 12
 
+    def test_discovery_workbook_import(self):
+        import shutil, subprocess, sys
+        with tempfile.TemporaryDirectory() as tmp:
+            wbp = Path(tmp) / "wb.xlsx"
+            subprocess.run([sys.executable, str(ROOT / "tools/build_discovery_workbook.py"), "--example", "--out", str(wbp)],
+                           check=True, capture_output=True)
+            proj = Path(tmp) / "proj"
+            shutil.copytree(ROOT / "samples/01-isv-inventory", proj)
+            r = subprocess.run([sys.executable, str(ROOT / "tools/import_workbook.py"), str(wbp), "--project", str(proj)],
+                               capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            res = run(proj, Path(tmp) / "out", quiet=True)
+            mine = {x["product"]: x for x in res["records"] if x.get("customer") == "Example Software Co. (fictional)"}
+            self.assertEqual(len(mine), 10)
+            self.assertEqual(mine["Zoom Workplace Business"]["_plays"][0], "consolidate")    # typed "Zoom", wants to retire
+            self.assertEqual(mine["Zoom Workplace Business"]["consolidate_onto"], "Google Meet")
+            self.assertEqual(mine["GitLab Ultimate"]["_plays"][0], "license-optimization")
+            self.assertEqual(mine["Snyk"]["_plays"][0], "competitive-swap")
+            self.assertIn("committed", mine["Snowflake"]["_tags"])
+            self.assertEqual(mine["Notion"]["annual_spend"], 72000)                           # $10 x 600 x 12
+
+        # the blank template has only the example row, which the importer skips
+        with tempfile.TemporaryDirectory() as tmp:
+            wbp = Path(tmp) / "blank.xlsx"
+            subprocess.run([sys.executable, str(ROOT / "tools/build_discovery_workbook.py"), "--out", str(wbp)], check=True, capture_output=True)
+            sys.path.insert(0, str(ROOT / "tools"))
+            from import_workbook import read_workbook
+            self.assertEqual(read_workbook(wbp)["lines"], [])
+
     def test_isv_rollups_and_calendar(self):
         out = self.results["01-isv-inventory"]["out_dir"]
         self.assertEqual(len(list((out / "customers").glob("*.md"))), 5)

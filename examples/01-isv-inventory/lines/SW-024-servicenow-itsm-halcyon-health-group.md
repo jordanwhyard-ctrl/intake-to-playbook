@@ -26,7 +26,12 @@
 | Notice deadline | 2027-07-02 |
 | Days to notice deadline | 261 |
 | Business owner | — |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | — |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Jira Service Management, Freshservice |
 | Alternatives we resell or implement | Jira Service Management, Freshservice |

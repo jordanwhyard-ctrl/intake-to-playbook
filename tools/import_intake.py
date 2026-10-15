@@ -21,9 +21,10 @@ from pathlib import Path
 
 import yaml
 
-COLUMNS = ["customer", "product", "edition", "vendor", "licenses", "active_users", "unit_cost_monthly", "annual_cost",
-           "renewal_date", "term_months", "auto_renew", "notice_days", "purchased_via", "business_owner",
-           "satisfaction", "considering", "notes"]
+COLUMNS = ["customer", "product", "edition", "vendor", "department", "licenses", "active_users", "unit_cost_monthly",
+           "annual_cost", "renewal_date", "term_months", "auto_renew", "notice_days", "purchased_via", "business_owner",
+           "use_case", "criticality", "satisfaction", "open_to_alternatives", "considering", "switch_reason",
+           "desired_outcome", "notes"]
 
 
 def slug(s: str) -> str:
@@ -47,8 +48,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("intake", type=Path)
     ap.add_argument("--project", type=Path, default=Path("samples/01-isv-inventory"))
     a = ap.parse_args(argv)
+    return write_intake(json.loads(a.intake.read_text(encoding="utf-8")), a.project)
 
-    intake = json.loads(a.intake.read_text(encoding="utf-8"))
+
+def write_intake(intake: dict, project: Path) -> int:
+    """Write one intake (the web form's JSON shape) into a pipeline project. Returns an exit code."""
+    class A:  # keep the body below unchanged
+        pass
+    a = A()
+    a.project = project
     cust = intake.get("customer") or {}
     name = (cust.get("name") or "").strip()
     if not name:
@@ -64,11 +72,13 @@ def main(argv: list[str] | None = None) -> int:
         w = csv.writer(f)
         w.writerow(COLUMNS)
         for l in lines:
-            w.writerow([name, l.get("product"), blank(l.get("edition")), blank(l.get("vendor")), blank(l.get("licenses")),
-                        blank(l.get("activeUsers")), blank(l.get("unitMonthly")), blank(annual(l)), blank(l.get("renewalDate")),
-                        blank(l.get("termMonths")), blank(l.get("autoRenew")), blank(l.get("noticeDays")),
-                        blank(l.get("purchasedVia")), blank(l.get("owner")), blank(l.get("satisfaction")),
-                        blank(l.get("evaluating")), blank(l.get("notes"))])
+            w.writerow([name, l.get("product"), blank(l.get("edition")), blank(l.get("vendor")), blank(l.get("department")),
+                        blank(l.get("licenses")), blank(l.get("activeUsers")), blank(l.get("unitMonthly")), blank(annual(l)),
+                        blank(l.get("renewalDate")), blank(l.get("termMonths")), blank(l.get("autoRenew")),
+                        blank(l.get("noticeDays")), blank(l.get("purchasedVia")), blank(l.get("owner")),
+                        blank(l.get("useCase")), blank(l.get("criticality")), blank(l.get("satisfaction")),
+                        blank(l.get("openToAlternatives")), blank(l.get("evaluating")), blank(l.get("switchReason")),
+                        blank(l.get("desiredOutcome")), blank(l.get("notes"))])
     print(f"wrote {out} ({len(lines)} lines)")
 
     ref = a.project / "reference" / "customers.yaml"

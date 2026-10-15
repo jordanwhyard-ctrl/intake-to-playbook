@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | Platform Lead |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 2 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Checkmarx One, SonarQube, Veracode |
 | Alternatives we resell or implement | — |

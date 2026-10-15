@@ -26,7 +26,12 @@
 | Notice deadline | 2026-10-31 |
 | Days to notice deadline | 17 |
 | Business owner | VP Engineering |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 3 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | GitHub Enterprise |
 | Alternatives we resell or implement | GitHub Enterprise |

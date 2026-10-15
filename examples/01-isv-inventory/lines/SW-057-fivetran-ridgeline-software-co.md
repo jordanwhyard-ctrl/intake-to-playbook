@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | Head of Data |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 4 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Informatica Intelligent Data Management Cloud |
 | Alternatives we resell or implement | — |

@@ -26,7 +26,12 @@
 | Notice deadline | 2027-08-04 |
 | Days to notice deadline | 294 |
 | Business owner | — |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | — |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Rippling, UKG Pro, ADP Workforce Now |
 | Alternatives we resell or implement | — |

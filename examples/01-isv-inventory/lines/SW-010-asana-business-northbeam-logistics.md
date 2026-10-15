@@ -26,7 +26,12 @@
 | Notice deadline | 2026-11-01 |
 | Days to notice deadline | 18 |
 | Business owner | PMO |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 3 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Microsoft Planner, Monday.com Work Management, Smartsheet Business |
 | Alternatives we resell or implement | Monday.com Work Management, Smartsheet Business |

@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | IT Director |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 4 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Notion |
 | Alternatives we resell or implement | — |

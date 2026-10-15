@@ -26,7 +26,12 @@
 | Notice deadline | 2026-10-21 |
 | Days to notice deadline | 7 |
 | Business owner | Office Manager |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 4 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | Adobe Acrobat Sign |
 | Competitive alternatives | Adobe Acrobat Sign, Dropbox Sign |
 | Alternatives we resell or implement | Adobe Acrobat Sign |

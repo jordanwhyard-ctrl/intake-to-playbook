@@ -110,6 +110,11 @@ schema:
   department: str
   purchased_via: str
   edition: str
+  use_case: str
+  criticality: str
+  open_to_alternatives: str
+  switch_reason: str
+  desired_outcome: str
 
 dedupe_on: [[customer, product]]
 required: [customer, product, renewal_date]
@@ -145,7 +150,12 @@ brief_fields:
   notice_deadline: Notice deadline
   days_to_notice: Days to notice deadline
   business_owner: Business owner
+  use_case: Primary use case
+  criticality: Business criticality
   satisfaction: Satisfaction (1–5)
+  open_to_alternatives: Open to alternatives after renewal
+  desired_outcome: Desired outcome at renewal
+  switch_reason: Main reason to switch
   considering: Customer is evaluating
   alternatives: Competitive alternatives
   partner_alternatives: Alternatives we resell or implement
@@ -160,7 +170,7 @@ brief_fields:
   marketplace_drawdown: Could count toward commitment (up to)
 
 dashboard_column: {field: renewal_date, label: Renewal}
-crm_fields: [customer, product, vendor, category, annual_spend, renewal_date, notice_deadline, licenses, utilization, alternatives, partner_alternatives, marketplace_route, marketplace_drawdown, account_lead]
+crm_fields: [customer, product, vendor, category, use_case, open_to_alternatives, desired_outcome, annual_spend, renewal_date, notice_deadline, licenses, utilization, alternatives, partner_alternatives, marketplace_route, marketplace_drawdown, account_lead]
 
 rollup:
   by: customer

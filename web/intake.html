@@ -305,6 +305,9 @@ const LINE_FIELDS = [
   {k: "product", label: "Product", type: "product", req: true, wide2: true},
   {k: "edition", label: "Edition / SKU", type: "text", ph: "e.g. Enterprise"},
   {k: "vendor", label: "Vendor", type: "text", help: "Filled from the catalog when matched."},
+  {k: "useCase", label: "Primary use case", type: "text", req: true, ph: "What the business uses it for"},
+  {k: "department", label: "Department", type: "text"},
+  {k: "criticality", label: "Business criticality", type: "select", opts: ["Mission-critical", "High", "Medium", "Low"]},
   {k: "annualCost", label: "Annual cost ($)", type: "money", reqIf: "noUnit", help: "Or give price per user per month + licenses."},
   {k: "unitMonthly", label: "Price / user / month ($)", type: "money"},
   {k: "licenses", label: "Licenses / seats", type: "number", min: 0},
@@ -316,7 +319,10 @@ const LINE_FIELDS = [
   {k: "purchasedVia", label: "Purchased via", type: "select", opts: ["Direct", "Reseller", "AWS Marketplace", "Microsoft Marketplace", "Google Cloud Marketplace", "Unknown"]},
   {k: "owner", label: "Business owner", type: "text", ph: "Team or person"},
   {k: "satisfaction", label: "Satisfaction (1–5)", type: "select", opts: ["", "1", "2", "3", "4", "5"]},
-  {k: "evaluating", label: "Evaluating alternatives", type: "text", ph: "Products they're looking at"},
+  {k: "openToAlternatives", label: "Open to alternatives after renewal?", type: "select", req: true, opts: ["Yes – actively evaluating", "Yes – open at renewal", "Maybe – depends on price", "No – committed", "No – contractually locked in", "Unknown"]},
+  {k: "evaluating", label: "Alternatives being considered", type: "text", ph: "Products they're looking at"},
+  {k: "switchReason", label: "Main reason to switch", type: "select", opts: ["Cost", "Missing features", "Poor support", "Overlaps another tool", "Security / compliance", "Low adoption", "Vendor viability", "Consolidation mandate", "No reason to switch", "Other"]},
+  {k: "desiredOutcome", label: "Desired outcome at renewal", type: "select", opts: ["Renew as-is", "Renegotiate price", "Right-size licenses", "Upgrade / expand", "Consolidate onto another tool", "Replace with alternative", "Retire", "Undecided"]},
   {k: "notes", label: "Notes", type: "textarea", wide: true},
 ];
 
@@ -337,12 +343,12 @@ function example() {
       buyingChannels: ["Direct from vendor", "AWS Marketplace"], privateMarketplace: "No", securityReview: "Yes", procurementDays: 30},
     commitments: {aws: {has: "Yes", annual: 1500000, remaining: 620000, end: d(120), counts: "Yes"}, azure: {has: "No"}},
     lines: [
-      {id: uid(), product: "Datadog", edition: "Enterprise", annualCost: 240000, renewalDate: d(70), autoRenew: "No", purchasedVia: "Direct", owner: "Engineering", satisfaction: "4"},
-      {id: uid(), product: "Okta Workforce Identity", annualCost: 41000, licenses: 480, activeUsers: 455, renewalDate: d(38), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
-      {id: uid(), product: "Notion", unitMonthly: 15, licenses: 450, activeUsers: 160, renewalDate: d(95), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "Product", satisfaction: "3", notes: "Most docs live in Confluence."},
-      {id: uid(), product: "Atlassian Confluence", annualCost: 54000, licenses: 450, activeUsers: 430, renewalDate: d(160), purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
-      {id: uid(), product: "Snyk", annualCost: 62000, renewalDate: d(130), purchasedVia: "Direct", owner: "Platform", satisfaction: "2", evaluating: "Checkmarx One"},
-      {id: uid(), product: "Snowflake", annualCost: 380000, renewalDate: d(200), purchasedVia: "AWS Marketplace", owner: "Data", satisfaction: "4"},
+      {id: uid(), product: "Datadog", edition: "Enterprise", useCase: "Infrastructure and APM monitoring", openToAlternatives: "Yes – open at renewal", desiredOutcome: "Renegotiate price", annualCost: 240000, renewalDate: d(70), autoRenew: "No", purchasedVia: "Direct", owner: "Engineering", satisfaction: "4"},
+      {id: uid(), product: "Okta Workforce Identity", useCase: "SSO and MFA for all staff", openToAlternatives: "Maybe – depends on price", desiredOutcome: "Renegotiate price", annualCost: 41000, licenses: 480, activeUsers: 455, renewalDate: d(38), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
+      {id: uid(), product: "Notion", useCase: "Product specs and team wikis", openToAlternatives: "Yes – open at renewal", desiredOutcome: "Consolidate onto another tool", evaluating: "Atlassian Confluence", unitMonthly: 15, licenses: 450, activeUsers: 160, renewalDate: d(95), autoRenew: "Yes", noticeDays: 30, purchasedVia: "Direct", owner: "Product", satisfaction: "3", notes: "Most docs live in Confluence."},
+      {id: uid(), product: "Atlassian Confluence", useCase: "Company knowledge base", openToAlternatives: "No – committed", desiredOutcome: "Renew as-is", annualCost: 54000, licenses: 450, activeUsers: 430, renewalDate: d(160), purchasedVia: "Direct", owner: "IT", satisfaction: "4"},
+      {id: uid(), product: "Snyk", useCase: "Dependency vulnerability scanning", openToAlternatives: "Yes – actively evaluating", desiredOutcome: "Replace with alternative", switchReason: "Missing features", annualCost: 62000, renewalDate: d(130), purchasedVia: "Direct", owner: "Platform", satisfaction: "2", evaluating: "Checkmarx One"},
+      {id: uid(), product: "Snowflake", useCase: "Data warehouse", openToAlternatives: "No – committed", desiredOutcome: "Renegotiate price", annualCost: 380000, renewalDate: d(200), purchasedVia: "AWS Marketplace", owner: "Data", satisfaction: "4"},
     ],
     goals: {drivers: ["Upcoming renewals", "Use up cloud commitment", "Cut software spend"], budgetCycle: "Annually", budgetStatus: "Under review",
       decisionMakers: "CFO and VP Engineering", decisionProcess: "IT shortlists, CFO approves anything over $50K, security review for new vendors."}};
@@ -525,6 +531,7 @@ function lineBody(l, a, idx, errs) {
     if (e.alt.length) facts.push(`Alternatives: ${esc(e.alt.join(", "))}${e.pa.length ? ` (you resell or implement: ${esc(e.pa.join(", "))})` : ""}`);
   } else if (l.product) facts.push(`“${esc(l.product)}” isn't in the catalog yet. It will be flagged for review, and you can still submit it.`);
   if (a.notice) facts.push(`Notice deadline: <b>${fmtDate(a.notice)}</b>${a.dNotice != null ? ` (${a.dNotice} days)` : ""}`);
+  if (l.openToAlternatives) facts.push(`Open to alternatives: <b>${esc(l.openToAlternatives)}</b>${l.desiredOutcome ? ` · wants to ${esc(l.desiredOutcome.toLowerCase())}` : ""}`);
   if (a.util != null) facts.push(`Utilization: <b>${Math.round(a.util * 100)}%</b> (${l.activeUsers} of ${l.licenses})`);
   if (a.route) { const c = S.commitments[a.route.startsWith("AWS") ? "aws" : "azure"]; facts.push(`Route via <b>${a.route}</b>: ${money(c.remaining)} commitment left, ends ${fmtDate(c.end)}`); }
   a.notes.forEach(n => facts.push(esc(n)));
@@ -581,6 +588,8 @@ function validate() {
     if (!l.product) need(`lines.#${l.id}.product`, "Required", `${n}: product`);
     if (annual(l) == null) need(`lines.#${l.id}.annualCost`, "Give annual cost, or price per user per month and licenses", `${n}: annual cost`);
     if (!l.renewalDate) need(`lines.#${l.id}.renewalDate`, "Required", `${n}: renewal date`);
+    if (!l.useCase) need(`lines.#${l.id}.useCase`, "Required", `${n}: primary use case`);
+    if (!l.openToAlternatives) need(`lines.#${l.id}.openToAlternatives`, "Required", `${n}: open to alternatives?`);
     if (l.licenses && l.activeUsers && +l.activeUsers > +l.licenses * 1.5) warn.push(`${n}: more active users than licenses. Check the numbers.`);
     if (l.product && !match(l.product)) warn.push(`${n}: not in the catalog. It will be flagged for review.`);
     if (l.autoRenew === "Yes" && (l.noticeDays == null || l.noticeDays === "")) warn.push(`${n}: auto-renews with no notice period.`);
@@ -701,7 +710,7 @@ $("#expandAll").onclick = () => { S.lines.forEach(l => openLines.add(l.id)); ren
 $("#collapseAll").onclick = () => { openLines.clear(); renderLines(); };
 
 /* ---------------------------------------------------------------- spreadsheet import */
-const TARGETS = [["", "Don't import"], ["customer", "Customer"], ["product", "Product"], ["edition", "Edition / SKU"], ["vendor", "Vendor"], ["annualCost", "Annual cost"], ["unitMonthly", "Price / user / month"], ["licenses", "Licenses"], ["activeUsers", "Active users"], ["renewalDate", "Renewal date"], ["termMonths", "Term (months)"], ["autoRenew", "Auto-renews"], ["noticeDays", "Notice period (days)"], ["purchasedVia", "Purchased via"], ["owner", "Business owner"], ["satisfaction", "Satisfaction"], ["evaluating", "Evaluating"], ["notes", "Notes"]];
+const TARGETS = [["", "Don't import"], ["customer", "Customer"], ["product", "Product"], ["edition", "Edition / SKU"], ["vendor", "Vendor"], ["useCase", "Primary use case"], ["department", "Department"], ["criticality", "Business criticality"], ["openToAlternatives", "Open to alternatives?"], ["switchReason", "Reason to switch"], ["desiredOutcome", "Desired outcome"], ["annualCost", "Annual cost"], ["unitMonthly", "Price / user / month"], ["licenses", "Licenses"], ["activeUsers", "Active users"], ["renewalDate", "Renewal date"], ["termMonths", "Term (months)"], ["autoRenew", "Auto-renews"], ["noticeDays", "Notice period (days)"], ["purchasedVia", "Purchased via"], ["owner", "Business owner"], ["satisfaction", "Satisfaction"], ["evaluating", "Evaluating"], ["notes", "Notes"]];
 const SYN = {
   customer: ["customer", "client", "account", "tenant", "buyer", "company", "organization"],
   product: ["product", "application", "app", "software", "software / service", "service", "item description", "tool", "subscription"],
@@ -716,10 +725,16 @@ const SYN = {
   autoRenew: ["auto renew", "auto-renew", "auto-renew?", "autorenew", "evergreen"],
   noticeDays: ["notice", "notice period", "notice period (days)", "notice (days)", "notice days"],
   purchasedVia: ["purchased via", "channel", "bought via", "procurement channel", "reseller"],
-  owner: ["owner", "business owner", "app owner", "department", "team"],
+  owner: ["owner", "business owner", "app owner", "team"],
   satisfaction: ["satisfaction", "rating", "owner rating", "satisfaction (1-5)", "csat"],
   evaluating: ["evaluating", "considering", "alternatives", "competitor"],
   notes: ["notes", "comments", "remarks"],
+  useCase: ["primary use case", "use case", "purpose", "used for"],
+  department: ["department / business unit", "business unit", "department"],
+  criticality: ["business criticality", "criticality"],
+  openToAlternatives: ["open to alternatives after renewal?", "open to alternatives", "open to switch"],
+  switchReason: ["main reason to switch", "reason to switch"],
+  desiredOutcome: ["desired outcome at renewal", "desired outcome", "renewal outcome"],
 };
 let grid = null, mapCols = [];
 function guess(h) { const x = h.trim().toLowerCase(); for (const [k, list] of Object.entries(SYN)) if (list.includes(x)) return k; for (const [k, list] of Object.entries(SYN)) if (list.some(s => s.length > 3 && x.includes(s))) return k; return ""; }

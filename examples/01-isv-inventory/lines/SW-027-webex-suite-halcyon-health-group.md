@@ -26,7 +26,12 @@
 | Notice deadline | 2026-09-16 |
 | Days to notice deadline | -28 |
 | Business owner | — |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | — |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Microsoft Teams, Zoom Workplace Business |
 | Alternatives we resell or implement | Microsoft Teams, Zoom Workplace Business |

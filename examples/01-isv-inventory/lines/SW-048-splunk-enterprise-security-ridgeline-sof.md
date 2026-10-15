@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | CISO |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 2 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | Sumo Logic |
 | Competitive alternatives | Sumo Logic |
 | Alternatives we resell or implement | — |

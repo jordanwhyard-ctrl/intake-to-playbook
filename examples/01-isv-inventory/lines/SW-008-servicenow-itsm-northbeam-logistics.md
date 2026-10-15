@@ -26,7 +26,12 @@
 | Notice deadline | 2027-01-30 |
 | Days to notice deadline | 108 |
 | Business owner | IT |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 2 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Jira Service Management, Freshservice |
 | Alternatives we resell or implement | Jira Service Management, Freshservice |
@@ -60,7 +65,8 @@ Tags: `dissatisfied` `partner-alternative` `marketplace-eligible` `commit-expiri
 - **Signals** · We resell or implement: Jira Service Management, Freshservice
 - **Marketplace** · Listed on AWS Marketplace and $310000 of AWS commitment is still unused → marketplace_route=AWS Marketplace, route_commit_remaining=310000, route_commit_end=2027-03-31, route_commit_days_left=168, opportunity +15
 - **Commitment pressure** · Commitment on AWS Marketplace ends in 168 days → urgency +20
-- **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project, +first-year-resale
+- **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project
+- **Overlay** · We resell a replacement (Jira Service Management, Freshservice) → first-year resale margin → +first-year-resale
 
 ## Consultant opportunity: Competitive migration
 

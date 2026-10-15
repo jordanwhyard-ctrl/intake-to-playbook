@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | Business Development |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 5 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Salesforce Sales Cloud, Microsoft Dynamics 365 Sales, Pipedrive |
 | Alternatives we resell or implement | Microsoft Dynamics 365 Sales |

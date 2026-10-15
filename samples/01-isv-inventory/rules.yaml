@@ -114,6 +114,26 @@ stages:
         when: {field: considering, exists: true}
         then: {score: {opportunity: 20}, tag: evaluating-alternative}
         reason: "Customer is already evaluating {considering}"
+      - id: sig-open
+        when: {field: open_to_alternatives, matches: "^yes"}
+        then: {score: {opportunity: 20}, tag: open-to-switch}
+        reason: "Customer says: {open_to_alternatives}"
+      - id: sig-maybe
+        when: {field: open_to_alternatives, matches: "^maybe"}
+        then: {score: {opportunity: 10}, tag: price-sensitive}
+        reason: "Customer says: {open_to_alternatives}"
+      - id: sig-committed
+        when: {field: open_to_alternatives, matches: "^no"}
+        then: {score: {opportunity: -10}, tag: committed}
+        reason: "Customer says: {open_to_alternatives}"
+      - id: sig-outcome-rightsize
+        when: {field: desired_outcome, matches: "right-size"}
+        then: {score: {opportunity: 10}, tag: shelfware}
+        reason: "Customer wants to right-size licenses"
+      - id: sig-outcome-retire
+        when: {field: desired_outcome, matches: "retire|consolidate"}
+        then: {score: {opportunity: 10}, tag: retire-candidate}
+        reason: "Customer's desired outcome: {desired_outcome}"
       - id: sig-shelfware
         when: {all: [{field: utilization, lt: 0.75}, {field: unused_licenses, gte: 10}]}
         then: {score: {opportunity: 15}, tag: shelfware}
@@ -174,10 +194,28 @@ stages:
         when: {any: [{field: tags, contains: already-owned-alternative}, {field: tags, contains: category-overlap}]}
         then: {play: consolidate, package: consolidation-project}
         reason: "Overlap with tools already owned → consolidation"
+      # What the customer told us they want at renewal comes before our own inference.
+      - id: p-want-retire
+        when: {field: desired_outcome, matches: "retire|consolidate"}
+        then: {play: consolidate, package: consolidation-project}
+        reason: "Customer wants to {desired_outcome}"
+      - id: p-want-rightsize
+        when: {field: desired_outcome, matches: "right-size"}
+        then: {play: license-optimization, package: optimization-fee}
+        reason: "Customer wants to right-size licenses"
+      - id: p-want-renegotiate
+        when: {field: desired_outcome, matches: "renegotiate"}
+        then: {play: renewal-negotiation, package: negotiation-fee}
+        reason: "Customer wants to renegotiate the price"
+      - id: p-want-replace
+        when: {field: desired_outcome, matches: "replace"}
+        then: {play: competitive-swap, package: migration-project}
+        reason: "Customer wants to replace it with an alternative"
       - id: p-swap
-        when: {all: [{any: [{field: tags, contains: dissatisfied}, {field: tags, contains: evaluating-alternative}]},
-                     {field: tags, contains: partner-alternative}]}
-        then: {play: competitive-swap, package: migration-project, addons: [first-year-resale]}
+        when: {all: [{any: [{field: tags, contains: dissatisfied}, {field: tags, contains: evaluating-alternative},
+                            {field: tags, contains: open-to-switch}]},
+                     {field: tags, contains: partner-alternative}, {not: {field: tags, contains: committed}}]}
+        then: {play: competitive-swap, package: migration-project}
         reason: "Unhappy or evaluating, and we have a partner alternative → competitive swap"
       - id: p-rightsize
         when: {all: [{field: tags, contains: shelfware}, {field: days_to_renewal, lte: 270}]}
@@ -202,6 +240,14 @@ stages:
 
   - name: Overlay
     rules:
+      - id: o-consolidate-target
+        when: {all: [{field: plays, contains: consolidate}, {field: consolidate_onto, missing: true}, {field: considering, exists: true}]}
+        then: {copy: {consolidate_onto: considering}}
+        reason: "Consolidate onto what the customer named: {considering}"
+      - id: o-swap-resale
+        when: {all: [{field: plays, contains: competitive-swap}, {field: tags, contains: partner-alternative}]}
+        then: {addons: [first-year-resale]}
+        reason: "We resell a replacement ({partner_alternatives}) → first-year resale margin"
       - id: o-marketplace
         when: {all: [{field: tags, contains: marketplace-eligible},
                      {any: [{field: plays, contains: renewal-negotiation}, {field: plays, contains: license-optimization}]}]}

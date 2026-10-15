@@ -60,6 +60,29 @@ When a line qualifies for both negotiation and a marketplace route, the brief re
 
 Every threshold, rate and alternative lives in YAML ([`rules.yaml`](samples/01-isv-inventory/rules.yaml), [`plays.yaml`](samples/01-isv-inventory/plays.yaml), [`packages.yaml`](samples/01-isv-inventory/packages.yaml), [`isv_catalog.yaml`](samples/01-isv-inventory/reference/isv_catalog.yaml)). Margins, fees and positioning in the sample are placeholders: swap in your own partner agreements.
 
+## ISV Discovery Workbook
+
+[`templates/ISV_Discovery_Workbook.xlsx`](templates/ISV_Discovery_Workbook.xlsx) is the spreadsheet you send a customer, or fill in with them, to document every ISV product they pay for. A filled-in version for a fictional company is [`templates/ISV_Discovery_Workbook_EXAMPLE.xlsx`](templates/ISV_Discovery_Workbook_EXAMPLE.xlsx).
+
+| Tab | What it holds |
+|---|---|
+| Instructions | How to fill it in, the colour legend, and what happens next |
+| Company Profile | Company, contacts, how they buy software, AWS and Microsoft cloud commitments |
+| ISV Inventory | One row per product: ownership, **use cases**, criticality, integrations, data sensitivity, licenses vs active users, cost, **renewal terms** (date, term, auto-renew, notice, price cap, early termination), satisfaction, pain points, **open to alternatives after renewal**, alternatives considered, reason to switch, switching barriers, desired outcome, decision maker |
+| Renewal Calendar | Every renewal in date order with notice deadlines and openness to alternatives (calculated) |
+| Summary | Spend, renewals by window and by month, auto-renew notices due, openness and desired outcomes, tools per category to spot overlaps (calculated) |
+| Discovery Questions | 21 interview questions on strategy, renewals, use cases, alternatives, buying process, usage and compliance |
+| Catalog | The 157-product catalog with marketplace status, used by the product dropdown |
+
+Yellow cells are for the customer; grey cells calculate. The product dropdown accepts names it doesn't know, and common short names ("Okta", "Zoom", "SFDC") match the catalog automatically. Rebuild after changing the catalog: `python tools/build_discovery_workbook.py` (add `--example` for the filled version).
+
+A completed workbook goes straight into the pipeline. The customer's stated *desired outcome* and *openness to alternatives* steer the plays: "Right-size" → license optimization, "Retire" or "Consolidate" → consolidation, "Replace" → competitive swap, "No – committed" suppresses swap plays.
+
+```bash
+python tools/import_workbook.py Customer_Workbook.xlsx   # reads only the customer's inputs; skips the example row
+python -m playbook samples/01-isv-inventory
+```
+
 ## Web intake form for new opportunities
 
 [`web/intake.html`](web/intake.html) is a single-page form for capturing a new opportunity. It has six sections:
@@ -101,7 +124,7 @@ Status was checked in October 2026 with a domain-restricted search of each marke
 pip install -r requirements.txt                 # just PyYAML
 python -m playbook samples/01-isv-inventory     # writes ./out/01-isv-inventory
 open out/01-isv-inventory/index.html            # dashboard linking every deliverable
-python -m unittest discover tests               # 17 tests
+python -m unittest discover tests               # 18 tests
 python tools/build_catalog.py                   # rebuild the catalog after editing tools/*.tsv
 ```
 
@@ -155,7 +178,8 @@ playbook/rules.py      condition evaluator, computed + cross-line fields, staged
 playbook/packager.py   pricing/opportunity, line briefs, roll-up briefs, calendar, play packs, CRM CSV, dashboard
 playbook/__main__.py   CLI
 web/                   opportunity intake form (template + built page)
-tools/                 catalog builder, intake importer, intake page builder
+templates/             ISV Discovery Workbook (blank and example)
+tools/                 catalog, workbook and intake-page builders; workbook and intake importers
 samples/               four end-to-end sample projects
 examples/              committed output of every sample
 tests/                 unit + end-to-end tests

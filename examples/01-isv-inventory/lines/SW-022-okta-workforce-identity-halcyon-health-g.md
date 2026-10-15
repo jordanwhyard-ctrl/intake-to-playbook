@@ -26,7 +26,12 @@
 | Notice deadline | 2026-12-02 |
 | Days to notice deadline | 49 |
 | Business owner | — |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | — |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | JumpCloud, Microsoft Entra ID P1, Ping Identity |
 | Alternatives we resell or implement | JumpCloud, Microsoft Entra ID P1 |

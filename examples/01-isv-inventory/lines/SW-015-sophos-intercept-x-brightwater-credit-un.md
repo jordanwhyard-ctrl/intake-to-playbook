@@ -26,7 +26,12 @@
 | Notice deadline | — |
 | Days to notice deadline | — |
 | Business owner | IT |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 2 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | SentinelOne |
 | Competitive alternatives | SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint |
 | Alternatives we resell or implement | SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint |
@@ -58,7 +63,8 @@ Tags: `renewing-180` `dissatisfied` `evaluating-alternative` `partner-alternativ
 - **Signals** · Satisfaction 2/5 → opportunity +20
 - **Signals** · Customer is already evaluating SentinelOne → opportunity +20
 - **Signals** · We resell or implement: SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint
-- **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project, +first-year-resale
+- **Route** · Unhappy or evaluating, and we have a partner alternative → competitive swap → play=competitive-swap, package=migration-project
+- **Overlay** · We resell a replacement (SentinelOne Singularity, CrowdStrike Falcon, Microsoft Defender for Endpoint) → first-year resale margin → +first-year-resale
 
 ## Consultant opportunity: Competitive migration
 

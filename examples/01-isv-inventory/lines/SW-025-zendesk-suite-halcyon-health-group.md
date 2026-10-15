@@ -26,7 +26,12 @@
 | Notice deadline | 2027-03-01 |
 | Days to notice deadline | 138 |
 | Business owner | — |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | — |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Freshdesk, HubSpot Service Hub, Salesforce Service Cloud |
 | Alternatives we resell or implement | Freshdesk |

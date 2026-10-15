@@ -26,7 +26,12 @@
 | Notice deadline | 2026-12-01 |
 | Days to notice deadline | 48 |
 | Business owner | Compliance |
+| Primary use case | — |
+| Business criticality | — |
 | Satisfaction (1–5) | 3 |
+| Open to alternatives after renewal | — |
+| Desired outcome at renewal | — |
+| Main reason to switch | — |
 | Customer is evaluating | — |
 | Competitive alternatives | Dropbox Business, Egnyte, Microsoft SharePoint / OneDrive |
 | Alternatives we resell or implement | — |
