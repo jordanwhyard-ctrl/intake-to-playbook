@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partner storefront home · Cloud COE Partner Portal (design prototype)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F6F78}a:hover{color:#0B3C49}
+</style>
+</head>
+<body>
+<!-- Static design prototype. Sample data is the fictional Ridgeline Software Co. from samples/01-isv-inventory. -->
+<div style="font-family: Inter, system-ui, sans-serif; color: #10242E; background: #F6F9F9; min-height: 100vh">
+<header style="background: #10242E; color: #FFFFFF; padding: 16px 32px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">Cloud COE Partner Portal</span>
+<span style="font-size: 12px; color: #C9DADC">AWS and Microsoft Center of Excellence</span>
+</div>
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; font-weight: 500">
+<a href="#explore" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Solutions</a>
+<a href="#explore" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Marketplace</a>
+<a href="#catalog" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">ISV directory</a>
+<a href="#explore" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Resources</a>
+<a href="track.html" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">My opportunities</a>
+</nav>
+<div style="font-size: 13px; background: #1B3642; padding: 10px 14px; border-radius: 999px">Marcus Lee · Keystone Advisory</div>
+</header>
+
+<section style="background: #EAF2F2; padding: 56px 32px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #1F6F78">ONE FRONT DOOR FOR AWS AND MICROSOFT</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 52px; line-height: 1.08; font-weight: 700">Bring us the opportunity. We route it to the right people.</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #2B4350; max-width: 620px">Tell us about your customer in six short steps. You get an opportunity ID, a named COE owner and a status you can check at any time.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="classify.html" style="background: #F59E0B; color: #10242E; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 10px; text-decoration: none">Submit an opportunity</a>
+<a href="#explore" style="background: #FFFFFF; color: #10242E; font-weight: 600; font-size: 16px; padding: 15px 28px; border-radius: 10px; text-decoration: none; border: 1px solid #B9CACD">Request assistance</a>
+</div>
+<p style="margin: 0; font-size: 13px; color: #3F5965">We never ask for AWS credentials, passwords or access keys.</p>
+</div>
+<aside style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 8px 24px rgba(16,36,46,0.08)">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">My opportunities</h2>
+<a href="track.html" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 12px; background: #F6F9F9; text-decoration: none; color: #10242E">
+<span style="display: flex; justify-content: space-between; gap: 12px; align-items: center">
+<span style="font-weight: 700; font-size: 16px">Ridgeline Software Co.</span>
+<span style="font-size: 12px; font-weight: 700; background: #FDF0D5; color: #7A4A00; padding: 4px 10px; border-radius: 999px">Triage</span>
+</span>
+<span style="font-size: 14px; color: #3F5965">FY27 software estate review · 22 product lines</span>
+<span style="font-size: 13px; color: #3F5965">Owner: [ASSIGNED COE OWNER] · Next response within 1 business day</span>
+</a>
+<a href="estate.html" style="display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 16px; border-radius: 12px; border: 1px dashed #9FB5B9; text-decoration: none; color: #10242E">
+<span style="font-size: 14px; font-weight: 600">1 saved draft</span>
+<span style="font-size: 14px; color: #1F6F78; font-weight: 600">Resume</span>
+</a>
+</aside>
+</div>
+</section>
+
+<section id="explore" style="padding: 56px 32px 24px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px">What can I sell, and who can help?</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">AWS solutions</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Browse AWS services and solutions.</span>
+</span>
+</a>
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">Microsoft solutions</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Browse Azure and Microsoft services.</span>
+</span>
+</a>
+
+<a href="#catalog" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">Marketplace</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Discover AWS Marketplace and Microsoft commercial marketplace offerings.</span>
+</span>
+</a>
+
+<a href="#catalog" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">ISV directory</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Find approved software and SaaS suppliers.</span>
+</span>
+</a>
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">Cloud optimization</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Identify cost optimization and modernization opportunities.</span>
+</span>
+</a>
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">Partner resources</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Access playbooks, sales collateral and training.</span>
+</span>
+</a>
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">Request assistance</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Engage deal desk, engineering or cloud specialists.</span>
+</span>
+</a>
+
+<a href="track.html" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">My opportunities</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Review submitted opportunities and status.</span>
+</span>
+</a>
+
+<a href="#explore" style="flex: 1 1 300px; min-width: 0; min-height: 96px; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; text-decoration: none; color: #10242E">
+<span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #1F6F78; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 700; font-size: 17px">FAQs and knowledge center</span>
+<span style="font-size: 14px; line-height: 1.45; color: #3F5965">Self-service answers and documentation.</span>
+</span>
+</a>
+
+</div>
+</div>
+</section>
+
+<section style="padding: 32px">
+<div style="max-width: 1240px; margin: 0 auto; background: #10242E; color: #FFFFFF; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 24px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px">Six steps, about what you already know</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span>
+<span style="font-weight: 700; font-size: 16px">You and your partner</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Advisor, affiliation, customer and account owner.</span>
+</div>
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+<span style="font-weight: 700; font-size: 16px">Opportunity type</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Migration, Marketplace, ISV licensing, optimization and more.</span>
+</div>
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span>
+<span style="font-weight: 700; font-size: 16px">Customer discovery</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Business problem, cloud commitments and software estate.</span>
+</div>
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">4</span>
+<span style="font-weight: 700; font-size: 16px">Technical discovery</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Only the questions your opportunity type needs.</span>
+</div>
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">5</span>
+<span style="font-weight: 700; font-size: 16px">Commercial discovery</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Value, term, billing and resale or referral preference.</span>
+</div>
+
+<div style="flex: 1 1 170px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; color: #10242E; font-weight: 700; display: flex; align-items: center; justify-content: center">6</span>
+<span style="font-weight: 700; font-size: 16px">Documents</span>
+<span style="font-size: 13px; line-height: 1.45; color: #C9DADC">Secure upload of invoices, contracts and diagrams.</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="catalog" style="padding: 24px 32px 56px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px">ISV catalog with Marketplace status</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3F5965">As you type a product, the form matches it to the catalog and shows whether it can route through a cloud marketplace against your customer's commitment. Status checked October 2026.</p>
+</div>
+<div style="flex: 2 1 560px; min-width: 0; display: flex; flex-wrap: wrap; gap: 16px">
+
+<div style="flex: 1 1 120px; min-width: 0; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #1F6F78">157</span>
+<span style="font-size: 13px; line-height: 1.4; color: #3F5965">ISV products in the catalog</span>
+</div>
+
+<div style="flex: 1 1 120px; min-width: 0; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #1F6F78">59</span>
+<span style="font-size: 13px; line-height: 1.4; color: #3F5965">software categories</span>
+</div>
+
+<div style="flex: 1 1 120px; min-width: 0; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #1F6F78">92</span>
+<span style="font-size: 13px; line-height: 1.4; color: #3F5965">listed on AWS Marketplace</span>
+</div>
+
+<div style="flex: 1 1 120px; min-width: 0; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #1F6F78">74</span>
+<span style="font-size: 13px; line-height: 1.4; color: #3F5965">listed on Microsoft Marketplace</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #D5E0E2; padding: 24px 32px; font-size: 13px; color: #3F5965; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between">
+<span>You only see the opportunities you submitted.</span>
+<span>FAQs and knowledge center · Contact the COE</span>
+</footer>
+</div>
+</body>
+</html>
