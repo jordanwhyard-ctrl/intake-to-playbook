@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity received and tracking · Cloud COE Partner Portal (design prototype)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F6F78}a:hover{color:#0B3C49}
+</style>
+</head>
+<body>
+<!-- Static design prototype. Sample data is the fictional Ridgeline Software Co. from samples/01-isv-inventory. -->
+<div style="font-family: Inter, system-ui, sans-serif; color: #10242E; background: #F6F9F9; min-height: 100vh">
+<header style="background: #10242E; color: #FFFFFF; padding: 16px 32px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
+<a href="index.html" style="display: flex; flex-direction: column; gap: 2px; color: #FFFFFF; text-decoration: none">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">Cloud COE Partner Portal</span>
+<span style="font-size: 12px; color: #C9DADC">AWS and Microsoft Center of Excellence</span>
+</a>
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; font-weight: 500">
+<a href="index.html" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Home</a>
+<a href="track.html" style="color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; padding: 12px 0">My opportunities</a>
+<a href="classify.html" style="color: #FFFFFF; text-decoration: none; padding: 12px 0">Submit an opportunity</a>
+</nav>
+<div style="font-size: 13px; background: #1B3642; padding: 10px 14px; border-radius: 999px">Marcus Lee · Keystone Advisory</div>
+</header>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 24px">
+<section style="background: #1F6F78; color: #FFFFFF; border-radius: 20px; padding: 36px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
+<div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: #FDF0D5">OPPORTUNITY RECEIVED</span>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 36px; line-height: 1.1">Ridgeline Software Co. is with the COE</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.5">You do not need to chase this. Your owner and the current status are always on this page.</p>
+</div>
+<dl style="flex: 1 1 320px; min-width: 0; margin: 0; background: #FFFFFF; color: #10242E; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; gap: 16px"><dt style="color: #3F5965">Opportunity ID</dt><dd style="margin: 0; font-weight: 700">[OPPORTUNITY ID]</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 16px"><dt style="color: #3F5965">COE owner</dt><dd style="margin: 0; font-weight: 700">[ASSIGNED COE OWNER]</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 16px"><dt style="color: #3F5965">Status</dt><dd style="margin: 0; font-weight: 700">Triage</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 16px"><dt style="color: #3F5965">Next response</dt><dd style="margin: 0; font-weight: 700">Within 1 business day</dd></div>
+</dl>
+</section>
+
+<section aria-labelledby="progress" style="background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<h2 id="progress" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Where it stands</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px 8px">
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #1F6F78"></span>
+<span style="font-size: 14px; font-weight: 500; color: #10242E">Submitted</span>
+<span style="font-size: 12px; color: #3F5965">Done</span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #F59E0B"></span>
+<span style="font-size: 14px; font-weight: 700; color: #10242E">Triage</span>
+<span style="font-size: 12px; color: #3F5965">In progress</span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Qualified</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Discovery</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Solution design</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Commercial structuring</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Hyperscaler alignment</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Contracting</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+<li style="flex: 1 1 110px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<span style="height: 8px; border-radius: 999px; background: #D5E0E2"></span>
+<span style="font-size: 14px; font-weight: 500; color: #3F5965">Closed won</span>
+<span style="font-size: 12px; color: #3F5965"></span>
+</li>
+
+</ol>
+<p style="margin: 0; font-size: 13px; color: #3F5965">Not every opportunity passes through every stage. A simple Marketplace transaction can skip solution design.</p>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section style="flex: 2 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Suggested plays from your intake</h2>
+<p style="margin: 0; font-size: 14px; color: #3F5965">Starting points the deal desk will confirm with you during qualification.</p>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+
+<li style="background: #F6F9F9; border-radius: 12px; padding: 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between">
+<span style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; font-size: 16px">Datadog <span style="font-weight: 500; color: #3F5965">· $420,000 / yr</span></span>
+<span style="font-size: 14px; line-height: 1.45; color: #2B4350">Renews 2026-12-31. Negotiate first, then transact through AWS Marketplace against the commitment.</span>
+</span>
+<span style="font-size: 13px; font-weight: 700; background: #FDF0D5; color: #7A4A00; padding: 6px 12px; border-radius: 999px">Renewal negotiation</span>
+</li>
+
+<li style="background: #F6F9F9; border-radius: 12px; padding: 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between">
+<span style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; font-size: 16px">GitLab Ultimate <span style="font-weight: 500; color: #3F5965">· $217,800 / yr</span></span>
+<span style="font-size: 14px; line-height: 1.45; color: #2B4350">140 of 220 licenses are active and it renews 2026-12-15.</span>
+</span>
+<span style="font-size: 13px; font-weight: 700; background: #FDF0D5; color: #7A4A00; padding: 6px 12px; border-radius: 999px">License optimization</span>
+</li>
+
+<li style="background: #F6F9F9; border-radius: 12px; padding: 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between">
+<span style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; font-size: 16px">Notion <span style="font-weight: 500; color: #3F5965">· $72,000 / yr</span></span>
+<span style="font-size: 14px; line-height: 1.45; color: #2B4350">Overlaps with a knowledge base the customer already runs. Renews 2027-01-31.</span>
+</span>
+<span style="font-size: 13px; font-weight: 700; background: #FDF0D5; color: #7A4A00; padding: 6px 12px; border-radius: 999px">Consolidate</span>
+</li>
+
+<li style="background: #F6F9F9; border-radius: 12px; padding: 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between">
+<span style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; font-size: 16px">Okta Workforce Identity <span style="font-weight: 500; color: #3F5965">· $58,500 / yr</span></span>
+<span style="font-size: 14px; line-height: 1.45; color: #2B4350">Listed on AWS Marketplace and renews 2026-11-20.</span>
+</span>
+<span style="font-size: 13px; font-weight: 700; background: #FDF0D5; color: #7A4A00; padding: 6px 12px; border-radius: 999px">Marketplace purchase</span>
+</li>
+
+</ul>
+</section>
+
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #D5E0E2; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px">Activity</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Routed to deal desk for triage</span><span style="color: #3F5965; font-size: 13px">Nov 15, 2026</span></li>
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">2 documents received</span><span style="color: #3F5965; font-size: 13px">Nov 15, 2026</span></li>
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Opportunity submitted by Marcus Lee</span><span style="color: #3F5965; font-size: 13px">Nov 15, 2026</span></li>
+</ol>
+</section>
+<section style="background: #EAF2F2; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px">Have more to add?</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #2B4350">Upload invoices, contracts or diagrams at any time. Never credentials or access keys.</p>
+<button type="button" style="font-family: inherit; font-size: 15px; font-weight: 700; min-height: 48px; color: #FFFFFF; background: #1F6F78; border: 0; border-radius: 10px; padding: 12px 18px; cursor: pointer">Add information</button>
+<a href="index.html" style="font-size: 14px; font-weight: 700; padding: 10px 0; text-decoration: none">This opportunity is stalled: escalate</a>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</body>
+</html>
